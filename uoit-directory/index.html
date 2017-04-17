@@ -162,6 +162,98 @@
       </div>
     </div>
 
+
+
+
+    <!-- Footers -->
+    <footer class="footer">
+
+      <section class="footer_sec_top">
+        <div class="row footer_links">
+          <div class="item">
+            <div class="nav_col_title"><span>Help</span></div>
+            <ul>
+              <li><a href="http://uoit.ca/contact-us.php">Contact us</a></li>
+              <li><a href="http://uoit.ca/terms-of-use.php">Terms of use</a></li>
+              <li><a href="http://uoit.ca/forms/online/view.php?id=16035">Website feedback</a></li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="nav_col_title"><span>Connect</span></div>
+              <ul>
+                <li><a href="https://hr.uoit.ca/working_at_uoit/careers/index.php">Career opportunities</a></li>
+                <li><a href="http://uoit.ca/expertcentre">Faculty experts</a></li>
+                <li><a href="http://news.uoit.ca/media-inquiries/index.php">Media inquiries</a></li>
+                <li><a href="https://studentlifeportal.uoit.ca/careerServices/servicesForEmployers.htm">Services for employers</a></li>
+              </ul>
+          </div>
+          <div class="item">
+            <div class="nav_col_title"><span>Visit</span></div>
+              <ul>
+                <li><a href="http://uoit.ca/about/campus-buildings/index.php">Campus buildings</a></li>
+                <li><a href="http://uoit.ca/maps">Campus map</a></li>
+                <li><a href="https://uoit.ca/future-students/undergraduate/campus-tours-and-events/index.php">Campus tours</a></li>
+              </ul>
+          </div>
+          <div class="item">
+            <div class="nav_col_title"><span>Info</span></div>
+              <ul>
+                <li><a href="http://uoit.ca/about">About UOIT</a></li>
+                <li><a href="http://uoit.ca/about/governance">Governance</a></li>
+              </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="footer_sec_bottom">
+        <div class="row">
+          <div class="logo_footer">
+            <img alt="University of Ontario Institute of Technology logo" height="111" src="https://shared.uoit.ca/global/files/img/logos/UOIT_white.png" width="300"/>
+          </div>
+          <div class="footer_address">
+            <p><span>2000 Simcoe Street North</span> <span>Oshawa, Ontario L1H 7K4</span> <span>Canada</span></p>
+            <p><span>905.721.8668</span> &#169; University of Ontario Institute of Technology
+            <script type="text/javascript">// <![CDATA[
+            document.write(new Date().getFullYear())
+            // ]]></script>
+            </p>
+          </div>
+          <div class="footer_social_icons">
+            <p>Challenge<strong>Innovate</strong>Connect</p>
+            <ul>
+              <li><a class="icon icon_social_facebook" href="https://www.facebook.com/myuoit" onclick="ga('send','event','link','click','socialMediaPage_facbook');"><span>Facebook</span></a></li>
+              <li><a class="icon icon_social_twitter" href="https://twitter.com/uoit" onclick="ga('send','event','link','click','socialMediaPage_twitter');"><span>Twitter</span></a></li>
+              <li><a class="icon icon_social_linkedin" href="http://www.linkedin.com/company/uoit" onclick="ga('send','event','link','click','socialMediaPage_linkedin');"><span>LinkedIn</span></a></li>
+              <li><a class="icon icon_social_youtube" href="http://youtube.com/uoit" onclick="ga('send','event','link','click','socialMediaPage_youtube');"><span>YouTube</span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer_sticky">
+          <div class="row align-right">
+            <a class="btn-site-feedback" data-open="modal_form_uoit_siteFeedback_sticky" href="javascript:void(0)" id="btn_footer_uoit_siteFeedback" title="Website feedback form"><span>Website feedback</span></a>
+            <div class="reveal" data-reveal="" id="modal_form_uoit_siteFeedback_sticky">
+              <iframe allowTransparency="true" id="iframe_webFeedbackBtn" onload="javascript:parent.scrollTo(0,0);" src="https://uoit.ca/forms/online/embed.php?id=16035" style="width: 100%; height: 881px; border: none; overflow: hidden;" title="Website feedback"><a href="https://uoit.ca/forms/online/view.php?id=16035" title="Website feedback">Website feedback</a></iframe>
+
+              <script type="text/javascript">
+              var iframe = document.getElementById("iframe_webFeedbackBtn");
+              var url = window.location.href;
+              var urlParam = iframe.src + "&amp;element_9="+url;
+              iframe.src=urlParam;
+              </script>
+              <button aria-label="Close modal" class="close-button" data-close="" type="button">
+                <span aria-hidden="true" class="icon icon_cancel"></span>
+              </button>
+            </div>
+
+            <a class="btn-to-top" href="javascript:void(0)" title="Scroll to top of page"><span>Top</span></a>
+          </div>
+        </div>
+      </section>
+    </footer>
+
+    <div class="menu-page-overlay"></div>
+
+
     <script src="https://shared.uoit.ca/global-2.1/dist/js/global.js"></script>
     <script src="https://shared.uoit.ca/global-2.1/dist/js/jquery.min.js"></script>
     <script src="https://shared.uoit.ca/global-2.1/dist/js/foundation.js"></script>
@@ -172,3 +264,4 @@
     <script src="assets/js/app.js"></script>
   </body>
 </html>
+

@@ -1,0 +1,38 @@
+$font: 'Franklin Gothic';
+$light-blue: #0077CA;
+$dark-blue: #003C71;
+$grey: #53565A;
+$text-color-white: #fff;
+
+.tabs {
+	border-color: $dark-blue;
+	color: $text-color-white;
+}
+
+.tabs .tabs-title {
+	background-color: $light-blue;
+	color: $text-color-white;
+}
+
+.tabs .tabs-title .is-active {
+	background-color: $dark-blue;
+	color: $text-color-white;
+}
+
+.tabs-title > a:hover {
+	background-color: $dark-blue;
+	color: $text-color-white;
+}
+
+.tabs .tabs-title.is-active * {
+	background-color: $dark-blue;
+	color: $text-color-white;
+}
+
+.tabs .tabs-title > a {
+	color: $text-color-white;
+}
+
+.tabs-content {
+	border-color: $dark-blue;
+}

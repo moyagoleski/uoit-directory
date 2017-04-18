@@ -91,9 +91,15 @@ $text-color-white: #fff;
 	padding: 1rem;
 }
 
-.accordion .accordion-title {
-	box-shadow: 0;
-	border-left: 0;
-	border-right: 0;
+.accordion {
+	.accordion-content {
+		border-left-color: transparent;
+	}
+
+	.accordion-title {
+		box-shadow: 0;
+		border-left: 0;
+		border-right: 0;
+	}
 }
 >>>>>>> origin/master

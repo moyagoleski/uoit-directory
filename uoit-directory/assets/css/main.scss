@@ -10,8 +10,6 @@ $text-color-white: #fff;
 
 	.tabs-title {
 		background-color: $light-blue;
-		color: $text-color-white;
-		box-sizing: border-box;
 		text-align: center;
 
 		a {
@@ -47,4 +45,14 @@ $text-color-white: #fff;
 
 .tabs-content {
 	border-color: $dark-blue;
+}
+
+.tabs-list {
+	padding: 1rem;
+}
+
+.accordion .accordion-title {
+	box-shadow: 0;
+	border-left: 0;
+	border-right: 0;
 }

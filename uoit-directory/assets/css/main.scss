@@ -12,7 +12,6 @@ $text-color-white: #fff;
 	.tabs-title {
 		background-color: $light-blue;
 		color: $text-color-white;
-		box-sizing: border-box;
 		text-align: center;
 
 		a {
@@ -27,8 +26,9 @@ $text-color-white: #fff;
 }
 @media screen and (min-width:75em) {
 	.tabs .tabs-title {
-		width: 299px;
-		margin-right: 1rem;
+		width: 33%;
+		margin-right: 0.5%;
+		box-sizing: border-box;
 	}
 
 	.tabs-title:last-child {

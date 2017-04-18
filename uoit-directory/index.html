@@ -3480,16 +3480,17 @@
 										<div class="tabs-panel is-active" id="tab1-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab1-1-label">
 											<div class="large-6 columns">
 												<p>Enter a first name, a last name or both to find a faculty or staff member and click the Search button. Partial names can also be used.</p>
-												<label>NAME:</label>
 												<div class="small-12 medium-6 columns">
-													<input type="text" name="Name" />
+													<label>NAME:
+														<input type="text" name="Name" />
+													</label>
 												</div>
 											</div>
 											<div class="large-6 columns">
 												<p>Select a department name and click Search to list all of the members.
 												</p>
-												<label>DEPARTMENT: </label>
 												<div class="small-12 medium-6 columns">
+													<label>DEPARTMENT: </label>
 													<select class="select-department" name="department_name">
                                             <option value="12002">Academic Affairs - UOIT</option>
                                             <option value="9725">Advancement Office and Alumni Relations - UOIT</option>
@@ -3579,15 +3580,15 @@
                                             <option value="8302">Varsity Athletic Therapy
                                         </select>
 												</div>
-												<a class="button" href="#">SEARCH</a>
+												<!-- SEARCH BUTTON -->
+												<a role="button" aria-label="search" class="button" href="#">SEARCH</a>
 											</div>
 										</div>
 										<div class="tabs-panel " id="tab1-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-2-label">
 											<!-- TAB TITLE  -->
 											<h2>Contacts</h2>
-											<!-- TAB TITLE  -->
 											<!-- CONTACT TITLE  -->
-											<h2>Campus services</h2>
+											<h3>Campus services</h3>
 											<div class="row">
 												<div class="small-12 medium-5 columns" style="border:solid 2px #0077CA;color:#0077CA;margin:10px">
 													<p style="padding:20px 0 0 20px"><b>Bookstore</b></p>
@@ -3608,7 +3609,7 @@
 											</div>
 											<br/>
 											<!-- CONTACT TITLE  -->
-											<h2>Student services</h2>
+											<h3>Student services</h3>
 											<div class="row">
 												<div class="small-12 medium-5 columns" style="border:solid 2px #0077CA;color:#0077CA;margin:10px">
 													<p style="padding:20px 0 0 20px"><b>Alumni Office</b></p>
@@ -3628,52 +3629,52 @@
 												<div class="row">
 													<div class="small-12 medium-6 columns">
 														<label>FIRST NAME:
-                                                <input type="text" name="First Name" />
-                                            </label>
+                                <input type="text" name="First Name" />
+                            </label>
 													</div>
 													<div class="small-12 medium-6 columns">
 														<label>LAST NAME:
-                                                <input type="text" name="Last Name" />
-                                            </label>
+	                              <input type="text" name="Last Name" />
+	                          </label>
 													</div>
 												</div>
 												<div class="row">
 													<div class="small-12 medium-6 columns">
 														<label>POSITION:
-                                                <input type="text" name="Position" />
-                                            </label>
+                                <input type="text" name="Position" />
+                            </label>
 													</div>
 													<div class="small-12 medium-6 columns">
 														<label>DEPARTMENT:
-                                                <input type="text" name="Department" />
-                                            </label>
+                                <input type="text" name="Department" />
+                            </label>
 													</div>
 												</div>
 												<div class="row">
 													<div class="small-12 medium-6 columns">
 														<label>EXTENSION:
-                                                <input type="text" name="Extension" />
-                                            </label>
+                                <input type="text" name="Extension" />
+                            </label>
 													</div>
 													<div class="small-12 medium-6 columns">
 														<label>LOCATION:
-                                                <input type="text" name="Location" />
-                                            </label>
+                                <input type="text" name="Location" />
+                            </label>
 													</div>
 												</div>
 												<div class="row">
 													<div class="small-12 medium-6 columns">
 														<label>BUILDING:
-                                                <input type="text" name="Building" />
-                                            </label>
+                                <input type="text" name="Building" />
+                            </label>
 													</div>
 													<div class="small-12 medium-6 columns">
 														<label>E-MAIL:
-                                                <input type="text" name="E-mail" />
-                                            </label>
+                                <input type="text" name="E-mail" />
+                            </label>
 													</div>
 												</div>
-												<!-- BUTTON -->
+												<!-- SUBMIT BUTTON -->
 												<a role="button" aria-label="submit form" class="button">SUBMIT</a>
 											</form>
 										</div>

@@ -14,6 +14,11 @@ $text-color-white: #fff;
 		box-sizing: border-box;
 		text-align: center;
 
+		.is-active {
+			background-color: $dark-blue;
+			color: $text-color-white;
+		}
+
 		a {
 			color: $text-color-white;
 
@@ -33,18 +38,38 @@ $text-color-white: #fff;
 	.tabs-title:last-child {
 		margin-right: 0;
 	}
-}
 
-.tabs .tabs-title .is-active {
-	background-color: $dark-blue;
-	color: $text-color-white;
-}
-
-.tabs .tabs-title.is-active * {
-	background-color: $dark-blue;
-	color: $text-color-white;
+	.accordion {
+		.accordion-content {
+			li {
+				display: inline-block;
+			}
+		}
+	}
 }
 
 .tabs-content {
 	border-color: $dark-blue;
+}
+
+.tabs-content-result {
+	padding: 1rem;
+}
+/* clear accordion default left box shadow*/
+.accordion {
+	.accordion-title {
+		box-shadow: none;
+	}
+
+	.accordion-content {
+		border-left-color: transparent;
+		border-right: 0;
+	}
+}
+
+.profile-list {
+	li {
+		display: inline-block;
+		width: 425px;
+	}
 }

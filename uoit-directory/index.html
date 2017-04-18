@@ -4130,21 +4130,41 @@
 
 
       <!-- Main content -->
-      <section id="main-content">
-        <ul aria-label="Breadcrumbs" class="breadcrumbs" role="menubar">
-          <li role="menuitem"><a href="../index.php">UOIT</a></li>
-        </ul>
-        <div class="page-row row">
-          <section class="page-content">
-            <h1>Directory</h1>
-            <div class="row">
-              <!-- <div class="columns"> <iframe height="1500" src="https://ssbp.mycampus.ca/prod/www_directory.directory_uoit.p_main" title="Directory" width="100%"></iframe> -->
-            </div>
-        </div>
-          </section>
+					<section id="main-content">
+						<ul aria-label="Breadcrumbs" class="breadcrumbs" role="menubar">
+							<li role="menuitem"><a href="../index.php">UOIT</a></li>
+						</ul>
+						<div class="page-row row">
+							<section class="page-content has-sidebar">
+								<h1>DIRECTORY</h1>
+								<ul class="tabs" data-tabs="u3jluw-tabs" id="tab1" role="tablist">
+									<li class="tabs-title is-active" role="presentation"><a href="#tab1-1" role="tab" aria-controls="tab1-1" aria-selected="true" id="tab1-1-label">Search</a></li>
+									<li class="tabs-title" role="presentation"><a href="#tab1-2" role="tab" aria-controls="tab1-2" aria-selected="false" id="tab1-2-label">Contacts</a></li>
+									<li class="tabs-title" role="presentation"><a href="#tab1-3" role="tab" aria-controls="tab1-3" aria-selected="false" id="tab1-3-label">Update</a></li>
+								</ul>
+								<div class="tabs-content" data-tabs-content="tab1" id="tab1-content">
+									<div class="tabs-panel is-active" id="tab1-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab1-1-label">
+										<h1>Search</h1>
+									</div>
+									<div class="tabs-panel " id="tab1-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-2-label">
+			              <h1>Contacts</h1>
+			            </div>
+									<div class="tabs-panel " id="tab1-3" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-3-label">
+			              <h1>Update</h1>
+									</div>
+								</div>
+							</section>
 
-          </div> <!-- /.page-row -->
-      </section>
+							<!-- v2.2 - integrate into modules -->
+							<section class="page-sidebar">
+								<div class="sidebar-ctas">
+									<a class="button pink icon_phone" href="buttons.php" onclick="">Emergence Info</a>
+									<a class="button green icon_books" href="buttons.php" onclick="">Campus Map</a>
+								</div>
+							</section>
+						</div>
+					</section>
+
 
 
       <!-- Footers -->
@@ -4237,10 +4257,6 @@
 
         </div> <!-- /.off-canvas-content -->
       </div> <!-- /.off-canvas-wrapper -->
-
-
-
-
 
     <script src="https://shared.uoit.ca/global-2.1/dist/js/global.js"></script>
     <script src="https://shared.uoit.ca/global-2.1/dist/js/jquery.min.js"></script>

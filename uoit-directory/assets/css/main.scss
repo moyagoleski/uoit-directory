@@ -7,11 +7,33 @@ $text-color-white: #fff;
 .tabs {
 	border-color: $dark-blue;
 	color: $text-color-white;
-}
+	width: 100%;
 
-.tabs .tabs-title {
-	background-color: $light-blue;
-	color: $text-color-white;
+	.tabs-title {
+		background-color: $light-blue;
+		color: $text-color-white;
+		box-sizing: border-box;
+		text-align: center;
+
+		a {
+			color: $text-color-white;
+
+			&:hover {
+				background-color: $dark-blue;
+				color: $text-color-white;
+			}
+		}
+	}
+}
+@media screen and (min-width:75em) {
+	.tabs .tabs-title {
+		width: 299px;
+		margin-right: 1rem;
+	}
+
+	.tabs-title:last-child {
+		margin-right: 0;
+	}
 }
 
 .tabs .tabs-title .is-active {
@@ -19,17 +41,8 @@ $text-color-white: #fff;
 	color: $text-color-white;
 }
 
-.tabs-title > a:hover {
-	background-color: $dark-blue;
-	color: $text-color-white;
-}
-
 .tabs .tabs-title.is-active * {
 	background-color: $dark-blue;
-	color: $text-color-white;
-}
-
-.tabs .tabs-title > a {
 	color: $text-color-white;
 }
 

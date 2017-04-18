@@ -7,19 +7,33 @@ $text-color-white: #fff;
 .tabs {
 	border-color: $dark-blue;
 	color: $text-color-white;
-}
 
-.tabs .tabs-title {
-	background-color: $light-blue;
-	color: $text-color-white;
+	.tabs-title {
+		background-color: $light-blue;
+		text-align: center;
+
+		a {
+			color: $text-color-white;
+
+			&:hover {
+				background-color: $dark-blue;
+				color: $text-color-white;
+			}
+		}
+	}
+}
+@media screen and (min-width:75em) {
+	.tabs .tabs-title {
+		width: 33%;
+		margin-right: 0.5%;
+	}
+
+	.tabs-title:last-child {
+		margin-right: 0;
+	}
 }
 
 .tabs .tabs-title .is-active {
-	background-color: $dark-blue;
-	color: $text-color-white;
-}
-
-.tabs-title > a:hover {
 	background-color: $dark-blue;
 	color: $text-color-white;
 }
@@ -29,10 +43,16 @@ $text-color-white: #fff;
 	color: $text-color-white;
 }
 
-.tabs .tabs-title > a {
-	color: $text-color-white;
-}
-
 .tabs-content {
 	border-color: $dark-blue;
+}
+
+.tabs-list {
+	padding: 1rem;
+}
+
+.accordion .accordion-title {
+	box-shadow: 0;
+	border-left: 0;
+	border-right: 0;
 }

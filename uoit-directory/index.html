@@ -4266,77 +4266,139 @@
 								</ul>
 								<div class="tabs-content" data-tabs-content="tab1" id="tab1-content">
 									<div class="tabs-panel is-active" id="tab1-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab1-1-label">
-										<h1>Search</h1>
+										<div class="large-6 columns">
+
+											<p>Enter a first name, a last name or both to find a faculty or staff member and click the Search button. Partial names can also be used.</p>
+											<label>NAME:</label>
+											<div class="small-12 medium-6 columns">
+												<input type="text" name="Name" />
+											</div>
+										</div>
+										<div class="large-6 columns">
+											<p>Select a department name and click Search to list all of the members.
+											</p>
+											<label>DEPARTMENT: </label>
+											<div class="small-12 medium-6 columns">
+												<select class="select-department" name="department_name">
+													<option value="12002">Academic Affairs - UOIT
+													</option><option value="9725">Advancement Office and Alumni Relations - UOIT
+													</option><option value="13727">Aramark
+													</option><option value="11360">Automotive Centre of Excellence
+													</option><option value="3268">Campus Athletic Centre
+													</option><option value="30">Campus Bookstore
+													</option><option value="12564">Campus Childcare Centre
+													</option><option value="6991">Campus Fieldhouse
+													</option><option value="7592">Campus Health Centre
+													</option><option value="6993">Campus Ice Centre
+													</option><option value="04">Campus Library
+													</option><option value="12001">Centre for Institutional Quality Enhancement
+													</option><option value="11306">Communications and Marketing - UOIT
+													</option><option value="10857">Education Library
+													</option><option value="9963">English Language Centre
+													</option><option value="11304">External Relations - UOIT
+													</option><option value="40">Facilities &amp; Ancillary
+													</option><option value="11780">Faculty Association - UOIT
+													</option><option value="U1">Faculty of Business and Information Technology
+													</option><option value="U2">Faculty of Education
+													</option><option value="7519">Faculty of Energy Systems and Nuclear Science
+													</option><option value="U3">Faculty of Engineering and Applied Science
+													</option><option value="U4">Faculty of Health Sciences
+													</option><option value="U7">Faculty of Science
+													</option><option value="14111">Faculty of Social Science and Humanities
+													</option><option value="9847">Finance - UOIT
+													</option><option value="11300">GDI OMNI
+													</option><option value="9526">Human Resources-UOIT
+													</option><option value="12190">IT Services - Enterprise Systems
+													</option><option value="9604">IT Services - ICT Infrastructure
+													</option><option value="3069">IT Services - IT User Support Services
+													</option><option value="12189">IT Services - Office of the CIO
+													</option><option value="11280">IT Services - UOIT
+													</option><option value="270">Mailroom
+													</option><option value="9743">Management Development Centre
+													</option><option value="11020">Office of Campus Infrastructure and Sustainability
+													</option><option value="7459">Office of Campus Safety
+													</option><option value="2612">Office of Graduate Studies
+													</option><option value="9164">Office of Institutional Research and Analysis
+													</option><option value="11580">Office of Student Life
+													</option><option value="11800">Office of Student Life - Career Centre
+													</option><option value="11340">Office of Student Life - Indigenous Student Services
+													</option><option value="11960">Office of Student Life - Planning and Communications
+													</option><option value="11840">Office of Student Life - Student Accessibility Services
+													</option><option value="11820">Office of Student Life - Student Experience Centre
+													</option><option value="11640">Office of Student Life - Student Learning Centre
+													</option><option value="11920">Office of Student Life - Student Mental Health Services
+													</option><option value="11961">Office of Student Life - Varsity
+													</option><option value="11105">Office of the Board of Governors - UOIT
+													</option><option value="2993">Office of the President - UOIT
+													</option><option value="UOP">Office of the Provost
+													</option><option value="11520">Office of the V.P. Research, Innovation and International
+													</option><option value="2657">Parking Services
+													</option><option value="5910">Print Shop
+													</option><option value="11040">Regent Theatre
+													</option><option value="13667">Registrar's Office - UOIT
+													</option><option value="11101">Scheduling Office - UOIT
+													</option><option value="5066">Shipping and Receiving - Oshawa Campus
+													</option><option value="11120">Social Science Library
+													</option><option value="230">Student Association
+													</option><option value="11140">Student Awards &amp; Financial Aid
+													</option><option value="11442">Teaching and Learning Centre
+													</option><option value="11600">University Secretariat
+													</option><option value="8302">Varsity Athletic Therapy
+												</select>
+											</div>
+											<a class="button" href="#">SEARCH</a>
+										</div>
 									</div>
 									<div class="tabs-panel " id="tab1-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-2-label">
 										<h1>Contacts</h1>
 									</div>
 									<div class="tabs-panel " id="tab1-3" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-3-label">
-<h2>Update</h2>
+										<h2>Update</h2>
 
-<!-- FORM INPUT FIELDS -->
-<form>
+										<!-- FORM INPUT FIELDS -->
+										<form>
+											<div class="row">
+												<div class="small-12 medium-6 columns">
+													<label>FIRST NAME:<input type="text" name="First Name" /></label>
+												</div>
+												<div class="small-12 medium-6 columns">
+													<label>LAST NAME:<input type="text" name="Last Name" /></label>
+												</div>
+											</div>
 
-	<div class="row">
-		<div class="small-12 medium-6 columns">
-			<label>FIRST NAME:
-			<input type="text" name="First Name" />
-		</label>
-		</div>
+											<div class="row">
+												<div class="small-12 medium-6 columns">
+													<label>POSITION:<input type="text" name="Position" /></label>
+												</div>
+												<div class="small-12 medium-6 columns">
+													<label>DEPARTMENT:<input type="text" name="Department" /></label>
+												</div>
+											</div>
+											<div class="row">
+												<div class="small-12 medium-6 columns">
+													<label>EXTENSION:<input type="text" name="Extension" /></label>
+												</div>
 
-		<div class="small-12 medium-6 columns">
-			<label>LAST NAME:
-			<input type="text" name="Last Name" />
-		</label>
-		</div>
-	</div>
+												<div class="small-12 medium-6 columns">
+													<label>LOCATION:<input type="text" name="Location" /></label>
+												</div>
+											</div>
 
-	<div class="row">
-		<div class="small-12 medium-6 columns">
-			<label>POSITION:
-			<input type="text" name="Position" />
-		</label>
-		</div>
+											<div class="row">
+												<div class="small-12 medium-6 columns">
+													<label>BUILDING:<input type="text" name="Building" /></label>
+												</div>
 
-		<div class="small-12 medium-6 columns">
-			<label>DEPARTMENT:
-			<input type="text" name="Department" />
-		</label>
-		</div>
-	</div>
+												<div class="small-12 medium-6 columns">
+													<label>E-MAIL:<input type="text" name="E-mail" /></label>
+												</div>
+											</div>
 
-	<div class="row">
-		<div class="small-12 medium-6 columns">
-			<label>EXTENSION:
-			<input type="text" name="Extension" />
-		</label>
-		</div>
+											<!-- BUTTON -->
+											<a role="button" aria-label="submit form" class="button">SUBMIT</a>
 
-		<div class="small-12 medium-6 columns">
-			<label>LOCATION:
-			<input type="text" name="Location" />
-		</label>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="small-12 medium-6 columns">
-			<label>BUILDING:
-			<input type="text" name="Building" />
-		</label>
-		</div>
-
-		<div class="small-12 medium-6 columns">
-			<label>E-MAIL:
-			<input type="text" name="E-mail" />
-		</label>
-		</div>
-	</div>
-
-	<!-- BUTTON -->
-	<a role="button" aria-label="submit form" class="button">SUBMIT</a>
-
-</form>									</div>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>

@@ -7,7 +7,6 @@ $text-color-white: #fff;
 .tabs {
 	border-color: $dark-blue;
 	color: $text-color-white;
-	width: 100%;
 
 	.tabs-title {
 		background-color: $light-blue;
@@ -27,8 +26,8 @@ $text-color-white: #fff;
 }
 @media screen and (min-width:75em) {
 	.tabs .tabs-title {
-		width: 299px;
-		margin-right: 1rem;
+		width: 33%;
+		margin-right: 0.5%;
 	}
 
 	.tabs-title:last-child {

@@ -1,1 +1,15 @@
 .tabs{border-color:#003C71;color:#fff}.tabs .tabs-title{background-color:#0077CA;text-align:center}.tabs .tabs-title a{color:#fff}.tabs .tabs-title a:hover{background-color:#003C71;color:#fff}@media screen and (min-width: 75em){.tabs .tabs-title{width:33%;margin-right:0.5%}.tabs-title:last-child{margin-right:0}}.tabs .tabs-title .is-active{background-color:#003C71;color:#fff}.tabs .tabs-title.is-active *{background-color:#003C71;color:#fff}.tabs-content{border-color:#003C71}.tabs-list{padding:1rem}.accordion .accordion-content{border-left-color:transparent}.accordion .accordion-title{box-shadow:0;border-left:0;border-right:0}
+
+.contactContainer {
+  border: solid 2px #0077CA;
+  color: #0077CA;
+  margin: 10px;
+}
+
+.contactTitle {
+	padding: 20px 0 0 20px;
+}
+
+.contactNumber {
+	padding: 0 20px 0 20px;
+}

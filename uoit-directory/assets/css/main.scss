@@ -62,3 +62,17 @@ $text-color-white: #fff;
 		border-right: 0;
 	}
 }
+
+.contactContainer {
+  border:solid 2px $light-blue;
+  color:$light-blue;
+  margin: 10px;
+}
+
+.contactTitle {
+	padding: 20px 0 0 20px;
+}
+
+.contactNumber {
+	padding: 0 20px 0 20px;
+}

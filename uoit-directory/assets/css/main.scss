@@ -53,12 +53,43 @@ $text-color-white: #fff;
 
 .accordion {
 	.accordion-content {
-		border-left-color: transparent;
+		border: 0;
+		padding: 0 1rem;
 	}
 
 	.accordion-title {
-		box-shadow: 0;
-		border-left: 0;
-		border-right: 0;
+		box-shadow: none;
+		max-height: 3rem;
+	}
+}
+
+.accordion-desc {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+
+	li {
+		list-style: none;
+		width: 49%;
+		display: inline-block;
+		font-weight: normal;
+	}
+
+	span {
+		font-weight: bold;
+	}
+}
+
+.search-list-info {
+	@extend .accordion-desc;
+
+	li {
+		display: inline-block;
+		box-sizing: border-box;
+		width: 49%;
+
+		span {
+			font-weight: bold;
+		}
 	}
 }

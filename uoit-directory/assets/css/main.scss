@@ -1,8 +1,9 @@
 $font: 'Franklin Gothic';
 $light-blue: #0077CA;
 $dark-blue: #003C71;
-$grey: #53565A;
 $text-color-white: #fff;
+$text-color-black: #151515;
+$accordion-item-background-hover: #0077CA;
 
 .tabs {
 	border-color: $dark-blue;
@@ -20,6 +21,11 @@ $text-color-white: #fff;
 				color: $text-color-white;
 			}
 		}
+
+		.is-active {
+			background-color: $dark-blue;
+			color: $text-color-white;
+		}
 	}
 }
 @media screen and (min-width:75em) {
@@ -31,11 +37,6 @@ $text-color-white: #fff;
 	.tabs-title:last-child {
 		margin-right: 0;
 	}
-}
-
-.tabs .tabs-title .is-active {
-	background-color: $dark-blue;
-	color: $text-color-white;
 }
 
 .tabs .tabs-title.is-active * {
@@ -52,19 +53,53 @@ $text-color-white: #fff;
 }
 
 .accordion {
-	.accordion-content {
-		border: 0;
-		padding: 0 1rem;
-	}
+	.accordion-item {
+		border-top: 1px lightgrey solid;
+		margin: 1rem 0;
 
-	.accordion-title {
-		box-shadow: none;
-		max-height: 3rem;
+		&:last-child {}
+
+		.accordion-title {
+			color: $text-color-black;
+			box-shadow: none;
+			border: 0;
+			height: 3rem;
+			font-size: 1.2rem;
+			/* max-height: 2.5rem;*/
+			&:hover {
+				background-color: $accordion-item-background-hover;
+				color: $text-color-white;
+			}
+		}
+		/* clear default border*/
+		:last-child:not(.is-active) > .accordion-title {
+			border: 0;
+		}
+
+		.accordion-content {
+			border: 0;
+			padding: 0 1rem;
+
+			.search-list-info {
+				@extend .accordion-title-desc;
+
+				li {
+					display: inline-block;
+					box-sizing: border-box;
+					width: 49%;
+
+					span {
+						font-weight: bold;
+					}
+				}
+			}
+		}
 	}
 }
 
-.accordion-desc {
+.accordion-title-desc {
 	width: 100%;
+	font-size: 0.88rem;
 	margin: 0;
 	padding: 0;
 
@@ -73,23 +108,38 @@ $text-color-white: #fff;
 		width: 49%;
 		display: inline-block;
 		font-weight: normal;
+		margin: 0;
 	}
 
 	span {
 		font-weight: bold;
 	}
 }
-
-.search-list-info {
-	@extend .accordion-desc;
-
-	li {
-		display: inline-block;
-		box-sizing: border-box;
-		width: 49%;
-
-		span {
-			font-weight: bold;
+@media screen and (max-width: 700px) {
+	.accordion {
+		.accordion-title {
+			height: auto;
 		}
+	}
+
+	.accordion-title-desc {
+		li {
+			list-style: none;
+			width: 100%;
+			display: block;
+			font-weight: normal;
+		}
+	}
+}
+
+.filter-radio {
+	margin-bottom: 1.25rem;
+
+	label {
+		margin-right: 1rem;
+	}
+
+	input[type='radio'] {
+		margin: 0 0.2rem;
 	}
 }

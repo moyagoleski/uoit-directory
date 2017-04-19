@@ -1,1 +1,16 @@
+
 .tabs{border-color:#003C71;color:#fff}.tabs .tabs-title{background-color:#0077CA;text-align:center}.tabs .tabs-title a{color:#fff}.tabs .tabs-title a:hover{background-color:#003C71;color:#fff}.tabs .tabs-title .is-active{background-color:#003C71;color:#fff}@media screen and (min-width: 75em){.tabs .tabs-title{width:33%;margin-right:0.5%}.tabs-title:last-child{margin-right:0}}.tabs .tabs-title.is-active *{background-color:#003C71;color:#fff}.tabs-content{border-color:#003C71}.tabs-list{padding:1rem}.accordion .accordion-item{border-top:1px lightgrey solid;margin:1rem 0}.accordion .accordion-item .accordion-title{color:#151515;box-shadow:none;border:0;height:3rem;font-size:1.2rem}.accordion .accordion-item .accordion-title:hover{background-color:#0077CA;color:#fff}.accordion .accordion-item :last-child:not(.is-active)>.accordion-title{border:0}.accordion .accordion-item .accordion-content{border:0;padding:0 1rem}.accordion .accordion-item .accordion-content .search-list-info li{display:inline-block;box-sizing:border-box;width:49%}.accordion .accordion-item .accordion-content .search-list-info li span{font-weight:bold}.accordion-title-desc,.accordion .accordion-item .accordion-content .search-list-info{width:100%;font-size:0.88rem;margin:0;padding:0}.accordion-title-desc li,.accordion .accordion-item .accordion-content .search-list-info li{list-style:none;width:49%;display:inline-block;font-weight:normal;margin:0}.accordion-title-desc span,.accordion .accordion-item .accordion-content .search-list-info span{font-weight:bold}@media screen and (max-width: 700px){.accordion .accordion-title{height:auto}.accordion-title-desc li,.accordion .accordion-item .accordion-content .search-list-info li{list-style:none;width:100%;display:block;font-weight:normal}}.filter-radio{margin-bottom:1.25rem}.filter-radio label{margin-right:1rem}.filter-radio input[type='radio']{margin:0 0.2rem}
+
+.contactContainer {
+  border: solid 2px #0077CA;
+  color: #0077CA;
+  margin: 10px;
+}
+
+.contactTitle {
+	padding: 20px 0 0 20px;
+}
+
+.contactNumber {
+	padding: 0 20px 0 20px;
+}

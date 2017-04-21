@@ -28,16 +28,6 @@ $accordion-item-background-hover: #0077CA;
 		}
 	}
 }
-@media screen and (min-width:75em) {
-	.tabs .tabs-title {
-		width: 33%;
-		margin-right: 0.5%;
-	}
-
-	.tabs-title:last-child {
-		margin-right: 0;
-	}
-}
 
 .tabs .tabs-title.is-active * {
 	background-color: $dark-blue;
@@ -115,7 +105,20 @@ $accordion-item-background-hover: #0077CA;
 		font-weight: bold;
 	}
 }
-@media screen and (max-width: 700px) {
+
+.filter-radio {
+	margin-bottom: 1.25rem;
+
+	label {
+		margin-right: 1rem;
+	}
+
+	input[type='radio'] {
+		margin: 0 0.2rem;
+	}
+}
+@media screen and (max-width: 43.75em) {
+	/* prevent a tag title overflow when info list display vertically */
 	.accordion {
 		.accordion-title {
 			height: auto;
@@ -131,52 +134,15 @@ $accordion-item-background-hover: #0077CA;
 		}
 	}
 }
-
-.filter-radio {
-	margin-bottom: 1.25rem;
-
-	label {
-		margin-right: 1rem;
+@media screen and (min-width:75em) {
+	.tabs {
+		.tabs-title {
+			width: 33%;
+			margin-right: 0.5%;
+		}
 	}
 
-	input[type='radio'] {
-		margin: 0 0.2rem;
+	.tabs-title:last-child {
+		margin-right: 0;
 	}
 }
-
-.contactContainer {
-  border:solid 2px $light-blue;
-  color:$light-blue;
-  margin: 10px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-}
-
-.contactTitle {
-	padding: 20px 0 0 20px;
-}
-
-.contactNumber {
-	padding: 0 20px 0 20px;
-}
-<<<<<<< HEAD
-
-.contactContainer {
-  border:solid 2px $light-blue;
-  color:$light-blue;
-  margin: 10px;
-=======
->>>>>>> parent of cfda4d9... changed contact cards
-=======
->>>>>>> parent of cfda4d9... changed contact cards
-}
-
-.contactTitle {
-	padding: 20px 0 0 20px;
-}
-
-.contactNumber {
-	padding: 0 20px 0 20px;
-}
-=======
->>>>>>> parent of 63d205b... Merge branch 'moyagoleski/Moya-Work' into develop

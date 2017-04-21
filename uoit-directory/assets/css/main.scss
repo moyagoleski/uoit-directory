@@ -4,39 +4,19 @@ $dark-blue: #003C71;
 $text-color-white: #fff;
 $text-color-black: #151515;
 $accordion-item-background-hover: #0077CA;
-/* tabs title nav color*/
-/* .tabs {*/
-/* 	border-color: $dark-blue;*/
-/* 	color: $text-color-white;*/
-/**/
-/* 	.tabs-title {*/
-/* 		background-color: $light-blue;*/
-/* 		text-align: center;*/
-/**/
-/* 		a {*/
-/* 			color: $text-color-white;*/
-/**/
-/* 			&:hover {*/
-/* 				background-color: $dark-blue;*/
-/* 				color: $text-color-white;*/
-/* 			}*/
-/* 		}*/
-/* 	}*/
-/* }*/
-/* .tabs .tabs-title.is-active * {*/
-/* 	background-color: $dark-blue;*/
-/* 	color: $text-color-white;*/
-/* }*/
-/* */
-/*  tabs border color*/
-/**/
-/* .tabs-content {*/
-/* 	border-color: $dark-blue;*/
-/* 	padding: 1.5rem;*/
-/* }*/
+
+.tabs {
+	.tabs-title {
+		text-align: center;
+	}
+}
+
+.tabs-content {
+	padding: 2rem;
+}
 /* search list*/
 .search-list {
-	padding: 1em;
+	padding: 4rem;
 }
 
 .accordion {
@@ -102,18 +82,6 @@ $accordion-item-background-hover: #0077CA;
 		font-weight: bold;
 	}
 }
-
-.filter-radio {
-	margin-bottom: 1.25rem;
-
-	label {
-		margin-right: 1rem;
-	}
-
-	input[type='radio'] {
-		margin: 0 0.2rem;
-	}
-}
 /* .tabs-panel .row {*/
 .contact-card {
 	border: solid 2px $light-blue;
@@ -126,7 +94,7 @@ $accordion-item-background-hover: #0077CA;
 	display: inline-block;
 	box-sizing: border-box;
 }
-/* }*/
+
 .pagination {
 	margin-top: 3rem;
 }
@@ -171,3 +139,33 @@ $accordion-item-background-hover: #0077CA;
 		}
 	}
 }
+/* tabs title nav color*/
+/* .tabs {*/
+/* 	border-color: $dark-blue;*/
+/* 	color: $text-color-white;*/
+/**/
+/* 	.tabs-title {*/
+/* 		background-color: $light-blue;*/
+/* 		text-align: center;*/
+/**/
+/* 		a {*/
+/* 			color: $text-color-white;*/
+/**/
+/* 			&:hover {*/
+/* 				background-color: $dark-blue;*/
+/* 				color: $text-color-white;*/
+/* 			}*/
+/* 		}*/
+/* 	}*/
+/* }*/
+/* .tabs .tabs-title.is-active * {*/
+/* 	background-color: $dark-blue;*/
+/* 	color: $text-color-white;*/
+/* }*/
+/* */
+/*  tabs border color*/
+/**/
+/* .tabs-content {*/
+/* 	border-color: $dark-blue;*/
+/* 	padding: 1.5rem;*/
+/* }*/

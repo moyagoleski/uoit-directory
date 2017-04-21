@@ -3514,7 +3514,7 @@
 											<option>ducation Library</option>
 											<option>English Language Centre</option>
 											<option>External Relations - UOIT</option>
-											<option>Facilities &amp; Ancillary</option>
+											<option>Facilities and Ancillary</option>
 											<option>Faculty Association - UOIT</option>
 											<option>Faculty of Business and Information Technology</option>
 											<option>Faculty of Education</option>
@@ -3558,7 +3558,7 @@
 											<option>Shipping and Receiving - Oshawa Campus</option>
 											<option>Social Science Library</option>
 											<option>Student Association</option>
-											<option>Student Awards &amp; Financial Aid</option>
+											<option>Student Awards and Financial Aid</option>
 											<option>Teaching and Learning Centre</option>
 											<option>University Secretariat</option>
 											<option>Varsity Athletic Therapy
@@ -3566,7 +3566,7 @@
 									</div>
 								</div>
 								<!-- SEARCH BUTTON -->
-								<a role="button" aria-label="search" class="button" href="#">SEARCH</a>
+								<a role="button" aria-label="search" class="button" id="searchButton">SEARCH</a>
 							</div>
 							<div class="tabs-panel" id="tab1-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-2-label">
 								<!-- TAB TITLE  -->
@@ -3625,6 +3625,12 @@
 								<h2>Update Information</h2>
 								<!-- FORM INPUT FIELDS -->
 								<form>
+
+									<div class="row">
+										<div class="small-12 medium-6 columns">
+											<label>ID:<input type="text" name="ID"/></label>
+										</div>
+									</div>
 									<div class="row">
 										<div class="small-12 medium-6 columns">
 											<label>FIRST NAME:<input type="text" name="First Name"/></label>
@@ -3658,114 +3664,122 @@
 										</div>
 									</div>
 									<!-- SUBMIT BUTTON -->
-									<a role="button" aria-label="submit form" class="button">SUBMIT</a>
+									<a data-open="exampleModal1" role="button" aria-label="submit form" class="button">SUBMIT</a>
 								</form>
 							</div>
 						</div>
 						<!-- tabs content end -->
 						<!-- search list start -->
-						<div class="tabs-content">
-							<div class="search-">
-								<!-- search list title -->
-								<h2>Directory Search Results</h2>
-								<p>To reach a Faculty or Staff member dial the main switchboard at (905)721-8668 and ask for the extension below</p>
-								<div class="filter-radio">
-									<!-- filter button -->
-									<span>Sort by:</span>
-									<input type="radio" name="filter" value="name">
-									<labael for="filterName">Name</labael>
-									<input type="radio" name="filter" value="department" checked>
-									<labael for="filterDepartment">Department</labael>
-								</div>
-								<ul class="accordion" data-allow-all-closed="true" data-accordion>
-									<li class="accordion-item" data-accordion-item>
-										<!-- accordion tab title -->
-										<a href="" class="accordion-title">
-															name:
-															<ul class="accordion-title-desc">
+
+						<div class="callout" id="searchResult">
+							<!-- search list title -->
+							<h2>Directory Search Results</h2>
+							<p>To reach a Faculty or Staff member dial the main switchboard at (905)721-8668 and ask for the extension below</p>
+							<div class="filter-radio">
+								<!-- filter button --><div class="small button-group">
+  <a class="button">First Name</a>
+  <a class="button">Last Name</a>
+  <a class="button">Department</a>
+</div>
+							</div>
+							<ul class="accordion" data-allow-all-closed="true" data-accordion>
+								<li class="accordion-item" data-accordion-item>
+									<!-- accordion tab title -->
+									<a href="" class="accordion-title">
+John															<ul class="accordion-title-desc">
 																<li>
-																	<span>position:</span>
+																	<span>Title:</span>
 																	academic affairs specialist</li>
 																<li>
 																	<span>department:</span>
 																</li>
 															</ul>
 														</a>
-										<div class="accordion-content" data-tab-content>
-											<ul class="search-list-info">
-												<li>
-													<span>Location:</span> CC2309
-												</li>
-												<li>
-													<span>Building:</span> Campus Corners</li>
-												<li>
-													<span>Extension:</span> 6136
-												</li>
-												<li>
-													<span>E-mail:</span> caitlin.crompton@uoit.ca
-												</li>
-											</ul>
-										</div>
-									</li>
-									<li class="accordion-item" data-accordion-item>
-										<a href="" class="accordion-title">Name:
+									<div class="accordion-content" data-tab-content>
+										<ul class="search-list-info">
+											<li>
+												<span>Location:</span> CC2309
+											</li>
+											<li>
+												<span>Building:</span> Campus Corners</li>
+											<li>
+												<span>Extension:</span> 6136
+											</li>
+											<li>
+												<span>E-mail:</span> caitlin.crompton@uoit.ca
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li class="accordion-item" data-accordion-item>
+									<a href="" class="accordion-title">John
 															<ul class="accordion-title-desc">
 																<li>
-																	<span>Position:</span>
+																	<span>Title:</span>
 																	Academic Affairs Specialist</li>
 																<li>
 																	<span>Department:</span>
 																</li>
 															</ul>
 														</a>
-										<div class="accordion-content" data-tab-content>
-											<ul class="search-list-info">
-												<li>
-													<span>Location:</span> CC2309
-												</li>
-												<li>
-													<span>Building:</span> Campus Corners</li>
-												<li>
-													<span>Extension:</span> 6136
-												</li>
-												<li>
-													<span>E-mail:</span> caitlin.crompton@uoit.ca
-												</li>
-											</ul>
-										</div>
-									</li>
-									<li class="accordion-item" data-accordion-item>
-										<!-- Accordion tab title -->
-										<a href="" class="accordion-title">
-															Name:
+									<div class="accordion-content" data-tab-content>
+										<ul class="search-list-info">
+											<li>
+												<span>Location:</span> CC2309
+											</li>
+											<li>
+												<span>Building:</span> Campus Corners</li>
+											<li>
+												<span>Extension:</span> 6136
+											</li>
+											<li>
+												<span>E-mail:</span> caitlin.crompton@uoit.ca
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li class="accordion-item" data-accordion-item>
+									<!-- Accordion tab title -->
+									<a href="" class="accordion-title">
+															John
 															<ul class="accordion-title-desc">
 																<li>
-																	<span>Position:</span>
+																	<span>Title:</span>
 																	Academic Affairs Specialist</li>
 																<li>
 																	<span>Department:</span>
 																</li>
 															</ul>
 							</a>
-										<div class="accordion-content" data-tab-content>
-											<ul class="search-list-info">
-												<li>
-													<span>Location:</span> CC2309
-												</li>
-												<li>
-													<span>Building:</span> Campus Corners</li>
-												<li>
-													<span>Extension:</span> 6136
-												</li>
-												<li>
-													<span>E-mail:</span> caitlin.crompton@uoit.ca
-												</li>
-											</ul>
-										</div>
-									</li>
-								</ul>
-							</div>
+									<div class="accordion-content" data-tab-content>
+										<ul class="search-list-info">
+											<li>
+												<span>Location:</span> CC2309
+											</li>
+											<li>
+												<span>Building:</span> Campus Corners</li>
+											<li>
+												<span>Extension:</span> 6136
+											</li>
+											<li>
+												<span>E-mail:</span> caitlin.crompton@uoit.ca
+											</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
 
+							<ul class="pagination text-center" role="navigation" aria-label="Pagination">
+								<li class="pagination-previous disabled">Previous</li>
+								<li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+								<li><a href="#" aria-label="Page 2">2</a></li>
+								<li><a href="#" aria-label="Page 3">3</a></li>
+								<li><a href="#" aria-label="Page 4">4</a></li>
+								<li class="ellipsis"></li>
+								<li><a href="#" aria-label="Page 12">12</a></li>
+								<li><a href="#" aria-label="Page 13">13</a></li>
+								<li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
+							</ul>
 						</div>
 						<!-- search list end -->
 						<!-- tabs title end -->
@@ -3776,9 +3790,18 @@
 							<a class="button green icon_map" href="buttons.php" onclick="">Campus Map</a>
 						</div>
 					</section>
+					<div class="reveal" id="exampleModal1" data-reveal>
+						<h1>Thank you!</h1>
+						<p class="lead">Your update request has been sent!</p>
+						<p>Note: Your requests won't be changed right away.</p>
+						<button class="close-button" data-close aria-label="Close modal" type="button">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
 				</div>
 				<!-- /.page-row -->
 			</section>
+
 
 			<!-- Footers -->
 			<footer class="footer">

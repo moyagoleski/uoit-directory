@@ -1,0 +1,31 @@
+.tabs {
+  border-color: #003C71;
+  color: #fff; }
+  .tabs .tabs-title {
+    background-color: #0077CA;
+    text-align: center; }
+    .tabs .tabs-title a {
+      color: #fff;
+      padding: 15px; }
+      .tabs .tabs-title a:hover {
+        background-color: #003C71;
+        color: #fff; }
+
+.contactContainer {
+  border: solid 2px #0077CA;
+  color: #0077CA;
+  margin: 10px; }
+
+.contactTitle {
+  padding: 20px 0 0 20px; }
+
+.contactNumber {
+  padding: 0 20px 0 20px; }
+
+<<<<<<< HEAD
+=======
+.tabs-content {
+  padding: 30px; }
+
+>>>>>>> moyagoleski/master
+/*# sourceMappingURL=main.css.map */

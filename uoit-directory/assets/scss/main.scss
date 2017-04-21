@@ -16,7 +16,7 @@ $accordion-item-background-hover: #0077CA;
 }
 /* search list*/
 .search-list {
-	padding: 4rem;
+	padding: 2rem;
 }
 
 .accordion {
@@ -82,6 +82,18 @@ $accordion-item-background-hover: #0077CA;
 		font-weight: bold;
 	}
 }
+
+.filter-radio {
+	margin-bottom: 1.25rem;
+
+	label {
+		margin-right: 1rem;
+	}
+
+	input[type='radio'] {
+		margin: 0 0.2rem;
+	}
+}
 /* .tabs-panel .row {*/
 .contact-card {
 	border: solid 2px $light-blue;
@@ -94,7 +106,7 @@ $accordion-item-background-hover: #0077CA;
 	display: inline-block;
 	box-sizing: border-box;
 }
-
+/* }*/
 .pagination {
 	margin-top: 3rem;
 }

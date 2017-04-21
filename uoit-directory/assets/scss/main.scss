@@ -1,0 +1,39 @@
+$font: 'Franklin Gothic';
+$light-blue: #0077CA;
+$dark-blue: #003C71;
+$grey: #53565A;
+$text-color-white: #fff;
+
+.tabs {
+	border-color: $dark-blue;
+	color: $text-color-white;
+
+	.tabs-title {
+		background-color: $light-blue;
+		text-align: center;
+
+		a {
+			color: $text-color-white;
+      padding: 15px;
+
+			&:hover {
+				background-color: $dark-blue;
+				color: $text-color-white;
+			}
+		}
+	}
+}
+
+.contactContainer {
+  border:solid 2px $light-blue;
+  color:$light-blue;
+  margin: 10px;
+}
+
+.contactTitle {
+	padding: 20px 0 0 20px;
+}
+
+.contactNumber {
+	padding: 0 20px 0 20px;
+}

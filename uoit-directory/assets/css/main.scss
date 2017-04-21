@@ -5,34 +5,35 @@ $text-color-white: #fff;
 $text-color-black: #151515;
 $accordion-item-background-hover: #0077CA;
 /* tabs title nav color*/
-.tabs {
-	border-color: $dark-blue;
-	color: $text-color-white;
-
-	.tabs-title {
-		background-color: $light-blue;
-		text-align: center;
-
-		a {
-			color: $text-color-white;
-
-			&:hover {
-				background-color: $dark-blue;
-				color: $text-color-white;
-			}
-		}
-	}
-}
-/* tabs title hover effct*/
-.tabs .tabs-title.is-active * {
-	background-color: $dark-blue;
-	color: $text-color-white;
-}
+/* .tabs {*/
+/* 	border-color: $dark-blue;*/
+/* 	color: $text-color-white;*/
+/**/
+/* 	.tabs-title {*/
+/* 		background-color: $light-blue;*/
+/* 		text-align: center;*/
+/**/
+/* 		a {*/
+/* 			color: $text-color-white;*/
+/**/
+/* 			&:hover {*/
+/* 				background-color: $dark-blue;*/
+/* 				color: $text-color-white;*/
+/* 			}*/
+/* 		}*/
+/* 	}*/
+/* }*/
+/* .tabs .tabs-title.is-active * {*/
+/* 	background-color: $dark-blue;*/
+/* 	color: $text-color-white;*/
+/* }*/
+/* */
 /*  tabs border color*/
-.tabs-content {
-	border-color: $dark-blue;
-	padding: 1.5rem;
-}
+/**/
+/* .tabs-content {*/
+/* 	border-color: $dark-blue;*/
+/* 	padding: 1.5rem;*/
+/* }*/
 /* search list*/
 .search-list {
 	padding: 1em;
@@ -113,25 +114,21 @@ $accordion-item-background-hover: #0077CA;
 		margin: 0 0.2rem;
 	}
 }
-
-.tabs-panel .row {
-	margin: 0;
-
-	.contact-card {
-		border: solid 2px $light-blue;
-		color: $light-blue;
-		max-width: 48%;
-		/* display two columns in a row*/
-		margin: 1%;
-		/* display two columns in a row*/
-		padding: 1rem;
-		display: inline-block;
-		box-sizing: border-box;
-
-		.contact-title {}
-
-		.contact-number {}
-	}
+/* .tabs-panel .row {*/
+.contact-card {
+	border: solid 2px $light-blue;
+	color: $light-blue;
+	max-width: 48%;
+	/* display two columns in a row*/
+	margin: 1%;
+	/* display two columns in a row*/
+	padding: 1rem;
+	display: inline-block;
+	box-sizing: border-box;
+}
+/* }*/
+.pagination {
+	margin-top: 3rem;
 }
 @media screen and (min-width:75em) {
 	/* responsive tabs title width */
@@ -165,5 +162,12 @@ $accordion-item-background-hover: #0077CA;
 		display: block;
 		min-width: 100%;
 		margin: 0.5rem 0;
+	}
+
+	form .row {
+		.columns {
+			display: block;
+			min-width: 100%;
+		}
 	}
 }

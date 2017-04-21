@@ -1,7 +1,6 @@
 
 $(document).foundation();
 
-
 $("#searchResult").hide();
 
 $('#searchButton').click(function () {

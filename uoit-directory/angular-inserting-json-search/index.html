@@ -1,0 +1,86 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8" />
+  	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  	<title>UOIT - Directory - HTML base</title>
+  	<!-- <meta content="f932d6d9cdd3b53701a601b0fb398930" name="PageID" />
+  	<meta content="Directory" name="description" />
+  	<meta content="Directory, people search, find people" name="keywords" />
+  	<link href="https://uoit.ca/favicon.ico" rel="icon" type="image/x-icon" />
+  	<link href="https://shared.uoit.ca/global-2.1/dist/css/uoit.css" rel="stylesheet" />
+	  <script src="https://shared.uoit.ca/global-2.1/dist/js/jquery.min.js" type="text/javascript"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="js/myapp.js" type="text/javascript"></script>
+    <script src="js/mycontroller.js" type="text/javascript"></script>
+  </head>
+  <body>
+
+
+
+    <div ng-app="myApp" ng-controller="searchCtrls">
+
+       <h2>Directory Search</h2>
+
+       <!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
+       <label>First Name:</label><input type='text' ng-model='searchName.dirpepl_first_name' />
+
+       <label>Last Name:</label><input type='text' ng-model='searchName.dirpepl_last_name' />
+
+       <label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' />
+
+      <!-- SHOWS NOTHING IF THE INPUTS ARE EMPTY -->
+      <!-- PREVENTS JSON FROM SHOWING WHEN YOU TYPE SOMETHING IN INPUT AND USE THE BACKSPACE TO MAKE IT EMPTY AGAIN -->
+       <span ng-show="!searchName.dirpepl_first_name.length || !searchName.dirpepl_last_name.length || !searchName.dirschl_school_name.length"></span>
+
+       <!-- SEARCH FILTER JSON FILE  -->
+       <ul ng-show="searchName.dirpepl_first_name.length || searchName.dirpepl_last_name.length || searchName.dirschl_school_name.length">
+         <h3>Directory Search Results</h3>
+         <p>To reach a Faculty or Staff member dial the main switchboard at (905) 721-8668 and ask for the extension below</p>
+
+         <li ng-repeat="x in jsonData | filter: searchName | orderBy: 'dirpepl_first_name' | limitTo: 10">
+           <p>
+             <b>Name:</b>
+             {{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
+           </p>
+
+           <p>
+             <b>Department:</b>
+             {{ x.dirschl_school_name }}
+           </p>
+
+           <p>
+             <b>Position:</b>
+             {{ x.dirrank_rank_name }}
+           </p>
+
+           <p>
+             <b>Extension:</b>
+             {{ x.dirpepl_extension }}
+           </p>
+
+           <p>
+             <b>Office:</b>
+             {{ x.dirpepl_office }}
+           </p>
+
+           <p>
+             <b>Building:</b>
+             {{ x.dirbuilding_building_name }}
+           </p>
+
+           <p>
+             <b>E-mail:</b>
+             {{ x.email }}
+           </p>
+         </li>
+         
+       </ul>
+
+    </div>
+    <!-- <script src="https://shared.uoit.ca/global-2.1/dist/js/global.js"></script>
+		<script src="https://shared.uoit.ca/global-2.1/dist/js/jquery.min.js"></script>
+		<script src="https://shared.uoit.ca/global-2.1/dist/js/foundation.js"></script>
+		<script src="https://shared.uoit.ca/global-2.1/dist/js/app.js"></script> -->
+  </body>
+</html>

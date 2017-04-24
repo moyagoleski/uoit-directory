@@ -1,31 +1,131 @@
-.tabs {
-  border-color: #003C71;
-  color: #fff; }
-  .tabs .tabs-title {
-    background-color: #0077CA;
-    text-align: center; }
-    .tabs .tabs-title a {
-      color: #fff;
-      padding: 15px; }
-      .tabs .tabs-title a:hover {
-        background-color: #003C71;
-        color: #fff; }
+.tabs .tabs-title {
+  text-align: center; }
+  .tabs .tabs-title > a {
+    padding: 15px; }
 
-.contactContainer {
+.tabs-content {
+  padding: 2rem; }
+
+/* search list*/
+.search-list {
+  padding: 4rem; }
+
+.accordion .accordion-item {
+  border-top: 1px lightgrey solid;
+  margin: 1rem 0;
+  /* clear default border*/ }
+  .accordion .accordion-item .accordion-title {
+    color: #151515;
+    box-shadow: none;
+    border: 0;
+    height: 2.8rem;
+    font-size: 1.2rem; }
+    .accordion .accordion-item .accordion-title:hover {
+      background-color: #0077CA;
+      color: #fff; }
+  .accordion .accordion-item :last-child:not(.is-active) > .accordion-title {
+    border: 0; }
+  .accordion .accordion-item .accordion-content {
+    border: 0;
+    padding: 0 1rem; }
+    .accordion .accordion-item .accordion-content .search-list-info li {
+      display: inline-block;
+      box-sizing: border-box;
+      width: 49%; }
+      .accordion .accordion-item .accordion-content .search-list-info li span {
+        font-weight: bold; }
+
+/* search list title (name,position, department)*/
+.accordion-title-desc, .accordion .accordion-item .accordion-content .search-list-info {
+  width: 100%;
+  font-size: 0.88rem;
+  line-height: 0.88rem;
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize; }
+  .accordion-title-desc li, .accordion .accordion-item .accordion-content .search-list-info li {
+    list-style: none;
+    width: 49%;
+    display: inline-block;
+    font-weight: normal;
+    margin: 0; }
+  .accordion-title-desc span, .accordion .accordion-item .accordion-content .search-list-info span {
+    font-weight: bold; }
+
+/* .tabs-panel .row {*/
+.contact-card {
   border: solid 2px #0077CA;
   color: #0077CA;
-  margin: 10px; }
+  max-width: 48%;
+  /* display two columns in a row*/
+  margin: 1%;
+  /* display two columns in a row*/
+  padding: 1rem;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-bottom: 15px; }
 
-.contactTitle {
-  padding: 20px 0 0 20px; }
+.pagination {
+  margin-top: 3rem; }
 
-.contactNumber {
-  padding: 0 20px 0 20px; }
+@media screen and (min-width: 75em) {
+  /* responsive tabs title width */
+  .tabs .tabs-title {
+    width: 33%;
+    margin-right: 0.5%; }
 
-<<<<<<< HEAD
-=======
-.tabs-content {
-  padding: 30px; }
+  .tabs-title:last-child {
+    margin-right: 0; } }
+@media screen and (max-width: 43em) {
+  /* set min-height in case accordion title overflow*/
+  .accordion .accordion-title {
+    min-height: 4rem; }
 
->>>>>>> moyagoleski/master
+  /* display verticle*/
+  .accordion-title-desc li, .accordion .accordion-item .accordion-content .search-list-info li {
+    list-style: none;
+    width: 100%;
+    display: block;
+    font-weight: normal; }
+
+  /*  clear left and right margin for mobile page*/
+  .contact-card {
+    display: block;
+    min-width: 100%;
+    margin: 0.5rem 0; }
+
+  form .row .columns {
+    display: block;
+    min-width: 100%; } }
+/* tabs title nav color*/
+/* .tabs {*/
+/* 	border-color: $dark-blue;*/
+/* 	color: $text-color-white;*/
+/**/
+/* 	.tabs-title {*/
+/* 		background-color: $light-blue;*/
+/* 		text-align: center;*/
+/**/
+/* 		a {*/
+/* 			color: $text-color-white;*/
+/**/
+/* 			&:hover {*/
+/* 				background-color: $dark-blue;*/
+/* 				color: $text-color-white;*/
+/* 			}*/
+/* 		}*/
+/* 	}*/
+/* }*/
+/* .tabs .tabs-title.is-active * {*/
+/* 	background-color: $dark-blue;*/
+/* 	color: $text-color-white;*/
+/* }*/
+/* */
+/*  tabs border color*/
+/**/
+/* .tabs-content {*/
+/* 	border-color: $dark-blue;*/
+/* 	padding: 1.5rem;*/
+/* }*/
+
 /*# sourceMappingURL=main.css.map */

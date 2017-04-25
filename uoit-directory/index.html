@@ -3486,25 +3486,29 @@
 									<div class="small-12 columns">
 										<!-- TAB TITLE  -->
 										<h2>Search</h2>
+										<br/>
 										<!-- <p>Enter a first name, a last name or both to find a faculty or staff member and click the Search button. Partial names can also be used.</p> -->
 										<p>Enter a first name, a last name, a department or all to find a faculty or staff member.</p>
 										<p>Partial names can also be used.</p>
 									</div>
 								</div>
 								<!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
-								<div class="row">
-									<div class="small-12 medium-4 columns">
-										<!-- <label>NAME:<input type="text" name="Name"/></label> -->
-										<label>First Name:</label><input type='text' ng-model='searchName.dirpepl_first_name' />
+								<form>
+									<div class="row">
+										<div class="small-12 medium-4 columns">
+											<!-- <label>NAME:<input type="text" name="Name"/></label> -->
+											<label>First Name:</label><input type='text' ng-model='searchName.dirpepl_first_name' />
+										</div>
+										<div class="small-12 medium-4 columns">
+											<label>Last Name:</label><input type='text' ng-model='searchName.dirpepl_last_name' />
+										</div>
+										<div class="small-12 medium-4 columns">
+											<label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' />
+										</div>
 									</div>
-									<div class="small-12 medium-4 columns">
-										<label>Last Name:</label><input type='text' ng-model='searchName.dirpepl_last_name' />
-									</div>
-									<div class="small-12 medium-4 columns">
-										<label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' />
-									</div>
-
-								</div>
+									<!-- SEARCH BUTTON -->
+									<a role="button" aria-label="search" class="button" id="searchButton">SEARCH</a>
+							</form>
 								<!-- <div class="row">
 									<div class="small-12 medium-12 large-12 columns">
 										<p>Select a department name and click Search to list all of the members.</p>
@@ -3913,6 +3917,7 @@
 							<div class="tabs-panel " id="tab1-3" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-3-label">
 								<!-- TAB TITLE  -->
 								<h2>Update Information</h2>
+								<br/>
 								<!-- FORM INPUT FIELDS -->
 								<form>
 									<div class="row">

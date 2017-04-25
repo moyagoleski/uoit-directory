@@ -3476,10 +3476,13 @@
 							</li>
 						</ul>
 						<!-- tabs title end -->
-						<!-- tabs content start -->
-						<div class="tabs-content" data-tabs-content="tab1" id="tab1-content">
+
 <!-- ANGULAR APP STARTS HERE -->
 <div ng-app="myApp" ng-controller="searchCtrls">
+
+						<!-- tabs content start -->
+						<div class="tabs-content" data-tabs-content="tab1" id="tab1-content">
+
 
 							<div class="tabs-panel is-active" id="tab1-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab1-1-label">
 								<div class="row">
@@ -3516,52 +3519,8 @@
 									</div>
 								</div> -->
 
-		<!-- SEARCH FILTER JSON FILE  -->
-		<div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchName.dirschl_school_name">
-			<div class="row">
-				<div class="small-12 columns">
-					<br/>
-					<h3>Directory Search Results</h3>
-					<p>To reach a Faculty or Staff member dial the main switchboard at (905) 721-8668 and ask for the extension listed</p>
-				</br>
+<!-- OLD PLACE WHERE ANGULAR SEARCH RESULT DISPLAYED IN TAB -->
 
-					<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
-					<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
-					<div ng-repeat="x in jsonData | filter: searchName | orderBy: 'dirpepl_first_name' | limitTo: 10">
-						<p>
-							<b>Name:</b>
-							{{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
-						</p>
-						<p>
-							<b>Department:</b>
-							{{ x.dirschl_school_name }}
-						</p>
-						<p>
-							<b>Title:</b>
-							{{ x.dirrank_rank_name }}
-						</p>
-						<p>
-							<b>Extension:</b>
-							{{ x.dirpepl_extension }}
-						</p>
-						<p>
-							<b>Office:</b>
-							{{ x.dirpepl_office }}
-						</p>
-						<p>
-							<b>Building:</b>
-							{{ x.dirbuilding_building_name }}
-						</p>
-						<p>
-							<b>E-mail:</b>
-							{{ x.email }}
-						</p>
-					</br>
-					</div>
-				</div>
-			</div>
-
-		</div>
 								<!-- <div class="row">
 									<div class="small-12 medium-4 columns">
 										<label>DEPARTMENT:</label>
@@ -3636,8 +3595,8 @@
 								<!-- SEARCH BUTTON -->
 								<!-- <a role="button" aria-label="search" class="button" id="searchButton">SEARCH</a> -->
 							</div>
-</div>
-<!-- ANGULAR APP ENDS HERE -->
+							<!-- TAB 1 END  -->
+
 
 
 
@@ -3963,8 +3922,61 @@
 							</div>
 						</div>
 						<!-- tabs content end -->
-						<!-- search list start -->
 
+		<!-- SEARCH FILTER JSON FILE  -->
+		<div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchName.dirschl_school_name">
+			<!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->
+			<div class="callout search-list">
+				<div class="row">
+					<div class="small-12 columns">
+						<h3>Directory Search Results</h3>
+						<p>To reach a Faculty or Staff member dial the main switchboard at (905) 721-8668 and ask for the extension listed</p>
+					</br>
+
+						<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
+						<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
+						<div ng-repeat="x in jsonData | filter: searchName | orderBy: 'dirpepl_first_name' | limitTo: 10">
+							<p>
+								<b>Name:</b>
+								{{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
+							</p>
+							<p>
+								<b>Department:</b>
+								{{ x.dirschl_school_name }}
+							</p>
+							<p>
+								<b>Title:</b>
+								{{ x.dirrank_rank_name }}
+							</p>
+							<p>
+								<b>Extension:</b>
+								{{ x.dirpepl_extension }}
+							</p>
+							<p>
+								<b>Office:</b>
+								{{ x.dirpepl_office }}
+							</p>
+							<p>
+								<b>Building:</b>
+								{{ x.dirbuilding_building_name }}
+							</p>
+							<p>
+								<b>E-mail:</b>
+								{{ x.email }}
+							</p>
+						</br>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- ** SEARCH FILTER JSON FILE ENDS HERE ** -->
+
+</div>
+<!-- ** ANGULAR APP ENDS HERE ** -->
+
+						<!-- search list start -->
 						<div class="callout search-list" id="searchResult">
 							<!-- search list title -->
 							<h2>Directory Search Results</h2>

@@ -60,10 +60,13 @@
   /* display two columns in a row*/
   margin: 1%;
   /* display two columns in a row*/
-  padding: 1rem;
+  padding: 25px;
   display: inline-block;
   box-sizing: border-box;
   margin-bottom: 15px; }
+
+.contact-number {
+  margin-bottom: 0; }
 
 .pagination {
   margin-top: 3rem; }

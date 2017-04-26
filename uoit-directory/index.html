@@ -3511,7 +3511,8 @@
 										</div>
 									</div>
 									<!-- SEARCH BUTTON -->
-									<a role="button" aria-label="search" class="button" id="searchButton">SEARCH</a>
+									<!-- <a role="button" aria-label="search" class="button" id="searchButton">SEARCH</a> -->
+									<a role="button" aria-label="search" class="button">SEARCH</a>
 							</form>
 								<!-- <div class="row">
 									<div class="small-12 medium-12 large-12 columns">
@@ -3935,14 +3936,15 @@
 						<h3>Directory Search Results</h3>
 						<br/>
 						<p>To reach a Faculty or Staff member dial the main switchboard at (905) 721-8668 and ask for the extension listed.</p>
+						<label>Order By:</label>
 						<div class="filter-radio">
 							<!-- filter button -->
-							<div class="small button-group">
-								<a class="button" role="button">First Name</a>
-								<a class="button" role="button">Last Name</a>
-								<a class="button" role="button">Department</a>
+							<!-- <div class="small button-group"> -->
+								<a class="button small" role="button">First Name</a>
+								<a class="button small" role="button">Last Name</a>
+								<a class="button small" role="button">Department</a>
 							</div>
-						</div>
+						<!-- </div> -->
 					</br>
 					<ul class="accordion" data-allow-all-closed="true" data-accordion>
 						<li class="accordion-item" data-accordion-item>
@@ -4047,6 +4049,18 @@
 							</p>
 						</br>
 						</div>
+
+						<!-- PAGINATION -->
+						<ul class="pagination text-center" role="navigation" aria-label="Pagination">
+							<li class="pagination-previous disabled">Previous</li>
+							<li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+							<li><a href="#" aria-label="Page 2">2</a></li>
+							<li class="ellipsis"></li>
+							<li><a href="#" aria-label="Page 12">7</a></li>
+							<li><a href="#" aria-label="Page 13">8</a></li>
+							<li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
+						</ul>
+
 					</div>
 				</div>
 

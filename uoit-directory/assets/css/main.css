@@ -13,16 +13,21 @@
 .accordion .accordion-item {
   border-top: 1px lightgrey solid;
   margin: 1rem 0;
+  padding: 10px;
   /* clear default border*/ }
   .accordion .accordion-item .accordion-title {
     color: #151515;
     box-shadow: none;
     border: 0;
-    height: 2.8rem;
+    height: 3rem;
     font-size: 1.2rem; }
     .accordion .accordion-item .accordion-title:hover {
-      background-color: #0077CA;
-      color: #fff; }
+      background-color: #fff;
+      color: #151515;
+      cursor: default; }
+    .accordion .accordion-item .accordion-title:focus {
+      background-color: #fff;
+      color: #151515; }
   .accordion .accordion-item :last-child:not(.is-active) > .accordion-title {
     border: 0; }
   .accordion .accordion-item .accordion-content {
@@ -31,7 +36,8 @@
     .accordion .accordion-item .accordion-content .search-list-info li {
       display: inline-block;
       box-sizing: border-box;
-      width: 49%; }
+      width: 49%;
+      padding: 5px 0 5px 0; }
       .accordion .accordion-item .accordion-content .search-list-info li span {
         font-weight: bold; }
 
@@ -41,11 +47,11 @@
   font-size: 0.88rem;
   line-height: 0.88rem;
   margin: 0;
-  padding: 0;
+  padding: 15px 0 0 0;
   text-transform: capitalize; }
   .accordion-title-desc li, .accordion .accordion-item .accordion-content .search-list-info li {
     list-style: none;
-    width: 49%;
+    width: 100%;
     display: inline-block;
     font-weight: normal;
     margin: 0; }

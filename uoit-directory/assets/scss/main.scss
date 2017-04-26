@@ -26,17 +26,27 @@ $accordion-item-background-hover: #0077CA;
 	.accordion-item {
 		border-top: 1px lightgrey solid;
 		margin: 1rem 0;
+		padding: 10px;
 
 		.accordion-title {
 			color: $text-color-black;
+			// color: $dark-blue;
 			box-shadow: none;
 			border: 0;
-			height: 2.8rem;
+			height: 3rem;
 			font-size: 1.2rem;
 
+
 			&:hover {
-				background-color: $accordion-item-background-hover;
-				color: $text-color-white;
+				// background-color: $accordion-item-background-hover;
+				// color: $text-color-white;
+				background-color: $text-color-white;
+				color: $text-color-black;
+				cursor: default;
+			}
+			&:focus {
+				background-color: $text-color-white;
+				color: $text-color-black;
 			}
 		}
 		/* clear default border*/
@@ -55,6 +65,7 @@ $accordion-item-background-hover: #0077CA;
 					display: inline-block;
 					box-sizing: border-box;
 					width: 49%;
+					padding: 5px 0 5px 0;
 
 					span {
 						font-weight: bold;
@@ -70,12 +81,13 @@ $accordion-item-background-hover: #0077CA;
 	font-size: 0.88rem;
 	line-height: 0.88rem;
 	margin: 0;
-	padding: 0;
+	// padding: 0;
+	padding: 15px 0 0 0;
 	text-transform: capitalize;
 
 	li {
 		list-style: none;
-		width: 49%;
+		width: 100%;
 		display: inline-block;
 		font-weight: normal;
 		margin: 0;

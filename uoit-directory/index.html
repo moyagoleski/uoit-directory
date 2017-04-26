@@ -3946,15 +3946,14 @@
 							</div>
 						<!-- </div> -->
 					</br>
-					<ul class="accordion" data-allow-all-closed="true" data-accordion>
+					<!-- <ul class="accordion" data-allow-all-closed="true" data-accordion>
 						<li class="accordion-item" data-accordion-item>
-							<!-- accordion tab title -->
 							<a href="" class="accordion-title">
-								John
+								EXAMPLE
 								<ul class="accordion-title-desc">
 									<li>
 										<span>Title:</span>
-										academic affairs specialist</li>
+									</li>
 									<li>
 										<span>department:</span>
 									</li>
@@ -3963,20 +3962,21 @@
 							<div class="accordion-content" data-tab-content>
 								<ul class="search-list-info">
 									<li>
-										<span>Location:</span> CC2309
+										<span>Office:</span>
 									</li>
 									<li>
-										<span>Building:</span> Campus Corners</li>
-									<li>
-										<span>Extension:</span> 6136
+										<span>Building:</span>
 									</li>
 									<li>
-										<span>E-mail:</span> caitlin.crompton@uoit.ca
+										<span>Extension:</span>
+									</li>
+									<li>
+										<span>E-mail:</span>
 									</li>
 								</ul>
 							</div>
 						</li>
-					</ul>
+					</ul> -->
 
 					<!-- <div ng-controller="AccordionDemoCtrl"> -->
 
@@ -3984,7 +3984,7 @@
 						<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
 						<div ng-repeat="x in jsonData | filter: searchName | orderBy: 'dirpepl_first_name' | limitTo: 10">
 							<ul class="accordion" data-allow-all-closed="true" data-accordion>
-								<li class="accordion-item" data-accordion-item>
+								<li class="accordion-item is-active" data-accordion-item>
 									<!-- accordion tab title -->
 									<a href="" class="accordion-title">
 										{{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
@@ -3992,26 +3992,36 @@
 
 										<ul class="accordion-title-desc">
 											<li>
+												<span>Department:</span>
+												{{ x.dirschl_school_name }}
+											</li>
+											<!-- <li>
 												<span>Title:</span>
-												academic affairs specialist
-											</li>
-											<li>
-												<span>department:</span>
-											</li>
+												{{ x.dirrank_rank_name }}
+											</li> -->
 										</ul>
 									</a>
 									<div class="accordion-content" data-tab-content>
 										<ul class="search-list-info">
 											<li>
-												<span>Location:</span> CC2309
+												<span>Title:</span>
+												{{ x.dirrank_rank_name }}
 											</li>
 											<li>
-												<span>Building:</span> Campus Corners</li>
-											<li>
-												<span>Extension:</span> 6136
+												<span>Office:</span>
+												{{ x.dirpepl_office }}
 											</li>
 											<li>
-												<span>E-mail:</span> caitlin.crompton@uoit.ca
+												<span>Building:</span>
+												{{ x.dirbuilding_building_name }}
+											</li>
+											<li>
+												<span>Extension:</span>
+												{{ x.dirpepl_extension }}
+											</li>
+											<li>
+												<span>E-mail:</span>
+												{{ x.email }}
 											</li>
 										</ul>
 									</div>
@@ -4020,7 +4030,7 @@
 
 							</ul>
 						<!-- </div> -->
-							<p>
+							<!-- <p>
 								<b>{{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}</b>
 							</p>
 							<p>
@@ -4046,8 +4056,8 @@
 							<p>
 								<b>E-mail:</b>
 								{{ x.email }}
-							</p>
-						</br>
+							</p> -->
+						<!-- </br> -->
 						</div>
 
 						<!-- PAGINATION -->
@@ -4056,8 +4066,8 @@
 							<li class="current"><span class="show-for-sr">You're on page</span> 1</li>
 							<li><a href="#" aria-label="Page 2">2</a></li>
 							<li class="ellipsis"></li>
-							<li><a href="#" aria-label="Page 12">7</a></li>
-							<li><a href="#" aria-label="Page 13">8</a></li>
+							<li><a href="#" aria-label="Page 7">7</a></li>
+							<li><a href="#" aria-label="Page 8">8</a></li>
 							<li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
 						</ul>
 

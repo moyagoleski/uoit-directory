@@ -3465,13 +3465,13 @@
 						<h2>DIRECTORY</h2>
 						<!-- tabs title start -->
 						<ul class="tabs" data-tabs="u3jluw-tabs" id="tab1" role="tablist">
-							<li class="tabs-title is-active" role="presentation">
+							<li class="tabs-title is-active" role="presentation" id="searchTab">
 								<a href="#tab1-1" role="tab" aria-controls="tab1-1" aria-selected="true" id="tab1-1-label">Search</a>
 							</li>
-							<li class="tabs-title" role="presentation">
+							<li class="tabs-title" role="presentation" id="contactsTab">
 								<a href="#tab1-2" role="tab" aria-controls="tab1-2" aria-selected="false" id="tab1-2-label">Contacts</a>
 							</li>
-							<li class="tabs-title" role="presentation">
+							<li class="tabs-title" role="presentation" id="updateTab">
 								<a href="#tab1-3" role="tab" aria-controls="tab1-3" aria-selected="false" id="tab1-3-label">Update</a>
 							</li>
 						</ul>
@@ -3927,7 +3927,7 @@
 						<!-- tabs content end -->
 
 		<!-- SEARCH FILTER JSON FILE  -->
-		<div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchName.dirschl_school_name">
+		<div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchName.dirschl_school_name" id="angularSearch">
 			<!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->
 			<div class="callout search-list">
 				<div class="row">

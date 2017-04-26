@@ -1,6 +1,4 @@
-
-
-$(document).foundation();
+// $(document).foundation();
 
 $("#searchResult").hide();
 

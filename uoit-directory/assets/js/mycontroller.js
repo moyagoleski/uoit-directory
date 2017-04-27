@@ -70,11 +70,16 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
 
     // pagination function
     $scope.currentPage = 0;
-    $scope.pageSize = 10;
+    $scope.pageSize = 5;
     $scope.jsonData = [];
+
+    // change this function to try and fix 'next' button
     $scope.numberOfPages=function(){
-        return Math.ceil($scope.jsonData.length/$scope.pageSize);
+      var myFilteredData = $filter('filter')($scope.jsonData,$scope.searchName); //Filter the data
+      return Math.ceil(myFilteredData.length/$scope.pageSize);
+        // return Math.ceil($scope.jsonData.length/$scope.pageSize);
     }
+
     for (var i=0; i<45; i++) {
         $scope.jsonData.push("Item "+i);
     }

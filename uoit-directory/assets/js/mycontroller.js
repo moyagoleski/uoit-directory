@@ -33,6 +33,9 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
       $("#angularSearch").hide();
     };
 
+    // orders automatically by last name
+    $('#orderLastName').css('background-color', '#003C71');
+
     // // order by buttons that filter when you click
     $scope.orderByFunction = function(order) {
 

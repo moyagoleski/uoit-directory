@@ -68,6 +68,25 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
 
     };
 
+    // pagination function
+    $scope.currentPage = 0;
+    $scope.pageSize = 10;
+    $scope.jsonData = [];
+    $scope.numberOfPages=function(){
+        return Math.ceil($scope.jsonData.length/$scope.pageSize);
+    }
+    for (var i=0; i<45; i++) {
+        $scope.jsonData.push("Item "+i);
+    }
+
+});
+
+// pagination function
+app.filter('startFrom', function() {
+  return function(input, start) {
+      start = +start; //parse to int
+      return input.slice(start);
+  }
 });
 
 // app.controller('AccordionDemoCtrl', ['$scope', '$sce', function($scope, $sce) {

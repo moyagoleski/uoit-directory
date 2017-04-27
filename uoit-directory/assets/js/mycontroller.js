@@ -34,22 +34,22 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
     };
 
     // // order by buttons that filter when you click
-    $scope.orderByFunction = function() {
+    $scope.orderByFunction = function(order) {
 
-      $('#orderFirstName').on("click", function (event) {
+      if (order == '0') {
         // alert("order by first name!");
         $scope.jsonData = $filter('orderBy')($scope.jsonData, 'dirpepl_first_name');
-      });
+      }
 
-      $('#orderLastName').on("click", function (event) {
+      if (order == '1') {
         // alert("order by last name!");
         $scope.jsonData = $filter('orderBy')($scope.jsonData, 'dirpepl_last_name');
-      });
+      }
 
-      $('#orderDepartment').on("click", function (event) {
+      if (order == '2') {
         // alert("order by department!");
         $scope.jsonData = $filter('orderBy')($scope.jsonData, 'dirschl_school_name');
-      });
+      }
 
     };
 

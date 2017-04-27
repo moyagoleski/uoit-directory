@@ -39,16 +39,28 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
       if (order == '0') {
         // alert("order by first name!");
         $scope.jsonData = $filter('orderBy')($scope.jsonData, 'dirpepl_first_name');
+        // colour change to know what button you clicked
+        $('#orderFirstName').css('background-color', '#003C71');
+        $('#orderLastName').css('background-color', '#0077CA');
+        $('#orderDepartment').css('background-color', '#0077CA');
       }
 
       if (order == '1') {
         // alert("order by last name!");
         $scope.jsonData = $filter('orderBy')($scope.jsonData, 'dirpepl_last_name');
+        // colour change to know what button you clicked
+        $('#orderFirstName').css('background-color', '#0077CA');
+        $('#orderLastName').css('background-color', '#003C71');
+        $('#orderDepartment').css('background-color', '#0077CA');
       }
 
       if (order == '2') {
         // alert("order by department!");
         $scope.jsonData = $filter('orderBy')($scope.jsonData, 'dirschl_school_name');
+        // colour change to know what button you clicked
+        $('#orderFirstName').css('background-color', '#0077CA');
+        $('#orderLastName').css('background-color', '#0077CA');
+        $('#orderDepartment').css('background-color', '#003C71');
       }
 
     };

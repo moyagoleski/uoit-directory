@@ -20,7 +20,8 @@
     box-shadow: none;
     border: 0;
     height: 3rem;
-    font-size: 1.2rem; }
+    font-size: 1.2rem;
+    position: static; }
     .accordion .accordion-item .accordion-title:hover {
       background-color: #fff;
       color: #151515;

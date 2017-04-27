@@ -119,6 +119,13 @@ $accordion-item-background-hover: #0077CA;
 .pagination {
 	margin-top: 3rem;
 }
+
+.pagination a:hover, .pagination button:hover {
+	background: $dark-blue;
+	color: $text-color-white;
+
+}
+
 @media screen and (min-width:75em) {
 	/* responsive tabs title width */
 	.tabs .tabs-title {

@@ -78,6 +78,10 @@
 .pagination {
   margin-top: 3rem; }
 
+.pagination a:hover, .pagination button:hover {
+  background: #003C71;
+  color: #fff; }
+
 @media screen and (min-width: 75em) {
   /* responsive tabs title width */
   .tabs .tabs-title {

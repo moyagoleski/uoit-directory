@@ -4051,22 +4051,22 @@
 						    </button>
 							</li>
 							<li>
-								<button class="current"><span class="show-for-sr">You're on page</span>
+								<button class="current">
 									{{currentPage+1}}
 								</button>
 							</li>
 							<li>
-								<button  ng-click="currentPage=currentPage+1">
+								<button ng-disabled="(currentPage + 1) == numberOfPages()" ng-click="currentPage=currentPage+1">
 									{{currentPage+2}}
 								</button>
 							</li>
 							<li>
-								<button  ng-click="currentPage=currentPage+2">
+								<button ng-disabled="(currentPage + 2) == numberOfPages()" ng-click="currentPage=currentPage+2">
 									{{currentPage+3}}
 								</button>
 							</li>
 							<li class="pagination-next">
-								<button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+								<button ng-disabled="(currentPage + 1) == numberOfPages()" ng-click="currentPage=currentPage+1">
 										Next <span class="icon_arrow_right"></span>
 								</button>
 							</li>

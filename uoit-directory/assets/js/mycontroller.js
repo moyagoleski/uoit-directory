@@ -1,5 +1,6 @@
 // controller
-app.controller('searchCtrls', function($scope, $http) {
+app.controller('searchCtrls', function($scope, $http, $filter) {
+
     // gets JSON file
     $http.get("directory.json").then(function(response) {
         $scope.jsonData = response.data.query_info.person_info;
@@ -15,8 +16,42 @@ app.controller('searchCtrls', function($scope, $http) {
         for(i in $scope.jsonData){
           $scope.jsonData[i]['dirschl_school_name'] = $scope.jsonData[i]['dirschl_school_name'].replace("- UOIT", "");
         }
-
     });
+
+    // show and hide Directoy Search Result when you go to another tab
+    $scope.searchTabFunction = function() {
+      $("#angularSearch").show();
+      // $scope.searchName.dirpepl_first_name.searchName.dirpepl_last_name.searchName.dirschl_school_name = true;
+    };
+
+    $scope.contactsTabFunction = function() {
+      $("#angularSearch").hide();
+      // $scope.searchName.dirpepl_first_name.searchName.dirpepl_last_name.searchName.dirschl_school_name = false;
+    };
+
+    $scope.updateTabFunction = function() {
+      $("#angularSearch").hide();
+    };
+
+    // // order by buttons that filter when you click
+    $scope.orderByFunction = function() {
+
+      $('#orderFirstName').on("click", function (event) {
+        // alert("order by first name!");
+        $scope.jsonData = $filter('orderBy')($scope.jsonData, 'dirpepl_first_name');
+      });
+
+      $('#orderLastName').on("click", function (event) {
+        // alert("order by last name!");
+        $scope.jsonData = $filter('orderBy')($scope.jsonData, 'dirpepl_last_name');
+      });
+
+      $('#orderDepartment').on("click", function (event) {
+        // alert("order by department!");
+        $scope.jsonData = $filter('orderBy')($scope.jsonData, 'dirschl_school_name');
+      });
+
+    };
 
 });
 

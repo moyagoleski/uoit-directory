@@ -30,12 +30,12 @@ $accordion-item-background-hover: #0077CA;
 
 		.accordion-title {
 			color: $text-color-black;
-			// color: $dark-blue;
 			box-shadow: none;
 			border: 0;
 			height: 3rem;
 			font-size: 1.2rem;
-
+			// remove '-' for now
+			position: static;
 
 			&:hover {
 				// background-color: $accordion-item-background-hover;

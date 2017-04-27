@@ -3460,25 +3460,26 @@
 						<a href="../index.php">UOIT</a>
 					</li>
 				</ul>
+
 				<div class="page-row row">
+<!-- ANGULAR APP STARTS HERE -->
+<div ng-app="myApp" ng-controller="searchCtrls">
 					<section class="page-content has-sidebar">
 						<h2>DIRECTORY</h2>
 						<!-- tabs title start -->
 						<ul class="tabs" data-tabs="u3jluw-tabs" id="tab1" role="tablist">
-							<li class="tabs-title is-active" role="presentation" id="searchTab">
+							<li class="tabs-title is-active" role="presentation" id="searchTab" ng-click="searchTabFunction()">
 								<a href="#tab1-1" role="tab" aria-controls="tab1-1" aria-selected="true" id="tab1-1-label">Search</a>
 							</li>
-							<li class="tabs-title" role="presentation" id="contactsTab">
+							<li class="tabs-title" role="presentation" id="contactsTab" ng-click="contactsTabFunction()">
 								<a href="#tab1-2" role="tab" aria-controls="tab1-2" aria-selected="false" id="tab1-2-label">Contacts</a>
 							</li>
-							<li class="tabs-title" role="presentation" id="updateTab">
+							<li class="tabs-title" role="presentation" id="updateTab" ng-click="updateTabFunction()">
 								<a href="#tab1-3" role="tab" aria-controls="tab1-3" aria-selected="false" id="tab1-3-label">Update</a>
 							</li>
 						</ul>
 						<!-- tabs title end -->
 
-<!-- ANGULAR APP STARTS HERE -->
-<div ng-app="myApp" ng-controller="searchCtrls">
 
 						<!-- tabs content start -->
 						<div class="tabs-content" data-tabs-content="tab1" id="tab1-content">
@@ -3940,12 +3941,12 @@
 						<div class="filter-radio">
 							<!-- filter button -->
 							<!-- <div class="small button-group"> -->
-								<a class="button small" role="button">First Name</a>
-								<a class="button small" role="button">Last Name</a>
-								<a class="button small" role="button">Department</a>
+								<a class="button small" role="button" id="orderFirstName" ng-click="orderByFunction()">First Name</a>
+								<a class="button small" role="button" id="orderLastName" ng-click="orderByFunction()">Last Name</a>
+								<a class="button small" role="button" id="orderDepartment" ng-click="orderByFunction()">Department</a>
 							</div>
 						<!-- </div> -->
-					</br>
+					<!-- </br> -->
 					<!-- <ul class="accordion" data-allow-all-closed="true" data-accordion>
 						<li class="accordion-item" data-accordion-item>
 							<a href="" class="accordion-title">
@@ -3982,7 +3983,7 @@
 
 						<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
 						<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
-						<div ng-repeat="x in jsonData | filter: searchName | orderBy: 'dirpepl_first_name' | limitTo: 10">
+						<div ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | limitTo: 10">
 							<ul class="accordion" data-allow-all-closed="true" data-accordion>
 								<li class="accordion-item is-active" data-accordion-item>
 									<!-- accordion tab title -->
@@ -4078,16 +4079,12 @@
 		</div>
 		<!-- ** SEARCH FILTER JSON FILE ENDS HERE ** -->
 
-</div>
-<!-- ** ANGULAR APP ENDS HERE ** -->
 
-						<!-- search list start -->
-						<div class="callout search-list" id="searchResult">
-							<!-- search list title -->
+
+						<!-- <div class="callout search-list" id="searchResult">
 							<h2>Directory Search Results</h2>
 							<p>To reach a Faculty or Staff member dial the main switchboard at (905)721-8668 and ask for the extension below</p>
 							<div class="filter-radio">
-								<!-- filter button -->
 								<div class="small button-group">
 									<a class="button">First Name</a>
 									<a class="button">Last Name</a>
@@ -4096,7 +4093,6 @@
 							</div>
 							<ul class="accordion" data-allow-all-closed="true" data-accordion>
 								<li class="accordion-item" data-accordion-item>
-									<!-- accordion tab title -->
 									<a href="" class="accordion-title">
 John															<ul class="accordion-title-desc">
 																<li>
@@ -4151,7 +4147,6 @@ John															<ul class="accordion-title-desc">
 									</div>
 								</li>
 								<li class="accordion-item" data-accordion-item>
-									<!-- Accordion tab title -->
 									<a href="" class="accordion-title">
 															John
 															<ul class="accordion-title-desc">
@@ -4192,10 +4187,11 @@ John															<ul class="accordion-title-desc">
 								<li><a href="#" aria-label="Page 13">13</a></li>
 								<li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
 							</ul>
-						</div>
-						<!-- search list end -->
-						<!-- tabs title end -->
+						</div> -->
+
 					</section>
+</div>
+<!-- ** ANGULAR APP ENDS HERE ** -->
 					<section class="page-sidebar">
 						<div class="sidebar-ctas">
 							<a class="button pink icon_phone" href="buttons.php" onclick="">Emergency Info</a>

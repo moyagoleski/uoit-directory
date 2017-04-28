@@ -22,8 +22,10 @@ $accordion-item-background-hover: #0077CA;
 
 .accordion {
 	.accordion-item {
-		/* border-top: 1px lightgrey solid;*/
-		/* margin: 1rem 0;*/
+		margin-bottom: 0;
+
+		.page-content ul.accordion li ul:not(.tabs) {}
+
 		.accordion-title {
 			&:hover {
 				background-color: $accordion-item-background-hover;
@@ -36,7 +38,9 @@ $accordion-item-background-hover: #0077CA;
 		}
 
 		.accordion-content {
+			padding: 0 1rem 1rem;
 			border-bottom: 0;
+			border-top: 0;
 
 			.search-list-info {
 				@extend .accordion-title-desc;
@@ -69,6 +73,7 @@ $accordion-item-background-hover: #0077CA;
 		display: inline-block;
 		font-weight: normal;
 		margin: 0;
+		padding: 0;
 	}
 
 	span {

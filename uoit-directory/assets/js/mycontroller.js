@@ -93,17 +93,3 @@ app.filter('startFrom', function() {
       return input.slice(start);
   }
 });
-
-// app.controller('AccordionDemoCtrl', ['$scope', '$sce', function($scope, $sce) {
-//   var jsonData = [];
-//   for(var i=0;i<10;i++){
-//     var dirpepl_first_name = "<div>TEST "+ i +"</div>";
-//
-//     // Set html content as trusted
-//     dirpepl_first_name = $sce.trustAsHtml(dirpepl_first_name);
-//
-//     // Push trusted html content to items array
-//     jsonData.push({index:i,dirpepl_first_name:dirpepl_first_name});
-//   }
-//   $scope.jsonData = jsonData;
-// }]);

@@ -34,12 +34,8 @@ $accordion-item-background-hover: #0077CA;
 			border: 0;
 			height: 3rem;
 			font-size: 1.2rem;
-			// remove '-' for now
-			// position: static;
 
 			&:hover {
-				// background-color: $accordion-item-background-hover;
-				// color: $text-color-white;
 				background-color: $text-color-white;
 				color: $text-color-black;
 				cursor: default;
@@ -81,7 +77,6 @@ $accordion-item-background-hover: #0077CA;
 	font-size: 0.88rem;
 	line-height: 0.88rem;
 	margin: 0;
-	// padding: 0;
 	padding: 15px 0 0 0;
 	text-transform: capitalize;
 

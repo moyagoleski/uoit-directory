@@ -3985,7 +3985,7 @@
 
 						<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
 						<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
-						<div ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize" current-page="currentPage">
+						<div ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize">
 							<ul class="accordion" data-allow-all-closed="true" data-accordion>
 								<li class="accordion-item is-active" data-accordion-item>
 									<!-- accordion tab title -->

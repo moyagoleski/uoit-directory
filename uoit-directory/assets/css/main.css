@@ -20,8 +20,7 @@
     box-shadow: none;
     border: 0;
     height: 3rem;
-    font-size: 1.2rem;
-    position: static; }
+    font-size: 1.2rem; }
     .accordion .accordion-item .accordion-title:hover {
       background-color: #fff;
       color: #151515;
@@ -80,11 +79,13 @@
 
 .pagination a:hover, .pagination button:hover {
   background: #003C71;
-  color: #fff; }
+  color: #fff;
+  cursor: pointer; }
 
 .pagination .current:hover {
   background: #0077CA;
-  color: #fff; }
+  color: #fff;
+  cursor: default; }
 
 @media screen and (min-width: 75em) {
   /* responsive tabs title width */

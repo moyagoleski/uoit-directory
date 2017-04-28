@@ -35,7 +35,7 @@ $accordion-item-background-hover: #0077CA;
 			height: 3rem;
 			font-size: 1.2rem;
 			// remove '-' for now
-			position: static;
+			// position: static;
 
 			&:hover {
 				// background-color: $accordion-item-background-hover;
@@ -123,11 +123,13 @@ $accordion-item-background-hover: #0077CA;
 .pagination a:hover, .pagination button:hover {
 	background: $dark-blue;
 	color: $text-color-white;
+	cursor: pointer;
 }
 
 .pagination .current:hover {
 	background: $light-blue;
 	color: $text-color-white;
+	cursor: default;
 }
 
 @media screen and (min-width:75em) {

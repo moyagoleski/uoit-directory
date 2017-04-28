@@ -82,6 +82,10 @@
   background: #003C71;
   color: #fff; }
 
+.pagination .current:hover {
+  background: #0077CA;
+  color: #fff; }
+
 @media screen and (min-width: 75em) {
   /* responsive tabs title width */
   .tabs .tabs-title {

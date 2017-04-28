@@ -4052,19 +4052,20 @@
 							</li>
 							<li>
 								<button class="current">
-									{{currentPage+1}}
+									{{currentPage+1}} out of {{numberOfPages()}}
 								</button>
 							</li>
-							<li>
+							<!-- <li>
 								<button ng-disabled="(currentPage + 1) == numberOfPages()" ng-click="currentPage=currentPage+1">
 									{{currentPage+2}}
 								</button>
-							</li>
-							<li>
+							</li> -->
+
+							<!-- <li>
 								<button ng-disabled="(currentPage + 2) == numberOfPages()" ng-click="currentPage=currentPage+2">
 									{{currentPage+3}}
 								</button>
-							</li>
+							</li> -->
 							<li class="pagination-next">
 								<button ng-disabled="(currentPage + 1) == numberOfPages()" ng-click="currentPage=currentPage+1">
 										Next <span class="icon_arrow_right"></span>

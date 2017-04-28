@@ -3502,13 +3502,13 @@
 									<div class="row">
 										<div class="small-12 medium-4 columns">
 											<!-- <label>NAME:<input type="text" name="Name"/></label> -->
-											<label>First Name:</label><input type='text' ng-model='searchName.dirpepl_first_name' />
+											<label>First Name:</label><input type='text' ng-model='searchName.dirpepl_first_name' ng-change='currentPage = 0' />
 										</div>
 										<div class="small-12 medium-4 columns">
-											<label>Last Name:</label><input type='text' ng-model='searchName.dirpepl_last_name' />
+											<label>Last Name:</label><input type='text' ng-model='searchName.dirpepl_last_name' ng-change='currentPage = 0' />
 										</div>
 										<div class="small-12 medium-4 columns">
-											<label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' />
+											<label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' ng-change='currentPage = 0' />
 										</div>
 									</div>
 									<!-- SEARCH BUTTON -->
@@ -3985,7 +3985,7 @@
 
 						<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
 						<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
-						<div ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize">
+						<div ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize" current-page="currentPage">
 							<ul class="accordion" data-allow-all-closed="true" data-accordion>
 								<li class="accordion-item is-active" data-accordion-item>
 									<!-- accordion tab title -->
@@ -4046,7 +4046,7 @@
 						<!-- PAGINATION - FUNCTIONAL -->
 						<ul class="pagination text-center" role="navigation" aria-label="Pagination">
 							<li class="pagination-previous">
-								<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+								<button role="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
 						        <span class="icon_arrow_left"></span> Previous
 						    </button>
 							</li>
@@ -4067,7 +4067,7 @@
 								</button>
 							</li> -->
 							<li class="pagination-next">
-								<button ng-disabled="(currentPage + 1) == numberOfPages()" ng-click="currentPage=currentPage+1">
+								<button role="button" ng-disabled="(currentPage + 1) == numberOfPages()" ng-click="currentPage=currentPage+1">
 										Next <span class="icon_arrow_right"></span>
 								</button>
 							</li>

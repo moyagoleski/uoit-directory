@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // $("#searchResult").hide();
 //
@@ -42,6 +43,8 @@
 >>>>>>> parent of 09f08c0... added angular
 =======
 >>>>>>> parent of 09f08c0... added angular
+=======
+>>>>>>> parent of 09f08c0... added angular
 //
 //
 // $(document).foundation();
@@ -57,6 +60,9 @@
 // });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 09f08c0... added angular
+=======
 >>>>>>> parent of 09f08c0... added angular
 =======
 >>>>>>> parent of 09f08c0... added angular

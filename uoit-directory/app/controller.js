@@ -27,7 +27,7 @@ app.filter('unique', function() {
    };
 });
 
-app.factory('userInfoService', function($http) {
+app.factory('usersInfoService', function($http) {
 	return {
         get:  function(){
             return $http.get('./directory.json'); // this will return a promise to controller
@@ -35,8 +35,8 @@ app.factory('userInfoService', function($http) {
 	};
 });
 
-app.controller('getUserCtrl', function($scope, userInfoService){
-		userInfoService.get().then(function(response) {
+app.controller('getUserCtrl', function($scope, usersInfoService){
+		usersInfoService.get().then(function(response) {
 	  	$scope.users = response.data.query_info.person_info;
 			console.log($scope.users);
 		});

@@ -8,6 +8,9 @@ $accordion-item-background-hover: #0077CA;
 .tabs {
 	.tabs-title {
 		text-align: center;
+		> a {
+			padding: 15px;
+		}
 	}
 }
 
@@ -22,18 +25,24 @@ $accordion-item-background-hover: #0077CA;
 .accordion {
 	.accordion-item {
 		border-top: 1px lightgrey solid;
-		margin: 1rem 0;
+		margin: 0 0;
+		padding: 10px;
 
 		.accordion-title {
 			color: $text-color-black;
 			box-shadow: none;
 			border: 0;
-			height: 2.8rem;
+			height: 3rem;
 			font-size: 1.2rem;
 
 			&:hover {
-				background-color: $accordion-item-background-hover;
-				color: $text-color-white;
+				background-color: $text-color-white;
+				color: $text-color-black;
+				cursor: default;
+			}
+			&:focus {
+				background-color: $text-color-white;
+				color: $text-color-black;
 			}
 		}
 		/* clear default border*/
@@ -52,6 +61,7 @@ $accordion-item-background-hover: #0077CA;
 					display: inline-block;
 					box-sizing: border-box;
 					width: 49%;
+					padding: 5px 0 5px 0;
 
 					span {
 						font-weight: bold;
@@ -67,12 +77,12 @@ $accordion-item-background-hover: #0077CA;
 	font-size: 0.88rem;
 	line-height: 0.88rem;
 	margin: 0;
-	padding: 0;
+	padding: 15px 0 0 0;
 	text-transform: capitalize;
 
 	li {
 		list-style: none;
-		width: 49%;
+		width: 100%;
 		display: inline-block;
 		font-weight: normal;
 		margin: 0;
@@ -80,18 +90,6 @@ $accordion-item-background-hover: #0077CA;
 
 	span {
 		font-weight: bold;
-	}
-}
-
-.filter-radio {
-	margin-bottom: 1.25rem;
-
-	label {
-		margin-right: 1rem;
-	}
-
-	input[type='radio'] {
-		margin: 0 0.2rem;
 	}
 }
 /* .tabs-panel .row {*/
@@ -102,14 +100,33 @@ $accordion-item-background-hover: #0077CA;
 	/* display two columns in a row*/
 	margin: 1%;
 	/* display two columns in a row*/
-	padding: 1rem;
+	// padding: 1rem;
+	padding: 25px;
 	display: inline-block;
 	box-sizing: border-box;
+	margin-bottom: 15px;
 }
-/* }*/
+
+.contact-number {
+	margin-bottom: 0;
+}
+
 .pagination {
 	margin-top: 3rem;
 }
+
+.pagination a:hover, .pagination button:hover {
+	background: $dark-blue;
+	color: $text-color-white;
+	cursor: pointer;
+}
+
+.pagination .current:hover {
+	background: $light-blue;
+	color: $text-color-white;
+	cursor: default;
+}
+
 @media screen and (min-width:75em) {
 	/* responsive tabs title width */
 	.tabs .tabs-title {

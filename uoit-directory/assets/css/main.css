@@ -1,14 +1,20 @@
 .tabs .tabs-title {
   text-align: center; }
   .tabs .tabs-title > a {
-    padding: 15px; }
+    padding: 10px; }
 
 .tabs-content {
-  padding: 2rem; }
+  padding: 1rem; }
 
 /* search list*/
 .search-list {
-  padding: 2rem; }
+  padding: 1rem; }
+
+.searchResults {
+  max-width: 48%;
+  margin: 1%;
+  padding: 1rem;
+  display: inline-block; }
 
 .accordion .accordion-item {
   border-top: 1px lightgrey solid;
@@ -66,7 +72,7 @@
   /* display two columns in a row*/
   margin: 1%;
   /* display two columns in a row*/
-  padding: 25px;
+  padding: 1rem;
   display: inline-block;
   box-sizing: border-box;
   margin-bottom: 15px; }
@@ -106,6 +112,12 @@
     width: 100%;
     display: block;
     font-weight: normal; }
+
+  /*  clear left and right margin for mobile page*/
+  .searchResults {
+    display: block;
+    min-width: 100%;
+    margin: 0.5rem 0; }
 
   /*  clear left and right margin for mobile page*/
   .contact-card {

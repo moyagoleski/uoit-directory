@@ -4,14 +4,14 @@
 <head>
 	<meta charset="utf-8" />
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<title>UOIT - Directory - HTML base</title>
+	<title>UOIT - Directory</title>
 	<meta content="f932d6d9cdd3b53701a601b0fb398930" name="PageID" />
 	<meta content="Directory" name="description" />
 	<meta content="Directory, people search, find people" name="keywords" />
 	<link href="https://uoit.ca/favicon.ico" rel="icon" type="image/x-icon" />
 	<link href="https://shared.uoit.ca/global-2.1/dist/css/uoit.css" rel="stylesheet" />
 	<script src="https://shared.uoit.ca/global-2.1/dist/js/jquery.min.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="assets/css/main.min.css">
+	<!-- <link rel="stylesheet" href="assets/css/main.min.css"> -->
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
 
@@ -3495,24 +3495,27 @@
 											<!-- TAB TITLE  -->
 											<h2>Search</h2>
 											<br/>
-											<p>Enter a first name, a last name or both to find a faculty or staff member and click the Search button. Partial names can also be used.</p>
-											<br/>
+											<p>Enter a first name, a last name or both to find a faculty or staff member. Partial names can also be used.</p>
+											<!-- <p>Enter a first name, a last name or both to find a faculty or staff member and click the Search button. Partial names can also be used.</p> -->
 										</div>
 									</div>
 									<!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
 									<form>
 										<div class="row">
-											<div class="small-12 medium-4 columns">
+											<div class="small-12 medium-3 columns">
 												<label>First Name:</label><input type='text' ng-model='searchName.dirpepl_first_name' ng-change='currentPage = 0' />
 											</div>
-											<div class="small-12 medium-4 columns">
+											<div class="small-12 medium-3 columns">
 												<label>Last Name:</label><input type='text' ng-model='searchName.dirpepl_last_name' ng-change='currentPage = 0' />
 											</div>
-											<div class="small-12 medium-4 columns">
+											<div class="small-12 medium-3 columns">
 												<label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' ng-change='currentPage = 0' />
 											</div>
+											<div class="small-12 medium-3 small-centered text-center columns">
+												<a role="button" aria-label="search" class="button">SEARCH</a>
+											</div>
 										</div>
-										<a role="button" aria-label="search" class="button">SEARCH</a>
+										<!-- <a role="button" aria-label="search" class="button">SEARCH</a> -->
 									</form>
 								</div>
 								<!-- TAB 1 END  -->
@@ -3798,7 +3801,6 @@
 									<h2>Update Information</h2>
 									<br/>
 									<p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form below.</p>
-									<br/>
 									<!-- FORM INPUT FIELDS -->
 									<form data-abide>
 										<div class="row">
@@ -3854,13 +3856,24 @@
 									<div class="row">
 										<div class="small-12 columns">
 											<div class="search-list">
-												<h3>Directory Search Results</h3>
+
+												<div class="row">
+													<div class="small-12 medium-6 columns searchResults">
+														<h3>Directory Search Results</h3>
+													</div>
+													<div class="small-12 medium-6 columns searchResults">
+														<!-- <label>Order By:</label> -->
+														Order By:
+															<a class="button small" role="button" id="orderFirstName" ng-click="orderByFunction(0)">First Name</a>
+															<a class="button small" role="button" id="orderLastName" ng-click="orderByFunction(1)">Last Name</a>
+															<a class="button small" role="button" id="orderDepartment" ng-click="orderByFunction(2)">Department</a>
+													</div>
+												</div>
 												<br/>
-												<p>To reach a Faculty or Staff member dial the main switchboard at (905) 721-8668 and ask for the extension listed.</p>
-												<label>Order By:</label>
-													<a class="button small" role="button" id="orderFirstName" ng-click="orderByFunction(0)">First Name</a>
-													<a class="button small" role="button" id="orderLastName" ng-click="orderByFunction(1)">Last Name</a>
-													<a class="button small" role="button" id="orderDepartment" ng-click="orderByFunction(2)">Department</a>
+												<div class="small-12 columns">
+													<p>To reach a Faculty or Staff member dial the main switchboard at (905) 721-8668 and ask for the extension listed.</p>
+												</div>
+
 											</div>
 
 											<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
@@ -4054,7 +4067,7 @@
 			</div>
 			<!-- /.off-canvas-wrapper -->
 			<script src="https://shared.uoit.ca/global-2.1/dist/js/global.js"></script>
-			<script src="https://shared.uoit.ca/global-2.1/dist/js/jquery.min.js"></script>
+
 			<script src="https://shared.uoit.ca/global-2.1/dist/js/foundation.js"></script>
 			<script src="https://shared.uoit.ca/global-2.1/dist/js/app.js"></script>
 			<!-- <script src="assets/js/vendor/jquery.js"></script>

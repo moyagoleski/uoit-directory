@@ -11,17 +11,26 @@
 	<link href="https://uoit.ca/favicon.ico" rel="icon" type="image/x-icon" />
 	<link href="https://shared.uoit.ca/global-2.1/dist/css/uoit.css" rel="stylesheet" />
 	<script src="https://shared.uoit.ca/global-2.1/dist/js/jquery.min.js" type="text/javascript"></script>
+<<<<<<< HEAD
 	<link rel="stylesheet" href="assets/css/main.min.css">
 
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 	<link rel="stylesheet" href="assets/css/main.css">
 	</script>
+=======
+	<link rel="stylesheet" href="assets/css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+
+</script>
+</script>
+>>>>>>> parent of 09f08c0... added angular
 
 
 </head>
 
-<body>
+<body ng-app="myApp">
 	<!-- <script>
 		(function(i, s, o, g, r, a, m) {
 			i['GoogleAnalyticsObject'] = r;
@@ -3469,7 +3478,7 @@
 						<a href="../index.php">UOIT</a>
 					</li>
 				</ul>
-				<div class="page-row row" ng-app="myApp">
+				<div class="page-row row">
 					<section class="page-content has-sidebar">
 						<h2>DIRECTORY</h2>
 						<!-- tabs title start -->
@@ -3487,7 +3496,7 @@
 						<!-- tabs title end -->
 						<!-- tabs content start -->
 						<div class="tabs-content" data-tabs-content="tab1" id="tab1-content">
-							<div class="tabs-panel is-active" id="tab1-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab1-1-label">
+							<div class="tabs-panel is-active" id="tab1-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab1-1-label" ng-app="">
 								<div class="row">
 									<div class="small-12 medium-12 large-12 columns">
 										<!-- TAB TITLE  -->
@@ -3497,16 +3506,13 @@
 								</div>
 								<div class="row">
 									<div class="small-12 medium-4 large-4 columns">
-										<!-- <label>NAME:<input type="text" name="Name" searchCtrls ng-model='searchName.dirpepl_first_name'></label> -->
-										<label>First Name:</label><input type='text' ng-model=' name.dirpepl_first_name' />
-									</div>
-									<div class="small-12 medium-4 large-4 columns">
-										<label>Last Name:</label><input type='text' ng-model='name.dirpepl_last_name' />
+										<label>NAME:<input type="text" name="Name"></label>
 									</div>
 								</div>
 								<div class="row">
 									<div class="small-12 medium-12 large-12 columns">
 										<p>Select a department name and click Search to list all of the members.</p>
+<<<<<<< HEAD
 
 										<!-- <ul class="tabs" data-tabs="u3jluw-tabs" id="tab1" role="tablist">
 														<li class="tabs-title is-active" role="presentation" id="searchTab" ng-click="searchTabFunction()">
@@ -3520,6 +3526,142 @@
 														</li>
 													</ul> -->
 										<!-- tabs title end -->
+=======
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-12 medium-4 large-4  columns">
+										<label>DEPARTMENT:</label>
+										<select class="select-department" name="department_name">
+											<option>Academic Affairs - UOIT</option>
+											<option>Advancement Office and Alumni Relations - UOIT</option>
+											<option>Aramark</option>
+											<option>Automotive Centre of Excellence</option>
+											<option>Campus Athletic Centre</option>
+											<option>Campus Bookstore</option>
+											<option>Campus Childcare Centre</option>
+											<option>Campus Fieldhouse</option>
+											<option>Campus Health Centre</option>
+											<option>Campus Ice Centre</option>
+											<option>Campus Library</option>
+											<option>Centre for Institutional Quality Enhancement</option>
+											<option>Communications and Marketing - UOIT</option>
+											<option>ducation Library</option>
+											<option>English Language Centre</option>
+											<option>External Relations - UOIT</option>
+											<option>Facilities and Ancillary</option>
+											<option>Faculty Association - UOIT</option>
+											<option>Faculty of Business and Information Technology</option>
+											<option>Faculty of Education</option>
+											<option>Faculty of Energy Systems and Nuclear Science</option>
+											<option>Faculty of Engineering and Applied Science</option>
+											<option>Faculty of Health Sciences</option>
+											<option>Faculty of Science</option>
+											<option>Faculty of Social Science and Humanities</option>
+											<option>Finance - UOIT</option>
+											<option>GDI OMNI</option>
+											<option>Human Resources-UOIT</option>
+											<option>IT Services - Enterprise Systems</option>
+											<option>IT Services - ICT Infrastructure</option>
+											<option>IT Services - IT User Support Services</option>
+											<option>IT Services - Office of the CIO</option>
+											<option>IT Services - UOIT</option>
+											<option>Mailroom</option>
+											<option>Management Development Centre</option>
+											<option>Office of Campus Infrastructure and Sustainability</option>
+											<option>Office of Campus Safety</option>
+											<option>Office of Graduate Studies</option>
+											<option>Office of Institutional Research and Analysis</option>
+											<option>Office of Student Life</option>
+											<option>Office of Student Life - Career Centre</option>
+											<option>Office of Student Life - Indigenous Student Services</option>
+											<option>Office of Student Life - Planning and Communications</option>
+											<option>Office of Student Life - Student Accessibility Services</option>
+											<option>Office of Student Life - Student Experience Centre</option>
+											<option>Office of Student Life - Student Learning Centre</option>
+											<option>Office of Student Life - Student Mental Health Services</option>
+											<option>Office of Student Life - Varsity</option>
+											<option>Office of the Board of Governors - UOIT</option>
+											<option>Office of the President - UOIT</option>
+											<option>Office of the Provost</option>
+											<option>Office of the V.P. Research, Innovation and International</option>
+											<option>Parking Services</option>
+											<option>Print Shop</option>
+											<option>Regent Theatre</option>
+											<option>Registrar's Office - UOIT</option>
+											<option>Scheduling Office - UOIT</option>
+											<option>Shipping and Receiving - Oshawa Campus</option>
+											<option>Social Science Library</option>
+											<option>Student Association</option>
+											<option>Student Awards and Financial Aid</option>
+											<option>Teaching and Learning Centre</option>
+											<option>University Secretariat</option>
+											<option>Varsity Athletic Therapy
+										</select>
+									</div>
+								</div>
+
+								<!-- SEARCH BUTTON -->
+								<a role="button" aria-label="search" class="button" id="searchButton">SEARCH</a>
+							</div>
+							<div class="tabs-panel" id="tab1-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-2-label">
+								<!-- TAB TITLE  -->
+								<h2>General Contacts</h2>
+								<br/>
+								<!-- CONTACT TITLE  -->
+								<h3>Campus services</h3>
+								<div class="row">
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Bookstore</b>
+										</p>
+										<p class="contact-number">111-111-1111</p>
+									</div>
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Campus Security</b>
+										</p>
+										<p class="contact-number">111-111-1111</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Help Desk (Facilities, IT and Media services)</b>
+										</p>
+										<p class="contact-number">111-111-1111</p>
+									</div>
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Library</b>
+										</p>
+										<p class="contact-number">111-111-1111</p>
+									</div>
+								</div>
+								<br/>
+								<!-- CONTACT TITLE  -->
+								<h3>Student services</h3>
+								<div class="row">
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Alumni Office</b>
+										</p>
+										<p class="contact-number">111-111-1111</p>
+									</div>
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Career Centre</b>
+										</p>
+										<p class="contact-number">111-111-1111</p>
+									</div>
+								</div>
+							</div>
+							<div class="tabs-panel " id="tab1-3" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-3-label">
+								<!-- TAB TITLE  -->
+								<h2>Update Information</h2>
+								<!-- FORM INPUT FIELDS -->
+								<form>
+>>>>>>> parent of 09f08c0... added angular
 
 										<!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
 										<div class="row">
@@ -3554,6 +3696,7 @@
 											<a class="button [primary]/[lightblue]" role="button">Faculty and staff services</a>
 										</div>
 									</div>
+<<<<<<< HEAD
 									<br/> -->
 													<!-- CONTACT TITLE  -->
 													<h3>Campus services</h3>
@@ -3909,6 +4052,112 @@
 												<li><a href="#" aria-label="Page 13">13</a></li>
 												<li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
 											</ul>
+=======
+									<!-- SUBMIT BUTTON -->
+									<a data-open="exampleModal1" role="button" aria-label="submit form" class="button">SUBMIT</a>
+								</form>
+							</div>
+						</div>
+						<!-- tabs content end -->
+
+						<!-- search list start -->
+						<div class="callout search-list" id="searchResult">
+							<!-- search list title -->
+							<h2>Directory Search Results</h2>
+							<p>To reach a Faculty or Staff member dial the main switchboard at (905)721-8668 and ask for the extension below</p>
+							<div class="filter-radio">
+								<!-- filter button -->
+								<div class="small button-group">
+									<a class="button">First Name</a>
+									<a class="button">Last Name</a>
+									<a class="button">Department</a>
+								</div>
+							</div>
+
+								<!-- <div ng-controller="FirstCtrl">
+								    {{ people | json}}
+								    <span ng-repeat="person in people">
+								        <div people info="person"></div>
+								    </span>
+								</div> -->
+
+							<ul class="accordion" data-allow-all-closed="true" data-accordion ng-controller="FirstCtrl">
+									<li class="accordion-item" data-accordion-item ng-repeat="person in people" >
+										<a class="accordion-title" people info="person"></a>
+										<div class="accordion-content" data-tab-content>
+										</div>
+									</li>
+
+									<li class="accordion-item" data-accordion-item>
+										<!-- accordion tab title -->
+										<a href="" class="accordion-title">John
+															<ul class="accordion-title-desc">
+																<li>
+																	<span>Title:</span>
+																	Academic Affairs Specialist</li>
+																<li>
+																	<span>Department:</span>
+																</li>
+															</ul>
+														</a>
+										<div class="accordion-content" data-tab-content>
+											<ul class="search-list-info">
+												<li>
+													<span>Location:</span> CC2309
+												</li>
+												<li>
+													<span>Building:</span> Campus Corners</li>
+												<li>
+													<span>Extension:</span> 6136
+												</li>
+												<li>
+													<span>E-mail:</span> caitlin.crompton@uoit.ca
+												</li>
+											</ul>
+										</div>
+									</li>
+
+										<!-- Accordion tab title -->
+										<a href="" class="accordion-title">John
+										<ul class="accordion-title-desc">
+											<li>
+												<span>Title:</span>
+												Academic Affairs Specialist</li>
+											<li>
+												<span>Department:</span>
+											</li>
+										</ul>
+									</a>
+										<div class="accordion-content" data-tab-content>
+											<ul class="search-list-info">
+												<li>
+													<span>Location:</span> CC2309
+												</li>
+												<li>
+													<span>Building:</span> Campus Corners</li>
+												<li>
+													<span>Extension:</span> 6136
+												</li>
+												<li>
+													<span>E-mail:</span> caitlin.crompton@uoit.ca
+												</li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<ul class="pagination text-center" role="navigation" aria-label="Pagination">
+								<li class="pagination-previous disabled">Previous</li>
+								<li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+								<li><a href="#" aria-label="Page 2">2</a></li>
+								<li><a href="#" aria-label="Page 3">3</a></li>
+								<li><a href="#" aria-label="Page 4">4</a></li>
+								<li class="ellipsis"></li>
+								<li><a href="#" aria-label="Page 12">12</a></li>
+								<li><a href="#" aria-label="Page 13">13</a></li>
+								<li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
+							</ul>
+>>>>>>> parent of 09f08c0... added angular
 
 											<!-- search list end -->
 											<!-- tabs title end -->
@@ -4071,9 +4320,9 @@
 			</div>
 			<!-- /.off-canvas-content -->
 			</div>
-
 			<!-- /.off-canvas-wrapper -->
 
+			<script src="app/controller.js"></script>
 
 
 			<script src="https://shared.uoit.ca/global-2.1/dist/js/global.js"></script>
@@ -4084,12 +4333,15 @@
 			<script src="assets/js/vendor/what-input.js"></script>
 			<script src="assets/js/vendor/foundation.js"></script> -->
 			<script src="assets/js/app.js"></script>
+<<<<<<< HEAD
 			<script src="app/controller.js"></script>
 
 			<!-- CONNECT TO ANGULAR  -->
 			<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
 			<script src="assets/js/myapp.js" type="text/javascript"></script>
 			<!-- <script src="assets/js/mycontroller.js" type="text/javascript"></script> -->
+=======
+>>>>>>> parent of 09f08c0... added angular
 
 </body>
 

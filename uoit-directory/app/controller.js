@@ -1,39 +1,33 @@
-var app = angular.module("myApp", []);
+var App = angular.module("myApp", []);
 
-app.filter('unique', function() {
-   // we will return a function which will take in a collection
-   // and a keyname
-   return function(collection, keyname) {
-      // we define our output and keys array;
-      var output = [],
-          keys = [];
-
-      // we utilize angular's foreach function
-      // this takes in our original collection and an iterator function
-      angular.forEach(collection, function(item) {
-          // we check to see whether our object exists
-          var key = item[keyname];
-          // if it's not already part of our keys array
-          if(keys.indexOf(key) === -1) {
-              // add it to our keys array
-              keys.push(key);
-              // push this item to our final output array
-              output.push(item);
-          }
-      });
-      // return our array which should be devoid of
-      // any duplicates
-      return output;
-   };
+App.controller("FirstCtrl", function($scope) {
+	$scope.people = [{
+			name: "abc",
+			title: "Academic Affairs Specialist",
+			Department: "Academic Affairs Specialist"
+		},
+		{
+			name: "123",
+			title: "Academic Affairs Specialist",
+			Department: "Academic Affairs Specialist"
+		}
+	];
 });
+<<<<<<< HEAD
 
 app.factory('usersInfoService', function($http) {
+=======
+App.directive("people", function() {
+>>>>>>> parent of 09f08c0... added angular
 	return {
-        get:  function(){
-            return $http.get('./directory.json'); // this will return a promise to controller
-        }
+		restrict: "A",
+		scope: {
+			info: "="
+		},
+		template: "{{info.name}} <ul class='accordion-title-desc'><li><span>Title:</span>{{info.title}}</li><li><span>Department:</span>{{info.Department}}</li></ul>"
 	};
 });
+<<<<<<< HEAD
 
 app.controller('getUserCtrl', function($scope, usersInfoService){
 		usersInfoService.get().then(function(response) {
@@ -118,3 +112,5 @@ app.controller('getUserCtrl', function($scope, usersInfoService){
 //   });
 //
 // });
+=======
+>>>>>>> parent of 09f08c0... added angular

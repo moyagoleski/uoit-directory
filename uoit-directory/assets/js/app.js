@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // $("#searchResult").hide();
 //
@@ -34,3 +35,18 @@
 //   alert("order by department!");
 // });
 >>>>>>> moyagoleski/Moya-Work
+=======
+//
+//
+// $(document).foundation();
+//
+// $("#searchResult").hide();
+//
+// $('#searchButton').click(function () {
+//   $("#searchResult").show();
+// });
+//
+// $('.tabs').on("click", "li", function (event) {
+//   $("#searchResult").hide();
+// });
+>>>>>>> parent of 09f08c0... added angular

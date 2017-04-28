@@ -14,8 +14,12 @@ App.controller("FirstCtrl", function($scope) {
 	];
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 app.factory('usersInfoService', function($http) {
+=======
+App.directive("people", function() {
+>>>>>>> parent of 09f08c0... added angular
 =======
 App.directive("people", function() {
 >>>>>>> parent of 09f08c0... added angular
@@ -27,6 +31,7 @@ App.directive("people", function() {
 		template: "{{info.name}} <ul class='accordion-title-desc'><li><span>Title:</span>{{info.title}}</li><li><span>Department:</span>{{info.Department}}</li></ul>"
 	};
 });
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 app.controller('getUserCtrl', function($scope, usersInfoService){
@@ -112,5 +117,7 @@ app.controller('getUserCtrl', function($scope, usersInfoService){
 //   });
 //
 // });
+=======
+>>>>>>> parent of 09f08c0... added angular
 =======
 >>>>>>> parent of 09f08c0... added angular

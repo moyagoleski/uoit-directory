@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // $("#searchResult").hide();
 //
@@ -36,6 +37,8 @@
 // });
 >>>>>>> moyagoleski/Moya-Work
 =======
+=======
+>>>>>>> parent of 09f08c0... added angular
 //
 //
 // $(document).foundation();
@@ -49,4 +52,7 @@
 // $('.tabs').on("click", "li", function (event) {
 //   $("#searchResult").hide();
 // });
+<<<<<<< HEAD
+>>>>>>> parent of 09f08c0... added angular
+=======
 >>>>>>> parent of 09f08c0... added angular

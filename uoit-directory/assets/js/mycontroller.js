@@ -70,8 +70,8 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
 
     // pagination function
     $scope.currentPage = 0;
-    $scope.pageSize = 5;
-    $scope.jsonData = [];
+    $scope.pageSize    = 5;
+    $scope.jsonData    = [];
 
     // change this function to try and fix 'next' button
     $scope.numberOfPages=function(){

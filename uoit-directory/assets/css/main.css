@@ -8,12 +8,9 @@
 
 /* search list*/
 .search-list {
-  padding: 1rem; }
+  padding: 25px; }
 
 .searchResults {
-  max-width: 48%;
-  margin: 1%;
-  padding: 1rem;
   display: inline-block; }
 
 .accordion .accordion-item {

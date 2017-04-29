@@ -17,23 +17,15 @@ $accordion-item-background-hover: #0077CA;
 .tabs-content {
 	padding: 1rem;
 }
+
 /* search list*/
 .search-list {
-	padding: 1rem;
+	padding: 25px;
 }
 
 .searchResults {
-	// border: solid 2px $light-blue;
-	// color: $light-blue;
-	max-width: 48%;
-	margin: 1%;
-	padding: 1rem;
-	// padding: 25px;
 	display: inline-block;
-	// box-sizing: border-box;
-	// margin-bottom: 15px;
 }
-
 
 .accordion {
 	.accordion-item {

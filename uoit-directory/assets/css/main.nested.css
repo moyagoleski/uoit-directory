@@ -1,31 +1,22 @@
 .tabs .tabs-title {
   text-align: center; }
-  .tabs .tabs-title > a {
-    padding: 10px; }
 
 .tabs-content {
-  padding: 1rem; }
+  padding: 2rem; }
 
 /* search list*/
 .search-list {
-  padding: 25px; }
-
-.searchResults {
-  display: inline-block; }
+  padding: 4rem; }
 
 .accordion .accordion-item {
-  margin: 0 0;
-  /*padding: 10px;*/
+  margin: 1rem 0;
   /* clear default border*/ }
   .accordion .accordion-item .accordion-title {
-    color: #151515;}
+    color: #151515;
+    height: 2.8rem; }
     .accordion .accordion-item .accordion-title:hover {
-      background-color: #fff;
-      color: #151515;
-      cursor: default; }
-    .accordion .accordion-item .accordion-title:focus {
-      background-color: #fff;
-      color: #151515; }
+      background-color: #0077CA;
+      color: #fff; }
   .accordion .accordion-item :last-child:not(.is-active) > .accordion-title {
     border: 0; }
   .accordion .accordion-item .accordion-content {
@@ -34,8 +25,7 @@
     .accordion .accordion-item .accordion-content .search-list-info li {
       display: inline-block;
       box-sizing: border-box;
-      width: 49%;
-      padding: 5px 0 5px 0; }
+      width: 49%; }
       .accordion .accordion-item .accordion-content .search-list-info li span {
         font-weight: bold; }
 
@@ -45,11 +35,11 @@
   font-size: 0.88rem;
   line-height: 0.88rem;
   margin: 0;
-  padding: 15px 0 0 0;
+  padding: 0;
   text-transform: capitalize; }
   .accordion-title-desc li, .accordion .accordion-item .accordion-content .search-list-info li {
     list-style: none;
-    width: 50%;
+    width: 49%;
     display: inline-block;
     font-weight: normal;
     margin: 0; }
@@ -66,60 +56,38 @@
   /* display two columns in a row*/
   padding: 1rem;
   display: inline-block;
-  box-sizing: border-box;
-  margin-bottom: 15px; }
-
-.contact-number {
-  margin-bottom: 0; }
+  box-sizing: border-box; }
 
 .pagination {
   margin-top: 3rem; }
-
-.pagination a:hover, .pagination button:hover {
-  background: #003C71;
-  color: #fff;
-  cursor: pointer; }
-
-.pagination .current:hover {
-  background: #0077CA;
-  color: #fff;
-  cursor: default; }
 
 @media screen and (min-width: 75em) {
   /* responsive tabs title width */
   .tabs .tabs-title {
     width: 33%;
     margin-right: 0.5%; }
-
   .tabs-title:last-child {
     margin-right: 0; } }
+
 @media screen and (max-width: 43em) {
   /* set min-height in case accordion title overflow*/
   .accordion .accordion-title {
     min-height: 4rem; }
-
   /* display verticle*/
   .accordion-title-desc li, .accordion .accordion-item .accordion-content .search-list-info li {
     list-style: none;
     width: 100%;
     display: block;
     font-weight: normal; }
-
-  /*  clear left and right margin for mobile page*/
-  .searchResults {
-    display: block;
-    min-width: 100%;
-    margin: 0.5rem 0; }
-
   /*  clear left and right margin for mobile page*/
   .contact-card {
     display: block;
     min-width: 100%;
     margin: 0.5rem 0; }
-
   form .row .columns {
     display: block;
     min-width: 100%; } }
+
 /* tabs title nav color*/
 /* .tabs {*/
 /* 	border-color: $dark-blue;*/

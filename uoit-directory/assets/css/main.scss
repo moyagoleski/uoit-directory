@@ -21,15 +21,11 @@ $accordion-item-background-hover: #0077CA;
 
 .accordion {
 	.accordion-item {
-		border-top: 1px lightgrey solid;
 		margin: 1rem 0;
 
 		.accordion-title {
 			color: $text-color-black;
-			box-shadow: none;
-			border: 0;
 			height: 2.8rem;
-			font-size: 1.2rem;
 
 			&:hover {
 				background-color: $accordion-item-background-hover;

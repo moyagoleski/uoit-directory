@@ -3883,7 +3883,7 @@
 											<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
 											<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
 												<ul class="accordion" data-accordion data-allow-all-closed="true">
-													<li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize track by $index">
+													<li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize">
 														<a class="accordion-title" ng-click="showDetails = ! showDetails">{{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
 															<ul class='accordion-title-desc'><li><b>Department: </b>{{x.dirschl_school_name}}</li><li><b>Title:</b> {{x.dirrank_rank_name}}</li></ul>
 														</a>

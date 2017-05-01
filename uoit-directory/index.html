@@ -3882,47 +3882,21 @@
 
 											<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
 											<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
-											<div ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize">
-												<ul class="accordion" data-allow-all-closed="true" data-accordion>
-													<li class="accordion-item is-active" data-accordion-item>
-														<!-- accordion tab title -->
-														<a href="" class="accordion-title">
-															{{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
-															<ul class="accordion-title-desc">
-																<li>
-																	<span>Department:</span>
-																	{{ x.dirschl_school_name }}
-																</li>
-															</ul>
+												<ul class="accordion" data-accordion data-allow-all-closed="true">
+													<li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize">
+														<a class="accordion-title"><b>Name:</b> {{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
+															<ul class='accordion-title-desc'><li><b>Department: </b>{{x.dirschl_school_name}}</li><li><b>Title:</b> {{x.dirrank_rank_name}}</li></ul>
 														</a>
 														<div class="accordion-content" data-tab-content>
-															<ul class="search-list-info">
-																<li>
-																	<span>Title:</span>
-																	{{ x.dirrank_rank_name }}
-																</li>
-																<li>
-																	<span>Office:</span>
-																	{{ x.dirpepl_office }}
-																</li>
-																<li>
-																	<span>Building:</span>
-																	{{ x.dirbuilding_building_name }}
-																</li>
-																<li>
-																	<span>Extension:</span>
-																	{{ x.dirpepl_extension }}
-																</li>
-																<li>
-																	<span>E-mail:</span>
-																	{{ x.email }}
-																</li>
+															<ul class='search-list-info'>
+																<li><b>Location: </b>{{x.dirschl_school_name }}</li>
+																<li><b>Building: </b>{{x.dirbuilding_building_name}}</li>
+																<li><b>Extension: </b>{{x.dirpepl_extension}}</li>
+																<li><b>E-mail: </b>{{x.email}}</li>
 															</ul>
 														</div>
 													</li>
 												</ul>
-											</div>
-
 											<!-- PAGINATION - FUNCTIONAL -->
 											<ul class="pagination text-center" role="navigation" aria-label="Pagination" ng-hide="(currentPage + 1) > numberOfPages()">
 												<li class="pagination-previous">

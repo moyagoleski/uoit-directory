@@ -3495,7 +3495,7 @@
 											<!-- TAB TITLE  -->
 											<h2>Search</h2>
 											<br/>
-											<p>Enter a first name, a last name or both to find a faculty or staff member. Partial names can also be used.</p>
+											<p>Enter a first name, a last name, a department or all to find a Faculty or Staff member. Partial names can also be used.</p>
 											<!-- <p>Enter a first name, a last name or both to find a faculty or staff member and click the Search button. Partial names can also be used.</p> -->
 										</div>
 									</div>
@@ -3880,11 +3880,29 @@
 
 											</div>
 
+											<!-- ** CAN DELETE - WORKS OUTSTIDE OF NG-REPEAT  -->
+											<!-- SHOWS DESIGN OF ACTIVE -->
+											<!-- <ul class="accordion" data-accordion data-allow-all-closed="true">
+												<li class="accordion-item is-active" data-accordion-item>
+													<a class="accordion-title"><b>Name:</b> {{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
+														<ul class='accordion-title-desc'><li><b>Department: </b>{{x.dirschl_school_name}}</li><li><b>Title:</b> {{x.dirrank_rank_name}}</li></ul>
+													</a>
+													<div class="accordion-content" data-tab-content>
+														<ul class='search-list-info'>
+															<li><b>Location: </b>{{x.dirschl_school_name }}</li>
+															<li><b>Building: </b>{{x.dirbuilding_building_name}}</li>
+															<li><b>Extension: </b>{{x.dirpepl_extension}}</li>
+															<li><b>E-mail: </b>{{x.email}}</li>
+														</ul>
+													</div>
+												</li>
+											</ul> -->
+
 											<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
 											<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
 												<ul class="accordion" data-accordion data-allow-all-closed="true">
 													<li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize">
-														<a class="accordion-title"><b>Name:</b> {{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
+														<a class="accordion-title">{{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
 															<ul class='accordion-title-desc'><li><b>Department: </b>{{x.dirschl_school_name}}</li><li><b>Title:</b> {{x.dirrank_rank_name}}</li></ul>
 														</a>
 														<div class="accordion-content" data-tab-content>
@@ -3897,6 +3915,7 @@
 														</div>
 													</li>
 												</ul>
+
 											<!-- PAGINATION - FUNCTIONAL -->
 											<ul class="pagination text-center" role="navigation" aria-label="Pagination" ng-hide="(currentPage + 1) > numberOfPages()">
 												<li class="pagination-previous">

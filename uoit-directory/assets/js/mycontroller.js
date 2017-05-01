@@ -18,6 +18,14 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
         }
     });
 
+    // window.onload = function() {
+    //   $('.accordion').foundation();
+    //   $('a', '.accordion-item').on('click', function(e) {
+    //     alert('WORKS');
+    //     $('.accordion-content').show();
+    //   });
+    // }
+
     // show and hide Directoy Search Result when you go to another tab
     $scope.searchTabFunction = function() {
       $("#angularSearch").show();

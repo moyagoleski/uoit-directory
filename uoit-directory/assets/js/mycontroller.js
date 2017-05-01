@@ -18,14 +18,6 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
         }
     });
 
-    // window.onload = function() {
-    //   $('.accordion').foundation();
-    //   $('a', '.accordion-item').on('click', function(e) {
-    //     alert('WORKS');
-    //     $('.accordion-content').show();
-    //   });
-    // }
-
     // show and hide Directoy Search Result when you go to another tab
     $scope.searchTabFunction = function() {
       $("#angularSearch").show();
@@ -78,7 +70,7 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
 
     // pagination function
     $scope.currentPage = 0;
-    $scope.pageSize    = 5;
+    $scope.pageSize    = 7;
     $scope.jsonData    = [];
 
     // change this function to try and fix 'next' button

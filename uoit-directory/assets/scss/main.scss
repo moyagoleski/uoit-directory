@@ -22,8 +22,7 @@ $lightgrey : #F6F7F7;
 /* search list*/
 .search-list {
 	padding: 25px;
-	// padding: 4rem;
-
+	padding-bottom: 10px;
 }
 
 .searchResults {
@@ -40,7 +39,6 @@ $lightgrey : #F6F7F7;
 			text-transform: capitalize;
 			font-size: 18px;
 			padding-top: 15px;
-			// height: 2.8rem;
 
 			&:hover {
 				background-color: $accordion-item-background-hover;
@@ -48,16 +46,16 @@ $lightgrey : #F6F7F7;
 			}
 		}
 		/* clear default border*/
-		:last-child:not(.is-active) > .accordion-title {
-			// border: 0;
-		}
+		// :last-child:not(.is-active) > .accordion-title {
+		// 	// border: 0;
+		// }
 
-		.accordion-content {
-			// border: 0;
-			// padding: 0 1rem;
+		.a-content {
+		// .accordion-content {
 			padding: 1rem 1rem;
-
-
+			max-height: 100px;
+			transition: .8s;
+			overflow: hidden;
 
 			.search-list-info {
 				@extend .accordion-title-desc;
@@ -66,8 +64,6 @@ $lightgrey : #F6F7F7;
 					display: inline-block;
 					box-sizing: border-box;
 					width: 49%;
-					// padding-top: 20px;
-					// padding-top: 5px;
 
 					span {
 						font-weight: bold;
@@ -75,13 +71,24 @@ $lightgrey : #F6F7F7;
 				}
 			}
 		}
+
+		.a-content.hidden {
+		    max-height: 0;
+				padding: 0 1rem;
+		}
+
 	}
 }
+
+// hides '+' for now because thhe '+' and '-' are not toggling
+.accordion-title::before {
+	content: "";
+}
+
 /* search list title (name,position, department)*/
 .accordion-title-desc {
 	width: 100%;
 	font-size: 0.88rem;
-	// line-height: 0.88rem;
 	margin: 0;
 	padding: 0;
 	text-transform: capitalize;
@@ -188,6 +195,8 @@ $lightgrey : #F6F7F7;
 		}
 	}
 }
+
+
 /* tabs title nav color*/
 /* .tabs {*/
 /* 	border-color: $dark-blue;*/

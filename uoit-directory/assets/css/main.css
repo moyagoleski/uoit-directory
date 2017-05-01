@@ -8,7 +8,8 @@
 
 /* search list*/
 .search-list {
-  padding: 25px; }
+  padding: 25px;
+  padding-bottom: 10px; }
 
 .searchResults {
   display: inline-block; }
@@ -25,29 +26,38 @@
     .accordion .accordion-item .accordion-title:hover {
       background-color: #0077CA;
       color: #fff; }
-  .accordion .accordion-item .accordion-content {
-    padding: 1rem 1rem; }
-    .accordion .accordion-item .accordion-content .search-list-info li {
+  .accordion .accordion-item .a-content {
+    padding: 1rem 1rem;
+    max-height: 100px;
+    transition: .8s;
+    overflow: hidden; }
+    .accordion .accordion-item .a-content .search-list-info li {
       display: inline-block;
       box-sizing: border-box;
       width: 49%; }
-      .accordion .accordion-item .accordion-content .search-list-info li span {
+      .accordion .accordion-item .a-content .search-list-info li span {
         font-weight: bold; }
+  .accordion .accordion-item .a-content.hidden {
+    max-height: 0;
+    padding: 0 1rem; }
+
+.accordion-title::before {
+  content: ""; }
 
 /* search list title (name,position, department)*/
-.accordion-title-desc, .accordion .accordion-item .accordion-content .search-list-info {
+.accordion-title-desc, .accordion .accordion-item .a-content .search-list-info {
   width: 100%;
   font-size: 0.88rem;
   margin: 0;
   padding: 0;
   text-transform: capitalize; }
-  .accordion-title-desc li, .accordion .accordion-item .accordion-content .search-list-info li {
+  .accordion-title-desc li, .accordion .accordion-item .a-content .search-list-info li {
     list-style: none;
     width: 49%;
     display: inline-block;
     font-weight: normal;
     margin: 0; }
-  .accordion-title-desc span, .accordion .accordion-item .accordion-content .search-list-info span {
+  .accordion-title-desc span, .accordion .accordion-item .a-content .search-list-info span {
     font-weight: bold; }
 
 .page-content ul.accordion li ul:not(.tabs), .page-content ul.accordion li ol, .page_content_news ul.accordion li ul:not(.tabs), .page_content_news ul.accordion li ol {
@@ -97,7 +107,7 @@
     min-height: 4rem; }
 
   /* display verticle*/
-  .accordion-title-desc li, .accordion .accordion-item .accordion-content .search-list-info li {
+  .accordion-title-desc li, .accordion .accordion-item .a-content .search-list-info li {
     list-style: none;
     width: 100%;
     display: block;

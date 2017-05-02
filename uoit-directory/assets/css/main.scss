@@ -13,6 +13,19 @@ $accordion-item-background-hover: #0077CA;
 
 .tabs-content {
 	padding: 2rem;
+
+	.row {
+		.columns {
+			position: relative;
+
+			.searchBtn {
+				position: absolute;
+				top: 50%;
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+			}
+		}
+	}
 }
 /* search list*/
 .search-list {

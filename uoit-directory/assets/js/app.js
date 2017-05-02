@@ -17,3 +17,10 @@ $(document)
 .bind("formvalid.zf.abide", function(e,$form) {
   // ajax submit
 });
+
+// smooth scroll to top of ‘Directory Search Results’
+$(".scrollTop").click(function() {
+    $('html,body').animate({
+        scrollTop: $("#angularSearch").offset().top},
+        'slow');
+});

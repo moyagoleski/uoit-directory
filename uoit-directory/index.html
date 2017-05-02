@@ -3511,11 +3511,10 @@
 											<div class="small-12 medium-3 columns">
 												<label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' ng-change='currentPage = 0' />
 											</div>
-											<div class="small-12 medium-3 small-centered text-center columns">
+											<!-- <div class="small-12 medium-3 small-centered text-center columns">
 												<a role="button" aria-label="search" class="button">SEARCH</a>
-											</div>
+											</div> -->
 										</div>
-										<!-- <a role="button" aria-label="search" class="button">SEARCH</a> -->
 									</form>
 								</div>
 								<!-- TAB 1 END  -->
@@ -3846,7 +3845,7 @@
 										</div>
 										<!-- SUBMIT BUTTON -->
 										<fieldset class="large-6 columns">
-											<button class="button" type="submit" value="Submit">Submit</button>
+											<button class="button" type="submit" value="Submit" role="button">Submit</button>
 										</fieldset>
 									</form>
 								</div>
@@ -3906,7 +3905,7 @@
 											<!-- PAGINATION - FUNCTIONAL -->
 											<ul class="pagination text-center" role="navigation" aria-label="Pagination" ng-hide="(currentPage + 1) > numberOfPages()">
 												<li class="pagination-previous">
-													<button role="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+													<button role="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class="scrollTop">
 											        <span class="icon_arrow_left"></span> Previous
 											    </button>
 												</li>
@@ -3916,7 +3915,7 @@
 													</button>
 												</li>
 												<li class="pagination-next">
-													<button role="button" ng-disabled="(currentPage + 1) >= numberOfPages()" ng-click="currentPage=currentPage+1">
+													<button role="button" ng-disabled="(currentPage + 1) >= numberOfPages()" ng-click="currentPage=currentPage+1" class="scrollTop">
 															Next <span class="icon_arrow_right"></span>
 													</button>
 												</li>

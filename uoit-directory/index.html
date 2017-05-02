@@ -3802,7 +3802,7 @@
 									<br/>
 									<p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form below.</p>
 									<!-- FORM INPUT FIELDS -->
-									<form data-abide novalidate>
+									<form data-abide novalidate id="updateForm">
 										<!-- ERROR MESSAGE FOR USER -->
 										<div data-abide-error class="alert callout" style="display: none;">
 											<p><i class="fi-alert"></i> There appears to be errors in your form.</p>
@@ -3898,7 +3898,6 @@
 																<li><b>Office: </b>{{x.dirpepl_office}}</li>
 																<li><b>Extension: </b>{{x.dirpepl_extension}}</li>
 																<li><b>E-mail: </b> <a href="mailto:{{x.email}}">{{x.email}}</a></li>
-
 															</ul>
 														</div>
 													</li>

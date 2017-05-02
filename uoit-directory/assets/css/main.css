@@ -29,7 +29,7 @@
   .accordion .accordion-item .a-content {
     padding: 1rem 1rem;
     max-height: 100px;
-    transition: .8s;
+    transition: .7s;
     overflow: hidden; }
     .accordion .accordion-item .a-content .search-list-info li {
       display: inline-block;

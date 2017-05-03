@@ -3513,9 +3513,17 @@
 												<!-- <label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' ng-change='currentPage = 0' /> -->
 												<!-- SEARCH DEPARTMENT BY DROPDOWN -->
 												<label>Department:</label>
-													<select ng-model="searchDepartment" ng-options="x.dirschl_school_name for x in jsonData | orderBy:'dirschl_school_name' | unique:'dirschl_school_name'" ng-change='currentPage = 0'>
+													<select ng-model="searchDepartment" ng-options="x.dirschl_school_name for x in jsonData | orderBy:'dirschl_school_name'" ng-change='currentPage = 0'>
+													<!-- <select ng-model="searchDepartment" ng-options="x.dirschl_school_name for x in jsonData | orderBy:'dirschl_school_name' | unique:'dirschl_school_name'" ng-change='currentPage = 0'> -->
 														<option value="">Select</option>
 													</select>
+
+													<!-- <select ng-model='name.dirschl_school_name' ng-change='changeFilter()'  ng-controller="getUserCtrl" value="{{users.dirschl_school_name}}" ng-options="department.dirschl_school_name for department in users | unique:'dirschl_school_name'">
+														<option value="">Select Department</option>
+													</select> -->
+
+
+
 											</div>
 											<!-- <div class="small-12 medium-3 small-centered text-center columns">
 												<a role="button" aria-label="search" class="button">SEARCH</a>

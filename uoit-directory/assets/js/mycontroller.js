@@ -76,7 +76,7 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
     // pagination changes based on searchName results AND searchDepartment results
     $scope.numberOfPages=function(){
       var myFilteredData;
-      myFilteredData = $filter('filter')($scope.jsonData,$scope.searchName,);
+      myFilteredData = $filter('filter')($scope.jsonData,$scope.searchName);
       myFilteredData = $filter('filter')(myFilteredData,$scope.searchDepartment.dirschl_school_name);
 
       //Filter the data
@@ -84,9 +84,14 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
         // return Math.ceil($scope.jsonData.length/$scope.pageSize);
     }
 
-    for (var i=0; i<45; i++) {
+    for (var i=0; i<1000; i++) {
         $scope.jsonData.push("Item "+i);
     }
+
+    //Filter all the categories, return an array of duplicated categories
+    // var allCategories = json.modules.map(function(item) {
+    //   return item.x;
+    // });
 
 });
 
@@ -100,41 +105,41 @@ app.filter('startFrom', function() {
 
 
 // does not repeat in departments in dropdown
-app.filter('unique', function () {
-
-    return function (items, filterOn) {
-
-        if (filterOn === false) {
-            return items;
-        }
-
-        if ((filterOn || angular.isUndefined(filterOn)) && angular.isArray(items)) {
-            var hashCheck = {}, newItems = [];
-
-            var extractValueToCompare = function (item) {
-                if (angular.isObject(item) && angular.isString(filterOn)) {
-                    return item[filterOn];
-                } else {
-                    return item;
-                }
-            };
-
-            angular.forEach(items, function (item) {
-                var valueToCheck, isDuplicate = false;
-
-                for (var i = 0; i < newItems.length; i++) {
-                    if (angular.equals(extractValueToCompare(newItems[i]), extractValueToCompare(item))) {
-                        isDuplicate = true;
-                        break;
-                    }
-                }
-                if (!isDuplicate) {
-                    newItems.push(item);
-                }
-
-            });
-            items = newItems;
-        }
-        return items;
-    };
-});
+// app.filter('unique', function () {
+//
+//     return function (items, filterOn) {
+//
+//         if (filterOn === false) {
+//             return items;
+//         }
+//
+//         if ((filterOn || angular.isUndefined(filterOn)) && angular.isArray(items)) {
+//             var hashCheck = {}, newItems = [];
+//
+//             var extractValueToCompare = function (item) {
+//                 if (angular.isObject(item) && angular.isString(filterOn)) {
+//                     return item[filterOn];
+//                 } else {
+//                     return item;
+//                 }
+//             };
+//
+//             angular.forEach(items, function (item) {
+//                 var valueToCheck, isDuplicate = false;
+//
+//                 for (var i = 0; i < newItems.length; i++) {
+//                     if (angular.equals(extractValueToCompare(newItems[i]), extractValueToCompare(item))) {
+//                         isDuplicate = true;
+//                         break;
+//                     }
+//                 }
+//                 if (!isDuplicate) {
+//                     newItems.push(item);
+//                 }
+//
+//             });
+//             items = newItems;
+//         }
+//         return items;
+//     };
+// });

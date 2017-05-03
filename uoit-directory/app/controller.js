@@ -1,49 +1,107 @@
 var app = angular.module("myApp", []);
 
-app.filter('unique', function() {
-   // we will return a function which will take in a collection
-   // and a keyname
-   return function(collection, keyname) {
-      // we define our output and keys array;
-      var output = [],
-          keys = [];
 
-      // we utilize angular's foreach function
-      // this takes in our original collection and an iterator function
-      angular.forEach(collection, function(item) {
-          // we check to see whether our object exists
-          var key = item[keyname];
-          // if it's not already part of our keys array
-          if(keys.indexOf(key) === -1) {
-              // add it to our keys array
-              keys.push(key);
-              // push this item to our final output array
-              output.push(item);
-          }
-      });
-      // return our array which should be devoid of
-      // any duplicates
-      return output;
-   };
-});
-
-app.factory('userInfoService', function($http) {
+app.service('usersInfoService', function($http) {
 	return {
-        get:  function(){
-            return $http.get('./directory.json'); // this will return a promise to controller
-        }
+		get: function() {
+			return $http.get('./directory.json'); // this will return a promise to controller
+		}
 	};
 });
 
-app.controller('getUserCtrl', function($scope, userInfoService){
-		userInfoService.get().then(function(response) {
-	  	$scope.users = response.data.query_info.person_info;
-			console.log($scope.users);
+app.controller('getUsersCtrl', ['$scope', '$filter', 'usersInfoService', function($scope, $filter, usersInfoService) {
+	$scope.search = function () {
+		$scope.name = $scope.searchInput;
+	};
+
+	$scope.select = function () {
+		// clear input field
+		$scope.searchInput = "";
+		$scope.name= name.dirschl_school_name;
+	};
+
+	var regex = /&|-|UOIT|/g;
+
+	  $scope.currentPage = 0;
+    $scope.pageSize = 10;
+    $scope.name = '';
+
+		$scope.departments = [];
+
+	usersInfoService.get().then(function(response) {
+		$scope.users = response.data.query_info.person_info;
+		for (var i in $scope.users) {
+			$scope.users[i].dirschl_school_name = $scope.users[i].dirschl_school_name.replace(regex, "");
+			$scope.departments[i] = response.data.query_info.person_info[i].dirschl_school_name;
+		}
+		// remove duplicates from json data departments (dirschl_school_name)
+		$scope.departments = $scope.departments.filter(function(elem, index, self) {
+			return index == self.indexOf(elem);
 		});
+		// sort departments array
+		$scope.departments.sort();
+
+
+		$scope.getData = function() {
+			return $filter('filter')($scope.users, $scope.name);
+		};
+
+		$scope.numberOfPages = function() {
+			return Math.ceil($scope.getData().length / $scope.pageSize);
+		};
+	});
+}]);
+
+// return arr
+app.filter('startFrom', function() {
+	return function(input, start) {
+		start = +start; //parse to int
+		return input.slice(start);
+	};
 });
 
 
+
+
+// app.controller('paginationCtrl', ['$scope','$filter', function($scope, $filter){
+// 	$scope.currentPage = 0;
+// 	$scope.pageSize = 10;
+// 	$scope.q = '';
+//
+// }]);
+
+
 // PLAYGORUND
+
+
+// // used array.filter() instead
+// app.filter('unique', function() {
+// 	// we will return a function which will take in a collection
+// 	// and a keyname
+// 	return function(collection, keyname) {
+// 		// we define our output and keys array;
+// 		var output = [],
+// 			keys = [];
+//
+// 		// we utilize angular's foreach function
+// 		// this takes in our original collection and an iterator function
+// 		angular.forEach(collection, function(item) {
+// 			// we check to see whether our object exists
+// 			var key = item[keyname];
+// 			// if it's not already part of our keys array
+// 			if (keys.indexOf(key) === -1) {
+// 				// add it to our keys array
+// 				keys.push(key);
+// 				// push this item to our final output array
+// 				output.push(item);
+// 			}
+// 		});
+// 		// return our array which should be devoid of
+// 		// any duplicates
+// 		return output;
+// 	};
+// });
+
 
 // app.directive("title", function() {
 // 	return {

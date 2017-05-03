@@ -3508,8 +3508,14 @@
 											<div class="small-12 medium-3 columns">
 												<label>Last Name:</label><input type='text' ng-model='searchName.dirpepl_last_name' ng-change='currentPage = 0' />
 											</div>
-											<div class="small-12 medium-3 columns">
-												<label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' ng-change='currentPage = 0' />
+											<div class="small-12 medium-6 columns">
+												<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
+												<!-- <label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' ng-change='currentPage = 0' /> -->
+												<!-- SEARCH DEPARTMENT BY DROPDOWN -->
+												<label>Department:</label>
+													<select ng-model="searchDepartment" ng-options="x.dirschl_school_name for x in jsonData | orderBy:'dirschl_school_name' | unique:'dirschl_school_name'" ng-change='currentPage = 0'>
+														<option value="">Select</option>
+													</select>
 											</div>
 											<!-- <div class="small-12 medium-3 small-centered text-center columns">
 												<a role="button" aria-label="search" class="button">SEARCH</a>
@@ -3855,7 +3861,12 @@
 
 
 							<!-- SEARCH FILTER JSON FILE  -->
-							<div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchName.dirschl_school_name" id="angularSearch">
+
+							<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
+							<!-- <div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchName.dirschl_school_name" id="angularSearch"> -->
+							<!-- SEARCH DEPARTMENT BY DROPDOWN -->
+							<div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchDepartment.dirschl_school_name" id="angularSearch">
+
 								<!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->
 								<div class="callout">
 									<div class="row">
@@ -3887,7 +3898,11 @@
 											<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
 											<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
 												<ul class="accordion" data-accordion data-allow-all-closed="true">
-													<li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize">
+													<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
+													<!-- <li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize"> -->
+													<!-- SEARCH DEPARTMENT BY DROPDOWN -->
+													<li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | filter:searchDepartment.dirschl_school_name | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize">
+
 														<a class="accordion-title" ng-click="showDetails = ! showDetails">{{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
 															<ul class='accordion-title-desc'><li><b>Department: </b>{{x.dirschl_school_name}}</li><li><b>Title:</b> {{x.dirrank_rank_name}}</li></ul>
 														</a>

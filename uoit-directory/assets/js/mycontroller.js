@@ -73,9 +73,13 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
     $scope.pageSize    = 7;
     $scope.jsonData    = [];
 
-    // change this function to try and fix 'next' button
+    // pagination changes based on searchName results AND searchDepartment results
     $scope.numberOfPages=function(){
-      var myFilteredData = $filter('filter')($scope.jsonData,$scope.searchName); //Filter the data
+      var myFilteredData;
+      myFilteredData = $filter('filter')($scope.jsonData,$scope.searchName,);
+      myFilteredData = $filter('filter')(myFilteredData,$scope.searchDepartment.dirschl_school_name);
+
+      //Filter the data
       return Math.ceil(myFilteredData.length/$scope.pageSize);
         // return Math.ceil($scope.jsonData.length/$scope.pageSize);
     }

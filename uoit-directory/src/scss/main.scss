@@ -1,129 +1,116 @@
-/* compileCompressed: ../../assets/css/main.min.css*/
-$font: 'Franklin Gothic';
-$light-blue: #0077CA;
-$dark-blue: #003C71;
-$text-color-white: #fff;
-$text-color-black: #151515;
-$accordion-item-background-hover: #0077CA;
+@import "../../node_modules/foundation-sites/scss/foundation.scss";
+/* @include foundation-tabs;*/
+$breakpoints: ( xsmall:500px, small: 800px, medium: 1000px, large: 1200px, xlarge: 1400px, xxlarge: 1920px, );
+$text-color: #151515;
+$darkblue: #003C71;
 
 .tabs {
-	.tabs-title {
-		text-align: center;
+	border: 0;
+	@include breakpoint(large) {
+		.tabs-title {
+			display: inline-block;
+			width: 33%;
+			margin-right: 0.5%;
+		}
+
+		.tabs-title:last-child {
+			margin-right: 0;
+		}
 	}
 }
 
 .tabs-content {
-	padding: 2rem;
-}
-/* search list*/
-.search-list {
-	padding: 4rem;
-}
+	padding: 1em;
+	@include breakpoint (small down) {
+		padding: 0;
+	};
 
-.accordion {
-	.accordion-item {
-		margin-bottom: 0;
-
-		.page-content ul.accordion li ul:not(.tabs) {}
-
-		.accordion-title {
-			&:hover {
-				background-color: $accordion-item-background-hover;
-				color: $text-color-white;
-			}
-		}
-		/* clear default border*/
-		:last-child:not(.is-active) > .accordion-title {
-			border-bottom: 0;
-		}
-
-		.accordion-content {
-			padding: 0 1rem 1rem;
-			border-bottom: 0;
-			border-top: 0;
-
-			.search-list-info {
-				@extend .accordion-title-desc;
-
-				li {
+	.tabs-panel {
+		.row {
+			.columns {
+				position: relative;
+				@include breakpoint(small down) {
 					display: inline-block;
-					box-sizing: border-box;
-					width: 49%;
+					min-width: 100%;
+				}
 
-					span {
-						font-weight: bold;
+				.searchBtn {
+					position: absolute;
+					top: 50%;
+					-webkit-transform: translateY(-50%);
+					transform: translateY(-50%);
+					@include breakpoint(small down) {
+						position: relative;
 					}
 				}
 			}
 		}
 	}
 }
-/* search list title (name,position, department)*/
-.accordion-title-desc {
-	width: 100%;
-	font-size: 0.88rem;
-	line-height: 0.88rem;
-	margin: 0;
-	padding: 0;
-	text-transform: capitalize;
 
-	li {
-		list-style: none;
-		width: 49%;
+.callout {
+	padding: 2.5rem;
+	@include breakpoint (small down ) {
+		padding: 1rem;
+	};
+
+	.row {
+		.columns {
+			display: inline-block;
+			min-width: 100%;
+		}
+	}
+
+	.activeFilterBtn {
+		background-color: $darkblue;
+	}
+}
+
+.accordion-item {
+	.accordion-title {
+		color: $text-color;
+		margin-bottom: 0.25rem;
+
+		span {
+			font-weight: 400;
+		}
+
+		.accordion-title-desc {
+			margin: 0;
+			padding: 0;
+			height: 1rem;
+			@include breakpoint(small down) {
+				height: 2rem;
+				line-height: 1;
+			}
+
+			li {
+				display: inline-block;
+				width: 50%;
+				text-transform: capitalize;
+				@include breakpoint(small down) {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+.tabs-panel .row {
+	.contact-card {
+		border: solid 2px blue;
+		color: #fff;
+		max-width: 48%;
+		/* display two columns in a row*/
+		margin: 1%;
+		/* display two columns in a row*/
+		padding: 1rem;
 		display: inline-block;
-		font-weight: normal;
-		margin: 0;
-		padding: 0;
-	}
-
-	span {
-		font-weight: bold;
-	}
-}
-/* .tabs-panel .row {*/
-.contact-card {
-	border: solid 2px $light-blue;
-	color: $light-blue;
-	max-width: 48%;
-	/* display two columns in a row*/
-	margin: 1%;
-	/* display two columns in a row*/
-	padding: 1rem;
-	display: inline-block;
-	box-sizing: border-box;
-}
-
-.pagination {
-	margin-top: 3rem;
-}
-@media screen and (min-width:75em) {
-	/* responsive tabs title width */
-	.tabs .tabs-title {
-		width: 33%;
-		margin-right: 0.5%;
-	}
-
-	.tabs-title:last-child {
-		margin-right: 0;
+		box-sizing: border-box;
 	}
 }
 @media screen and (max-width: 43em) {
-	/* set min-height in case accordion title overflow*/
-	.accordion {
-		.accordion-title {
-			min-height: 4rem;
-		}
-	}
-	/* display vertically */
-	.accordion-title-desc {
-		li {
-			list-style: none;
-			width: 100%;
-			display: block;
-			font-weight: normal;
-		}
-	}
-	/*  clear left and right margin for mobile page*/
+	/* clear left and right margin for mobile page*/
 	.contact-card {
 		display: block;
 		min-width: 100%;
@@ -137,33 +124,3 @@ $accordion-item-background-hover: #0077CA;
 		}
 	}
 }
-/* tabs title nav color*/
-/* .tabs {*/
-/* 	border-color: $dark-blue;*/
-/* 	color: $text-color-white;*/
-/**/
-/* 	.tabs-title {*/
-/* 		background-color: $light-blue;*/
-/* 		text-align: center;*/
-/**/
-/* 		a {*/
-/* 			color: $text-color-white;*/
-/**/
-/* 			&:hover {*/
-/* 				background-color: $dark-blue;*/
-/* 				color: $text-color-white;*/
-/* 			}*/
-/* 		}*/
-/* 	}*/
-/* }*/
-/* .tabs .tabs-title.is-active * {*/
-/* 	background-color: $dark-blue;*/
-/* 	color: $text-color-white;*/
-/* }*/
-/* */
-/*  tabs border color*/
-/**/
-/* .tabs-content {*/
-/* 	border-color: $dark-blue;*/
-/* 	padding: 1.5rem;*/
-/* }*/

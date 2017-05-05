@@ -2,6 +2,7 @@
 /* @include foundation-tabs;*/
 $breakpoints: ( xsmall:500px, small: 800px, medium: 1000px, large: 1200px, xlarge: 1400px, xxlarge: 1920px, );
 $text-color: #151515;
+$darkblue: #003C71;
 
 .tabs {
 	border: 0;
@@ -20,6 +21,9 @@ $text-color: #151515;
 
 .tabs-content {
 	padding: 1em;
+	@include breakpoint (small down) {
+		padding: 0;
+	};
 
 	.tabs-panel {
 		.row {
@@ -41,6 +45,24 @@ $text-color: #151515;
 				}
 			}
 		}
+	}
+}
+
+.callout {
+	padding: 2.5rem;
+	@include breakpoint (small down ) {
+		padding: 1rem;
+	};
+
+	.row {
+		.columns {
+			display: inline-block;
+			min-width: 100%;
+		}
+	}
+
+	.activeFilterBtn {
+		background-color: $darkblue;
 	}
 }
 
@@ -73,42 +95,7 @@ $text-color: #151515;
 		}
 	}
 }
-/**/
-/* .accordion {*/
-/* 	.accordion-item {*/
-/* 		.accordion-content {*/
-/* 			.search-list-info {*/
-/* 				@extend .accordion-title-desc;*/
-/**/
-/* 				li {*/
-/* 					display: inline-block;*/
-/* 					width: 49%;*/
-/**/
-/* 					span {*/
-/* 						font-weight: bold;*/
-/* 					}*/
-/* 				}*/
-/* 			}*/
-/* 		}*/
-/* 	}*/
-/* }*/
-/* */
-/* search list title (name,position, department)*/
-/**/
-/* .accordion-title-desc {*/
-/* 	width: 100%;*/
-/* 	font-size: 0.88rem;*/
-/* 	line-height: 0.88rem;*/
-/* 	margin: 0;*/
-/* 	padding: 0;*/
-/* 	text-transform: capitalize;*/
-/**/
-/* 	li {*/
-/* 		list-style: none;*/
-/* 		width: 49%;*/
-/* 		display: inline-block;*/
-/* 	}*/
-/* }*/
+
 .tabs-panel .row {
 	.contact-card {
 		border: solid 2px blue;
@@ -122,30 +109,6 @@ $text-color: #151515;
 		box-sizing: border-box;
 	}
 }
-/* @media screen and (min-width:75em) {
-	// 	/* responsive tabs title width*/
-/* 	.tabs .tabs-title {*/
-/* 		width: 33%;*/
-/* 		margin-right: 0.5%;*/
-/* 	}*/
-/**/
-/* 	.tabs-title:last-child {*/
-/* 		margin-right: 0;*/
-/* 	}*/
-/* }media screen and (min-width:75em) {*/
-/**/
-/* 	*/
-/* responsive tabs title width*/
-/**/
-/* 	.tabs .tabs-title {*/
-/* 		width: 33%;*/
-/* 		margin-right: 0.5%;*/
-/* 	}*/
-/**/
-/* 	.tabs-title:last-child {*/
-/* 		margin-right: 0;*/
-/* 	}*/
-/* }*/
 @media screen and (max-width: 43em) {
 	/* clear left and right margin for mobile page*/
 	.contact-card {
@@ -161,35 +124,3 @@ $text-color: #151515;
 		}
 	}
 }
-/* tabs title nav color*/
-/* .tabs {*/
-/* 	border-color: $dark-blue;*/
-/* 	color: $text-color-white;*/
-/**/
-/* 	.tabs-title {*/
-/* 		background-color: #fff;*/
-/* 		text-align: center;*/
-/**/
-/* 		a {*/
-/* 			color: $text-color-white;*/
-/**/
-/* 			&:hover {*/
-/* 				background-color: $dark-blue;*/
-/* 				color: $text-color-white;*/
-/* 			}*/
-/* 		}*/
-/* 	}*/
-/* }*/
-/* .tabs .tabs-title.is-active * {*/
-/* 	background-color: $dark-blue;*/
-/* 	color: $text-color-white;*/
-/* }*/
-/* */
-/*  tabs border color*/
-/**/
-/* .tabs-content {*/
-/* 	border-color: $dark-blue;*/
-/* 	padding: 1.5rem;*/
-/* }*/
-/* 	padding: 1.5rem;*/
-/* }*/

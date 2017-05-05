@@ -58,9 +58,8 @@ gulp.task('watch', function() {
 	gulp.watch('src/**/*.html', ['copyHtml']);
 	gulp.watch('src/scss/**/*.scss', ['scss']);
 	gulp.watch('src/js/**/*.js', ['js']);
-	livereload.listen();
 	// Watch any files in dist/, reload on change
-	gulp.watch(['dist/**']).on('change', livereload.changed);
+
 });
 
 

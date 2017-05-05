@@ -3477,13 +3477,14 @@
 						<h2>DIRECTORY</h2>
 						<ul class="tabs" data-tabs="u3jluw-tabs" id="tab1" role="tablist">
 							<li class="tabs-title   is-active " role="presentation">
-								<a href="#tab1-1" class="text-center" role="tab" aria-controls="tab1-1" aria-selected="true" id="tab1-1-label">Search</a>
+								<!-- remove function remove search result in any other tabs section -->
+								<a href="#tab1-1" class="text-center" role="tab" aria-controls="tab1-1" aria-selected="true" id="tab1-1-label" ng-click="removeSearchResult()">Search</a>
 							</li>
 							<li class="tabs-title   " role="presentation">
-								<a href="#tab1-2" class="text-center" role="tab" aria-controls="tab1-2" aria-selected="false" id="tab1-2-label">Contacts</a>
+								<a href="#tab1-2" class="text-center" role="tab" aria-controls="tab1-2" aria-selected="false" id="tab1-2-label" ng-click="removeSearchResult()">Contacts</a>
 							</li>
 							<li class="tabs-title   " role="presentation">
-								<a href="#tab1-3" class="text-center" role="tab" aria-controls="tab1-3" aria-selected="false" id="tab1-3-label">Update</a>
+								<a href="#tab1-3" class="text-center" role="tab" aria-controls="tab1-3" aria-selected="false" id="tab1-3-label" ng-click="removeSearchResult()">Update</a>
 							</li>
 						</ul>
 						<div class="tabs-content" data-tabs-content="tab1" id="tab1-content">
@@ -3497,17 +3498,20 @@
 								</div>
 								<div class="row">
 									<div class="small-4 medium-4 large-4 columns">
+										<!-- binding input filed result to searchInput for search button function -->
 										<label>Name or Keyword:</label><input type='text' ng-model='searchInput' />
 									</div>
 									<div class="small-4 medium-4 large-4  columns">
 										<label>DEPARTMENT:
-											<select ng-model="name.dirschl_school_name" ng-options="department for department in departments | orderBy:'dirschl_school_name'"  ng-click="select()">
+											<!-- select function for clear input field -->
+											<select ng-model="search.dirschl_school_name" ng-options="department for department in departments"  ng-change="select()">
 													<option value="">Select Department</option>
 											</select>
 										</label>
 									</div>
 									<div class="small-4 medium-4 large-4 columns">
-										<a href="" class="button searchBtn expanded" ng-click="search()">search</a>
+										<!-- search function for search button -->
+										<a class="button searchBtn expanded" ng-click="searchBy()">search</a>
 									</div>
 								</div>
 							</div>
@@ -3604,41 +3608,54 @@
 								</form>
 							</div>
 						</div>
-						<div class="callout search-list" id="searchResult" ng-show="name!=''">
-							<!-- search list title -->
+						<div class="callout" id="searchResult" ng-if="search" class='ng-hide'>
 							<h2>Directory Search Results</h2>
-							<p>To reach a Faculty or Staff member dial the main switchboard at (905)721-8668 and ask for the extension below</p>
-							<div class="filter-radio">
-								<!-- filter button -->
-								<div class="small button-group">
-									<span>Sort By: </span>
-									<a class="button" ng-click="orderType='dirpepl_first_name';activedBtn='firstName'" ng-class="{active: activedBtn === 'firstName'}">First Name</a>
-									<a class="button" ng-click="orderType='dirpepl_last_name';activedBtn='lastName'" ng-class="{active: activedBtn === 'lastName'}">Last Name</a>
-									<a class="button" ng-click="orderType='dirschl_school_name';activedBtn='department'" ng-class="{active: activedBtn === 'department'}">Department</a>
+							<div class="row">
+								<div class="columns small-12">
+									<p>To reach a Faculty or Staff member dial the main switchboard at (905)721-8668 and ask for the extension below</p>
+								</div>
+								<div class="columns small-12">
+									<div class="small button-group">
+										<span>Sort By: </span>
+										<!-- by clicking this button will trigger two function:
+												 set order type for orderBy in accordion
+												 add/remove class name activeFilterBtn for clickedBtn
+										 -->
+										<a class="button" ng-click="orderType='dirpepl_first_name';order='firstName'" ng-class="{activeFilterBtn: order === 'firstName'}">First Name</a>
+										<a class="button" ng-click="orderType='dirpepl_last_name';order='lastName'" ng-class="{activeFilterBtn: order === 'lastName'}">Last Name</a>
+										<a class="button" ng-click="orderType='dirschl_school_name';order='department'" ng-class="{activeFilterBtn: order === 'department'}">Department</a>
+									</div>
 								</div>
 							</div>
-					<ul class="accordion" data-accordion data-allow-all-closed="true">
-						<li class="accordion-item" data-accordion-item ng-repeat="user in users| filter: name | orderBy: orderType | startFrom: currentPage*pageSize | limitTo:pageSize">
-							<a class="accordion-title">Name: <span>{{ user.dirpepl_first_name + ' ' + user.dirpepl_last_name }}</span>
-								<ul class='accordion-title-desc'><li>Title: <span>{{user.dirrank_rank_name}}</span></li><li>Department: <span>{{user.dirschl_school_name}}</span></li></ul>
-							</a>
-							<div class="accordion-content" data-tab-content>
-								<ul class='search-users-info'>
-									<li>Location: <span>{{user.dirschl_school_name }}</span></li>
-									<li>Building: <span>{{user.dirbuilding_building_name}}</span></li>
-									<li>Extension: <span>{{user.dirpepl_extension}}</span></li>
-									<li>E-mail: <span>{{user.email}}</li>
-								</ul>
-							</div>
-						</li>
-					</ul>
-					<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
-			        Previous
-			    </button> {{currentPage+1}}/{{numberOfPages()}}
-					<button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">
-			        Next
-			    </button>
-							<!-- ng-show="searchName.dirpepl_first_name.length || searchName.dirpepl_last_name.length || searchName.dirschl_school_name.length" -->
+
+							<ul class="accordion" data-accordion data-allow-all-closed="true">
+								<!-- display users info in accordion -->
+								<li class="accordion-item" data-accordion-item ng-repeat="user in users| filter: search | orderBy: orderType | startFrom: currentPage*pageSize | limitTo:pageSize">
+									<a class="accordion-title">Name: <span>{{ user.dirpepl_first_name + ' ' + user.dirpepl_last_name }}</span>
+										<ul class='accordion-title-desc'><li>Title: <span>{{user.dirrank_rank_name}}</span></li><li>Department: <span>{{user.dirschl_school_name}}</span></li></ul>
+									</a>
+									<div class="accordion-content" data-tab-content>
+										<ul class='search-users-info'>
+											<li>Location: <span>{{user.dirschl_school_name }}</span></li>
+											<li>Building: <span>{{user.dirbuilding_building_name}}</span></li>
+											<li>Extension: <span>{{user.dirpepl_extension}}</span></li>
+											<li>E-mail: <span>{{user.email}}</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+							<!-- pagination -->
+							<div class="pagiging text-center">
+								<button class="button small" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+										Previous
+								</button>
+								<span>{{currentPage+1}}/{{numberOfPages()}}</span>
+												<button class="button small" ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">
+										Next
+								</button>
+									</div>
+						</div>
+
 					</section>
 					<section class="page-sidebar">
 						<div class="sidebar-ctas">
@@ -3646,8 +3663,8 @@
 							<a class="button green icon_map" href="https://uoit.ca/current-students/campus-services/safety-security/emergency-information.php" onclick="">Campus Map</a>
 						</div>
 					</section>
-					</div>
-					<!-- /.page-row -->
+				</div>
+				<!-- /.page-row -->
 			</section>
 
 
@@ -3746,9 +3763,8 @@
 				<script src="./js/vendor/jquery.js"></script>
 				<script src="./js/vendor/what-input.js"></script>
 				<script src="./js/vendor/foundation.js"></script>
-
 				<script src="./js/app.js"></script>
-			<script src="./js/service.js"></script>
+				<script src="./js/service.js"></script>
 				<script src="./js/controller.js"></script>
 </body>
 

@@ -1,34 +1,26 @@
-var app = angular.module("myApp", []);
-
-app.service('usersInfoService', function($http) {
-	return {
-		get: function() {
-			return $http.get('../../../uoit-directory/data/directory.json'); // this will return a promise to controller
-		}
-	};
-});
-
 app.controller('getUsersCtrl', ['$scope', '$filter', 'usersInfoService', function($scope, $filter, usersInfoService) {
-	$scope.search = function() {
-		$scope.name = $scope.searchInput;
-	};
-
-	$scope.select = function() {
-		// clear input field
-		$scope.searchInput = "";
-		$scope.name = name.dirschl_school_name;
-	};
-
-	var regex = /&|-|UOIT|/g;
-
-	$scope.departments = [];
-
+	// get users info data from json file
 	usersInfoService.get().then(function(response) {
+		// push person info to users array;
 		$scope.users = response.data.query_info.person_info;
+
+		// departments array
+		$scope.departments = [];
+
+		// regex replace '&','UOIT','g'
+		var regex = /-|UOIT|/g;
+		var regex2 = /&/g;
+
 		for (var i in $scope.users) {
+
+			// replace '&','UOIT','g'
 			$scope.users[i].dirschl_school_name = $scope.users[i].dirschl_school_name.replace(regex, "");
+			$scope.users[i].dirschl_school_name = $scope.users[i].dirschl_school_name.replace(regex2, "and");
+
+			// store department in departments array
 			$scope.departments[i] = response.data.query_info.person_info[i].dirschl_school_name;
 		}
+
 		// remove departments duplicates from json data  (dirschl_school_name)
 		$scope.departments = $scope.departments.filter(function(elem, index, self) {
 			return index == self.indexOf(elem);
@@ -36,18 +28,49 @@ app.controller('getUsersCtrl', ['$scope', '$filter', 'usersInfoService', functio
 		// sort departments array
 		$scope.departments.sort();
 
-			$scope.currentPage = 0;
-			$scope.pageSize = 10;
-			$scope.name = '';
 
+		//pagining
 
+		$scope.currentPage = 0;
+		$scope.pageSize = 10;
+
+		// get filtered data
 		$scope.getData = function() {
-			return $filter('filter')($scope.users, $scope.name);
+			return $filter('filter')($scope.users, $scope.search);
 		};
 
 		$scope.numberOfPages = function() {
 			return Math.ceil($scope.getData().length / $scope.pageSize);
 		};
+
+		// search function binding to search button
+		$scope.searchBy = function() {
+
+			// get keyword from input field binding to accordion filter
+			$scope.search = $scope.searchInput;
+
+			$scope.searchInput = '';
+
+			// set current page
+			$currentPage = 1;
+		};
+
+
+		// search result display below search tab content
+		// by clicking other tabs remove search result
+		$scope.removeSearchResult = function() {
+			$scope.search = $departments;
+			$scope.searchInput = '';
+		}
+
+		// dropdown function
+		$scope.select = function() {
+			// clear input field
+			// $scope.search = "";
+			$scope.searchInput = '';
+			$currentPage = 1;
+		};
+
 	});
 }]);
 

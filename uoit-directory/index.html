@@ -3495,7 +3495,7 @@
 											<!-- TAB TITLE  -->
 											<h2>Search</h2>
 											<br/>
-											<p>Enter a first name, a last name or both to find a faculty or staff member. Partial names can also be used.</p>
+											<p>Enter a first name, a last name, a department or all to find a Faculty or Staff member. Partial names can also be used.</p>
 											<!-- <p>Enter a first name, a last name or both to find a faculty or staff member and click the Search button. Partial names can also be used.</p> -->
 										</div>
 									</div>
@@ -3508,14 +3508,16 @@
 											<div class="small-12 medium-3 columns">
 												<label>Last Name:</label><input type='text' ng-model='searchName.dirpepl_last_name' ng-change='currentPage = 0' />
 											</div>
-											<div class="small-12 medium-3 columns">
-												<label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' ng-change='currentPage = 0' />
-											</div>
-											<div class="small-12 medium-3 small-centered text-center columns">
-												<a  role="button" aria-label="search" class="button searchBtn">search</a>
+											<div class="small-12 medium-6 columns">
+												<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
+												<!-- <label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' ng-change='currentPage = 0' /> -->
+												<!-- SEARCH DEPARTMENT BY DROPDOWN -->
+												<label>Department:</label>
+													<select ng-model="searchDepartment" ng-options="x.dirschl_school_name for x in jsonData | orderBy:'dirschl_school_name' | unique:'dirschl_school_name'" ng-change='currentPage = 0'>
+														<option value="">Select</option>
+													</select>
 											</div>
 										</div>
-										<!-- <a role="button" aria-label="search" class="button">SEARCH</a> -->
 									</form>
 								</div>
 								<!-- TAB 1 END  -->
@@ -3802,46 +3804,52 @@
 									<br/>
 									<p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form below.</p>
 									<!-- FORM INPUT FIELDS -->
-									<form data-abide>
+									<form data-abide novalidate id="updateForm">
+										<!-- ERROR MESSAGE FOR USER -->
+										<div data-abide-error class="alert callout" style="display: none;">
+											<p><i class="fi-alert"></i> There appears to be errors in your form.</p>
+										</div>
 										<div class="row">
 											<div class="small-12 medium-12 columns">
-												<label>BANNER USER ID:<b style="color:red"> *</b><input type="text" name="ID" required/></label>
+												<label>BANNER USER ID:<b style="color:red"> *</b><input type="text" name="id" required pattern="number"/></label>
 											</div>
 										</div>
 										<div class="row">
 											<div class="small-12 medium-6 columns">
-												<label>FIRST NAME:<b style="color:red"> *</b><input type="text" name="First Name" required/></label>
+												<label>FIRST NAME:<b style="color:red"> *</b><input type="text" name="firstName" required pattern="alpha"/></label>
 											</div>
 											<div class="small-12 medium-6 columns">
-												<label>LAST NAME:<b style="color:red"> *</b><input type="text" name="Last Name" required/></label>
-											</div>
-										</div>
-										<div class="row">
-											<div class="small-12 medium-6 columns">
-												<label>POSITION:<b style="color:red"> *</b><input type="text" name="Position" required/></label>
-											</div>
-											<div class="small-12 medium-6 columns">
-												<label>DEPARTMENT:<b style="color:red"> *</b><input type="text" name="Department" required/></label>
+												<label>LAST NAME:<b style="color:red"> *</b><input type="text" name="lastName" required pattern="alpha"/></label>
 											</div>
 										</div>
 										<div class="row">
 											<div class="small-12 medium-6 columns">
-												<label>EXTENSION:<b style="color:red"> *</b><input type="text" name="Extension" required/></label>
+												<label>DEPARTMENT:<b style="color:red"> *</b><input type="text" name="department" required pattern="alpha"/></label>
 											</div>
 											<div class="small-12 medium-6 columns">
-												<label>LOCATION:<b style="color:red"> *</b><input type="text" name="Location" required/></label>
+												<label>TITLE:<b style="color:red"> *</b><input type="text" name="position" required pattern="alpha"/></label>
 											</div>
 										</div>
 										<div class="row">
 											<div class="small-12 medium-6 columns">
-												<label>BUILDING:<b style="color:red"> *</b><input type="text" name="Building" required/></label>
+												<label>BUILDING:<b style="color:red"> *</b><input type="text" name="building" required/></label>
 											</div>
 											<div class="small-12 medium-6 columns">
-												<label>E-MAIL:<b style="color:red"> *</b><input type="text" name="E-mail" required/></label>
+												<label>OFFICE:<b style="color:red"> *</b><input type="text" name="location" required/></label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="small-12 medium-6 columns">
+												<label>EXTENSION:<b style="color:red"> *</b><input type="text" name="extension" required pattern="number"/></label>
+											</div>
+											<div class="small-12 medium-6 columns">
+												<label>E-MAIL:<b style="color:red"> *</b><input type="text" name="email" required pattern="email"/></label>
 											</div>
 										</div>
 										<!-- SUBMIT BUTTON -->
-										<a data-open="exampleModal1" role="button" aria-label="submit form" class="button">SUBMIT</a>
+										<fieldset class="large-6 columns">
+											<button class="button" type="submit" value="Submit" role="button">Submit</button>
+										</fieldset>
 									</form>
 								</div>
 
@@ -3849,9 +3857,13 @@
 							<!-- tabs content end -->
 
 
-
 							<!-- SEARCH FILTER JSON FILE  -->
-							<div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchName.dirschl_school_name" id="angularSearch">
+
+							<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
+							<!-- <div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchName.dirschl_school_name" id="angularSearch"> -->
+							<!-- SEARCH DEPARTMENT BY DROPDOWN -->
+							<div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchDepartment.dirschl_school_name" id="angularSearch">
+
 								<!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->
 								<div class="callout">
 									<div class="row">
@@ -3883,24 +3895,29 @@
 											<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
 											<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
 												<ul class="accordion" data-accordion data-allow-all-closed="true">
-													<li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize">
-														<a class="accordion-title"><b>Name:</b> {{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
+													<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
+													<!-- <li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize"> -->
+													<!-- SEARCH DEPARTMENT BY DROPDOWN -->
+													<li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | filter:searchDepartment.dirschl_school_name | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize">
+
+														<a class="accordion-title" ng-click="showDetails = ! showDetails">{{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
 															<ul class='accordion-title-desc'><li><b>Department: </b>{{x.dirschl_school_name}}</li><li><b>Title:</b> {{x.dirrank_rank_name}}</li></ul>
 														</a>
-														<div class="accordion-content" data-tab-content>
+														<div class="a-content" ng-class="{ 'hidden': ! showDetails }" data-tab-content>
 															<ul class='search-list-info'>
-																<li><b>Location: </b>{{x.dirschl_school_name }}</li>
-																<li><b>Building: </b>{{x.dirbuilding_building_name}}</li>
+																<li><b>Building: </b>{{x.dirbuilding_building_name }}</li>
+																<li><b>Office: </b>{{x.dirpepl_office}}</li>
 																<li><b>Extension: </b>{{x.dirpepl_extension}}</li>
-																<li><b>E-mail: </b>{{x.email}}</li>
+																<li><b>E-mail: </b> <a href="mailto:{{x.email}}">{{x.email}}</a></li>
 															</ul>
 														</div>
 													</li>
 												</ul>
+
 											<!-- PAGINATION - FUNCTIONAL -->
 											<ul class="pagination text-center" role="navigation" aria-label="Pagination" ng-hide="(currentPage + 1) > numberOfPages()">
 												<li class="pagination-previous">
-													<button role="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+													<button role="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class="scrollTop">
 											        <span class="icon_arrow_left"></span> Previous
 											    </button>
 												</li>
@@ -3910,7 +3927,7 @@
 													</button>
 												</li>
 												<li class="pagination-next">
-													<button role="button" ng-disabled="(currentPage + 1) >= numberOfPages()" ng-click="currentPage=currentPage+1">
+													<button role="button" ng-disabled="(currentPage + 1) >= numberOfPages()" ng-click="currentPage=currentPage+1" class="scrollTop">
 															Next <span class="icon_arrow_right"></span>
 													</button>
 												</li>
@@ -3937,16 +3954,6 @@
 							<a class="button green icon_map" href="buttons.php" onclick="">Campus Map</a>
 						</div>
 					</section>
-
-					<!-- UPDATE SUBMIT - THANK YOU MESSAGE -->
-					<div class="reveal" id="exampleModal1" data-reveal>
-						<h1>Thank you!</h1>
-						<p class="lead">Your update request has been sent!</p>
-						<p>Note: Your request won't be changed right away.</p>
-						<button class="close-button" data-close aria-label="Close modal" type="button">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
 
 				</div>
 				<!-- /.page-row -->

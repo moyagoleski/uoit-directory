@@ -4,6 +4,7 @@ $dark-blue: #003C71;
 $text-color-white: #fff;
 $text-color-black: #151515;
 $accordion-item-background-hover: #0077CA;
+$lightgrey : #F6F7F7;
 
 .tabs {
 	.tabs-title {
@@ -21,6 +22,7 @@ $accordion-item-background-hover: #0077CA;
 /* search list*/
 .search-list {
 	padding: 25px;
+	padding-bottom: 10px;
 }
 
 .searchResults {
@@ -29,35 +31,31 @@ $accordion-item-background-hover: #0077CA;
 
 .accordion {
 	.accordion-item {
-		border-top: 1px lightgrey solid;
-		margin: 0 0;
-		padding: 10px;
+		margin: 1rem 0;
 
 		.accordion-title {
+			background-color: $lightgrey;
 			color: $text-color-black;
-			box-shadow: none;
-			border: 0;
-			height: 3rem;
-			font-size: 1.2rem;
+			text-transform: capitalize;
+			font-size: 18px;
+			padding-top: 15px;
 
 			&:hover {
-				background-color: $text-color-white;
-				color: $text-color-black;
-				cursor: default;
-			}
-			&:focus {
-				background-color: $text-color-white;
-				color: $text-color-black;
+				background-color: $accordion-item-background-hover;
+				color: $text-color-white;
 			}
 		}
 		/* clear default border*/
-		:last-child:not(.is-active) > .accordion-title {
-			border: 0;
-		}
+		// :last-child:not(.is-active) > .accordion-title {
+		// 	// border: 0;
+		// }
 
-		.accordion-content {
-			border: 0;
-			padding: 0 1rem;
+		.a-content {
+		// .accordion-content {
+			padding: 1rem 1rem;
+			max-height: 100px;
+			transition: .7s;
+			overflow: hidden;
 
 			.search-list-info {
 				@extend .accordion-title-desc;
@@ -66,7 +64,6 @@ $accordion-item-background-hover: #0077CA;
 					display: inline-block;
 					box-sizing: border-box;
 					width: 49%;
-					padding: 5px 0 5px 0;
 
 					span {
 						font-weight: bold;
@@ -74,20 +71,31 @@ $accordion-item-background-hover: #0077CA;
 				}
 			}
 		}
+
+		.a-content.hidden {
+		    max-height: 0;
+				padding: 0 1rem;
+		}
+
 	}
 }
+
+// hides '+' for now because thhe '+' and '-' are not toggling
+.accordion-title::before {
+	content: "";
+}
+
 /* search list title (name,position, department)*/
 .accordion-title-desc {
 	width: 100%;
 	font-size: 0.88rem;
-	line-height: 0.88rem;
 	margin: 0;
-	padding: 15px 0 0 0;
+	padding: 0;
 	text-transform: capitalize;
 
 	li {
 		list-style: none;
-		width: 100%;
+		width: 49%;
 		display: inline-block;
 		font-weight: normal;
 		margin: 0;
@@ -97,6 +105,13 @@ $accordion-item-background-hover: #0077CA;
 		font-weight: bold;
 	}
 }
+
+// margin for department / title
+.page-content ul.accordion li ul:not(.tabs), .page-content ul.accordion li ol, .page_content_news ul.accordion li ul:not(.tabs), .page_content_news ul.accordion li ol {
+	margin-top: 8px;
+	margin-bottom: 0px;
+}
+
 /* .tabs-panel .row {*/
 .contact-card {
 	border: solid 2px $light-blue;
@@ -180,6 +195,8 @@ $accordion-item-background-hover: #0077CA;
 		}
 	}
 }
+
+
 /* tabs title nav color*/
 /* .tabs {*/
 /* 	border-color: $dark-blue;*/

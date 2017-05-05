@@ -70,12 +70,16 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
 
     // pagination function
     $scope.currentPage = 0;
-    $scope.pageSize    = 5;
+    $scope.pageSize    = 7;
     $scope.jsonData    = [];
 
-    // change this function to try and fix 'next' button
+    // pagination changes based on searchName results AND searchDepartment results
     $scope.numberOfPages=function(){
-      var myFilteredData = $filter('filter')($scope.jsonData,$scope.searchName); //Filter the data
+      var myFilteredData;
+      
+      myFilteredData = $filter('filter')(myFilteredData,$scope.searchDepartment.dirschl_school_name);
+
+      //Filter the data
       return Math.ceil(myFilteredData.length/$scope.pageSize);
         // return Math.ceil($scope.jsonData.length/$scope.pageSize);
     }
@@ -92,4 +96,45 @@ app.filter('startFrom', function() {
       start = +start; //parse to int
       return input.slice(start);
   }
+});
+
+
+// does not repeat in departments in dropdown
+app.filter('unique', function () {
+
+    return function (items, filterOn) {
+
+        if (filterOn === false) {
+            return items;
+        }
+
+        if ((filterOn || angular.isUndefined(filterOn)) && angular.isArray(items)) {
+            var hashCheck = {}, newItems = [];
+
+            var extractValueToCompare = function (item) {
+                if (angular.isObject(item) && angular.isString(filterOn)) {
+                    return item[filterOn];
+                } else {
+                    return item;
+                }
+            };
+
+            angular.forEach(items, function (item) {
+                var valueToCheck, isDuplicate = false;
+
+                for (var i = 0; i < newItems.length; i++) {
+                    if (angular.equals(extractValueToCompare(newItems[i]), extractValueToCompare(item))) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+                if (!isDuplicate) {
+                    newItems.push(item);
+                }
+
+            });
+            items = newItems;
+        }
+        return items;
+    };
 });

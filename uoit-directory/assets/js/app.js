@@ -1,33 +1,26 @@
-// $("#searchResult").hide();
-//
-// $('#searchButton').click(function () {
-//   $("#searchResult").show();
-// });
+// FOUNDATION FORM SUBMISSION
+// for custom error message on invalid field
+$(document).bind('invalid.zf.abide',function(e) {
+  // alert("Sorry, not valid");
+});
+// to submit via ajax, add the 2 bindings below.
+$(document)
+.bind("submit", function(e) {
+  // e.preventDefault();
+  // message to show that is was been sent
+  alert("Your update request has been sent! Note: Your request will not be changed right away.");
+  // deletes/resests all text within input fields
+  var form = document.getElementById("updateForm");
+  form.reset();
+})
 
-// // show and hide Directoy Search Result when you go to another tab
-// $('#searchTab').on("click", function (event) {
-//   // alert("search tab clicked!");
-//    $("#angularSearch").show();
-// });
-//
-// $('#contactsTab').on("click", function (event) {
-//   // alert("contacts tab clicked!");
-//    $("#angularSearch").hide();
-// });
-//
-// $('#updateTab').on("click", function (event) {
-//   // alert("update tab clicked!");
-//    $("#angularSearch").hide();
-// });
+.bind("formvalid.zf.abide", function(e,$form) {
+  // ajax submit
+});
 
-// $('#orderFirstName').on("click", function (event) {
-//   alert("order by first name!");
-// });
-//
-// $('#orderLastName').on("click", function (event) {
-//   alert("order by last name!");
-// });
-//
-// $('#orderDepartment').on("click", function (event) {
-//   alert("order by department!");
-// });
+// smooth scroll to top of ‘Directory Search Results’
+$(".scrollTop").click(function() {
+    $('html,body').animate({
+        scrollTop: $("#angularSearch").offset().top},
+        'slow');
+});

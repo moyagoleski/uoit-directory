@@ -21,7 +21,7 @@ app.controller('getUsersCtrl', ['$scope', '$filter', 'usersInfoService', functio
 			$scope.departments[i] = response.data.query_info.person_info[i].dirschl_school_name;
 		}
 
-		// remove departments duplicates from json data  (dirschl_school_name)
+		// remove departments duplicates from departments array (dirschl_school_name) 64 left
 		$scope.departments = $scope.departments.filter(function(elem, index, self) {
 			return index == self.indexOf(elem);
 		});
@@ -45,10 +45,8 @@ app.controller('getUsersCtrl', ['$scope', '$filter', 'usersInfoService', functio
 
 		// search function binding to search button
 		$scope.searchBy = function() {
-
 			// get keyword from input field binding to accordion filter
 			$scope.search = $scope.searchInput;
-
 			$scope.searchInput = '';
 
 			// set current page
@@ -59,16 +57,13 @@ app.controller('getUsersCtrl', ['$scope', '$filter', 'usersInfoService', functio
 		// search result display below search tab content
 		// by clicking other tabs remove search result
 		$scope.removeSearchResult = function() {
-			$scope.search = $departments;
 			$scope.searchInput = '';
-		}
+		};
 
 		// dropdown function
 		$scope.select = function() {
-			// clear input field
-			// $scope.search = "";
-			$scope.searchInput = '';
-			$currentPage = 1;
+$scope.search = $scope.searchSelect;
+
 		};
 
 	});

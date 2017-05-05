@@ -3472,18 +3472,18 @@
 						<a href="../index.php">UOIT</a>
 					</li>
 				</ul>
-				<div class="page-row row" ng-app="myApp" ng-controller="getUsersCtrl">
-					<section class="page-content has-sidebar">
+				<div class="page-row row" ng-app="myApp">
+					<section class="page-content has-sidebar"  ng-controller="getUsersCtrl">
 						<h2>DIRECTORY</h2>
 						<ul class="tabs" data-tabs="u3jluw-tabs" id="tab1" role="tablist">
 							<li class="tabs-title   is-active " role="presentation">
 								<!-- remove function remove search result in any other tabs section -->
 								<a href="#tab1-1" class="text-center" role="tab" aria-controls="tab1-1" aria-selected="true" id="tab1-1-label" ng-click="removeSearchResult()">Search</a>
 							</li>
-							<li class="tabs-title   " role="presentation">
+							<li class="tabs-title" role="presentation">
 								<a href="#tab1-2" class="text-center" role="tab" aria-controls="tab1-2" aria-selected="false" id="tab1-2-label" ng-click="removeSearchResult()">Contacts</a>
 							</li>
-							<li class="tabs-title   " role="presentation">
+							<li class="tabs-title" role="presentation">
 								<a href="#tab1-3" class="text-center" role="tab" aria-controls="tab1-3" aria-selected="false" id="tab1-3-label" ng-click="removeSearchResult()">Update</a>
 							</li>
 						</ul>
@@ -3504,7 +3504,7 @@
 									<div class="small-4 medium-4 large-4  columns">
 										<label>DEPARTMENT:
 											<!-- select function for clear input field -->
-											<select ng-model="search.dirschl_school_name" ng-options="department for department in departments"  ng-change="select()">
+											<select ng-model="searchSelect" ng-options="department for department in departments"  ng-change="select()">
 													<option value="">Select Department</option>
 											</select>
 										</label>
@@ -3609,24 +3609,23 @@
 							</div>
 						</div>
 						<div class="callout" id="searchResult" ng-if="search" class='ng-hide'>
-							<h2>Directory Search Results</h2>
 							<div class="row">
-								<div class="columns small-12">
-									<p>To reach a Faculty or Staff member dial the main switchboard at (905)721-8668 and ask for the extension below</p>
+								<div class="columns small-12 medium-5">
+									<h2>Directory Search Results</h2>
 								</div>
-								<div class="columns small-12">
+								<div class="columns small-12 medium-5">
 									<div class="small button-group">
-										<span>Sort By: </span>
 										<!-- by clicking this button will trigger two function:
 												 set order type for orderBy in accordion
 												 add/remove class name activeFilterBtn for clickedBtn
 										 -->
 										<a class="button" ng-click="orderType='dirpepl_first_name';order='firstName'" ng-class="{activeFilterBtn: order === 'firstName'}">First Name</a>
 										<a class="button" ng-click="orderType='dirpepl_last_name';order='lastName'" ng-class="{activeFilterBtn: order === 'lastName'}">Last Name</a>
-										<a class="button" ng-click="orderType='dirschl_school_name';order='department'" ng-class="{activeFilterBtn: order === 'department'}">Department</a>
+										<a class="button" ng-click="orderType='dirschl_school_name';order='department'" ng-class="{activeFilterBtn: order === 'department'}" ng-show='search.dirschl_school_name' ng-hide='search.dirschl_school_name'>Department</a>
 									</div>
 								</div>
 							</div>
+							<p>To reach a Faculty or Staff member dial the main switchboard at (905)721-8668 and ask for the extension below</p>
 
 							<ul class="accordion" data-accordion data-allow-all-closed="true">
 								<!-- display users info in accordion -->

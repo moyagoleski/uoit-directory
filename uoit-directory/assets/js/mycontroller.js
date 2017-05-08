@@ -77,6 +77,7 @@ app.controller('searchCtrls', function($scope, $http, $filter) {
     $scope.numberOfPages=function(){
       var myFilteredData;
       myFilteredData = $filter('filter')($scope.jsonData,$scope.searchName);
+      // myFilteredData = $filter('filter')(myFilteredData,$scope.searchDepartment.dirschl_school_name);
 
       //Filter the data
       return Math.ceil(myFilteredData.length/$scope.pageSize);

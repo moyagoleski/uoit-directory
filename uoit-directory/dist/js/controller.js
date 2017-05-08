@@ -1,4 +1,4 @@
-app.controller('getUsersCtrl', ['$scope', '$filter', 'usersInfoService', function($scope, $filter, usersInfoService) {
+app.controller('searchCtrl', ['$scope', '$filter', 'usersInfoService', function($scope, $filter, usersInfoService) {
 	// get users info data from json file
 	usersInfoService.get().then(function(response) {
 		// push person info to users array;
@@ -47,12 +47,11 @@ app.controller('getUsersCtrl', ['$scope', '$filter', 'usersInfoService', functio
 		$scope.searchBy = function() {
 			// get keyword from input field binding to accordion filter
 			$scope.search = $scope.searchInput;
-			$scope.searchInput = '';
-
+			//clear dropdown list
+			$scope.searchDepartment = '';
 			// set current page
 			$currentPage = 1;
 		};
-
 
 		// search result display below search tab content
 		// by clicking other tabs remove search result
@@ -61,15 +60,25 @@ app.controller('getUsersCtrl', ['$scope', '$filter', 'usersInfoService', functio
 		};
 
 		// dropdown function
-		$scope.select = function() {
-$scope.search = $scope.searchSelect;
+		// if using $scope.search = $scope.searchSelect;
+		// filter is going to filter department but also filtering
+		// other names has same string like selecting campus ice centre in dropdownlist
+		// will select "dirschl_school_name": "Office of Student Life - Varsity",
+		// because in this subject building name has exact same string as selecetd department from dropdown 'Campus Ice Centre'
+		// like dirschl_school_name, "dirbuilding_building_name": "Campus Ice Centre",
 
+		// if using $scope.search = search.dirschl_school_name;
+		// when name or keyword is typed and search button cliked,
+		// dropdown list is not functional causing error cannot create property '' on string ''
+		$scope.searchSelect = function() {
+			$scope.search = $scope.searchDepartment;
+			$scope.searchInput = '';
+			$currentPage = 1;
 		};
-
 	});
 }]);
 
-// return arr
+
 app.filter('startFrom', function() {
 	return function(input, start) {
 		start = +start; //parse to int

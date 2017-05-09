@@ -3457,532 +3457,488 @@
 
 			<!-- MAIN CONTENT STARTS HERE -->
 			<section id="main-content">
-
 				<ul aria-label="Breadcrumbs" class="breadcrumbs" role="menubar">
 					<li role="menuitem">
 						<a href="../index.php">UOIT</a>
 					</li>
 				</ul>
-
-				<div class="page-row row">
-
+				<div class="page-row row" ng-app="myApp" ng-controller="searchCtrl">
 					<!-- ANGULAR APP STARTS HERE -->
-					<div ng-app="myApp" ng-controller="searchCtrls">
-
-						<section class="page-content has-sidebar">
-							<h2>DIRECTORY</h2>
-							<!-- tabs title start -->
-							<ul class="tabs" data-tabs="u3jluw-tabs" id="tab1" role="tablist">
-								<li class="tabs-title is-active" role="presentation" id="searchTab" ng-click="searchTabFunction()">
-									<a href="#tab1-1" role="tab" aria-controls="tab1-1" aria-selected="true" id="tab1-1-label">Search</a>
-								</li>
-								<li class="tabs-title" role="presentation" id="contactsTab" ng-click="contactsTabFunction()">
-									<a href="#tab1-2" role="tab" aria-controls="tab1-2" aria-selected="false" id="tab1-2-label">Contacts</a>
-								</li>
-								<li class="tabs-title" role="presentation" id="updateTab" ng-click="updateTabFunction()">
-									<a href="#tab1-3" role="tab" aria-controls="tab1-3" aria-selected="false" id="tab1-3-label">Update</a>
+					<section class="page-content has-sidebar">
+						<h2>DIRECTORY</h2>
+						<!-- tabs title start -->
+						<ul class="tabs" data-tabs="u3jluw-tabs" id="tab1" role="tablist">
+							<li class="tabs-title is-active" role="presentation" id="searchTab" ng-click="removeSearchResult()">
+								<a href="#tab1-1" role="tab" aria-controls="tab1-1" aria-selected="true" id="tab1-1-label">Search</a>
+							</li>
+							<li class="tabs-title" role="presentation" id="contactsTab" ng-click="removeSearchResult()">
+								<a href="#tab1-2" role="tab" aria-controls="tab1-2" aria-selected="false" id="tab1-2-label">Contacts</a>
+							</li>
+							<li class="tabs-title" role="presentation" id="updateTab" ng-click="removeSearchResult()">
+								<a href="#tab1-3" role="tab" aria-controls="tab1-3" aria-selected="false" id="tab1-3-label">Update</a>
+							</li>
+						</ul>
+						<!-- tabs title end -->
+						<!-- tabs content start -->
+						<div class="tabs-content" data-tabs-content="tab1" id="tab1-content">
+							<!-- TAB 1 STARTS  -->
+							<div class="tabs-panel is-active" id="tab1-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab1-1-label">
+								<div class="row">
+									<div class="small-12 columns">
+										<!-- TAB TITLE  -->
+										<h2>Search</h2>
+										<br/>
+										<p>Enter a first name, a last name, a department or all to find a Faculty or Staff member. Partial names can also be used.</p>
+									</div>
+								</div>
+								<!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
+								<form>
+									<div class="row">
+										<div class="small-12 medium-3 columns">
+											<label>First Name:</label><input type='text' ng-model='searchName.dirpepl_first_name' ng-change='currentPage = 0;searchName.dirschl_school_name="";order="lastName"' />
+										</div>
+										<div class="small-12 medium-3 columns">
+											<label>Last Name:</label><input type='text' ng-model='searchName.dirpepl_last_name' ng-change='currentPage = 0;searchName.dirschl_school_name=""' />
+										</div>
+										<div class="small-12 medium-4 columns">
+                      <label for="">Select Department: </label>
+											<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
+											<!-- <label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' ng-change='currentPage = 0' /> -->
+											<select ng-model="searchName.dirschl_school_name" ng-options="department for department in departments" ng-change='currentPage = 0;searchName.dirpepl_last_name="";searchName.dirpepl_first_name="";order="department"'>
+												<option value="">Select Department</option>
+											</select>
+										</div>
+										<div ng-show="searchName" class="small-12 small-centered text-center medium-2 columns" ng-if="searchName.dirschl_school_name || searchName.dirpepl_last_name || searchName.dirpepl_first_name"  class='ng-hide'>
+											<p aria-hidden="true"><span class="icon_arrow_down bounce scrollTop"></span></p>
+										</div>
+									</div>
+								</form>
+							</div>
+							<!-- TAB 1 END  -->
+							<!-- TAB 2 STARTS -->
+							<div class="tabs-panel" id="tab1-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-2-label">
+								<!-- TAB TITLE  -->
+								<h2>General Contacts</h2>
+								<br/>
+								<!-- POTENTIAL BUTTON FILTER/SCROLL FOR THE CONTACTS? -->
+								<!-- <div class="row">
+									<div class="small-12 small-centered columns">
+										<a class="button [primary]/[lightblue]" role="button">Campus services</a>
+										<a class="button [primary]/[lightblue]" role="button">Student services</a>
+										<a class="button [primary]/[lightblue]" role="button">Academic faculties</a>
+										<a class="button [primary]/[lightblue]" role="button">Faculty and staff services</a>
+									</div>
+								</div>
+								<br/> -->
+								<!-- CONTACT TITLE  -->
+								<h3>Campus services</h3>
+								<div class="row">
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Bookstore</b>
+										</p>
+										<p class="contact-number">905.721.3026</p>
+									</div>
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Campus Fieldhouse</b>
+										</p>
+										<p class="contact-number">905.721.3122</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Campus Ice Centre</b>
+										</p>
+										<p class="contact-number">905.721.3230</p>
+									</div>
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Campus Recreation and Wellness Centre</b>
+										</p>
+										<p class="contact-number">905.721.3040</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Campus Security</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext. 2400</p>
+									</div>
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Health and Wellness</b>
+										</p>
+										<p class="contact-number">905.721.3037</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Help Desk (Facilities, IT and Media services)</b>
+										</p>
+										<p class="contact-number">905.721.3333</p>
+									</div>
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Library</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext. 2214</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Regent Theatre</b>
+										</p>
+										<p class="contact-number">905.721.3399</p>
+									</div>
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Shop61</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext.5695</p>
+									</div>
+								</div>
+								<br/>
+								<!-- CONTACT TITLE  -->
+								<h3>Student services</h3>
+								<div class="row">
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Alumni Office</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext. 5659</p>
+									</div>
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Career Centre</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext. 3824</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Dental Clinic</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext. 3074</p>
+									</div>
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Flex Centre</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext. 3715</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Housing</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext. 8000</p>
+									</div>
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Office of Student Life</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext. 5317</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Pharmacy</b>
+										</p>
+										<p class="contact-number">905.728.6724</p>
+									</div>
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Registrar’s Office and Admissions</b>
+										</p>
+										<p class="contact-number">905.721.3190</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Student Accessibility Services</b>
+										</p>
+										<p class="contact-number">905.721.3266</p>
+									</div>
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Student Association</b>
+										</p>
+										<p class="contact-number">905.721.0457</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Student Awards and Financial Aid (SAFA)</b>
+										</p>
+										<p class="contact-number">905.721.3143</p>
+									</div>
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Student Experience Centre</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext. 3837</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Student Learning Centre</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext. 6578</p>
+									</div>
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Student Life Line</b>
+										</p>
+										<p class="contact-number">905.721.3392</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-12 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Women’s Centre</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext. 7615</p>
+									</div>
+								</div>
+								<br/>
+								<!-- CONTACT TITLE  -->
+								<h3>Academic faculties</h3>
+								<div class="row">
+									<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#00558C">
+										<p class="contact-title">
+											<span class="fbit"><b>Faculty of Business and Information Technology</b></span>
+										</p>
+										<span class="contact-number fbit">905.721.8668 ext. 2830</span>
+									</div>
+									<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#4F758B">
+										<p class="contact-title fed">
+											<span class="fed"><b>Faculty of Education</b></span>
+										</p>
+										<span class="contact-number fed">905.721.8668 ext. 3181</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#6F263D">
+										<p class="contact-title">
+											<span class="fesns"><b>Faculty of Energy Systems and Nuclear Science</b></span>
+										</p>
+										<span class="contact-number fesns">905.721.8668 ext. 5511</span>
+									</div>
+									<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#5F259F">
+										<p class="contact-title">
+											<span class="feas"><b>Faculty of Engineering and Applied Science</b></span>
+										</p>
+										<span class="contact-number feas">905.721.8668 ext. 2988</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#AF272F">
+										<p class="contact-title">
+											<span class="fhs"><b>Faculty of Health Sciences</b></span>
+										</p>
+										<span class="contact-number fhs">905.721.8668 ext. 3166</span>
+									</div>
+									<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#007749">
+										<p class="contact-title">
+											<span class="fsci"><b>Faculty of Science</b></span>
+										</p>
+										<span class="contact-number fsci">905.721.8668 ext. 3050</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#BE4D00">
+										<p class="contact-title">
+											<span class="fssh"><b>Faculty of Social Science and Humanities</b></span>
+										</p>
+										<span class="contact-number fssh">905.721.8668 ext. 3234</span>
+									</div>
+									<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#000">
+										<p class="contact-title">
+											<span class="grad"><b>Office of Graduate Studies</b></span>
+										</p>
+										<span class="contact-number grad">905.721.8668 ext. 6209</span>
+									</div>
+								</div>
+								<br/>
+								<!-- CONTACT TITLE  -->
+								<h3>Faculty and staff services</h3>
+								<div class="row">
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Finance</b>
+										</p>
+										<p class="contact-number">905.721.3020</p>
+									</div>
+									<div class="small-6 large-6 medium-6 columns contact-card">
+										<p class="contact-title">
+											<b>Social Research Centre (SRC)</b>
+										</p>
+										<p class="contact-number">905.721.8668 ext. 5867</p>
+									</div>
+								</div>
+							</div>
+							<!-- TAB 2 END  -->
+							<!-- TAB 3 STARTS  -->
+							<div class="tabs-panel " id="tab1-3" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-3-label">
+								<!-- TAB TITLE  -->
+								<h2>Update Information</h2>
+								<br/>
+								<p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form below.</p>
+								<!-- FORM INPUT FIELDS -->
+								<form data-abide novalidate id="updateForm">
+									<!-- ERROR MESSAGE FOR USER -->
+									<div data-abide-error class="alert callout" style="display: none;">
+										<p><i class="fi-alert"></i> There appears to be errors in your form.</p>
+									</div>
+									<div class="row">
+										<div class="small-12 medium-12 columns">
+											<label>BANNER USER ID:<b style="color:red"> *</b><input type="text" name="id" required pattern="number"/></label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="small-12 medium-6 columns">
+											<label>FIRST NAME:<b style="color:red"> *</b><input type="text" name="firstName" required pattern="alpha"/></label>
+										</div>
+										<div class="small-12 medium-6 columns">
+											<label>LAST NAME:<b style="color:red"> *</b><input type="text" name="lastName" required pattern="alpha"/></label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="small-12 medium-6 columns">
+											<label>DEPARTMENT:<b style="color:red"> *</b><input type="text" name="department" required pattern="alpha"/></label>
+										</div>
+										<div class="small-12 medium-6 columns">
+											<label>TITLE:<b style="color:red"> *</b><input type="text" name="position" required pattern="alpha"/></label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="small-12 medium-6 columns">
+											<label>BUILDING:<b style="color:red"> *</b><input type="text" name="building" required/></label>
+										</div>
+										<div class="small-12 medium-6 columns">
+											<label>OFFICE:<b style="color:red"> *</b><input type="text" name="location" required/></label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="small-12 medium-6 columns">
+											<label>EXTENSION:<b style="color:red"> *</b><input type="text" name="extension" required pattern="number"/></label>
+										</div>
+										<div class="small-12 medium-6 columns">
+											<label>E-MAIL:<b style="color:red"> *</b><input type="text" name="email" required pattern="email"/></label>
+										</div>
+									</div>
+									<!-- SUBMIT BUTTON -->
+									<fieldset class="large-6 columns">
+										<button class="button" type="submit" value="Submit" role="button">Submit</button>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+						<div class="callout" id="angularSearch" ng-if="searchName.dirschl_school_name || searchName.dirpepl_last_name || searchName.dirpepl_first_name"  class='ng-hide'>
+							<div class="row">
+								<div class="small-12 small-centered medium-6 columns searchResults">
+									<h3>Directory Search Results</h3>
+								</div>
+								<div class="small-12 medium-6 small-centered text-center columns searchResults small button-group" ng-hide="(currentPage + 1) > numberOfPages()">
+									<!-- <label>Order By:</label> -->
+									<!-- Order By: -->
+                  <a class="button" ng-click="orderType='dirpepl_first_name';order='firstName'" ng-class="{activeFilterBtn: order === 'firstName'}">First Name</a>
+                  <a class="button" ng-click="orderType='dirpepl_last_name';order='lastName'" ng-class="{activeFilterBtn: order === 'lastName'}">Last Name</a>
+                  <a class="button" ng-click="orderType='dirschl_school_name';order='department'" ng-class="{activeFilterBtn: order === 'department'}" ng-hide='searchSelect'>Department</a>
+								</div>
+							</div>
+							<br/>
+							<div class="small-12 columns" ng-hide="(currentPage + 1) > numberOfPages()">
+								<p>To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
+							</div>
+							<div class="small-12 columns" ng-show="(currentPage + 1) > numberOfPages()">
+								<p>Sorry, no directory search results to display.</p>
+							</div>
+							<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
+							<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
+							<ul class="accordion" data-accordion data-allow-all-closed="true">
+								<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
+								<li class="accordion-item" data-accordion-item ng-repeat="user in users | filter: searchName | orderBy: orderType | startFrom:currentPage*pageSize | limitTo:pageSize">
+									<!-- SEARCH DEPARTMENT BY DROPDOWN -->
+									<!-- <li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | filter:searchDepartment.dirschl_school_name | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize"> -->
+									<a class="accordion-title" ng-click="showDetails = ! showDetails">{{ user.dirpepl_first_name + ' ' + user.dirpepl_last_name }}
+														<ul class='accordion-title-desc'>
+															<li>
+																<b>Department:</b>
+																{{user.dirschl_school_name}}
+															</li>
+															<li>
+																<b>Title:</b>
+																{{user.dirrank_rank_name}}
+															</li>
+														</ul>
+													</a>
+									<div class="a-content" ng-class="{ 'hidden': ! showDetails }" data-tab-content>
+										<ul class='search-list-info'>
+											<li>
+												<b>Building:</b> {{user.dirbuilding_building_name}}
+											</li>
+											<li>
+												<b>Office:</b> {{user.dirpepl_office}}
+											</li>
+											<li>
+												<b>Eusertension: </b> {{user.dirpepl_extension}}
+											</li>
+											<li>
+												<b>E-mail: </b>
+												<a href="mailto:{{user.email}}">{{user.email}}</a>
+											</li>
+										</ul>
+									</div>
 								</li>
 							</ul>
-							<!-- tabs title end -->
-
-							<!-- tabs content start -->
-							<div class="tabs-content" data-tabs-content="tab1" id="tab1-content">
-
-								<!-- TAB 1 STARTS  -->
-								<div class="tabs-panel is-active" id="tab1-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab1-1-label">
-									<div class="row">
-										<div class="small-12 columns">
-											<!-- TAB TITLE  -->
-											<h2>Search</h2>
-											<br/>
-											<p>Enter a first name, a last name, a department or all to find a Faculty or Staff member. Partial names can also be used.</p>
-										</div>
-									</div>
-									<!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
-									<form>
-										<div class="row">
-											<div class="small-12 medium-3 columns">
-												<label>First Name:</label><input type='text' ng-model='searchName.dirpepl_first_name' ng-change='currentPage = 0' />
-											</div>
-											<div class="small-12 medium-3 columns">
-												<label>Last Name:</label><input type='text' ng-model='searchName.dirpepl_last_name' ng-change='currentPage = 0' />
-											</div>
-											<div class="small-12 medium-4 columns">
-												<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
-												<label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' ng-change='currentPage = 0' />
-												<!-- SEARCH DEPARTMENT BY DROPDOWN -->
-												<!-- <label>Department:</label> -->
-													<!-- <select ng-model="searchDepartment" ng-options="x.dirschl_school_name for x in jsonData | orderBy:'dirschl_school_name'" ng-change='currentPage = 0'> -->
-													<!-- <select ng-model="searchDepartment" ng-options="x.dirschl_school_name for x in jsonData | orderBy:'dirschl_school_name' | unique:'dirschl_school_name'" ng-change='currentPage = 0'> -->
-														<!-- <option value="">Select</option> -->
-													<!-- </select> -->
-											</div>
-											<div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchName.dirschl_school_name" class="small-12 small-centered text-center medium-2 columns">
-												<p aria-hidden="true"><span class="icon_arrow_down bounce scrollTop"></span></p>
-											</div>
-										</div>
-									</form>
-								</div>
-								<!-- TAB 1 END  -->
-
-								<!-- TAB 2 STARTS -->
-								<div class="tabs-panel" id="tab1-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-2-label">
-									<!-- TAB TITLE  -->
-									<h2>General Contacts</h2>
-									<br/>
-									<!-- POTENTIAL BUTTON FILTER/SCROLL FOR THE CONTACTS? -->
-									<!-- <div class="row">
-										<div class="small-12 small-centered columns">
-											<a class="button [primary]/[lightblue]" role="button">Campus services</a>
-											<a class="button [primary]/[lightblue]" role="button">Student services</a>
-											<a class="button [primary]/[lightblue]" role="button">Academic faculties</a>
-											<a class="button [primary]/[lightblue]" role="button">Faculty and staff services</a>
-										</div>
-									</div>
-									<br/> -->
-									<!-- CONTACT TITLE  -->
-									<h3>Campus services</h3>
-									<div class="row">
-										<div class="small-6 large-6 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Bookstore</b>
-											</p>
-											<p class="contact-number">905.721.3026</p>
-										</div>
-										<div class="small-6 large-6 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Campus Fieldhouse</b>
-											</p>
-											<p class="contact-number">905.721.3122</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-6 large-6 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Campus Ice Centre</b>
-											</p>
-											<p class="contact-number">905.721.3230</p>
-										</div>
-										<div class="small-6 large-6 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Campus Recreation and Wellness Centre</b>
-											</p>
-											<p class="contact-number">905.721.3040</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-6 large-6 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Campus Security</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext. 2400</p>
-										</div>
-										<div class="small-6 large-6 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Health and Wellness</b>
-											</p>
-											<p class="contact-number">905.721.3037</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-6 large-6 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Help Desk (Facilities, IT and Media services)</b>
-											</p>
-											<p class="contact-number">905.721.3333</p>
-										</div>
-										<div class="small-6 large-6 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Library</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext. 2214</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-6 large-6 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Regent Theatre</b>
-											</p>
-											<p class="contact-number">905.721.3399</p>
-										</div>
-										<div class="small-6 large-6 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Shop61</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext.5695</p>
-										</div>
-									</div>
-									<br/>
-									<!-- CONTACT TITLE  -->
-									<h3>Student services</h3>
-									<div class="row">
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Alumni Office</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext. 5659</p>
-										</div>
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Career Centre</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext. 3824</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Dental Clinic</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext. 3074</p>
-										</div>
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Flex Centre</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext. 3715</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Housing</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext. 8000</p>
-										</div>
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Office of Student Life</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext. 5317</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Pharmacy</b>
-											</p>
-											<p class="contact-number">905.728.6724</p>
-										</div>
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Registrar’s Office and Admissions</b>
-											</p>
-											<p class="contact-number">905.721.3190</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Student Accessibility Services</b>
-											</p>
-											<p class="contact-number">905.721.3266</p>
-										</div>
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Student Association</b>
-											</p>
-											<p class="contact-number">905.721.0457</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Student Awards and Financial Aid (SAFA)</b>
-											</p>
-											<p class="contact-number">905.721.3143</p>
-										</div>
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Student Experience Centre</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext. 3837</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Student Learning Centre</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext. 6578</p>
-										</div>
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Student Life Line</b>
-											</p>
-											<p class="contact-number">905.721.3392</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-12 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Women’s Centre</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext. 7615</p>
-										</div>
-									</div>
-									<br/>
-									<!-- CONTACT TITLE  -->
-									<h3>Academic faculties</h3>
-									<div class="row">
-										<div class="small-6 large-6 medium-6 columns contact-card"  style="border-color:#00558C">
-											<p class="contact-title">
-												<span class="fbit"><b>Faculty of Business and Information Technology</b></span>
-											</p>
-											<span class="contact-number fbit">905.721.8668 ext. 2830</span>
-										</div>
-										<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#4F758B">
-											<p class="contact-title fed">
-												<span class="fed"><b>Faculty of Education</b></span>
-											</p>
-											<span class="contact-number fed">905.721.8668 ext. 3181</span>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#6F263D">
-											<p class="contact-title">
-												<span class="fesns"><b>Faculty of Energy Systems and Nuclear Science</b></span>
-											</p>
-											<span class="contact-number fesns">905.721.8668 ext. 5511</span>
-										</div>
-										<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#5F259F">
-											<p class="contact-title">
-												<span class="feas"><b>Faculty of Engineering and Applied Science</b></span>
-											</p>
-											<span class="contact-number feas">905.721.8668 ext. 2988</span>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#AF272F">
-											<p class="contact-title">
-												<span class="fhs"><b>Faculty of Health Sciences</b></span>
-											</p>
-											<span class="contact-number fhs">905.721.8668 ext. 3166</span>
-										</div>
-										<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#007749">
-											<p class="contact-title">
-												<span class="fsci"><b>Faculty of Science</b></span>
-											</p>
-											<span class="contact-number fsci">905.721.8668 ext. 3050</span>
-										</div>
-									</div>
-									<div class="row">
-										<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#BE4D00">
-											<p class="contact-title">
-												<span class="fssh"><b>Faculty of Social Science and Humanities</b></span>
-											</p>
-											<span class="contact-number fssh">905.721.8668 ext. 3234</span>
-										</div>
-										<div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#000">
-											<p class="contact-title">
-												<span class="grad"><b>Office of Graduate Studies</b></span>
-											</p>
-											<span class="contact-number grad">905.721.8668 ext. 6209</span>
-										</div>
-									</div>
-									<br/>
-									<!-- CONTACT TITLE  -->
-									<h3>Faculty and staff services</h3>
-									<div class="row">
-										<div class="small-6 large-6 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Finance</b>
-											</p>
-											<p class="contact-number">905.721.3020</p>
-										</div>
-										<div class="small-6 large-6 medium-6 columns contact-card">
-											<p class="contact-title">
-												<b>Social Research Centre (SRC)</b>
-											</p>
-											<p class="contact-number">905.721.8668 ext. 5867</p>
-										</div>
-									</div>
-								</div>
-								<!-- TAB 2 END  -->
-
-								<!-- TAB 3 STARTS  -->
-								<div class="tabs-panel " id="tab1-3" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-3-label">
-									<!-- TAB TITLE  -->
-									<h2>Update Information</h2>
-									<br/>
-									<p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form below.</p>
-									<!-- FORM INPUT FIELDS -->
-									<form data-abide novalidate id="updateForm">
-										<!-- ERROR MESSAGE FOR USER -->
-										<div data-abide-error class="alert callout" style="display: none;">
-											<p><i class="fi-alert"></i> There appears to be errors in your form.</p>
-										</div>
-										<div class="row">
-											<div class="small-12 medium-12 columns">
-												<label>BANNER USER ID:<b style="color:red"> *</b><input type="text" name="id" required pattern="number"/></label>
-											</div>
-										</div>
-										<div class="row">
-											<div class="small-12 medium-6 columns">
-												<label>FIRST NAME:<b style="color:red"> *</b><input type="text" name="firstName" required pattern="alpha"/></label>
-											</div>
-											<div class="small-12 medium-6 columns">
-												<label>LAST NAME:<b style="color:red"> *</b><input type="text" name="lastName" required pattern="alpha"/></label>
-											</div>
-										</div>
-										<div class="row">
-											<div class="small-12 medium-6 columns">
-												<label>DEPARTMENT:<b style="color:red"> *</b><input type="text" name="department" required pattern="alpha"/></label>
-											</div>
-											<div class="small-12 medium-6 columns">
-												<label>TITLE:<b style="color:red"> *</b><input type="text" name="position" required pattern="alpha"/></label>
-											</div>
-										</div>
-										<div class="row">
-											<div class="small-12 medium-6 columns">
-												<label>BUILDING:<b style="color:red"> *</b><input type="text" name="building" required/></label>
-											</div>
-											<div class="small-12 medium-6 columns">
-												<label>OFFICE:<b style="color:red"> *</b><input type="text" name="location" required/></label>
-											</div>
-										</div>
-										<div class="row">
-											<div class="small-12 medium-6 columns">
-												<label>EXTENSION:<b style="color:red"> *</b><input type="text" name="extension" required pattern="number"/></label>
-											</div>
-											<div class="small-12 medium-6 columns">
-												<label>E-MAIL:<b style="color:red"> *</b><input type="text" name="email" required pattern="email"/></label>
-											</div>
-										</div>
-										<!-- SUBMIT BUTTON -->
-										<fieldset class="large-6 columns">
-											<button class="button" type="submit" value="Submit" role="button">Submit</button>
-										</fieldset>
-									</form>
-								</div>
-
-							</div>
-							<!-- tabs content end -->
-
-
-							<!-- SEARCH FILTER JSON FILE  -->
-
-							<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
-							<div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchName.dirschl_school_name" id="angularSearch">
-							<!-- SEARCH DEPARTMENT BY DROPDOWN -->
-							<!-- <div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchDepartment.dirschl_school_name" id="angularSearch"> -->
-
-								<!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->
-								<div class="callout">
-									<div class="row">
-										<div class="small-12 columns">
-											<div class="search-list">
-
-												<div class="row">
-													<div class="small-12 small-centered medium-7 columns searchResults">
-														<h3>Directory Search Results</h3>
-													</div>
-													<div class="small-12 medium-5 small-centered text-center columns searchResults" ng-hide="(currentPage + 1) > numberOfPages()">
-														<!-- <label>Order By:</label> -->
-														<!-- Order By: -->
-															<a class="button small" role="button" id="orderFirstName" ng-click="orderByFunction(0)">First Name</a>
-															<a class="button small" role="button" id="orderLastName" ng-click="orderByFunction(1)">Last Name</a>
-															<a class="button small" role="button" id="orderDepartment" ng-click="orderByFunction(2)">Department</a>
-													</div>
-												</div>
-												<br/>
-												<div class="small-12 columns" ng-hide="(currentPage + 1) > numberOfPages()">
-													<p>To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
-												</div>
-												<div class="small-12 columns" ng-show="(currentPage + 1) > numberOfPages()">
-													<p>Sorry, no directory search results to display.</p>
-												</div>
-
-											</div>
-
-											<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
-											<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
-												<ul class="accordion" data-accordion data-allow-all-closed="true">
-													<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
-													<li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize">
-													<!-- SEARCH DEPARTMENT BY DROPDOWN -->
-													<!-- <li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | filter:searchDepartment.dirschl_school_name | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize"> -->
-														<a class="accordion-title" ng-click="showDetails = ! showDetails">{{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
-															<ul class='accordion-title-desc'>
-																<li>
-																	<b>Department:</b>
-																	{{x.dirschl_school_name}}
-																</li>
-																<li>
-																	<b>Title:</b>
-																	{{x.dirrank_rank_name}}
-																</li>
-															</ul>
-														</a>
-														<div class="a-content" ng-class="{ 'hidden': ! showDetails }" data-tab-content>
-															<ul class='search-list-info'>
-																<li>
-																	<b>Building:</b>
-																	{{x.dirbuilding_building_name}}
-																</li>
-																<li>
-																	<b>Office:</b>
-																	{{x.dirpepl_office}}
-																</li>
-																<li>
-																	<b>Extension: </b>
-																	{{x.dirpepl_extension}}
-																</li>
-																<li>
-																	<b>E-mail: </b>
-																	<a href="mailto:{{x.email}}">{{x.email}}</a>
-																</li>
-															</ul>
-														</div>
-													</li>
-												</ul>
-
-											<!-- PAGINATION - FUNCTIONAL -->
-											<ul class="pagination text-center" role="navigation" aria-label="Pagination" ng-hide="(currentPage + 1) > numberOfPages()">
-												<li class="pagination-previous">
-													<button role="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class="scrollTop">
-											        <span class="icon_arrow_left"></span> Previous
-											    </button>
-												</li>
-												<li>
-													<button class="current">
-														{{currentPage+1}} out of {{numberOfPages()}}
-													</button>
-												</li>
-												<li class="pagination-next">
-													<button role="button" ng-disabled="(currentPage + 1) >= numberOfPages()" ng-click="currentPage=currentPage+1" class="scrollTop">
-															Next <span class="icon_arrow_right"></span>
-													</button>
-												</li>
-											</ul>
-
-										</div>
-									</div>
-
-								</div>
-								<!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE ENDS HERE  -->
-
-							</div>
-							<!-- ** SEARCH FILTER JSON FILE ENDS HERE ** -->
-
-						</section>
-
-					</div>
-					<!-- ** ANGULAR APP ENDS HERE ** -->
-
-					<!-- SIDEBAR WITH BUTTONS  -->
+							<!-- PAGINATION - FUNCTIONAL -->
+               <!-- ng-hide="(currentPage + 1) > numberOfPages()" -->
+							<ul class="pagination text-center" role="navigation" aria-label="Pagination">
+								<li class="pagination-previous">
+									<button role="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1"  class="scrollTop">
+  			        <span class="icon_arrow_left"></span> Previous
+  			    </button>
+								</li>
+								<li>
+									<span class="current">{{currentPage+1}} out of {{numberOfPages()}}</span>
+								</li>
+								<li class="pagination-next">
+									<button role="button" ng-disabled="(currentPage + 1) >= numberOfPages()" ng-click="currentPage=currentPage+1" class="scrollTop">
+								Next <span class="icon_arrow_right"></span>
+						</button>
+								</li>
+							</ul>
+						</div>
+					</section>
 					<section class="page-sidebar">
 						<div class="sidebar-ctas">
 							<a class="button pink icon_phone" href="buttons.php" onclick="">Emergency Info</a>
 							<a class="button green icon_map" href="buttons.php" onclick="">Campus Map</a>
 							<a class="button orange icon_audience" href="buttons.php" onclick="">Faculty Experts</a>
-
 						</div>
 					</section>
 
+					<!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE ENDS HERE  -->
+					<!-- ** SEARCH FILTER JSON FILE ENDS HERE *-->
+					<!-- ** ANGULAR APP ENDS HERE ** -->
+					<!-- SIDEBAR WITH BUTTONS  -->
 				</div>
 				<!-- /.page-row -->
 			</section>
+
+
 			<!-- MAIN CONTENT ENDS HERE -->
 
 
@@ -4076,7 +4032,7 @@
 			<!-- /.off-canvas-content -->
 			</div>
 			<!-- /.off-canvas-wrapper -->
-			<script src="https://shared.uoit.ca/global-2.1/dist/js/global.js"></script>
+			<!-- <script src="https://shared.uoit.ca/global-2.1/dist/js/global.js"></script> -->
 
 			<script src="https://shared.uoit.ca/global-2.1/dist/js/foundation.js"></script>
 			<script src="https://shared.uoit.ca/global-2.1/dist/js/app.js"></script>
@@ -4087,6 +4043,7 @@
 			<!-- CONNECT TO ANGULAR  -->
 			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 			<script src="assets/js/myapp.js" type="text/javascript"></script>
+			<script src="assets/js/service.js" type="text/javascript"></script>
 			<script src="assets/js/mycontroller.js" type="text/javascript"></script>
 </body>
 

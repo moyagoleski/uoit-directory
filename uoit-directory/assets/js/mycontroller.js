@@ -1,99 +1,51 @@
 // controller
-app.controller('searchCtrls', function($scope, $http, $filter) {
+app.controller('searchCtrl', ['$scope', '$filter', 'usersService', function($scope, $filter, usersService) {
+    	 usersService.get().then(function(response) {
+    		// push person info to users array;
+    		$scope.users = response.data.query_info.person_info;
 
-    // gets JSON file
-    $http.get("directory.json").then(function(response) {
-        $scope.jsonData = response.data.query_info.person_info;
-        // replaces '&' with 'and' in JSON file
-        for(i in $scope.jsonData){
-          $scope.jsonData[i]['dirschl_school_name'] = $scope.jsonData[i]['dirschl_school_name'].replace("&", "and");
-        }
-        // replaces '-UOIT' with '' in JSON file
-        for(i in $scope.jsonData){
-          $scope.jsonData[i]['dirschl_school_name'] = $scope.jsonData[i]['dirschl_school_name'].replace("-UOIT", "");
-        }
-        // replaces '- UOIT' with '' in JSON file
-        for(i in $scope.jsonData){
-          $scope.jsonData[i]['dirschl_school_name'] = $scope.jsonData[i]['dirschl_school_name'].replace("- UOIT", "");
-        }
-    });
+    		// departments array
+    		$scope.departments = [];
 
-    // show and hide Directoy Search Result when you go to another tab
-    $scope.searchTabFunction = function() {
-      $("#angularSearch").show();
-      // $scope.searchName.dirpepl_first_name.searchName.dirpepl_last_name.searchName.dirschl_school_name = true;
-    };
+    		// regex replace '&','UOIT','g'
+    		var regex = /-|UOIT|/g;
+    		var regex2 = /&/g;
 
-    $scope.contactsTabFunction = function() {
-      $("#angularSearch").hide();
-      // $scope.searchName.dirpepl_first_name.searchName.dirpepl_last_name.searchName.dirschl_school_name = false;
-    };
+    		for (var i in $scope.users) {
 
-    $scope.updateTabFunction = function() {
-      $("#angularSearch").hide();
-    };
+    			// replace '&','UOIT','g'
+    			$scope.users[i].dirschl_school_name = $scope.users[i].dirschl_school_name.replace(regex, "");
+    			$scope.users[i].dirschl_school_name = $scope.users[i].dirschl_school_name.replace(regex2, "and");
 
-    // orders automatically by last name
-    $('#orderLastName').css('background-color', '#003C71');
+    			// store department in departments array
+    			$scope.departments[i] = response.data.query_info.person_info[i].dirschl_school_name;
+    		}
 
-    // // order by buttons that filter when you click
-    $scope.orderByFunction = function(order) {
+    		// remove departments duplicates from departments array (dirschl_school_name) 64 left
+    		$scope.departments = $scope.departments.filter(function(elem, index, self) {
+    			return index == self.indexOf(elem);
+    		});
+    		// sort departments array
+    		$scope.departments.sort();
 
-      if (order == '0') {
-        // alert("order by first name!");
-        $scope.jsonData = $filter('orderBy')($scope.jsonData, 'dirpepl_first_name');
-        // colour change to know what button you clicked
-        $('#orderFirstName').css('background-color', '#003C71');
-        $('#orderLastName').css('background-color', '#0077CA');
-        $('#orderDepartment').css('background-color', '#0077CA');
-      }
+            $scope.currentPage = 0;
+          	$scope.pageSize = 10;
 
-      if (order == '1') {
-        // alert("order by last name!");
-        $scope.jsonData = $filter('orderBy')($scope.jsonData, 'dirpepl_last_name');
-        // colour change to know what button you clicked
-        $('#orderFirstName').css('background-color', '#0077CA');
-        $('#orderLastName').css('background-color', '#003C71');
-        $('#orderDepartment').css('background-color', '#0077CA');
-      }
+          	// get filtered data
+          	$scope.getData = function() {
+          		return $filter('filter')($scope.users, $scope.searchName);
+          	};
 
-      if (order == '2') {
-        // alert("order by department!");
-        $scope.jsonData = $filter('orderBy')($scope.jsonData, 'dirschl_school_name');
-        // colour change to know what button you clicked
-        $('#orderFirstName').css('background-color', '#0077CA');
-        $('#orderLastName').css('background-color', '#0077CA');
-        $('#orderDepartment').css('background-color', '#003C71');
-      }
+          	$scope.numberOfPages = function() {
+          		return Math.ceil($scope.getData().length / $scope.pageSize);
+          	};
 
-    };
+    	});
 
-    // pagination function
-    $scope.currentPage = 0;
-    $scope.pageSize    = 7;
-    $scope.jsonData    = [];
-
-    // pagination changes based on searchName results AND searchDepartment results
-    $scope.numberOfPages=function(){
-      var myFilteredData;
-      myFilteredData = $filter('filter')($scope.jsonData,$scope.searchName);
-      // myFilteredData = $filter('filter')(myFilteredData,$scope.searchDepartment.dirschl_school_name);
-
-      //Filter the data
-      return Math.ceil(myFilteredData.length/$scope.pageSize);
-        // return Math.ceil($scope.jsonData.length/$scope.pageSize);
-    }
-
-    for (var i=0; i<1000; i++) {
-        $scope.jsonData.push("Item "+i);
-    }
-
-    //Filter all the categories, return an array of duplicated categories
-    // var allCategories = json.modules.map(function(item) {
-    //   return item.x;
-    // });
-
-});
+      $scope.removeSearchResult = function () {
+        $scope.searchName = {};
+      };
+}]);
 
 // pagination function
 app.filter('startFrom', function() {

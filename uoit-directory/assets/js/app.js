@@ -15,11 +15,23 @@ $(document)
 })
 
 .bind("formvalid.zf.abide", function(e,$form) {
-  // ajax submit
+  // $.ajax({
+  //      type: "POST",
+  //      url:"mail.php", //runs the php code
+  //      data: dataString, //stores the data to be passed
+  //      success: function(data){ // if success then generate the div and append the the following
+  //       alert("This works");
+  //     },
+  //      error: function(error){ //this is to check if there is any error
+  //        alert("This does not works");
+  //      }
+  //    }); //End Ajax call });
 });
 
 // smooth scroll to top of ‘Directory Search Results’
 $(".scrollTop").click(function() {
+  alert("click");
+  console.log("click");
     $('html,body').animate({
         scrollTop: $("#angularSearch").offset().top},
         'slow');

@@ -29,7 +29,7 @@ app.controller('searchCtrl', ['$scope', '$filter', 'usersService', function($sco
     		$scope.departments.sort();
 
             $scope.currentPage = 0;
-          	$scope.pageSize = 10;
+          	$scope.pageSize = 7;
 
           	// get filtered data
           	$scope.getData = function() {
@@ -45,6 +45,7 @@ app.controller('searchCtrl', ['$scope', '$filter', 'usersService', function($sco
       $scope.removeSearchResult = function () {
         $scope.searchName = {};
       };
+
 }]);
 
 // pagination function

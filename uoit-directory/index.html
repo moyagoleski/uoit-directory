@@ -3520,16 +3520,6 @@
 								<!-- TAB TITLE  -->
 								<h2>General Contacts</h2>
 								<br/>
-								<!-- POTENTIAL BUTTON FILTER/SCROLL FOR THE CONTACTS? -->
-								<!-- <div class="row">
-									<div class="small-12 small-centered columns">
-										<a class="button [primary]/[lightblue]" role="button">Campus services</a>
-										<a class="button [primary]/[lightblue]" role="button">Student services</a>
-										<a class="button [primary]/[lightblue]" role="button">Academic faculties</a>
-										<a class="button [primary]/[lightblue]" role="button">Faculty and staff services</a>
-									</div>
-								</div>
-								<br/> -->
 								<!-- CONTACT TITLE  -->
 								<h3>Campus services</h3>
 								<div class="row">
@@ -3845,83 +3835,96 @@
 								</form>
 							</div>
 						</div>
+
+						<!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->
 						<div class="callout" id="angularSearch" ng-if="searchName.dirschl_school_name || searchName.dirpepl_last_name || searchName.dirpepl_first_name"  class='ng-hide'>
-							<div class="row">
-								<div class="small-12 small-centered medium-6 columns searchResults">
-									<h3>Directory Search Results</h3>
+
+							<div class="search-list">
+								<div class="row">
+									<div class="small-12 small-centered medium-7 columns searchResults">
+										<h3>Directory Search Results</h3>
+									</div>
+									<div class="small-12 medium-5 small-centered text-center columns searchResults" ng-hide="(currentPage + 1) > numberOfPages()">
+	                  <a class="button small" role="button" ng-click="orderType='dirpepl_first_name';order='firstName'" ng-class="{activeFilterBtn: order === 'firstName'}">First Name</a>
+	                  <a class="button small" role="button" ng-click="orderType='dirpepl_last_name';order='lastName'" ng-class="{activeFilterBtn: order === 'lastName'}">Last Name</a>
+	                  <a class="button small" role="button" ng-click="orderType='dirschl_school_name';order='department'" ng-class="{activeFilterBtn: order === 'department'}" ng-hide='searchSelect'>Department</a>
+									</div>
 								</div>
-								<div class="small-12 medium-6 small-centered text-center columns searchResults small button-group" ng-hide="(currentPage + 1) > numberOfPages()">
-									<!-- <label>Order By:</label> -->
-									<!-- Order By: -->
-                  <a class="button" ng-click="orderType='dirpepl_first_name';order='firstName'" ng-class="{activeFilterBtn: order === 'firstName'}">First Name</a>
-                  <a class="button" ng-click="orderType='dirpepl_last_name';order='lastName'" ng-class="{activeFilterBtn: order === 'lastName'}">Last Name</a>
-                  <a class="button" ng-click="orderType='dirschl_school_name';order='department'" ng-class="{activeFilterBtn: order === 'department'}" ng-hide='searchSelect'>Department</a>
+								<br/>
+								<div class="small-12 columns" ng-hide="(currentPage + 1) > numberOfPages()">
+									<p>To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
+								</div>
+								<div class="small-12 columns" ng-show="(currentPage + 1) > numberOfPages()">
+									<p>Sorry, no directory search results to display.</p>
 								</div>
 							</div>
-							<br/>
-							<div class="small-12 columns" ng-hide="(currentPage + 1) > numberOfPages()">
-								<p>To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
-							</div>
-							<div class="small-12 columns" ng-show="(currentPage + 1) > numberOfPages()">
-								<p>Sorry, no directory search results to display.</p>
-							</div>
+
 							<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
-							<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
 							<ul class="accordion" data-accordion data-allow-all-closed="true">
 								<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
 								<li class="accordion-item" data-accordion-item ng-repeat="user in users | filter: searchName | orderBy: orderType | startFrom:currentPage*pageSize | limitTo:pageSize">
 									<!-- SEARCH DEPARTMENT BY DROPDOWN -->
 									<!-- <li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | filter:searchDepartment.dirschl_school_name | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize"> -->
 									<a class="accordion-title" ng-click="showDetails = ! showDetails">{{ user.dirpepl_first_name + ' ' + user.dirpepl_last_name }}
-														<ul class='accordion-title-desc'>
-															<li>
-																<b>Department:</b>
-																{{user.dirschl_school_name}}
-															</li>
-															<li>
-																<b>Title:</b>
-																{{user.dirrank_rank_name}}
-															</li>
-														</ul>
-													</a>
+										<ul class='accordion-title-desc'>
+											<li>
+												<b>Department:</b>
+												{{user.dirschl_school_name}}
+											</li>
+											<li>
+												<b>Title:</b>
+												{{user.dirrank_rank_name}}
+											</li>
+										</ul>
+									</a>
 									<div class="a-content" ng-class="{ 'hidden': ! showDetails }" data-tab-content>
 										<ul class='search-list-info'>
 											<li>
-												<b>Building:</b> {{user.dirbuilding_building_name}}
+												<b>Building:</b>
+												{{user.dirbuilding_building_name}}
 											</li>
 											<li>
-												<b>Office:</b> {{user.dirpepl_office}}
+												<b>Office:</b>
+												{{user.dirpepl_office}}
 											</li>
 											<li>
-												<b>Eusertension: </b> {{user.dirpepl_extension}}
+												<b>Extension:</b>
+												{{user.dirpepl_extension}}
 											</li>
 											<li>
-												<b>E-mail: </b>
+												<b>E-mail:</b>
 												<a href="mailto:{{user.email}}">{{user.email}}</a>
 											</li>
 										</ul>
 									</div>
 								</li>
 							</ul>
+
 							<!-- PAGINATION - FUNCTIONAL -->
-               <!-- ng-hide="(currentPage + 1) > numberOfPages()" -->
-							<ul class="pagination text-center" role="navigation" aria-label="Pagination">
+							<ul class="pagination text-center" role="navigation" aria-label="Pagination" ng-hide="(currentPage + 1) > numberOfPages()">
 								<li class="pagination-previous">
 									<button role="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1"  class="scrollTop">
-  			        <span class="icon_arrow_left"></span> Previous
-  			    </button>
+			  			    	<span class="icon_arrow_left"></span> Previous
+			  			    </button>
 								</li>
 								<li>
-									<span class="current">{{currentPage+1}} out of {{numberOfPages()}}</span>
+									<button role="button" class="current">
+										{{currentPage+1}} out of {{numberOfPages()}}
+									</button>
 								</li>
 								<li class="pagination-next">
 									<button role="button" ng-disabled="(currentPage + 1) >= numberOfPages()" ng-click="currentPage=currentPage+1" class="scrollTop">
-								Next <span class="icon_arrow_right"></span>
-						</button>
+										Next <span class="icon_arrow_right"></span>
+									</button>
 								</li>
 							</ul>
+
 						</div>
+						<!-- ** SEARCH FILTER JSON FILE ENDS HERE ** -->
+
 					</section>
+
+					<!-- SIDEBAR WITH BUTTONS  -->
 					<section class="page-sidebar">
 						<div class="sidebar-ctas">
 							<a class="button pink icon_phone" href="buttons.php" onclick="">Emergency Info</a>
@@ -3930,11 +3933,9 @@
 						</div>
 					</section>
 
-					<!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE ENDS HERE  -->
-					<!-- ** SEARCH FILTER JSON FILE ENDS HERE *-->
-					<!-- ** ANGULAR APP ENDS HERE ** -->
-					<!-- SIDEBAR WITH BUTTONS  -->
 				</div>
+				<!-- ** ANGULAR APP ENDS HERE ** -->
+
 				<!-- /.page-row -->
 			</section>
 

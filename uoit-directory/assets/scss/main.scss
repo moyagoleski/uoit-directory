@@ -6,6 +6,10 @@ $text-color-black: #151515;
 $accordion-item-background-hover: #0077CA;
 $lightgrey : #F6F7F7;
 
+.activeFilterBtn {
+		background-color: $dark-blue;
+}
+
 .tabs {
 	.tabs-title {
 		text-align: center;

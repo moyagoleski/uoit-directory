@@ -1,3 +1,6 @@
+.activeFilterBtn {
+  background-color: #003C71; }
+
 .tabs .tabs-title {
   text-align: center; }
   .tabs .tabs-title > a {
@@ -6,9 +9,6 @@
 .tabs-content {
   padding: 1rem; }
 
-.activeFilterBtn {
-    background-color: #003C71;
-}
 /* search list*/
 .search-list {
   padding: 25px;
@@ -140,30 +140,17 @@
   cursor: pointer; }
 
 .bounce {
+  -moz-animation: bounce 2s infinite;
   -webkit-animation: bounce 2s infinite;
   animation: bounce 2s infinite; }
 
-@-webkit-keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0); }
-  40% {
-    -webkit-transform: translateY(15px);
-            transform: translateY(15px); }
-  60% {
-    -webkit-transform: translateY(15px);
-            transform: translateY(15px); } }
-
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0); }
+    transform: translateY(0); }
   40% {
-    -webkit-transform: translateY(15px);
-            transform: translateY(15px); }
+    transform: translateY(15px); }
   60% {
-    -webkit-transform: translateY(15px);
-            transform: translateY(15px); } }
+    transform: translateY(15px); } }
 /* tabs title nav color*/
 /* .tabs {*/
 /* 	border-color: $dark-blue;*/
@@ -194,3 +181,5 @@
 /* 	border-color: $dark-blue;*/
 /* 	padding: 1.5rem;*/
 /* }*/
+
+/*# sourceMappingURL=main.css.map */

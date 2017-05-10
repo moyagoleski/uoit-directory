@@ -4,7 +4,7 @@ app.controller('searchCtrl', ['$scope', '$filter', 'usersService', function($sco
         // push person info to users array;
         $scope.users = response.data.query_info.person_info;
 
-        // create empty departments array
+        // departments array
         $scope.departments = [];
 
         // regex replace '&','UOIT','g'
@@ -29,7 +29,7 @@ app.controller('searchCtrl', ['$scope', '$filter', 'usersService', function($sco
         $scope.departments.sort();
 
         $scope.currentPage = 0;
-        $scope.pageSize = 10;
+        $scope.pageSize = 7;
 
         // get filtered data
         $scope.getData = function() {
@@ -42,10 +42,10 @@ app.controller('searchCtrl', ['$scope', '$filter', 'usersService', function($sco
 
     });
 
-    // remove searchResult (.callout) by setting filter searchName default
     $scope.removeSearchResult = function() {
         $scope.searchName = {};
     };
+
 }]);
 
 // pagination function

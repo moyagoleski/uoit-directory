@@ -3509,7 +3509,7 @@
 											</select>
 										</div>
 										<div ng-show="searchName" class="small-12 small-centered text-center medium-2 columns" ng-if="searchName.dirschl_school_name || searchName.dirpepl_last_name || searchName.dirpepl_first_name"  class='ng-hide'>
-											<p aria-hidden="true"><span class="icon_arrow_down bounce scrollTop"></span></p>
+											<p aria-hidden="true"><span class="icon_arrow_down bounce" ng-click='smoothScroll()'></span></p>
 										</div>
 									</div>
 								</form>
@@ -3903,7 +3903,7 @@
 							<!-- PAGINATION - FUNCTIONAL -->
 							<ul class="pagination text-center" role="navigation" aria-label="Pagination" ng-hide="(currentPage + 1) > numberOfPages()">
 								<li class="pagination-previous">
-									<button role="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1"  class="scrollTop">
+									<button role="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1;smoothScroll()">
 			  			    	<span class="icon_arrow_left"></span> Previous
 			  			    </button>
 								</li>
@@ -3913,7 +3913,7 @@
 									</button>
 								</li>
 								<li class="pagination-next">
-									<button role="button" ng-disabled="(currentPage + 1) >= numberOfPages()" ng-click="currentPage=currentPage+1" class="scrollTop">
+									<button role="button" ng-disabled="(currentPage + 1) >= numberOfPages()" ng-click="currentPage=currentPage+1;smoothScroll()">
 										Next <span class="icon_arrow_right"></span>
 									</button>
 								</li>

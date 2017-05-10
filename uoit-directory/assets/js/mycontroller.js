@@ -40,6 +40,14 @@ app.controller('searchCtrl', ['$scope', '$filter', 'usersService', function($sco
           		return Math.ceil($scope.getData().length / $scope.pageSize);
           	};
 
+            // scroll goes to top of 'Directory Search Results'
+            $scope.smoothScroll = function () {
+              // alert("CLICK!");
+              $('html,body').animate({
+                  scrollTop: $("#angularSearch").offset().top},
+                  'slow');
+            };
+
     	});
 
       $scope.removeSearchResult = function () {

@@ -27,12 +27,3 @@ $(document)
   //      }
   //    }); //End Ajax call });
 });
-
-// smooth scroll to top of ‘Directory Search Results’
-$(".scrollTop").click(function() {
-  alert("click");
-  console.log("click");
-    $('html,body').animate({
-        scrollTop: $("#angularSearch").offset().top},
-        'slow');
-});

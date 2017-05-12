@@ -42,11 +42,35 @@ app.controller('searchCtrl', ['$scope', '$filter', 'usersService', function($sco
 
     	});
 
+<<<<<<< HEAD
       $scope.removeSearchResult = function () {
         $scope.searchName = {};
       };
 
 }]);
+=======
+    // pagination function
+    $scope.currentPage = 0;
+    $scope.pageSize    = 7;
+    $scope.jsonData    = [];
+
+    // pagination changes based on searchName results AND searchDepartment results
+    $scope.numberOfPages=function(){
+      var myFilteredData;
+      
+      myFilteredData = $filter('filter')(myFilteredData,$scope.searchDepartment.dirschl_school_name);
+
+      //Filter the data
+      return Math.ceil(myFilteredData.length/$scope.pageSize);
+        // return Math.ceil($scope.jsonData.length/$scope.pageSize);
+    }
+
+    for (var i=0; i<45; i++) {
+        $scope.jsonData.push("Item "+i);
+    }
+
+});
+>>>>>>> origin/moyagoleski/master
 
 // pagination function
 app.filter('startFrom', function() {
@@ -58,6 +82,7 @@ app.filter('startFrom', function() {
 
 
 // does not repeat in departments in dropdown
+<<<<<<< HEAD
 // app.filter('unique', function () {
 //
 //     return function (items, filterOn) {
@@ -96,3 +121,43 @@ app.filter('startFrom', function() {
 //         return items;
 //     };
 // });
+=======
+app.filter('unique', function () {
+
+    return function (items, filterOn) {
+
+        if (filterOn === false) {
+            return items;
+        }
+
+        if ((filterOn || angular.isUndefined(filterOn)) && angular.isArray(items)) {
+            var hashCheck = {}, newItems = [];
+
+            var extractValueToCompare = function (item) {
+                if (angular.isObject(item) && angular.isString(filterOn)) {
+                    return item[filterOn];
+                } else {
+                    return item;
+                }
+            };
+
+            angular.forEach(items, function (item) {
+                var valueToCheck, isDuplicate = false;
+
+                for (var i = 0; i < newItems.length; i++) {
+                    if (angular.equals(extractValueToCompare(newItems[i]), extractValueToCompare(item))) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+                if (!isDuplicate) {
+                    newItems.push(item);
+                }
+
+            });
+            items = newItems;
+        }
+        return items;
+    };
+});
+>>>>>>> origin/moyagoleski/master

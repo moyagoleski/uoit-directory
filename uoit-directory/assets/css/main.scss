@@ -4,36 +4,32 @@ $dark-blue: #003C71;
 $text-color-white: #fff;
 $text-color-black: #151515;
 $accordion-item-background-hover: #0077CA;
-$lightgrey : #F6F7F7;
-<<<<<<< HEAD:uoit-directory/src/scss/main.scss
-
-.activeFilterBtn {
-		background-color: $dark-blue;
-}
-=======
->>>>>>> origin/moyagoleski/master:uoit-directory/assets/scss/main.scss
 
 .tabs {
 	.tabs-title {
 		text-align: center;
-		> a {
-			padding: 10px;
-		}
 	}
 }
 
 .tabs-content {
-	padding: 1rem;
-}
+	padding: 2rem;
 
+	.row {
+		.columns {
+			position: relative;
+
+			.searchBtn {
+				position: absolute;
+				top: 50%;
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+			}
+		}
+	}
+}
 /* search list*/
 .search-list {
-	padding: 25px;
-	padding-bottom: 10px;
-}
-
-.searchResults {
-	display: inline-block;
+	padding: 4rem;
 }
 
 .accordion {
@@ -41,11 +37,8 @@ $lightgrey : #F6F7F7;
 		margin: 1rem 0;
 
 		.accordion-title {
-			background-color: $lightgrey;
 			color: $text-color-black;
-			text-transform: capitalize;
-			font-size: 18px;
-			padding-top: 15px;
+			height: 2.8rem;
 
 			&:hover {
 				background-color: $accordion-item-background-hover;
@@ -53,16 +46,13 @@ $lightgrey : #F6F7F7;
 			}
 		}
 		/* clear default border*/
-		// :last-child:not(.is-active) > .accordion-title {
-		// 	// border: 0;
-		// }
+		:last-child:not(.is-active) > .accordion-title {
+			border: 0;
+		}
 
-		.a-content {
-		// .accordion-content {
-			padding: 1rem 1rem;
-			max-height: 100px;
-			transition: .7s;
-			overflow: hidden;
+		.accordion-content {
+			border: 0;
+			padding: 0 1rem;
 
 			.search-list-info {
 				@extend .accordion-title-desc;
@@ -78,24 +68,13 @@ $lightgrey : #F6F7F7;
 				}
 			}
 		}
-
-		.a-content.hidden {
-		    max-height: 0;
-				padding: 0 1rem;
-		}
-
 	}
 }
-
-// hides '+' for now because thhe '+' and '-' are not toggling
-.accordion-title::before {
-	content: "";
-}
-
 /* search list title (name,position, department)*/
 .accordion-title-desc {
 	width: 100%;
 	font-size: 0.88rem;
+	line-height: 0.88rem;
 	margin: 0;
 	padding: 0;
 	text-transform: capitalize;
@@ -112,13 +91,6 @@ $lightgrey : #F6F7F7;
 		font-weight: bold;
 	}
 }
-
-// margin for department / title
-.page-content ul.accordion li ul:not(.tabs), .page-content ul.accordion li ol, .page_content_news ul.accordion li ul:not(.tabs), .page_content_news ul.accordion li ol {
-	margin-top: 8px;
-	margin-bottom: 0px;
-}
-
 /* .tabs-panel .row {*/
 .contact-card {
 	border: solid 2px $light-blue;
@@ -128,32 +100,13 @@ $lightgrey : #F6F7F7;
 	margin: 1%;
 	/* display two columns in a row*/
 	padding: 1rem;
-	// padding: 25px;
 	display: inline-block;
 	box-sizing: border-box;
-	margin-bottom: 15px;
-}
-
-.contact-number {
-	margin-bottom: 0;
 }
 
 .pagination {
 	margin-top: 3rem;
 }
-
-.pagination a:hover, .pagination button:hover {
-	background: $dark-blue;
-	color: $text-color-white;
-	cursor: pointer;
-}
-
-.pagination .current:hover {
-	background: $light-blue;
-	color: $text-color-white;
-	cursor: default;
-}
-
 @media screen and (min-width:75em) {
 	/* responsive tabs title width */
 	.tabs .tabs-title {
@@ -182,13 +135,6 @@ $lightgrey : #F6F7F7;
 		}
 	}
 	/*  clear left and right margin for mobile page*/
-	.searchResults{
-		display: block;
-		min-width: 100%;
-		margin: 0.5rem 0;
-	}
-
-	/*  clear left and right margin for mobile page*/
 	.contact-card {
 		display: block;
 		min-width: 100%;
@@ -202,39 +148,6 @@ $lightgrey : #F6F7F7;
 		}
 	}
 }
-
-<<<<<<< HEAD:uoit-directory/src/scss/main.scss
-// icon arrow down - search tab
-.icon_arrow_down {
-	color: $light-blue;
-	font-size: 40px;
-	margin-top: 15px;
-}
-
-.icon_arrow_down:hover {
-	cursor: pointer;
-}
-
-.bounce {
-  -moz-animation: bounce 2s infinite;
-  -webkit-animation: bounce 2s infinite;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(15px);
-  }
-  60% {
-    transform: translateY(15px);
-  }
-}
-=======
->>>>>>> origin/moyagoleski/master:uoit-directory/assets/scss/main.scss
-
 /* tabs title nav color*/
 /* .tabs {*/
 /* 	border-color: $dark-blue;*/

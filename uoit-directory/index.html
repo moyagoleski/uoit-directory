@@ -3464,6 +3464,7 @@
 				</ul>
 				<div class="page-row row" ng-app="myApp" ng-controller="searchCtrl">
 					<!-- ANGULAR APP STARTS HERE -->
+<<<<<<< HEAD
 					<section class="page-content has-sidebar">
 						<h2>DIRECTORY</h2>
 						<!-- tabs title start -->
@@ -3490,6 +3491,60 @@
 										<br/>
 										<p>Enter a first name, a last name, a department or all to find a Faculty or Staff member. Partial names can also be used.</p>
 									</div>
+=======
+					<div ng-app="myApp" ng-controller="searchCtrls">
+
+						<section class="page-content has-sidebar">
+							<h2>DIRECTORY</h2>
+							<!-- tabs title start -->
+							<ul class="tabs" data-tabs="u3jluw-tabs" id="tab1" role="tablist">
+								<li class="tabs-title is-active" role="presentation" id="searchTab" ng-click="searchTabFunction()">
+									<a href="#tab1-1" role="tab" aria-controls="tab1-1" aria-selected="true" id="tab1-1-label">Search</a>
+								</li>
+								<li class="tabs-title" role="presentation" id="contactsTab" ng-click="contactsTabFunction()">
+									<a href="#tab1-2" role="tab" aria-controls="tab1-2" aria-selected="false" id="tab1-2-label">Contacts</a>
+								</li>
+								<li class="tabs-title" role="presentation" id="updateTab" ng-click="updateTabFunction()">
+									<a href="#tab1-3" role="tab" aria-controls="tab1-3" aria-selected="false" id="tab1-3-label">Update</a>
+								</li>
+							</ul>
+							<!-- tabs title end -->
+
+							<!-- tabs content start -->
+							<div class="tabs-content" data-tabs-content="tab1" id="tab1-content">
+
+								<!-- TAB 1 STARTS  -->
+								<div class="tabs-panel is-active" id="tab1-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab1-1-label">
+									<div class="row">
+										<div class="small-12 columns">
+											<!-- TAB TITLE  -->
+											<h2>Search</h2>
+											<br/>
+											<p>Enter a first name, a last name, a department or all to find a Faculty or Staff member. Partial names can also be used.</p>
+											<!-- <p>Enter a first name, a last name or both to find a faculty or staff member and click the Search button. Partial names can also be used.</p> -->
+										</div>
+									</div>
+									<!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
+									<form>
+										<div class="row">
+											<div class="small-12 medium-3 columns">
+												<label>First Name:</label><input type='text' ng-model='searchName.dirpepl_first_name' ng-change='currentPage = 0' />
+											</div>
+											<div class="small-12 medium-3 columns">
+												<label>Last Name:</label><input type='text' ng-model='searchName.dirpepl_last_name' ng-change='currentPage = 0' />
+											</div>
+											<div class="small-12 medium-6 columns">
+												<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
+												<!-- <label>Department:</label><input type='text' ng-model='searchName.dirschl_school_name' ng-change='currentPage = 0' /> -->
+												<!-- SEARCH DEPARTMENT BY DROPDOWN -->
+												<label>Department:</label>
+													<select ng-model="searchDepartment" ng-options="x.dirschl_school_name for x in jsonData | orderBy:'dirschl_school_name' | unique:'dirschl_school_name'" ng-change='currentPage = 0'>
+														<option value="">Select</option>
+													</select>
+											</div>
+										</div>
+									</form>
+>>>>>>> origin/moyagoleski/master
 								</div>
 								<!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
 								<form>
@@ -3828,6 +3883,7 @@
 											<label>E-MAIL:<b style="color:red"> *</b><input type="text" name="email" required pattern="email"/></label>
 										</div>
 									</div>
+<<<<<<< HEAD
 									<!-- SUBMIT BUTTON -->
 									<fieldset class="large-6 columns">
 										<button class="button" type="submit" value="Submit" role="button">Submit</button>
@@ -3838,6 +3894,146 @@
 
 						<!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->
 						<div class="callout" id="angularSearch" ng-if="searchName.dirschl_school_name || searchName.dirpepl_last_name || searchName.dirpepl_first_name"  class='ng-hide'>
+=======
+								</div>
+								<!-- TAB 2 END  -->
+
+								<!-- TAB 3 STARTS  -->
+								<div class="tabs-panel " id="tab1-3" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-3-label">
+									<!-- TAB TITLE  -->
+									<h2>Update Information</h2>
+									<br/>
+									<p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form below.</p>
+									<!-- FORM INPUT FIELDS -->
+									<form data-abide novalidate id="updateForm">
+										<!-- ERROR MESSAGE FOR USER -->
+										<div data-abide-error class="alert callout" style="display: none;">
+											<p><i class="fi-alert"></i> There appears to be errors in your form.</p>
+										</div>
+										<div class="row">
+											<div class="small-12 medium-12 columns">
+												<label>BANNER USER ID:<b style="color:red"> *</b><input type="text" name="id" required pattern="number"/></label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="small-12 medium-6 columns">
+												<label>FIRST NAME:<b style="color:red"> *</b><input type="text" name="firstName" required pattern="alpha"/></label>
+											</div>
+											<div class="small-12 medium-6 columns">
+												<label>LAST NAME:<b style="color:red"> *</b><input type="text" name="lastName" required pattern="alpha"/></label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="small-12 medium-6 columns">
+												<label>DEPARTMENT:<b style="color:red"> *</b><input type="text" name="department" required pattern="alpha"/></label>
+											</div>
+											<div class="small-12 medium-6 columns">
+												<label>TITLE:<b style="color:red"> *</b><input type="text" name="position" required pattern="alpha"/></label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="small-12 medium-6 columns">
+												<label>BUILDING:<b style="color:red"> *</b><input type="text" name="building" required/></label>
+											</div>
+											<div class="small-12 medium-6 columns">
+												<label>OFFICE:<b style="color:red"> *</b><input type="text" name="location" required/></label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="small-12 medium-6 columns">
+												<label>EXTENSION:<b style="color:red"> *</b><input type="text" name="extension" required pattern="number"/></label>
+											</div>
+											<div class="small-12 medium-6 columns">
+												<label>E-MAIL:<b style="color:red"> *</b><input type="text" name="email" required pattern="email"/></label>
+											</div>
+										</div>
+										<!-- SUBMIT BUTTON -->
+										<fieldset class="large-6 columns">
+											<button class="button" type="submit" value="Submit" role="button">Submit</button>
+										</fieldset>
+									</form>
+								</div>
+
+							</div>
+							<!-- tabs content end -->
+
+
+							<!-- SEARCH FILTER JSON FILE  -->
+
+							<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
+							<!-- <div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchName.dirschl_school_name" id="angularSearch"> -->
+							<!-- SEARCH DEPARTMENT BY DROPDOWN -->
+							<div ng-show="searchName.dirpepl_first_name || searchName.dirpepl_last_name || searchDepartment.dirschl_school_name" id="angularSearch">
+
+								<!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->
+								<div class="callout">
+									<div class="row">
+										<div class="small-12 columns">
+											<div class="search-list">
+
+												<div class="row">
+													<div class="small-12 medium-7 columns searchResults">
+														<h3>Directory Search Results</h3>
+													</div>
+													<div class="small-12 medium-5 small-centered text-center columns searchResults" ng-hide="(currentPage + 1) > numberOfPages()">
+														<!-- <label>Order By:</label> -->
+														<!-- Order By: -->
+															<a class="button small" role="button" id="orderFirstName" ng-click="orderByFunction(0)">First Name</a>
+															<a class="button small" role="button" id="orderLastName" ng-click="orderByFunction(1)">Last Name</a>
+															<a class="button small" role="button" id="orderDepartment" ng-click="orderByFunction(2)">Department</a>
+													</div>
+												</div>
+												<br/>
+												<div class="small-12 columns" ng-hide="(currentPage + 1) > numberOfPages()">
+													<p>To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
+												</div>
+												<div class="small-12 columns" ng-show="(currentPage + 1) > numberOfPages()">
+													<p>Sorry, no directory search results to display.</p>
+												</div>
+
+											</div>
+
+											<!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
+											<!-- ORDER BY FIRST NAME / LIMIT TO 10 SEARCH RESULTS PER PAGE -->
+												<ul class="accordion" data-accordion data-allow-all-closed="true">
+													<!-- SEARCH DEPARTMENT BY INPUT FIELD -->
+													<!-- <li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize"> -->
+													<!-- SEARCH DEPARTMENT BY DROPDOWN -->
+													<li class="accordion-item" data-accordion-item ng-repeat="x in jsonData | filter: searchName | filter:searchDepartment.dirschl_school_name | orderBy: orderByFunction() | startFrom:currentPage*pageSize | limitTo:pageSize">
+
+														<a class="accordion-title" ng-click="showDetails = ! showDetails">{{ x.dirpepl_first_name + ' ' + x.dirpepl_last_name }}
+															<ul class='accordion-title-desc'><li><b>Department: </b>{{x.dirschl_school_name}}</li><li><b>Title:</b> {{x.dirrank_rank_name}}</li></ul>
+														</a>
+														<div class="a-content" ng-class="{ 'hidden': ! showDetails }" data-tab-content>
+															<ul class='search-list-info'>
+																<li><b>Building: </b>{{x.dirbuilding_building_name }}</li>
+																<li><b>Office: </b>{{x.dirpepl_office}}</li>
+																<li><b>Extension: </b>{{x.dirpepl_extension}}</li>
+																<li><b>E-mail: </b> <a href="mailto:{{x.email}}">{{x.email}}</a></li>
+															</ul>
+														</div>
+													</li>
+												</ul>
+
+											<!-- PAGINATION - FUNCTIONAL -->
+											<ul class="pagination text-center" role="navigation" aria-label="Pagination" ng-hide="(currentPage + 1) > numberOfPages()">
+												<li class="pagination-previous">
+													<button role="button" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class="scrollTop">
+											        <span class="icon_arrow_left"></span> Previous
+											    </button>
+												</li>
+												<li>
+													<button class="current">
+														{{currentPage+1}} out of {{numberOfPages()}}
+													</button>
+												</li>
+												<li class="pagination-next">
+													<button role="button" ng-disabled="(currentPage + 1) >= numberOfPages()" ng-click="currentPage=currentPage+1" class="scrollTop">
+															Next <span class="icon_arrow_right"></span>
+													</button>
+												</li>
+											</ul>
+>>>>>>> origin/moyagoleski/master
 
 							<div class="search-list">
 								<div class="row">

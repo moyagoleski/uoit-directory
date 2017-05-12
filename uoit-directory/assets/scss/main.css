@@ -1,4 +1,5 @@
 .tabs .tabs-title {
+<<<<<<< HEAD:uoit-directory/assets/scss/main.css
   text-align: center; }
 
 .tabs-content {
@@ -7,11 +8,99 @@
 /* search list*/
 .search-list {
   padding: 4rem; }
+=======
+	text-align: center;
+}
+
+.tabs-content {
+	padding: 2rem;
+}
+
+.tabs-content .row .columns {
+	position: relative;
+}
+
+.tabs-content .row .columns .searchBtn {
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+/* search list*/
+.search-list {
+<<<<<<< HEAD
+	padding: 4rem;
+}
+
+.accordion .accordion-item {
+	margin: 1rem 0;
+  /* clear default border*/;
+}
+
+.accordion .accordion-item .accordion-title {
+	color: #151515;
+	height: 2.8rem;
+}
+
+.accordion .accordion-item .accordion-title:hover {
+	background-color: #0077CA;
+	color: #fff;
+}
+
+.accordion .accordion-item :last-child:not(.is-active) > .accordion-title {
+	border: 0;
+}
+
+.accordion .accordion-item .accordion-content {
+	border: 0;
+	padding: 0 1rem;
+}
+
+.accordion .accordion-item .accordion-content .search-list-info li {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 49%;
+}
+
+.accordion .accordion-item .accordion-content .search-list-info li span {
+	font-weight: bold;
+}
+
+/* search list title (name,position, department)*/
+.accordion-title-desc, .accordion .accordion-item .accordion-content .search-list-info {
+	width: 100%;
+	font-size: 0.88rem;
+	line-height: 0.88rem;
+	margin: 0;
+	padding: 0;
+	text-transform: capitalize;
+}
+
+.accordion-title-desc li, .accordion .accordion-item .accordion-content .search-list-info li {
+	list-style: none;
+	width: 49%;
+	display: inline-block;
+	font-weight: normal;
+	margin: 0;
+}
+
+.accordion-title-desc span, .accordion .accordion-item .accordion-content .search-list-info span {
+	font-weight: bold;
+}
+=======
+  padding: 25px;
+  padding-bottom: 10px;
+
+.searchResults {
+  display: inline-block; }
+>>>>>>> origin/moyagoleski/master:uoit-directory/assets/css/main.css
 
 .accordion .accordion-item {
   margin: 1rem 0;
   /* clear default border*/ }
   .accordion .accordion-item .accordion-title {
+<<<<<<< HEAD:uoit-directory/assets/scss/main.css
     color: #151515;
     height: 2.8rem; }
     .accordion .accordion-item .accordion-title:hover {
@@ -27,24 +116,54 @@
       box-sizing: border-box;
       width: 49%; }
       .accordion .accordion-item .accordion-content .search-list-info li span {
+=======
+    background-color: #F6F7F7;
+    color: #151515;
+    text-transform: capitalize;
+    font-size: 18px;
+    padding-top: 15px; }
+    .accordion .accordion-item .accordion-title:hover {
+      background-color: #0077CA;
+      color: #fff; }
+  .accordion .accordion-item .a-content {
+    padding: 1rem 1rem;
+    max-height: 100px;
+    transition: .7s;
+    overflow: hidden; }
+    .accordion .accordion-item .a-content .search-list-info li {
+      display: inline-block;
+      box-sizing: border-box;
+      width: 49%; }
+      .accordion .accordion-item .a-content .search-list-info li span {
+>>>>>>> origin/moyagoleski/master:uoit-directory/assets/css/main.css
         font-weight: bold; }
+  .accordion .accordion-item .a-content.hidden {
+    max-height: 0;
+    padding: 0 1rem; }
+
+.accordion-title::before {
+  content: ""; }
 
 /* search list title (name,position, department)*/
-.accordion-title-desc, .accordion .accordion-item .accordion-content .search-list-info {
+.accordion-title-desc, .accordion .accordion-item .a-content .search-list-info {
   width: 100%;
   font-size: 0.88rem;
-  line-height: 0.88rem;
   margin: 0;
   padding: 0;
   text-transform: capitalize; }
-  .accordion-title-desc li, .accordion .accordion-item .accordion-content .search-list-info li {
+  .accordion-title-desc li, .accordion .accordion-item .a-content .search-list-info li {
     list-style: none;
     width: 49%;
     display: inline-block;
     font-weight: normal;
     margin: 0; }
-  .accordion-title-desc span, .accordion .accordion-item .accordion-content .search-list-info span {
+  .accordion-title-desc span, .accordion .accordion-item .a-content .search-list-info span {
     font-weight: bold; }
+>>>>>>> moyagoleski/Moya-Work
+
+.page-content ul.accordion li ul:not(.tabs), .page-content ul.accordion li ol, .page_content_news ul.accordion li ul:not(.tabs), .page_content_news ul.accordion li ol {
+  margin-top: 8px;
+  margin-bottom: 0px; }
 
 .button-group .button {
   width: 33%; }
@@ -55,48 +174,75 @@
 
 /* .tabs-panel .row {*/
 .contact-card {
-  border: solid 2px #0077CA;
-  color: #0077CA;
-  max-width: 48%;
+	border: solid 2px #0077CA;
+	color: #0077CA;
+	max-width: 48%;
   /* display two columns in a row*/
-  margin: 1%;
+	margin: 1%;
   /* display two columns in a row*/
+<<<<<<< HEAD:uoit-directory/assets/scss/main.css
   padding: 1rem;
   display: inline-block;
   box-sizing: border-box; }
 
 .pagination {
   margin-top: 3rem; }
+=======
+	padding: 1rem;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+.pagination {
+	margin-top: 3rem;
+}
+>>>>>>> origin/moyagoleski/master:uoit-directory/assets/css/main.css
 
 @media screen and (min-width: 75em) {
   /* responsive tabs title width */
-  .tabs .tabs-title {
-    width: 33%;
-    margin-right: 0.5%; }
+	.tabs .tabs-title {
+		width: 33%;
+		margin-right: 0.5%;
+	}
 
-  .tabs-title:last-child {
-    margin-right: 0; } }
+	.tabs-title:last-child {
+		margin-right: 0;
+	}
+}
+
 @media screen and (max-width: 43em) {
   /* set min-height in case accordion title overflow*/
-  .accordion .accordion-title {
-    min-height: 4rem; }
-
+	.accordion .accordion-title {
+		min-height: 4rem;
+	}
   /* display verticle*/
-  .accordion-title-desc li, .accordion .accordion-item .accordion-content .search-list-info li {
+
+  .accordion-title-desc li, .accordion .accordion-item .a-content .search-list-info li {
     list-style: none;
     width: 100%;
     display: block;
     font-weight: normal; }
 
   /*  clear left and right margin for mobile page*/
+<<<<<<< HEAD:uoit-directory/assets/scss/main.css
   .contact-card {
     display: block;
     min-width: 100%;
     margin: 0.5rem 0; }
+=======
+	.contact-card {
+		display: block;
+		min-width: 100%;
+		margin: 0.5rem 0;
+	}
 
-  form .row .columns {
-    display: block;
-    min-width: 100%; } }
+	form .row .columns {
+		display: block;
+		min-width: 100%;
+	}
+}
+>>>>>>> origin/moyagoleski/master:uoit-directory/assets/css/main.css
+
 /* tabs title nav color*/
 /* .tabs {*/
 /* 	border-color: $dark-blue;*/
@@ -126,6 +272,10 @@
 /* .tabs-content {*/
 /* 	border-color: $dark-blue;*/
 /* 	padding: 1.5rem;*/
+<<<<<<< HEAD:uoit-directory/assets/scss/main.css
 /* }*/
 
 /*# sourceMappingURL=main.css.map */
+=======
+/* }*/ }
+>>>>>>> origin/moyagoleski/master:uoit-directory/assets/css/main.css

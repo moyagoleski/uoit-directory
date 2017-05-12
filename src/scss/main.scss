@@ -1,0 +1,267 @@
+$font: 'Franklin Gothic';
+$light-blue: #0077CA;
+$dark-blue: #003C71;
+$text-color-white: #fff;
+$text-color-black: #151515;
+$accordion-item-background-hover: #0077CA;
+$lightgrey : #F6F7F7;
+
+.activeFilterBtn {
+		background-color: $dark-blue;
+}
+
+.tabs {
+	&-title {
+		text-align: center;
+		> a {
+			padding: 10px;
+		}
+	}
+}
+
+.tabs-content {
+	padding: 1rem;
+}
+
+/* search list*/
+.search-list {
+	padding: 25px;
+	padding-bottom: 10px;
+}
+
+.searchResults {
+	display: inline-block;
+}
+
+.accordion {
+	&-item {
+		margin: 1rem 0;
+
+		.accordion-title {
+			background-color: $lightgrey;
+			color: $text-color-black;
+			text-transform: capitalize;
+			font-size: 18px;
+			padding-top: 15px;
+
+			&:hover {
+				background-color: $accordion-item-background-hover;
+				color: $text-color-white;
+			}
+		}
+		/* clear default border*/
+		// :last-child:not(.is-active) > .accordion-title {
+		// 	// border: 0;
+		// }
+
+		.a-content {
+		// .accordion-content {
+			padding: 1rem 1rem;
+			max-height: 100px;
+			transition: .7s;
+			overflow: hidden;
+
+			.search-list-info {
+				@extend .accordion-title-desc;
+
+				li {
+					display: inline-block;
+					box-sizing: border-box;
+					width: 49%;
+
+					span {
+						font-weight: bold;
+					}
+				}
+			}
+		}
+
+		.a-content.hidden {
+		    max-height: 0;
+				padding: 0 1rem;
+		}
+
+	}
+}
+
+// hides '+' for now because thhe '+' and '-' are not toggling
+.accordion-title::before {
+	content: "";
+}
+
+/* search list title (name,position, department)*/
+.accordion-title-desc {
+	width: 100%;
+	font-size: 0.88rem;
+	margin: 0;
+	padding: 0;
+	text-transform: capitalize;
+
+	li {
+		list-style: none;
+		width: 49%;
+		display: inline-block;
+		font-weight: normal;
+		margin: 0;
+	}
+
+	span {
+		font-weight: bold;
+	}
+}
+
+// margin for department / title
+.page-content ul.accordion li ul:not(.tabs), .page-content ul.accordion li ol, .page_content_news ul.accordion li ul:not(.tabs), .page_content_news ul.accordion li ol {
+	margin-top: 8px;
+	margin-bottom: 0px;
+}
+
+/* .tabs-panel .row {*/
+.contact-card {
+	border: solid 2px $light-blue;
+	color: $light-blue;
+	max-width: 48%;
+	/* display two columns in a row*/
+	margin: 1%;
+	/* display two columns in a row*/
+	padding: 1rem;
+	// padding: 25px;
+	display: inline-block;
+	box-sizing: border-box;
+	margin-bottom: 15px;
+}
+
+.contact-number {
+	margin-bottom: 0;
+}
+
+.pagination {
+	margin-top: 3rem;
+}
+
+.pagination a:hover, .pagination button:hover {
+	background: $dark-blue;
+	color: $text-color-white;
+	cursor: pointer;
+}
+
+.pagination .current:hover {
+	background: $light-blue;
+	color: $text-color-white;
+	cursor: default;
+}
+
+@media screen and (min-width:75em) {
+	/* responsive tabs title width */
+	.tabs .tabs-title {
+		width: 33%;
+		margin-right: 0.5%;
+	}
+
+	.tabs-title:last-child {
+		margin-right: 0;
+	}
+}
+
+@media screen and (max-width: 43em) {
+	/* set min-height in case accordion title overflow*/
+	.accordion {
+		.accordion-title {
+			min-height: 4rem;
+		}
+	}
+	/* display verticle*/
+	.accordion-title-desc {
+		li {
+			list-style: none;
+			width: 100%;
+			display: block;
+			font-weight: normal;
+		}
+	}
+	/*  clear left and right margin for mobile page*/
+	.searchResults{
+		display: block;
+		min-width: 100%;
+		margin: 0.5rem 0;
+	}
+
+	/*  clear left and right margin for mobile page*/
+	.contact-card {
+		display: block;
+		min-width: 100%;
+		margin: 0.5rem 0;
+	}
+
+	form .row {
+		.columns {
+			display: block;
+			min-width: 100%;
+		}
+	}
+}
+
+// icon arrow down - search tab
+.icon_arrow_down {
+	color: $light-blue;
+	font-size: 40px;
+	margin-top: 15px;
+}
+
+.icon_arrow_down:hover {
+	cursor: pointer;
+}
+
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(15px);
+  }
+  60% {
+    transform: translateY(15px);
+  }
+}
+
+input.ng-invalid.ng-touched {
+    /*background-color: #DB2B0E;*/
+    background-color: pink;
+}
+
+/* tabs title nav color*/
+/* .tabs {*/
+/* 	border-color: $dark-blue;*/
+/* 	color: $text-color-white;*/
+/**/
+/* 	.tabs-title {*/
+/* 		background-color: $light-blue;*/
+/* 		text-align: center;*/
+/**/
+/* 		a {*/
+/* 			color: $text-color-white;*/
+/**/
+/* 			&:hover {*/
+/* 				background-color: $dark-blue;*/
+/* 				color: $text-color-white;*/
+/* 			}*/
+/* 		}*/
+/* 	}*/
+/* }*/
+/* .tabs .tabs-title.is-active * {*/
+/* 	background-color: $dark-blue;*/
+/* 	color: $text-color-white;*/
+/* }*/
+/* */
+/*  tabs border color*/
+/**/
+/* .tabs-content {*/
+/* 	border-color: $dark-blue;*/
+/* 	padding: 1.5rem;*/
+/* }*/

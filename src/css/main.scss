@@ -1,0 +1,140 @@
+$font: 'Franklin Gothic';
+$light-blue: #0077CA;
+$dark-blue: #003C71;
+$text-color-white: #fff;
+$text-color-black: #151515;
+$accordion-item-background-hover: #0077CA;
+.tabs {
+    &-title {
+        text-align: center;
+        @media screen and (min-width: 75em) {
+            /* responsive tabs title width */
+            width: 33%;
+            margin-right: 0.5%;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.tabs-content {
+    padding: 2rem;
+}
+
+
+/* search list*/
+
+.search-list {
+    padding: 4rem;
+}
+
+.accordion {
+    &-item {
+        margin: 1rem 0;
+        &-title {
+            color: $text-color-black;
+            height: 2.8rem;
+            &:hover {
+                background-color: $accordion-item-background-hover;
+                color: $text-color-white;
+            }
+        }
+        /* clear default border*/
+         :last-child:not(.is-active)>.accordion-title {
+            border: 0;
+        }
+        &-content {
+            border: 0;
+            padding: 0 1rem;
+            .search-list-info {
+                @extend .accordion-title-desc;
+                li {
+                    display: inline-block;
+                    box-sizing: border-box;
+                    width: 49%;
+                    span {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* search list title (name,position, department)*/
+
+.accordion-title-desc {
+    width: 100%;
+    font-size: 0.88rem;
+    line-height: 0.88rem;
+    margin: 0;
+    padding: 0;
+    text-transform: capitalize;
+    li {
+        list-style: none;
+        width: 49%;
+        display: inline-block;
+        font-weight: normal;
+        margin: 0;
+    }
+    span {
+        font-weight: bold;
+    }
+}
+
+.button-group {
+    .button {
+        width: 33%;
+    }
+    .activeFilterBtn {
+        background-color: $dark-blue;
+    }
+}
+
+.contact-card {
+    border: solid 2px $light-blue;
+    color: $light-blue;
+    max-width: 48%;
+    /* display two columns in a row*/
+    margin: 1%;
+    /* display two columns in a row*/
+    padding: 1rem;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.pagination {
+    margin-top: 3rem;
+}
+
+@media screen and (max-width: 43em) {
+    /* set min-height in case accordion title overflow*/
+    .accordion {
+        .accordion-title {
+            min-height: 4rem;
+        }
+    }
+    /* display verticle*/
+    .accordion-title-desc {
+        li {
+            list-style: none;
+            width: 100%;
+            display: block;
+            font-weight: normal;
+        }
+    }
+    /*  clear left and right margin for mobile page*/
+    .contact-card {
+        display: block;
+        min-width: 100%;
+        margin: 0.5rem 0;
+    }
+    form .row {
+        .columns {
+            display: block;
+            min-width: 100%;
+        }
+    }
+}

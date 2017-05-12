@@ -91,14 +91,10 @@ app.controller('searchCtrl', function($scope, $filter, $http, usersService) {
         return Math.ceil(ctrl.getData().length / $scope.pageSize);
     };
 
-
-
-
     // // process the form
     $scope.processForm = function() {
 
       alert("submited");
-      // console.log($scope.formData);
 
       $http({
       method  : 'POST',
@@ -115,8 +111,7 @@ app.controller('searchCtrl', function($scope, $filter, $http, usersService) {
 
         $scope.message = "Your form was submited successfully.";
 
-        // CLEARS FORM :O
-        // $scope.updateForm.$setPristine();
+        // CLEARS FORM :D
         $scope.updateForm.$setUntouched();
         $scope.formData = {};
 
@@ -131,10 +126,6 @@ app.controller('searchCtrl', function($scope, $filter, $http, usersService) {
 
 
     };
-
-
-
-
 
 });
 

@@ -1,7 +1,6 @@
-angular.module('uoitDirectory')
-  .component('directorySearch', {
-	  templateUrl: 'template/template.html',
-	  controller: function($scope, $filter, $http, usersService) {
+export const SearchComponent = {
+  templateUrl: 'template/template.html',
+  controller: function($scope, $filter, $http, usersService) {
 		'ngInject';
 		var ctrl = this; // ASSIGN `this` TO A VARIABLE FOR USE INSIDE FUNCTIONS
 
@@ -98,14 +97,13 @@ angular.module('uoitDirectory')
 
 		  alert("submited");
 
-		  $http({
-		  method  : 'POST',
-		  url     : 'mail.php',
-		  data    : $.param($scope.formData),  // pass in data as strings
-		  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-		 })
-
-		 .then(function successCallback(response) {
+			$http({
+				method  : 'POST',
+				url     : 'mail.php',
+				data    : $.param($scope.formData),  // pass in data as strings
+				headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+			})
+			.then(function successCallback(response) {
 				// this callback will be called asynchronously
 				// when the response is available
 				alert("success");
@@ -114,15 +112,13 @@ angular.module('uoitDirectory')
 				// CLEARS FORM :D
 				$scope.updateForm.$setUntouched();
 				$scope.formData = {};
-		  }, function errorCallback(response) {
+			}, function errorCallback(response) {
 				// called asynchronously if an error occurs
 				// or server returns response with an error status.
 				alert("error");
 				$scope.message = "Your form was NOT submited successfully.";
-		  });
-
-
+			});
 		};
 
 	}
-  });
+};

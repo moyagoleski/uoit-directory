@@ -11,21 +11,32 @@ angular.module('uoitDirectory')
 			// NORMALLY THIS WOULD NOT BE DONE WITH JQUERY, BUT THERE'S NO TIME!
 			var tabs = new Foundation.Tabs($('#tab1'));
 
-			$scope.departments = [];
-			$scope.users = [];
+			$scope.departments = null;
+			$scope.users = null;
+
+			$scope.departmentError = null;
+			$scope.userError = null;
 
 			$scope.currentPage = 0;
 			$scope.pageSize = 7;
 
 			// MAKE SURE THE LIST LOOKS THE WAY THE CONTROLLER NEEDS IT TO
 			// BEFORE IT GETS THERE, I.E. DO FILTERING IN SERVICE AND RETURN `users`
-			usersService.getUsers().then(function(users) {
-				$scope.users = users;
-			});
+			usersService.getUsers()
+				.then(function(users) {
+					$scope.users = users;
+				})
+				.catch(function(err) {
+					$scope.userError = err;
+				});
 			// SAME WITH DEPARTMENTS
-			usersService.getDepts().then(function(depts) {
-				$scope.departments = depts;
-			});
+			usersService.getDepts()
+				.then(function(depts) {
+					$scope.departments = depts;
+				})
+				.catch(function(err) {
+					$scope.departmentError = err;
+				});
 
 		}
 
@@ -42,21 +53,20 @@ angular.module('uoitDirectory')
 		// CLEAR DROPDOWN LIST
 		ctrl.modifyResultResetDropdown = function() {
 			$scope.currentPage = 0;
-			$scope.searchName.dirschl_school_name = '';
+			$scope.searchName.department = '';
 		}
 
 		// RESET CURRENT PAGE
 		// CLEAR INPUT FIELD
 		ctrl.modifyResultClearInput = function() {
 			$scope.currentPage = 0;
-			$scope.searchName.dirpepl_first_name = '';
-			$scope.searchName.dirpepl_last_name = '';
+			$scope.searchName.firstname = '';
+			$scope.searchName.lastname = '';
 		}
 
 		// PASS ORDERBY PARAMETER
 		// AND CHANGE ACTIVE FILTER BUTTON
 		ctrl.sortBy = function(propertyName) {
-			$scope.propertyName = propertyName;
 			$scope.order = propertyName;
 		};
 
@@ -100,20 +110,15 @@ angular.module('uoitDirectory')
 				// when the response is available
 				alert("success");
 				console.log($scope.formData);
-
 				$scope.message = "Your form was submited successfully.";
-
 				// CLEARS FORM :D
 				$scope.updateForm.$setUntouched();
 				$scope.formData = {};
-
-
 		  }, function errorCallback(response) {
 				// called asynchronously if an error occurs
 				// or server returns response with an error status.
 				alert("error");
 				$scope.message = "Your form was NOT submited successfully.";
-
 		  });
 
 

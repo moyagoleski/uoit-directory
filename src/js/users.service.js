@@ -8,8 +8,8 @@ angular.module('uoitDirectory')
 		// MOVED FROM CONTROLLER
 		var processUsers = function(items) {
 			for (var i in items) {
-				items[i].dirschl_school_name = items[i].dirschl_school_name.replace(regex, "");
-				items[i].dirschl_school_name = items[i].dirschl_school_name.replace(regex2, "and");
+				items[i].department = items[i].department.replace(regex, "");
+				items[i].department = items[i].department.replace(regex2, "and");
 			}
 			return items;
 		}
@@ -17,7 +17,7 @@ angular.module('uoitDirectory')
 			for (var i in items) {
 				// store department in departments array
 				// replace '&','UOIT','g'
-				items[i] = items[i].dirschl_school_name;
+				items[i] = items[i].department;
 
 				items[i] = items[i].replace(regex, "");
 				items[i] = items[i].replace(regex2, "and");
@@ -32,26 +32,34 @@ angular.module('uoitDirectory')
 			return items;
 		}
 
+		var users = null;
+
 		return {
 			get: function() {
-				return $http.get('https://communications.uoit.ca/apps/signature-generator/lib/directory.php') // API
+				return users ? users : $http.get('https://api.uoit.ca/v2/directory') // API
 					.then(function(response) {
-						return response.data.data;
-					})
-					.catch(function(err) {
-						console.log(err)
-					}); // ERROR HANDLING!
+						users = response.data.data;
+						return users;
+					});
 			},
 			getUsers: function() {
 				return this.get()
 					.then(function(data) {
 						return processUsers(data);
+					})
+					.catch(function(err) {
+						console.log('Error loading people:', err);
+						throw new Error('cannot load person list');
 					});
 			},
 			getDepts: function() {
 				return this.get()
 					.then(function(data) {
 						return processDepts(data);
+					})
+					.catch(function(err) {
+						console.log('Error loading departments:', err);
+						throw new Error('cannot load department list');
 					});
 			}
 		};

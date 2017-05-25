@@ -45,13 +45,7 @@ gulp.task('html-task', function() {
         }));
 });
 
-gulp.task('annotation', function() {
-    return gulp.src('src/service.js')
-        .pipe(ngAnnotate())
-        .pipe(gulp.dest('src/js'));
-})
-
-gulp.task('minify', ['annotation'], function() {
+gulp.task('minify', function() {
     return gulp.src('src/js/**/*.js')
         .pipe(ngAnnotate())
         .pipe(uglify())

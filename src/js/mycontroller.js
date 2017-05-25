@@ -6,7 +6,7 @@ app.component('directorySearch', {
     // `templateUrl` IS FROM <script type="text/ng-template"> IN HTML
     // CAN ALSO BE THE URL TO A REGULAR OLD HTML FILE
     // OR gulp-angular-templatecache INJECTED
-    templateUrl: '/dist/template/template.html'
+    templateUrl: 'template/template.html'
 });
 
 app.controller('searchCtrl', function($scope, $filter, $http, usersService) {

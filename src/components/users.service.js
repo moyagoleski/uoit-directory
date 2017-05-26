@@ -1,60 +1,43 @@
 export const UsersService = function($http) {
 	'ngInject';
-	// regex replace '&','UOIT','g'
-	var regex = /-|UOIT|/g;
-	var regex2 = /&/g;
 
-	// MOVED FROM CONTROLLER
-	var processUsers = function(items) {
-		for (var i in items) {
-			items[i].department = items[i].department.replace(regex, "");
-			items[i].department = items[i].department.replace(regex2, "and");
+	const replaceText = item => item.replace(/-|UOIT|/g, "").replace(/&/g, "and");
+
+	const processList = items => items.map(item => {
+		if (item.department) {
+			item.department = replaceText(item.department);
+		} else {
+			item = replaceText(item);
 		}
-		return items;
-	}
-	var processDepts = function(items) {
-		for (var i in items) {
-			// store department in departments array
-			// replace '&','UOIT','g'
-			items[i] = items[i].department;
+		return item;
+	});
 
-			items[i] = items[i].replace(regex, "");
-			items[i] = items[i].replace(regex2, "and");
-
-		}
-		// remove departments duplicates from departments array (dirschl_school_name) 64 left
-		items = items.filter(function(elem, index, self) {
-			return index == self.indexOf(elem);
-		});
-		// sort departments array
-		items.sort();
-		return items;
-	}
-
-	var users = null;
+	let users = null;
+	let departments = null;
 
 	return {
-		get: function() {
-			return users ? users : $http.get('https://api.uoit.ca/v2/directory') // API
+		get(endpoint = '') {
+			return $http.get(`https://api.uoit.ca/v2/directory${endpoint}`) // API
 				.then(function(response) {
-					users = response.data.data;
-					return users;
+					return response.data.data;
 				});
 		},
-		getUsers: function() {
-			return this.get()
+		getUsers() {
+			return users || this.get()
 				.then(function(data) {
-					return processUsers(data);
+					users = processList(data);
+					return users;
 				})
 				.catch(function(err) {
 					console.log('Error loading people:', err);
 					throw new Error('cannot load person list');
 				});
 		},
-		getDepts: function() {
-			return this.get()
+		getDepts() {
+			return departments || this.get('/departments')
 				.then(function(data) {
-					return processDepts(data);
+					departments = processList(data);
+					return departments;
 				})
 				.catch(function(err) {
 					console.log('Error loading departments:', err);

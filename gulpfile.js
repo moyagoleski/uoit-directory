@@ -5,7 +5,8 @@ var gulp = require('gulp'),
 	buffer = require('vinyl-buffer'),
 	browserify = require('browserify'),
 	watchify = require('watchify'),
-	babel = require('babelify');
+	babel = require('babelify'),
+	del = require('del');
 
 function bundle(watch) {
 	var bundler = watchify(browserify('./src/directory.js', {
@@ -47,11 +48,11 @@ function watchBundle() {
 	return bundle(true);
 };
 
-gulp.task('js-task', ['template-task'], function() {
+gulp.task('js', ['clean', 'template'], function() {
 	return bundle();
 });
 
-gulp.task('scss-task', function() {
+gulp.task('scss', function() {
 	return gulp.src('src/scss/**/*.scss')
 		.pipe($.sourcemaps.init())
 		.pipe($.sass())
@@ -69,7 +70,7 @@ gulp.task('scss-task', function() {
 		}));
 });
 
-gulp.task('html-task', function() {
+gulp.task('html', function() {
 	return gulp.src('src/**/*.html')
 		.pipe(gulp.dest('dist'))
 		.pipe($.notify({
@@ -77,7 +78,7 @@ gulp.task('html-task', function() {
 		}));
 });
 
-gulp.task('template-task', function() {
+gulp.task('template', function() {
 	return gulp.src('src/template/**/*.html')
 		.pipe($.angularTemplatecache('templates.run.js', {
 			templateHeader: `export const TemplateRun = ['$templateCache', function($templateCache) {`,
@@ -87,12 +88,20 @@ gulp.task('template-task', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch('src/**/*.html', ['html-task']);
-	gulp.watch('src/template/**/*.html', ['template-task']);
-	gulp.watch('src/scss/**/*.scss', ['scss-task']);
+	gulp.watch('src/**/*.html', ['html']);
+	gulp.watch('src/template/**/*.html', ['template']);
+	gulp.watch('src/scss/**/*.scss', ['scss']);
 	return watchBundle();
 });
 
-gulp.task('default', ['html-task', 'scss-task', 'js-task', 'watch'], function() {
+gulp.task('clean', function() {
+	return del(['dist']);
+});
+
+gulp.task('run', ['clean'], function() {
+	return gulp.start('html', 'scss', 'js', 'watch');
+});
+
+gulp.task('default', ['run'], function() {
 	return gutil.log('Gulp is running!');
 });

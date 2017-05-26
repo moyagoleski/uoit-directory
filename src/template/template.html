@@ -341,35 +341,35 @@
         <!-- SEARCH DEPARTMENT BY INPUT FIELD -->
         <li class="accordion-item" data-accordion-item ng-repeat="user in users | filter: searchName |  orderBy: order | startFrom:currentPage*pageSize | limitTo:pageSize">
             <!-- SEARCH DEPARTMENT BY DROPDOWN -->
-            <a class="accordion-title" ng-click="showDetails = ! showDetails">{{ user.firstname + ' ' + user.lastname }}
+            <a class="accordion-title" ng-click="showDetails = ! showDetails">{{::user.firstname}} {{::user.lastname}}
 									<ul class="accordion-title-desc">
 										<li>
-											<b>Department:</b>
-											{{user.department}}
+											<strong>Department:</strong>
+											{{::user.department}}
 										</li>
 										<li>
-											<b>Title:</b>
-											{{user.position}}
+											<strong>Title:</strong>
+											{{::user.position}}
 										</li>
 									</ul>
 								</a>
             <div class="a-content" ng-class="{ 'hidden': ! showDetails }" data-tab-content>
                 <ul class="search-list-info">
                     <li>
-                      <b>Building:</b>
-                      {{user.building}}
+                      <strong>Building:</strong>
+                      {{::user.building}}
                     </li>
                     <li>
-                      <b>Office:</b>
-                      {{user.office}}
+                      <strong>Office:</strong>
+                      {{::user.office}}
                     </li>
                     <li>
-                      <b>Extension:</b>
-                      {{user.extension}}
+                      <strong>Extension:</strong>
+                      {{::user.extension}}
                     </li>
                     <li>
-                      <b>E-mail:</b>
-                      <a href="mailto:{{user.email}}">{{user.email}}</a>
+                      <strong>E-mail:</strong>
+                      <a href="mailto:{{::user.email}}">{{::user.email | lowercase}}</a>
                     </li>
                 </ul>
             </div>

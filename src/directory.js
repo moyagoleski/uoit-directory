@@ -5,8 +5,8 @@ import { TemplateRun } from './components/templates.run'
 
 angular.module('uoitDirectory', [])
 	.component('directorySearch', SearchComponent)
-	.component('startFrom', StartFromFilter)
 	.service('usersService', UsersService)
+	.filter('startFrom', StartFromFilter)
 	.run(TemplateRun);
 
 angular.bootstrap(document.body, ['uoitDirectory'], {

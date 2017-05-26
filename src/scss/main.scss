@@ -50,7 +50,7 @@ $error : pink;
 		.accordion-title {
 			background-color: $lightgrey;
 			color: $text-color-black;
-			text-transform: capitalize;
+			text-transform: none;
 			font-size: 18px;
 			padding-top: 15px;
 
@@ -101,7 +101,6 @@ $error : pink;
 	font-size: 0.88rem;
 	margin: 0;
 	padding: 0;
-	text-transform: capitalize;
 
 	li {
 		list-style: none;

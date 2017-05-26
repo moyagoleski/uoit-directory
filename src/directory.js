@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 import { SearchComponent } from './components/search.component';
 import { StartFromFilter } from './components/start-from.filter';
 import { UsersService } from './components/users.service';

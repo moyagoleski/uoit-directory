@@ -39,6 +39,7 @@
     "watchify": "^3.9.0"
   },
   "dependencies": {
+    "angular": "^1.6.4",
     "foundation-sites": "^6.3.1"
   }
 }

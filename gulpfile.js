@@ -27,13 +27,14 @@ function rebundle(bundler) {
 		.pipe(buffer())
 		.pipe($.sourcemaps.init({ loadMaps: true }))
 		.pipe($.ngAnnotate())
-		.pipe(gulp.dest('./dist/js'))
+		.pipe($.rename('uoit-directory.js'))
+		.pipe(gulp.dest('dist'))
 		.pipe($.uglify())
 		.pipe($.rename({
 			suffix: '.min'
 		}))
 		.pipe($.sourcemaps.write('./'))
-		.pipe(gulp.dest('./dist/js'))
+		.pipe(gulp.dest('dist'))
 		.pipe($.notify({
 			message: 'Scripts task complete'
 		}));
@@ -60,11 +61,13 @@ gulp.task('scss', function() {
 		.on('error', function(err) {
 			console.error('Error!', err.message);
 		})
+		.pipe($.rename('uoit-directory.css'))
+		.pipe(gulp.dest('dist'))
 		.pipe($.minifyCss())
 		.pipe($.rename({
 			suffix: '.min'
 		}))
-		.pipe(gulp.dest('dist/css'))
+		.pipe(gulp.dest('dist'))
 		.pipe($.sourcemaps.write())
 		.pipe($.notify({
 			message: 'Styles task complete'
@@ -72,8 +75,8 @@ gulp.task('scss', function() {
 });
 
 gulp.task('html', function() {
-	return gulp.src('src/**/*.html')
-		.pipe(gulp.dest('dist'))
+	return gulp.src('src/index.html')
+		.pipe(gulp.dest('example'))
 		.pipe($.notify({
 			message: 'html task complete'
 		}));
@@ -81,7 +84,7 @@ gulp.task('html', function() {
 
 gulp.task('watch', function() {
 	gulp.watch('src/**/*.html', ['html']);
-	gulp.watch('src/template/**/*.html', ['template']);
+	gulp.watch('src/template/**/*.html', ['template', 'js']);
 	gulp.watch('src/scss/**/*.scss', ['scss']);
 	return bundle(true);
 });

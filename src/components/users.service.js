@@ -22,6 +22,16 @@ export const UsersService = function($http) {
 					return response.data.data;
 				});
 		},
+		getUser(person) {
+			var fullname;
+			if (person.firstname && person.lastname) {
+				fullname = [person.firstname, person.lastname].join('.')
+			}
+			return this.get(`/people/${fullname}`)
+				.then(function(data) {
+					return data.expert || false;
+				});
+		},
 		getUsers() {
 			return users || this.get()
 				.then(function(data) {

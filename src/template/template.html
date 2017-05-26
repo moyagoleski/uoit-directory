@@ -341,7 +341,7 @@
         <!-- SEARCH DEPARTMENT BY INPUT FIELD -->
         <li class="accordion-item" data-accordion-item ng-repeat="user in users | filter: searchName |  orderBy: order | startFrom:currentPage*pageSize | limitTo:pageSize">
             <!-- SEARCH DEPARTMENT BY DROPDOWN -->
-            <a class="accordion-title" ng-click="showDetails = ! showDetails">{{::user.firstname}} {{::user.lastname}}
+            <a class="accordion-title" ng-click="showDetails = ! showDetails; showDetails && $ctrl.getUser(user)">{{::user.firstname}} {{::user.lastname}}
 									<ul class="accordion-title-desc">
 										<li>
 											<strong>Department:</strong>
@@ -372,6 +372,28 @@
                       <a href="mailto:{{::user.email}}">{{::user.email | lowercase}}</a>
                     </li>
                 </ul>
+								<div ng-if="user.expert">
+									<small ng-hide="user.expert.username">
+										<em class="subheader">Checking for Expert profile...</em>
+									</small>
+									<div class="media-object callout" ng-show="user.expert.username">
+									  <div class="media-object-section">
+									    <div class="thumbnail">
+												<img ng-src="{{ user.expert.url }}" alt="Photo of {{ user.expert.firstname }} {{ user.expert.lastname }}">
+											</div>
+									  </div>
+									  <div class="media-object-section main-section">
+									    <h4>{{ user.expert.firstname }} {{ user.expert.lastname }}</h4>
+											<a ng-repeat="topic in user.expert.topics" ng-href="https://uoit.ca/expertcentre?q={{topic.name}}"><span class="label secondary">{{ topic.name }}</span>&nbsp;</a>
+											<hr/>
+									    <p>{{ user.expert.tagline }}</p>
+											<a ng-href="https://uoit.ca/expertcentre/expert/{{user.expert.username}}" class="button hollow">View full profile</a>
+									  </div>
+									</div>
+								</div>
+								<div ng-if="!user.expert">
+									<small><em class="subheader">No Expert profile found</em></small>
+								</div>
             </div>
         </li>
     </ul>

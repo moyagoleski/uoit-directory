@@ -63,7 +63,7 @@ $error : pink;
 		.a-content {
 		// .accordion-content {
 			padding: 1rem 1rem;
-			max-height: 100px;
+			max-height: 350px;
 			transition: .7s;
 			overflow: hidden;
 
@@ -79,6 +79,12 @@ $error : pink;
 						font-weight: bold;
 					}
 				}
+			}
+			.callout {
+				margin: 1rem 0 0 0;
+			}
+			.media-object img {
+				max-width: 130px;
 			}
 		}
 

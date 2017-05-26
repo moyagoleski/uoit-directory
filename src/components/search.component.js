@@ -38,6 +38,13 @@ export const SearchComponent = {
 				});
 
 		}
+		
+		ctrl.getUser = function(person) {
+			person.expert = {};
+			usersService.getUser(person).then(function(expert) { 
+					person.expert = expert || false;
+    	});
+		}
 
 		// MAKE `$scope` METHODS INTO CONTROLLER METHODS
 		// ASSIGN THEM TO OUR `ctrl` VARIABLE INSTEAD OF `$scope`, I.E. `this`

@@ -8,49 +8,50 @@ var gulp = require('gulp'),
 	babel = require('babelify'),
 	del = require('del');
 
+gulp.task('template', function() {
+	return gulp.src('src/template/**/*.html')
+		.pipe($.angularTemplatecache('templates.run.js', {
+			templateHeader: `export const TemplateRun = ['$templateCache', function($templateCache) {`,
+			templateFooter: '}];'
+		}))
+		.pipe(gulp.dest('src/components'));
+});
+
+gulp.task('js', ['template'], function() {
+	return bundle();
+});
+function rebundle(bundler) {
+	return bundler.bundle()
+		.on('error', function(err) { console.error(err); this.emit('end'); })
+		.pipe(source('build.js'))
+		.pipe(buffer())
+		.pipe($.sourcemaps.init({ loadMaps: true }))
+		.pipe($.ngAnnotate())
+		.pipe(gulp.dest('./dist/js'))
+		.pipe($.uglify())
+		.pipe($.rename({
+			suffix: '.min'
+		}))
+		.pipe($.sourcemaps.write('./'))
+		.pipe(gulp.dest('./dist/js'))
+		.pipe($.notify({
+			message: 'Scripts task complete'
+		}));
+}
 function bundle(watch) {
 	var bundler = watchify(browserify('./src/directory.js', {
 		debug: true
 	}).transform(babel, {
 		presets: ['es2015']
 	}));
-
-	function rebundle() {
-		bundler.bundle()
-			.on('error', function(err) { console.error(err); this.emit('end'); })
-			.pipe(source('build.js'))
-			.pipe(buffer())
-			.pipe($.sourcemaps.init({ loadMaps: true }))
-			.pipe($.ngAnnotate())
-			.pipe(gulp.dest('./dist/js'))
-			.pipe($.uglify())
-			.pipe($.rename({
-				suffix: '.min'
-			}))
-			.pipe($.sourcemaps.write('./'))
-			.pipe(gulp.dest('./dist/js'))
-			.pipe($.notify({
-				message: 'Scripts task complete'
-			}));
-	}
-
 	if (watch) {
 		bundler.on('update', function() {
 			console.log('-> bundling...');
-			rebundle();
+			return rebundle(bundler);
 		});
 	}
-
-	rebundle();
+	return rebundle(bundler);
 }
-
-function watchBundle() {
-	return bundle(true);
-};
-
-gulp.task('js', ['clean', 'template'], function() {
-	return bundle();
-});
 
 gulp.task('scss', function() {
 	return gulp.src('src/scss/**/*.scss')
@@ -78,20 +79,11 @@ gulp.task('html', function() {
 		}));
 });
 
-gulp.task('template', function() {
-	return gulp.src('src/template/**/*.html')
-		.pipe($.angularTemplatecache('templates.run.js', {
-			templateHeader: `export const TemplateRun = ['$templateCache', function($templateCache) {`,
-			templateFooter: '}];'
-		}))
-		.pipe(gulp.dest('src/components'));
-});
-
 gulp.task('watch', function() {
 	gulp.watch('src/**/*.html', ['html']);
 	gulp.watch('src/template/**/*.html', ['template']);
 	gulp.watch('src/scss/**/*.scss', ['scss']);
-	return watchBundle();
+	return bundle(true);
 });
 
 gulp.task('clean', function() {

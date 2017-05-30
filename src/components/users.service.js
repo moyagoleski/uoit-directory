@@ -1,4 +1,4 @@
-export const UsersService = function($http) {
+export const DirectoryService = function($http) {
 	'ngInject';
 
 	const replaceText = item => item.replace(/-|UOIT|/g, "").replace(/&/g, "and");

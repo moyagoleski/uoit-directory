@@ -65,196 +65,15 @@
     <!-- TAB 1 END  -->
     <!-- TAB 2 STARTS -->
     <div class="tabs-panel" id="tab1-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-2-label">
-        <!-- TAB TITLE  -->
-        <h2>General Contacts</h2>
-        <br/>
-        <!-- CONTACT TITLE  -->
-        <h3>Campus services</h3>
+    	<div ng-repeat="group in contacts">
+    		<h3>{{ ::group.category }}</h3>
         <div class="row">
-            <div class="small-6 large-6 medium-6 columns contact-card">
-              <p class="contact-title"><b>Bookstore</b></p>
-              <p class="contact-number">905.721.3026</p>
-            </div>
-            <div class="small-6 large-6 medium-6 columns contact-card">
-              <p class="contact-title"><b>Campus Fieldhouse</b></p>
-              <p class="contact-number">905.721.3122</p>
-            </div>
+          <span ng-repeat="contact in group.items" class="small-6 large-6 medium-6 columns contact-card{{ ::(contact.class ? ' contact-faculty ' + contact.class : '') }}">
+            <p class="contact-name"><strong>{{ ::contact.name }}</strong></p>
+            <p class="contact-phone"><a href="tel:{{ ::contact.phone | tel }}" title="Place call to {{ ::contact.phone | tel }}">{{ ::contact.phone }}</a></p>
+          </span>
         </div>
-        <div class="row">
-            <div class="small-6 large-6 medium-6 columns contact-card">
-              <p class="contact-title"><b>Campus Ice Centre</b></p>
-              <p class="contact-number">905.721.3230</p>
-            </div>
-            <div class="small-6 large-6 medium-6 columns contact-card">
-              <p class="contact-title"><b>Campus Recreation and Wellness Centre</b></p>
-              <p class="contact-number">905.721.3040</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-6 large-6 medium-6 columns contact-card">
-              <p class="contact-title"><b>Campus Security</b></p>
-              <p class="contact-number">905.721.8668 ext. 2400</p>
-            </div>
-            <div class="small-6 large-6 medium-6 columns contact-card">
-              <p class="contact-title"><b>Health and Wellness</b></p>
-              <p class="contact-number">905.721.3037</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-6 large-6 medium-6 columns contact-card">
-              <p class="contact-title"><b>Help Desk (Facilities, IT and Media services)</b></p>
-              <p class="contact-number">905.721.3333</p>
-            </div>
-            <div class="small-6 large-6 medium-6 columns contact-card">
-              <p class="contact-title"><b>Library</b></p>
-              <p class="contact-number">905.721.8668 ext. 2214</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-6 large-6 medium-6 columns contact-card">
-              <p class="contact-title"><b>Regent Theatre</b></p>
-              <p class="contact-number">905.721.3399</p>
-            </div>
-            <div class="small-6 large-6 medium-6 columns contact-card">
-              <p class="contact-title"><b>Shop61</b></p>
-              <p class="contact-number">905.721.8668 ext.5695</p>
-            </div>
-        </div>
-        <br/>
-        <!-- CONTACT TITLE  -->
-        <h3>Student services</h3>
-        <div class="row">
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Alumni Office</b></p>
-              <p class="contact-number">905.721.8668 ext. 5659</p>
-            </div>
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Career Centre</b></p>
-              <p class="contact-number">905.721.8668 ext. 3824</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Dental Clinic</b></p>
-              <p class="contact-number">905.721.8668 ext. 3074</p>
-            </div>
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Flex Centre</b></p>
-              <p class="contact-number">905.721.8668 ext. 3715</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Housing</b></p>
-              <p class="contact-number">905.721.8668 ext. 8000</p>
-            </div>
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Office of Student Life</b></p>
-              <p class="contact-number">905.721.8668 ext. 5317</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Pharmacy</b></p>
-              <p class="contact-number">905.728.6724</p>
-            </div>
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Registrar’s Office and Admissions</b></p>
-              <p class="contact-number">905.721.3190</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Student Accessibility Services</b></p>
-              <p class="contact-number">905.721.3266</p>
-            </div>
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Student Association</b></p>
-              <p class="contact-number">905.721.0457</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Student Awards and Financial Aid (SAFA)</b></p>
-              <p class="contact-number">905.721.3143</p>
-            </div>
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Student Experience Centre</b></p>
-              <p class="contact-number">905.721.8668 ext. 3837</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Student Learning Centre</b></p>
-              <p class="contact-number">905.721.8668 ext. 6578</p>
-            </div>
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Student Life Line</b></p>
-              <p class="contact-number">905.721.3392</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 medium-6 columns contact-card">
-              <p class="contact-title"><b>Women’s Centre</b></p>
-              <p class="contact-number">905.721.8668 ext. 7615</p>
-            </div>
-        </div>
-        <br/>
-        <!-- CONTACT TITLE  -->
-        <h3>Academic faculties</h3>
-        <div class="row">
-            <div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#00558C">
-              <p class="contact-title"><span class="fbit"><b>Faculty of Business and Information Technology</b></span></p>
-              <span class="contact-number fbit">905.721.8668 ext. 2830</span>
-            </div>
-            <div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#4F758B">
-              <p class="contact-title fed"><span class="fed"><b>Faculty of Education</b></span></p>
-              <span class="contact-number fed">905.721.8668 ext. 3181</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#6F263D">
-              <p class="contact-title"><span class="fesns"><b>Faculty of Energy Systems and Nuclear Science</b></span></p>
-              <span class="contact-number fesns">905.721.8668 ext. 5511</span>
-            </div>
-            <div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#5F259F">
-              <p class="contact-title"><span class="feas"><b>Faculty of Engineering and Applied Science</b></span></p>
-              <span class="contact-number feas">905.721.8668 ext. 2988</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#AF272F">
-              <p class="contact-title"><span class="fhs"><b>Faculty of Health Sciences</b></span></p>
-              <span class="contact-number fhs">905.721.8668 ext. 3166</span>
-            </div>
-            <div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#007749">
-              <p class="contact-title"><span class="fsci"><b>Faculty of Science</b></span></p>
-              <span class="contact-number fsci">905.721.8668 ext. 3050</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#BE4D00">
-              <p class="contact-title"><span class="fssh"><b>Faculty of Social Science and Humanities</b></span></p>
-              <span class="contact-number fssh">905.721.8668 ext. 3234</span>
-            </div>
-            <div class="small-6 large-6 medium-6 columns contact-card" style="border-color:#000">
-              <p class="contact-title"><span class="grad"><b>Office of Graduate Studies</b></span></p>
-              <span class="contact-number grad">905.721.8668 ext. 6209</span>
-            </div>
-        </div>
-        <br/>
-        <!-- CONTACT TITLE  -->
-        <h3>Faculty and staff services</h3>
-        <div class="row">
-            <div class="small-6 large-6 medium-6 columns contact-card">
-              <p class="contact-title"><b>Finance</b></p>
-              <p class="contact-number">905.721.3020</p>
-            </div>
-            <div class="small-6 large-6 medium-6 columns contact-card">
-              <p class="contact-title"><b>Social Research Centre (SRC)</b></p>
-              <p class="contact-number"> 905.721.8668 ext. 5867</p>
-            </div>
-        </div>
+	    </div>
     </div>
     <!-- TAB 2 END  -->
     <!-- TAB 3 STARTS  -->
@@ -311,7 +130,7 @@
       			<button class="button" type="submit" value="Submit" role="button">Submit</button>
       		</fieldset>
       	</form>
-    </div>
+  	</div>
 </div>
 
 <!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->

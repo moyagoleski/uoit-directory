@@ -1,6 +1,6 @@
 export const SearchComponent = {
   templateUrl: 'template.html',
-  controller: function($scope, $filter, $http, usersService) {
+  controller: function($scope, $filter, $http, DirectoryService, Contacts) {
 		'ngInject';
 		var ctrl = this; // ASSIGN `this` TO A VARIABLE FOR USE INSIDE FUNCTIONS
 
@@ -10,6 +10,7 @@ export const SearchComponent = {
 			// NORMALLY THIS WOULD NOT BE DONE WITH JQUERY, BUT THERE'S NO TIME!
 			var tabs = new Foundation.Tabs($('#tab1'));
 
+			$scope.contacts = Contacts;
 			$scope.departments = null;
 			$scope.users = null;
 
@@ -21,7 +22,7 @@ export const SearchComponent = {
 
 			// MAKE SURE THE LIST LOOKS THE WAY THE CONTROLLER NEEDS IT TO
 			// BEFORE IT GETS THERE, I.E. DO FILTERING IN SERVICE AND RETURN `users`
-			usersService.getUsers()
+			DirectoryService.getUsers()
 				.then(function(users) {
 					$scope.users = users;
 				})
@@ -29,7 +30,7 @@ export const SearchComponent = {
 					$scope.userError = err;
 				});
 			// SAME WITH DEPARTMENTS
-			usersService.getDepts()
+			DirectoryService.getDepts()
 				.then(function(depts) {
 					$scope.departments = depts;
 				})
@@ -41,7 +42,7 @@ export const SearchComponent = {
 		
 		ctrl.getUser = function(person) {
 			person.expert = {};
-			usersService.getUser(person).then(function(expert) { 
+			DirectoryService.getUser(person).then(function(expert) { 
 					person.expert = expert || false;
     	});
 		}

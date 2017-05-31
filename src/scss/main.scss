@@ -27,10 +27,10 @@ $error : pink;
 			}
 		}
 	}
-}
 
-.tabs-content {
-	padding: 1rem;
+	&-content {
+		padding: 1rem;
+	}
 }
 
 /* search list*/
@@ -44,13 +44,16 @@ $error : pink;
 }
 
 .accordion {
-	&-item {
-		margin: 1rem 0;
+	.accordion-item {
+		margin-bottom: 1rem;
+		
+		&:last-of-type {
+			margin-bottom: 0;
+		}
 
 		.accordion-title {
 			background-color: $lightgrey;
 			color: $text-color-black;
-			text-transform: capitalize;
 			font-size: 18px;
 			padding-top: 15px;
 
@@ -58,12 +61,32 @@ $error : pink;
 				background-color: $accordion-item-background-hover;
 				color: $text-color-white;
 			}
+
+			&-desc {
+				text-transform: none;
+				width: 100%;
+				font-size: 0.88rem;
+				margin: 0;
+				padding: 0;
+
+				li {
+					list-style: none;
+					width: 49%;
+					display: inline-block;
+					font-weight: normal;
+					margin: 0;
+				}
+
+				span {
+					font-weight: bold;
+				}
+			}
 		}
 
 		.a-content {
 		// .accordion-content {
 			padding: 1rem 1rem;
-			max-height: 100px;
+			max-height: 350px;
 			transition: .7s;
 			overflow: hidden;
 
@@ -80,39 +103,23 @@ $error : pink;
 					}
 				}
 			}
-		}
+			.callout {
+				margin: 1rem 0 0 0;
+			}
+			.media-object img {
+				max-width: 130px;
+			}
 
-		.a-content.hidden {
+			&.hidden {
 		    max-height: 0;
 				padding: 0 1rem;
+				// ~ .accordion-title:before {
+				// 	content: "–";
+				// }
+			}
+
 		}
 
-	}
-}
-
-// hides '+' for now because thhe '+' and '-' are not toggling
-.accordion-title::before {
-	content: "";
-}
-
-/* search list title (name,position, department)*/
-.accordion-title-desc {
-	width: 100%;
-	font-size: 0.88rem;
-	margin: 0;
-	padding: 0;
-	text-transform: capitalize;
-
-	li {
-		list-style: none;
-		width: 49%;
-		display: inline-block;
-		font-weight: normal;
-		margin: 0;
-	}
-
-	span {
-		font-weight: bold;
 	}
 }
 
@@ -123,22 +130,35 @@ $error : pink;
 }
 
 /* .tabs-panel .row {*/
-.contact-card {
-	border: solid 2px $light-blue;
-	color: $light-blue;
-	max-width: 48%;
-	/* display two columns in a row*/
-	margin: 1%;
-	/* display two columns in a row*/
-	padding: 1rem;
-	// padding: 25px;
-	display: inline-block;
-	box-sizing: border-box;
-	margin-bottom: 15px;
-}
+.contact {
+	&-card {
+		max-width: 48%;
+		margin: 1%;
+		padding: 1rem;
+		display: inline-block;
+		box-sizing: border-box;
+		margin-bottom: 15px;
+		border-width: 2px;
+		border-style: solid;
 
-.contact-number {
-	margin-bottom: 0;
+		&:not(.contact-faculty) {			
+			border-color: $light-blue;
+			color: $light-blue;
+		}
+
+		&.contact-faculty {
+			border-color: inherit;
+			.contact-name,
+			.contact-phone,
+			.contact-phone a {
+				color: inherit;
+			}
+		}
+	}
+
+	&-phone {
+		margin-bottom: 0;
+	}
 }
 
 .pagination {

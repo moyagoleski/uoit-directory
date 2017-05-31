@@ -4,11 +4,7 @@ export const SearchComponent = {
 		'ngInject';
 		var ctrl = this; // ASSIGN `this` TO A VARIABLE FOR USE INSIDE FUNCTIONS
 
-		ctrl.$onInit = function() { // MOVE INIT LOGIC INTO AN `$onInit` HOOK
-
-			// QUICK HACK FOR GETTING TABS WORKING INSIDE INIT
-			// NORMALLY THIS WOULD NOT BE DONE WITH JQUERY, BUT THERE'S NO TIME!
-			var tabs = new Foundation.Tabs($('#tab1'));
+		ctrl.$onInit = function() {
 
 			$scope.contacts = Contacts;
 			$scope.departments = null;

@@ -44,13 +44,16 @@ $error : pink;
 }
 
 .accordion {
-	&-item {
-		margin: 1rem 0;
+	.accordion-item {
+		margin-bottom: 1rem;
+		
+		&:last-of-type {
+			margin-bottom: 0;
+		}
 
 		.accordion-title {
 			background-color: $lightgrey;
 			color: $text-color-black;
-			text-transform: none;
 			font-size: 18px;
 			padding-top: 15px;
 
@@ -60,6 +63,7 @@ $error : pink;
 			}
 
 			&-desc {
+				text-transform: none;
 				width: 100%;
 				font-size: 0.88rem;
 				margin: 0;

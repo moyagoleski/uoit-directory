@@ -18,8 +18,13 @@ export const DirectoryService = function($http) {
 	return {
 		get(endpoint = '') {
 			return $http.get(`https://api.uoit.ca/v2/directory${endpoint}`) // API
-				.then(function(response) {
-					return response.data.data;
+				.then(({ data }) => {
+					if (data.success) {
+						return data;
+					} else {
+						console.error('Directory error:', data);
+						throw new Error(data.message || 'an unknown error occurred')
+					}
 				});
 		},
 		getUser(person) {

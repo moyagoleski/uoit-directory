@@ -9,6 +9,7 @@ export const SearchComponent = {
 			$scope.contacts = Contacts;
 			$scope.departments = null;
 			$scope.users = null;
+			$scope.searchName = {};
 
 			$scope.departmentError = null;
 			$scope.userError = null;
@@ -88,7 +89,7 @@ export const SearchComponent = {
 
 		// GET FILTERED DATA
 		ctrl.getData = function() {
-			return $filter('filter')($scope.users, $scope.searchName);
+			return $scope.users ? $filter('filter')($scope.users, $scope.searchName) : [];
 		};
 
 		// GET PAGES NUMBER

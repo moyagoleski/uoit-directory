@@ -28,34 +28,34 @@ export const DirectoryService = function($http) {
 				});
 		},
 		getUser(person) {
-			var fullname;
+			let fullname;
 			if (person.firstname && person.lastname) {
 				fullname = [person.firstname, person.lastname].join('.')
 			}
 			return this.get(`/people/${fullname}`)
-				.then(function(data) {
+				.then(({ data }) => {
 					return data.expert || false;
 				});
 		},
 		getUsers() {
 			return users || this.get()
-				.then(function(data) {
+				.then(({ data = [] } = {}) => {
 					users = processList(data);
 					return users;
 				})
-				.catch(function(err) {
-					console.log('Error loading people:', err);
+				.catch(err => {
+					console.error('Error loading people:', err);
 					throw new Error('cannot load person list');
 				});
 		},
 		getDepts() {
 			return departments || this.get('/departments')
-				.then(function(data) {
+				.then(({ data = [] } = {}) => {
 					departments = processList(data);
 					return departments;
 				})
-				.catch(function(err) {
-					console.log('Error loading departments:', err);
+				.catch(err => {
+					console.error('Error loading departments:', err);
 					throw new Error('cannot load department list');
 				});
 		}

@@ -147,11 +147,9 @@
             </div>
         </div>
         <br/>
-        <div class="small-12 columns " ng-hide="(currentPage + 1)> $ctrl.numberOfPages()">
-            <p>To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
-        </div>
-        <div class="small-12 columns" ng-show="(currentPage + 1) > $ctrl.numberOfPages()">
-            <p>Sorry, no directory search results to display.</p>
+        <div class="small-12 columns ">
+            <p ng-hide="(currentPage + 1) > $ctrl.numberOfPages()">To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
+            <p ng-show="(currentPage + 1)> $ctrl.numberOfPages()">Sorry, no directory search results to display.</p>
         </div>
     </div>
 
@@ -191,27 +189,29 @@
                       <a href="mailto:{{::user.email}}">{{::user.email | lowercase}}</a>
                     </li>
                 </ul>
-								<div ng-if="user.expert">
-									<small ng-hide="user.expert.username">
-										<em class="subheader">Checking for Expert profile...</em>
-									</small>
-									<div class="media-object callout" ng-show="user.expert.username">
-									  <div class="media-object-section">
-									    <div class="thumbnail">
-												<img ng-src="{{ user.expert.url }}" alt="Photo of {{ user.expert.firstname }} {{ user.expert.lastname }}">
-											</div>
-									  </div>
-									  <div class="media-object-section main-section">
-									    <h4>{{ user.expert.firstname }} {{ user.expert.lastname }}</h4>
-											<a ng-repeat="topic in user.expert.topics" ng-href="https://uoit.ca/expertcentre?q={{topic.name}}"><span class="label secondary">{{ topic.name }}</span>&nbsp;</a>
-											<hr/>
-									    <p>{{ user.expert.tagline }}</p>
-											<a ng-href="https://uoit.ca/expertcentre/expert/{{user.expert.username}}" class="button hollow">View full profile</a>
-									  </div>
-									</div>
-								</div>
-								<div ng-if="!user.expert">
-									<small><em class="subheader">No Expert profile found</em></small>
+
+								<small ng-if="user.expert" ng-hide="user.expert.username">
+									<em class="subheader">Checking for Expert profile...</em>
+								</small>
+								<div class="expert-profile media-object callout" ng-if="user.expert" ng-show="user.expert.username">
+								  <div class="media-object-section">
+								    <div class="thumbnail">
+											<img ng-src="{{ user.expert.url }}" alt="Photo of {{ user.expert.firstname }} {{ user.expert.lastname }}">
+										</div>
+								  </div>
+								  <div class="media-object-section main-section">
+								  	<div class="row align-middle">
+								  		<div class="column">
+										    <h4>{{ user.expert.firstname }} {{ user.expert.lastname }}</h4>
+												<a ng-repeat="topic in user.expert.topics" ng-href="https://uoit.ca/expertcentre?q={{topic.name}}" class="label secondary">{{ topic.name }}</a>
+												<hr/>
+										    <p>{{ user.expert.tagline }}</p>
+									    </div>
+								  		<div class="column shrink">
+												<a ng-href="https://uoit.ca/expertcentre/expert/{{user.expert.username}}" class="button hollow">View full profile</a>
+									    </div>
+								  	</div>
+								  </div>
 								</div>
             </div>
         </li>

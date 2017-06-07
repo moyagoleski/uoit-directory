@@ -86,7 +86,7 @@ $error : pink;
 		.a-content {
 		// .accordion-content {
 			padding: 1rem 1rem;
-			max-height: 350px;
+			max-height: calc(2rem + 340px);
 			transition: .7s;
 			overflow: hidden;
 
@@ -105,9 +105,6 @@ $error : pink;
 			}
 			.callout {
 				margin: 1rem 0 0 0;
-			}
-			.media-object img {
-				max-width: 130px;
 			}
 
 			&.hidden {
@@ -260,35 +257,12 @@ input.ng-invalid.ng-touched {
   background-color: $error;
 }
 
-// COLOUR TABS
-
-/* tabs title nav color*/
-/* .tabs {*/
-/* 	border-color: $dark-blue;*/
-/* 	color: $text-color-white;*/
-/**/
-/* 	.tabs-title {*/
-/* 		background-color: $light-blue;*/
-/* 		text-align: center;*/
-/**/
-/* 		a {*/
-/* 			color: $text-color-white;*/
-/**/
-/* 			&:hover {*/
-/* 				background-color: $dark-blue;*/
-/* 				color: $text-color-white;*/
-/* 			}*/
-/* 		}*/
-/* 	}*/
-/* }*/
-/* .tabs .tabs-title.is-active * {*/
-/* 	background-color: $dark-blue;*/
-/* 	color: $text-color-white;*/
-/* }*/
-/* */
-/*  tabs border color*/
-/**/
-/* .tabs-content {*/
-/* 	border-color: $dark-blue;*/
-/* 	padding: 1.5rem;*/
-/* }*/
+.expert-profile {
+	max-height: 300px;
+	.thumbnail img {
+		max-width: 120px;
+	}
+	.label:not(:last-of-type) {
+		margin-right: 0.25rem;
+	}
+}

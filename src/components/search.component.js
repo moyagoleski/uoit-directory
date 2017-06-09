@@ -13,6 +13,10 @@ export const SearchComponent = {
 
 			$scope.departmentError = null;
 			$scope.userError = null;
+			$scope.formStatus = {
+				success: null,
+				error: null
+			};
 
 			$scope.currentPage = 0;
 			$scope.pageSize = 7;
@@ -124,19 +128,12 @@ export const SearchComponent = {
 				headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
 			})
 			.then(function successCallback(response) {
-				// this callback will be called asynchronously
-				// when the response is available
-				alert("success");
-				console.log($scope.formData);
-				$scope.message = "Your form was submited successfully.";
-				// CLEARS FORM :D
+				$scope.formStatus.success = "Your update request was submitted successfully!";
 				$scope.updateForm.$setUntouched();
 				$scope.formData = {};
 			}, function errorCallback(response) {
-				// called asynchronously if an error occurs
-				// or server returns response with an error status.
 				alert("error");
-				$scope.message = "Your form was NOT submited successfully.";
+				$scope.formStatus.error = "There was an error submitting your update request; please try again!";
 			});
 		};
 

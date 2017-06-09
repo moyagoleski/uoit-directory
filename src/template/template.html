@@ -87,7 +87,12 @@
         <p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form below.</p>
 
       <!-- SHOW ERROR/SUCCESS MESSAGES -->
-      	<div id="messages" ng-show="message" class="callout primary">{{ message }}</div>
+      	<div ng-show="formStatus.success || formStatus.error" class="callout" ng-class="{ success: formStatus.success, alert: formStatus.error }" data-closable>
+      		{{ formStatus.success || formData.error }}
+      		<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+			  </div>
 
       	<!-- FORM -->
       	<form ng-submit="processForm()" name="updateForm">

@@ -75,7 +75,7 @@ gulp.task('scss', function() {
 });
 
 gulp.task('html', function() {
-	return gulp.src('src/index.html')
+	return gulp.src('src/{index.html,mail.php}')
 		.pipe(gulp.dest('example'))
 		.pipe($.notify({
 			message: 'html task complete'
@@ -83,7 +83,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch('src/**/*.html', ['html']);
+	gulp.watch('src/**/*.{php,html}', ['html']);
 	gulp.watch('src/template/**/*.html', ['template', 'js']);
 	gulp.watch('src/scss/**/*.scss', ['scss']);
 	return bundle(true);
@@ -96,6 +96,8 @@ gulp.task('clean', function() {
 gulp.task('run', ['clean'], function() {
 	return gulp.start('html', 'scss', 'js', 'watch');
 });
+
+gulp.task('build', ['clean', 'html', 'scss', 'js']);
 
 gulp.task('default', ['run'], function() {
 	return gutil.log('Gulp is running!');

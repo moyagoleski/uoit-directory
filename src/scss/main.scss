@@ -105,9 +105,9 @@ $error : pink;
 			&.hidden {
 		    max-height: 0;
 				padding: 0 1rem;
-				// ~ .accordion-title:before {
-				// 	content: "–";
-				// }
+				~ .accordion-title:before {
+			    transform: translateY(-50%) rotate(0deg);
+				}
 			}
 
 		}
@@ -284,5 +284,14 @@ input.ng-invalid.ng-touched {
 	}
 	.label:not(:last-of-type) {
 		margin-right: 0.25rem;
+	}
+
+	@media screen and (max-width: 39.9375em) {
+		.thumbnail img {
+			max-width: 80px;
+		}
+		&-topics {
+			display: none;
+		}
 	}
 }

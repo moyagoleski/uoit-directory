@@ -99,39 +99,57 @@
 
       		<div class="row">
       			<div class="small-12 medium-12 columns">
-      				<label>BANNER USER ID:<b style="color:red"> *</b><input type="text" name="bannerId" ng-model="formData.bannerId" required/></label>
+      				<label>BANNER USER ID:<span class="red"> *</span>
+      					<input type="text" name="bannerId" ng-model="formData.bannerId" required/>
+      				</label>
       			</div>
       		</div>
       		<div class="row">
       			<div class="small-12 medium-6 columns">
-      				<label>FIRST NAME:<b style="color:red"> *</b><input type="text" name="firstName" ng-model="formData.firstName" required/></label>
+      				<label>FIRST NAME:<span class="red"> *</span>
+      					<input type="text" name="firstName" ng-model="formData.firstName" required/>
+      				</label>
       			</div>
       			<div class="small-12 medium-6 columns">
-      				<label>LAST NAME:<b style="color:red"> *</b><input type="text" name="lastName" ng-model="formData.lastName" required/></label>
-      			</div>
-      		</div>
-      		<div class="row">
-      			<div class="small-12 medium-6 columns">
-      				<label>DEPARTMENT:<b style="color:red"> *</b><input type="text" name="department" ng-model="formData.department" required/></label>
-      			</div>
-      			<div class="small-12 medium-6 columns">
-      				<label>TITLE:<b style="color:red"> *</b><input type="text" name="title" ng-model="formData.title" required/></label>
+      				<label>LAST NAME:<span class="red"> *</span>
+      					<input type="text" name="lastName" ng-model="formData.lastName" required/>
+      				</label>
       			</div>
       		</div>
       		<div class="row">
       			<div class="small-12 medium-6 columns">
-      				<label>BUILDING:<b style="color:red"> *</b><input type="text" name="building" ng-model="formData.building" required/></label>
+      				<label>DEPARTMENT:<span class="red"> *</span>
+      					<input type="text" name="department" ng-model="formData.department" required/>
+      				</label>
       			</div>
       			<div class="small-12 medium-6 columns">
-      				<label>OFFICE:<b style="color:red"> *</b><input type="text" name="office" ng-model="formData.office" required/></label>
+      				<label>TITLE:<span class="red"> *</span>
+      					<input type="text" name="title" ng-model="formData.title" required/>
+      				</label>
       			</div>
       		</div>
       		<div class="row">
       			<div class="small-12 medium-6 columns">
-      				<label>EXTENSION:<b style="color:red"> *</b><input type="text" name="extension" ng-model="formData.extension" required/></label>
+      				<label>BUILDING:<span class="red"> *</span>
+      					<input type="text" name="building" ng-model="formData.building" required/>
+      				</label>
       			</div>
       			<div class="small-12 medium-6 columns">
-      				<label>E-MAIL:<b style="color:red"> *</b><input type="email" name="email" ng-model="formData.email" required/></label>
+      				<label>OFFICE:<span class="red"> *</span>
+      					<input type="text" name="office" ng-model="formData.office" required/>
+      				</label>
+      			</div>
+      		</div>
+      		<div class="row">
+      			<div class="small-12 medium-6 columns">
+      				<label>EXTENSION:<span class="red"> *</span>
+      					<input type="text" name="extension" ng-model="formData.extension" required/>
+      				</label>
+      			</div>
+      			<div class="small-12 medium-6 columns">
+      				<label>E-MAIL:<span class="red"> *</span>
+      					<input type="email" name="email" ng-model="formData.email" required/>
+      				</label>
       			</div>
       		</div>
       		<fieldset class="large-6 columns">
@@ -203,10 +221,12 @@
                     </li>
                 </ul>
 
-								<small ng-if="user.expert" ng-hide="user.expert.username">
+							<div ng-if="user.expert">
+								<hr/>
+								<small ng-hide="user.expert.username">
 									<em class="subheader">Checking for Expert profile...</em>
 								</small>
-								<div class="expert-profile media-object callout" ng-if="user.expert" ng-show="user.expert.username">
+								<div class="expert-profile media-object" ng-show="user.expert.username">
 								  <div class="media-object-section">
 								    <div class="thumbnail">
 											<img ng-src="{{ user.expert.url }}" alt="Photo of {{ user.expert.firstname }} {{ user.expert.lastname }}">
@@ -215,9 +235,8 @@
 								  <div class="media-object-section main-section">
 								  	<div class="row align-middle">
 								  		<div class="column">
-										    <h4>{{ user.expert.firstname }} {{ user.expert.lastname }}</h4>
-												<a ng-repeat="topic in user.expert.topics" ng-href="https://uoit.ca/expertcentre?q={{topic.name}}" class="label secondary">{{ topic.name }}</a>
-												<hr/>
+										    <h4>{{ user.expert.firstname }} {{ user.expert.lastname }} <small class="subheader">on UOIT Expert Centre</small></h4>
+												<p class="expert-profile-topics"><a ng-repeat="topic in user.expert.topics" ng-href="https://uoit.ca/expertcentre?q={{topic.name}}" class="label tertiary">{{ topic.name }}</a></p>
 										    <p>{{ user.expert.tagline }}</p>
 									    </div>
 								  		<div class="column shrink">
@@ -226,6 +245,7 @@
 								  	</div>
 								  </div>
 								</div>
+							</div>
 
             </div>
         </li>

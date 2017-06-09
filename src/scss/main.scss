@@ -180,26 +180,14 @@ $error : pink;
 	}
 }
 
-// @media screen and (min-width:75em) {
-// 	/* responsive tabs title width */
-// 	.tabs .tabs-title {
-// 		width: 33%;
-// 		margin-right: 0.5%;
-// 	}
-//
-// 	.tabs-title:last-child {
-// 		margin-right: 0;
-// 	}
-// }
-
 @media screen and (max-width: 43em) {
-	/* set min-height in case accordion title overflow*/
+	/* set min-height in case accordion title overflow */
 	.accordion {
 		.accordion-title {
 			min-height: 4rem;
 		}
 	}
-	/* display verticle*/
+	/* display vertical */
 	.accordion-title-desc {
 		li {
 			list-style: none;
@@ -208,14 +196,14 @@ $error : pink;
 			font-weight: normal;
 		}
 	}
-	/*  clear left and right margin for mobile page*/
+	/*  clear left and right margin for mobile page */
 	.searchResults{
 		display: block;
 		min-width: 100%;
 		margin: 0.5rem 0;
 	}
 
-	/*  clear left and right margin for mobile page*/
+	/*  clear left and right margin for mobile page */
 	.contact-card {
 		display: block;
 		min-width: 100%;
@@ -229,22 +217,6 @@ $error : pink;
 		}
 	}
 }
-
-// icon arrow down - search tab
-// .button-group {
-// 	.button.arrow-only {
-// 		position: relative;
-// 	}
-// 	.icon_arrow_down {
-// 		color: $light-blue;
-// 		font-size: 1.5rem;
-// 		position: absolute;
-// 		left: calc(32px - 1.5rem);
-// 		&:hover {
-// 			cursor: pointer;
-// 		}
-// 	}
-// }
 
 .results-button {
 	height: 2.4375rem;

@@ -22,7 +22,13 @@ gulp.task('js', ['template'], function() {
 });
 function rebundle(bundler) {
 	return bundler.bundle()
-		.on('error', function(err) { console.error(err); this.emit('end'); })
+		.on('error', function(err) {
+			$.notify.onError({
+				title: 'Javascript error!',
+				message: err
+			})
+			this.emit('end');
+		})
 		.pipe(source('build.js'))
 		.pipe(buffer())
 		.pipe($.sourcemaps.init({ loadMaps: true }))
@@ -56,11 +62,14 @@ function bundle(watch) {
 
 gulp.task('scss', function() {
 	return gulp.src('src/scss/**/*.scss')
+		.pipe($.plumber({
+			errorHandler: $.notify.onError({
+				title: 'Sass error!',
+				message: '<%= error.message %>'
+			})
+		}))
 		.pipe($.sourcemaps.init())
 		.pipe($.sass())
-		.on('error', function(err) {
-			console.error('Error!', err.message);
-		})
 		.pipe($.rename('uoit-directory.css'))
 		.pipe(gulp.dest('dist'))
 		.pipe($.minifyCss())

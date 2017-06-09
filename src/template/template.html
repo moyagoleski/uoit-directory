@@ -42,7 +42,7 @@
 											</span>
                     </label>
                 </div>
-                <div class="small-12 medium-4 columns">
+                <div class="small-12 medium-3 columns">
                     <label for="">Select Department:
 	                    <!-- SEARCH DEPARTMENT BY INPUT FIELD -->
 	                    <select ng-show="departments" ng-model="searchName.department" ng-options="department for department in departments" ng-change="$ctrl.modifyResultClearInput()">
@@ -56,8 +56,11 @@
 											</span>
 										</label>
                 </div>
-                <div ng-show="searchName" class="ng-hide small-12 small-centered text-center medium-2 columns" ng-if="searchName.department || searchName.lastname || searchName.firstname">
-                    <p aria-hidden="true"><span class="icon_arrow_down bounce" ng-click="$ctrl.smoothScroll()"></span></p>
+                <div class="small-12 small-centered text-center medium-3 columns" ng-if="searchName.department || searchName.lastname || searchName.firstname">
+								  <button class="button results-button" ng-click="$ctrl.smoothScroll()">
+								  	<span ng-show="users && users.length">Results below &nbsp;<span class="icon_arrow_down bounce"></span></span>
+								  	<span ng-hide="users.length">Loading results...</span>
+								 	</button>
                 </div>
             </div>
         </form>

@@ -1,6 +1,6 @@
 export const SearchComponent = {
   templateUrl: 'template.html',
-  controller: function($scope, $filter, $http, DirectoryService, Contacts) {
+  controller: function($scope, $filter, $http, $document, DirectoryService, Contacts) {
 		'ngInject';
 		var ctrl = this; // ASSIGN `this` TO A VARIABLE FOR USE INSIDE FUNCTIONS
 
@@ -80,8 +80,8 @@ export const SearchComponent = {
 
 
 		ctrl.smoothScroll = function() {
-			// alert("CLICK!");
-			$('html,body').animate({ scrollTop: $("#angularSearch").offset().top }, 'slow');
+			const scrollTop = $document.find('#search-results').offset().top;
+			$('html,body').animate({ scrollTop }, 'slow');
 		};
 
 		// GIVE REUSABLE CHUNKS THEIR OWN METHODS

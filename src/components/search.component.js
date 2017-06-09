@@ -87,6 +87,11 @@ export const SearchComponent = {
 			ctrl.smoothScroll()
 		}
 
+		ctrl.gotoPageAndScroll = function(page) {
+			$scope.currentPage = page - 1;
+			ctrl.smoothScroll()
+		}
+
 		// GET FILTERED DATA
 		ctrl.getData = function() {
 			return $scope.users ? $filter('filter')($scope.users, $scope.searchName) : [];
@@ -95,6 +100,16 @@ export const SearchComponent = {
 		// GET PAGES NUMBER
 		ctrl.numberOfPages = function() {
 			return Math.ceil(ctrl.getData().length / $scope.pageSize);
+		};
+
+		ctrl.getPageNumbers = function() {
+			let numberOfPages = Math.ceil(ctrl.getData().length / $scope.pageSize);
+			const pageNumArray = [];
+			while (numberOfPages) {
+				pageNumArray.push(numberOfPages);
+				numberOfPages--;
+			}
+			return pageNumArray.reverse();
 		};
 
 		// // process the form

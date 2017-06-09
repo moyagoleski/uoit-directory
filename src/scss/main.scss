@@ -160,18 +160,29 @@ $error : pink;
 
 .pagination {
 	margin-top: 3rem;
-}
+	&-container {
 
-.pagination a:hover, .pagination button:hover {
-	background: $dark-blue;
-	color: $text-color-white;
-	cursor: pointer;
-}
+		a.current:hover {
+			background: $light-blue;
+			cursor: default;
+		}
+	}
 
-.pagination .current:hover {
-	background: $light-blue;
-	color: $text-color-white;
-	cursor: default;
+	&-previous a:not(.disabled),
+	&-next a:not(.disabled) {
+		background-color: $dark-blue;
+		color: $text-color-white;
+		&:hover {
+			background-color: darken($dark-blue, 8%);
+		}
+	}
+
+	&-previous a:before,
+	&-previous.disabled:before,
+	&-next a:after,
+	&-next.disabled:after {
+		content: none;
+	}
 }
 
 // @media screen and (min-width:75em) {

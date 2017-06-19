@@ -7,8 +7,9 @@ export const PhoneFilter = () => {
     if (!tel) {
       return '';
     }
+    tel = tel.toString();
     // Strip all non-numeric characters
-    let value = tel.toString().trim().replace(/\D/g, '');
+    let value = tel.trim().replace(/\D/g, '');
     // Trim to verify the model doesn't get any larger
     if (value.length > maxLength) {
       // If the first character is a country code
@@ -18,6 +19,10 @@ export const PhoneFilter = () => {
       } else {
         value = value.substring(0, maxLength);
       }
+    }
+    if (tel.search('ext.') !== -1) {
+    	const ext = tel.split('ext.')[1].trim();
+    	value = `${value},${ext}`;
     }
     return value;
   }

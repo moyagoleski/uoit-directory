@@ -74,7 +74,7 @@
       <div class="row">
         <span ng-repeat="contact in group.items" class="small-6 large-6 medium-6 columns contact-card{{ ::(contact.class ? ' contact-faculty ' + contact.class : '') }}">
           <p class="contact-name"><strong>{{ ::contact.name }}</strong></p>
-          <p class="contact-phone"><a href="tel:{{ ::contact.phone | tel }}" title="Place call to {{ ::contact.phone | tel }}">{{ ::contact.phone }}</a></p>
+          <p class="contact-phone"><a href="tel:{{ ::contact.phone | tel }}" title="Place call to {{ ::contact.phone }}">{{ ::contact.phone }}</a></p>
         </span>
       </div>
     </div>

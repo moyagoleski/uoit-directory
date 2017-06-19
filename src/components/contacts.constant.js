@@ -29,7 +29,7 @@ export const ContactsConstant = [{
 		phone: '905.721.3399'
 	}, {
 		name: 'Shop61',
-		phone: '905.721.8668 ext.5695'
+		phone: '905.721.8668 ext. 5695'
 	}]
 }, {
 	category: 'Student services',

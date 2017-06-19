@@ -79,7 +79,6 @@ $error : pink;
 		}
 
 		.a-content {
-		// .accordion-content {
 			padding: 1rem 1rem;
 			max-height: calc(2rem + 340px);
 			transition: .7s;
@@ -98,20 +97,20 @@ $error : pink;
 					}
 				}
 			}
+
 			.callout {
 				margin: 1rem 0 0 0;
 			}
-
-			&.hidden {
-		    max-height: 0;
-				padding: 0 1rem;
-				~ .accordion-title:before {
-			    transform: translateY(-50%) rotate(0deg);
-				}
-			}
-
 		}
 
+		&.accordion-item-open	.accordion-title:before {
+	    transform: translateY(-50%) rotate(0deg);
+		}
+
+		&:not(.accordion-item-open) .a-content {
+	    max-height: 0;
+			padding: 0 1rem;
+		}
 	}
 }
 

@@ -57,7 +57,7 @@
             </span>
           </label>
         </div>
-        <div class="small-12 small-centered medium-3 columns" ng-if="searchName.department || searchName.lastname || searchName.firstname">
+        <div class="small-12 medium-3 columns" ng-if="searchName.department || searchName.lastname || searchName.firstname">
           <button class="button results-button" ng-click="$ctrl.smoothScroll()">
           <span ng-show="users && users.length">Results below &nbsp;<span class="icon_arrow_down bounce"></span></span>
           <span ng-hide="users.length">Loading results...</span>
@@ -182,9 +182,9 @@
   <!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
   <ul class="accordion" data-accordion data-allow-all-closed="true">
     <!-- SEARCH DEPARTMENT BY INPUT FIELD -->
-    <li class="accordion-item" data-accordion-item ng-repeat="user in users | filter: searchName |  orderBy: order | startFrom:currentPage*pageSize | limitTo:pageSize">
+    <li class="accordion-item" ng-class="{ 'accordion-item-open': user.show }" data-accordion-item ng-repeat="user in users | filter: searchName |  orderBy: order | startFrom:currentPage*pageSize | limitTo:pageSize">
       <!-- SEARCH DEPARTMENT BY DROPDOWN -->
-      <a class="accordion-title" ng-click="showDetails = ! showDetails; showDetails && $ctrl.getUser(user)">
+      <a class="accordion-title" ng-click="user.show = !user.show; user.show && $ctrl.getUser(user)">
         {{::user.firstname}} {{::user.lastname}}
         <ul class="accordion-title-desc">
           <li>
@@ -197,7 +197,7 @@
           </li>
         </ul>
       </a>
-      <div class="a-content" ng-class="{ 'hidden': ! showDetails }" data-tab-content>
+      <div class="a-content">
         <ul class="search-list-info">
           <li>
             <strong>Building:</strong>

@@ -1,5 +1,5 @@
 export const SearchComponent = {
-  templateUrl: 'template.html',
+  templateUrl: 'search.component.html',
   controller: function($scope, $filter, $http, $document, DirectoryService, Contacts) {
 		'ngInject';
 		var ctrl = this; // ASSIGN `this` TO A VARIABLE FOR USE INSIDE FUNCTIONS

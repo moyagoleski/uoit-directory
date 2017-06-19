@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 	del = require('del');
 
 gulp.task('template', function() {
-	return gulp.src('src/template/**/*.html')
+	return gulp.src('src/components/**/*.html')
 		.pipe($.angularTemplatecache('templates.run.js', {
 			templateHeader: `export const TemplateRun = ['$templateCache', function($templateCache) {`,
 			templateFooter: '}];'

@@ -93,7 +93,7 @@ gulp.task('html', function() {
 
 gulp.task('watch', function() {
 	gulp.watch('src/**/*.{php,html}', ['html']);
-	gulp.watch('src/template/**/*.html', ['template', 'js']);
+	gulp.watch('src/components/**/*.html', ['template', 'js']);
 	gulp.watch('src/scss/**/*.scss', ['scss']);
 	return bundle(true);
 });

@@ -253,8 +253,13 @@ input.ng-invalid.ng-touched {
 	.thumbnail img {
 		max-width: 120px;
 	}
-	.label:not(:last-of-type) {
-		margin-right: 0.25rem;
+	&-topics {
+		a.label {
+			cursor: pointer;
+		}
+		.label:not(:last-of-type) {
+			margin-right: 0.25rem;
+		}
 	}
 
 	@media screen and (max-width: 39.9375em) {

@@ -86,72 +86,82 @@
     <h2>Update Information</h2>
     <br/>
     <p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form below.</p>
+    <p>Alternatively, you may contact <a href="mailto:directory@uoit.ca" title="Contact directory@uoit.ca">directory@uoit.ca</a> directly if you have further questions or concerns.</p>
     <!-- SHOW ERROR/SUCCESS MESSAGES -->
     <div ng-show="formStatus.success || formStatus.error" class="callout" ng-class="{ success: formStatus.success, alert: formStatus.error }" data-closable>
-      {{ formStatus.success || formData.error }}
+      {{ formStatus.success || formStatus.error }}
       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
       <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <!-- FORM -->
-    <form ng-submit="processForm()" name="updateForm">
+    <form ng-submit="updateForm.$valid && processForm()" name="updateForm">
+
+      <div class="row">
+        <div class="small-12 medium-12 columns text-right">
+				  <label>
+					  Send me a copy of the update request
+					  <input type="checkbox" name="sendCopy" ng-model="formData.sendCopy" />
+					</label>
+        </div>
+      </div>
       <div class="row">
         <div class="small-12 medium-12 columns">
-          <label>BANNER USER ID:<span class="red"> *</span>
-          <input type="text" name="bannerId" ng-model="formData.bannerId" required/>
+          <label>BANNER ID:<span class="red"> *</span>
+          <input type="text" name="bannerId" ng-model="formData.bannerId" ng-minlength="9" ng-minlength="9" ng-pattern="'[1Ss]{1}00[0-9]{6}'" required />
           </label>
         </div>
       </div>
       <div class="row">
         <div class="small-12 medium-6 columns">
           <label>FIRST NAME:<span class="red"> *</span>
-          <input type="text" name="firstName" ng-model="formData.firstName" required/>
+          <input type="text" name="firstName" ng-model="formData.firstName" required />
           </label>
         </div>
         <div class="small-12 medium-6 columns">
           <label>LAST NAME:<span class="red"> *</span>
-          <input type="text" name="lastName" ng-model="formData.lastName" required/>
+          <input type="text" name="lastName" ng-model="formData.lastName" required />
           </label>
         </div>
       </div>
       <div class="row">
         <div class="small-12 medium-6 columns">
           <label>DEPARTMENT:<span class="red"> *</span>
-          <input type="text" name="department" ng-model="formData.department" required/>
+          <input type="text" name="department" ng-model="formData.department" required />
           </label>
         </div>
         <div class="small-12 medium-6 columns">
           <label>TITLE:<span class="red"> *</span>
-          <input type="text" name="title" ng-model="formData.title" required/>
+          <input type="text" name="title" ng-model="formData.title" required />
           </label>
         </div>
       </div>
       <div class="row">
         <div class="small-12 medium-6 columns">
           <label>BUILDING:<span class="red"> *</span>
-          <input type="text" name="building" ng-model="formData.building" required/>
+          <input type="text" name="building" ng-model="formData.building" required />
           </label>
         </div>
         <div class="small-12 medium-6 columns">
           <label>OFFICE:<span class="red"> *</span>
-          <input type="text" name="office" ng-model="formData.office" required/>
+          <input type="text" name="office" ng-model="formData.office" required />
           </label>
         </div>
       </div>
       <div class="row">
         <div class="small-12 medium-6 columns">
           <label>EXTENSION:<span class="red"> *</span>
-          <input type="text" name="extension" ng-model="formData.extension" required/>
+          <input type="text" name="extension" ng-model="formData.extension" required ng-pattern="'[0-9]+'" />
           </label>
         </div>
         <div class="small-12 medium-6 columns">
           <label>E-MAIL:<span class="red"> *</span>
-          <input type="email" name="email" ng-model="formData.email" required/>
+          <input type="email" name="email" ng-model="formData.email" required />
           </label>
         </div>
       </div>
       <fieldset class="large-6 columns">
-        <button class="button" type="submit" value="Submit" role="button">Submit</button>
+        <button class="button" type="submit" value="Submit" role="button" ng-disabled="updateForm.$invalid">Submit</button>
       </fieldset>
     </form>
   </div>

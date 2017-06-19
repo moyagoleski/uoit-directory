@@ -1,6 +1,6 @@
 export const SearchComponent = {
   templateUrl: 'search.component.html',
-  controller: function($scope, $filter, $http, $document, DirectoryService, Contacts) {
+  controller: function($scope, $filter, $http, $httpParamSerializerJQLike, DirectoryService, Contacts) {
 		'ngInject';
 		var ctrl = this; // ASSIGN `this` TO A VARIABLE FOR USE INSIDE FUNCTIONS
 
@@ -118,22 +118,32 @@ export const SearchComponent = {
 
 		// // process the form
 		$scope.processForm = function() {
-
-		  alert("submited");
-
 			$http({
-				method  : 'POST',
-				url     : 'mail.php',
-				data    : $.param($scope.formData),  // pass in data as strings
-				headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+				method:  'POST',
+				url:     'mail.php',
+				data:    $httpParamSerializerJQLike($scope.formData), //$.param($scope.formData),  // pass in data as strings
+			  // paramSerializer: '$httpParamSerializerJQLike',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}  // set the headers so angular passing info as form data (not request payload)
 			})
-			.then(function successCallback(response) {
-				$scope.formStatus.success = "Your update request was submitted successfully!";
-				$scope.updateForm.$setUntouched();
-				$scope.formData = {};
-			}, function errorCallback(response) {
-				alert("error");
-				$scope.formStatus.error = "There was an error submitting your update request; please try again!";
+			.then(response => {
+				if (response.data.success) {
+					console.info(response);
+					$scope.formStatus.error = false;
+					$scope.formStatus.success = "Your update request was submitted successfully!";
+					$scope.updateForm.$setUntouched();
+					$scope.formData = {};
+				} else {
+					console.error(response);
+					throw new Error(response.data.message || 'An unknown error has occurred. Please try again!');
+				}
+			})
+			.catch(response => {
+				console.error(response);
+				$scope.formStatus.success = false;
+				const message = response.data.message || 'Please try again!';
+				$scope.formStatus.error = `There was an error submitting your update request. ${message}`;
 			});
 		};
 

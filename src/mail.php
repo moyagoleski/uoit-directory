@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 date_default_timezone_set('EST/UTC');
 
 require 'PHPMailer/PHPMailerAutoload.php';
@@ -6,6 +7,7 @@ require 'PHPMailer/PHPMailerAutoload.php';
 $mail = new PHPMailer;
 
 // INPUT FIELDS FROM UPDATE FORM
+$sendCopy		= $_POST['sendCopy'];
 $bannerId   = $_POST['bannerId'];   // required
 $firstName  = $_POST['firstName'];  // required
 $lastName   = $_POST['lastName'];   // required
@@ -15,22 +17,19 @@ $building   = $_POST['building'];   // required
 $office     = $_POST['office'];     // required
 $extension  = $_POST['extension'];  // required
 $email      = $_POST['email'];      // required
-// UN COMMENT CODE WHEN LIVE -> DOESN'T WORK ON LOCALHOST -> NO STMP
-// $mail->SMTPDebug = 3;                                 // Enable verbose debug output
-// $mail->isSMTP();                                      // Set mailer to use SMTP
-// THIS DOES NOT SEND TO THE E-MAIL YET BECAUSE IT'S ON LOCALHOST
+
 $mail->Host = 'smtp-mail.outlook.com';                // Specify main and backup SMTP servers
-$mail->SMTPAuth = true;                               // Enable SMTP authentication
-// CHANGE TO THIS WHEN LIVE
-// $mail->Username = 'directory@uoit.ca.';            // SMTP username
+$mail->SMTPAuth = true;                               // Enable SMTP authentic
 $mail->Username = '';                                 // SMTP username
 $mail->Password = '';                                 // SMTP password
 $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 587;                                    // TCP port to connect to
+$mail->Port = 587;   																	// TCP port to connect to
+
 $mail->setFrom($email);
-$mail->addAddress($email);                                 // Add a recipient
-// $mail->addAddress('updateInfo@example.com', 'Friend->Example');     // Add a recipient
+if ($sendCopy) $mail->addAddress($email);             // Copy sender if requested
+$mail->addAddress('directory@uoit.ca');
 $mail->isHTML(true);                                  // Set email format to HTML
+
 $mail->Subject = 'Update Information in the UOIT Directory.';
 $mail->Body  = "<p>Hello,
 <br/>I would like to update my contact information in the <a href=\"https://uoit.ca/directory\">UOIT Directory</a>.</p>
@@ -38,7 +37,7 @@ $mail->Body  = "<p>Hello,
 <table>
 <tbody>
 <tr>
-<td><strong>Banner Id:</strong><td>
+<td><strong>Banner ID:</strong><td>
 <td>$bannerId</td>
 </tr>
 <tr>
@@ -80,9 +79,12 @@ $mail->Body  = "<p>Hello,
 ";
 
 if(!$mail->send()) {
-    echo 'Message could not be sent, this did NOT work.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
+  header('HTTP/1.1 400 Bad Request');
+  header('Content-Type: application/json; charset=UTF-8');
+  die(json_encode(array('success' => false, 'message' => $mail->ErrorInfo)));
 } else {
-    echo 'Message has been sent, this should work!';
+	$result = array('success' => true, 'message' => "Message sent successfully!");
+  header('Content-Type: application/json');
+  print json_encode($result);
 }
 ?>

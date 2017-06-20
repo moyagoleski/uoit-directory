@@ -1,6 +1,6 @@
 export const SearchComponent = {
   templateUrl: 'search.component.html',
-  controller: function($scope, $filter, $http, $httpParamSerializerJQLike, DirectoryService, Contacts) {
+  controller: function($scope, $filter, $http, $element, $httpParamSerializerJQLike, DirectoryService, Contacts) {
 		'ngInject';
 		var ctrl = this; // ASSIGN `this` TO A VARIABLE FOR USE INSIDE FUNCTIONS
 
@@ -43,8 +43,9 @@ export const SearchComponent = {
 		
 		ctrl.getUser = function(person) {
 			person.expert = {};
-			DirectoryService.getUser(person).then(function(expert) { 
-					person.expert = expert || false;
+			DirectoryService.getExpert(person).then(function(expert) {
+				console.log('EXPERT', expert)
+				person.expert = expert || false;
     	});
 		}
 
@@ -80,7 +81,7 @@ export const SearchComponent = {
 
 
 		ctrl.smoothScroll = function() {
-			const scrollTop = $document.find('#search-results').offset().top;
+			const scrollTop = $element.find('#search-results').offset().top;
 			$('html,body').animate({ scrollTop }, 'slow');
 		};
 

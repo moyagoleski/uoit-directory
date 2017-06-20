@@ -17,7 +17,7 @@ export const DirectoryService = function($http) {
 
 	return {
 		get(endpoint = '') {
-			return $http.get(`https://api.uoit.ca/v2/directory${endpoint}`) // API
+			return $http.get(`https://api.uoit.ca/v2${endpoint}`) // API
 				.then(({ data }) => {
 					if (data.success) {
 						return data;
@@ -27,18 +27,8 @@ export const DirectoryService = function($http) {
 					}
 				});
 		},
-		getUser(person) {
-			let fullname;
-			if (person.firstname && person.lastname) {
-				fullname = [person.firstname, person.lastname].join('.')
-			}
-			return this.get(`/people/${fullname}`)
-				.then(({ data }) => {
-					return data.expert || false;
-				});
-		},
 		getUsers() {
-			return users || this.get()
+			return users || this.get('/directory')
 				.then(({ data = [] } = {}) => {
 					users = processList(data);
 					return users;
@@ -49,7 +39,7 @@ export const DirectoryService = function($http) {
 				});
 		},
 		getDepts() {
-			return departments || this.get('/departments')
+			return departments || this.get('/directory/departments')
 				.then(({ data = [] } = {}) => {
 					departments = processList(data);
 					return departments;
@@ -57,6 +47,16 @@ export const DirectoryService = function($http) {
 				.catch(err => {
 					console.error('Error loading departments:', err);
 					throw new Error('cannot load department list');
+				});
+		},
+		getExpert(person) {
+			let fullname;
+			if (person.firstname && person.lastname) {
+				fullname = [person.firstname, person.lastname].join(' ')
+			}
+			return this.get(`/experts?keyword=${encodeURIComponent(fullname)}`)
+				.then(({ data }) => {
+					return data ? data[0] : false;
 				});
 		}
 	};

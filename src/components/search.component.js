@@ -99,7 +99,7 @@ export const SearchComponent = {
 
 		// GET FILTERED DATA
 		ctrl.getData = function() {
-			return $scope.users ? $filter('filter')($scope.users, $scope.searchName) : [];
+			return $scope.users ? $filter('filter')($scope.users, $scope.searchName) || [] : [];
 		};
 
 		// GET PAGES NUMBER

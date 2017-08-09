@@ -50,13 +50,12 @@ export const DirectoryService = function($http) {
 				});
 		},
 		getExpert(person) {
-			let fullname;
-			if (person.firstname && person.lastname) {
-				fullname = [person.firstname, person.lastname].join(' ')
-			}
-			return this.get(`/experts?keyword=${encodeURIComponent(fullname)}`)
+			return this.get(`/experts?keyword=${encodeURIComponent(person.firstname)}`)
 				.then(({ data }) => {
-					return data ? data[0] : false;
+					return data && data.length ? data.find(expert => {
+            const pattern = new RegExp(`(dr)?[\ \.]?${person.lastname.toLowerCase()}[\ \,]?\ ?(ph[\ \.]?\ ?d)?`, 'ig');
+            return pattern.test(expert.lastname);
+          }) : false;
 				});
 		}
 	};

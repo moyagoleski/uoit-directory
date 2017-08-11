@@ -9,6 +9,7 @@ export const SearchComponent = {
 			$scope.contacts = Contacts;
 			$scope.departments = null;
 			$scope.users = null;
+			$scope.usersCache = null;
 			$scope.searchName = {};
 
 			$scope.departmentError = null;
@@ -20,17 +21,9 @@ export const SearchComponent = {
 
 			$scope.currentPage = 0;
 			$scope.pageSize = 7;
+			$scope.loadingResults = false;
 
-			// MAKE SURE THE LIST LOOKS THE WAY THE CONTROLLER NEEDS IT TO
-			// BEFORE IT GETS THERE, I.E. DO FILTERING IN SERVICE AND RETURN `users`
-			DirectoryService.getUsers()
-				.then(function(users) {
-					$scope.users = users;
-				})
-				.catch(function(err) {
-					$scope.userError = err;
-				});
-			// SAME WITH DEPARTMENTS
+			// Load departments on init
 			DirectoryService.getDepts()
 				.then(function(depts) {
 					$scope.departments = depts;
@@ -44,7 +37,6 @@ export const SearchComponent = {
 		ctrl.getUser = function(person) {
 			person.expert = {};
 			DirectoryService.getExpert(person).then(function(expert) {
-				console.log('EXPERT', expert)
 				person.expert = expert || false;
     	});
 		}
@@ -63,6 +55,7 @@ export const SearchComponent = {
 		ctrl.modifyResultResetDropdown = function() {
 			$scope.currentPage = 0;
 			$scope.searchName.department = '';
+			ctrl.getSearchResults();
 		}
 
 		// RESET CURRENT PAGE
@@ -71,6 +64,7 @@ export const SearchComponent = {
 			$scope.currentPage = 0;
 			$scope.searchName.firstname = '';
 			$scope.searchName.lastname = '';
+			ctrl.getSearchResults();
 		}
 
 		// PASS ORDERBY PARAMETER
@@ -98,23 +92,52 @@ export const SearchComponent = {
 		}
 
 		// GET FILTERED DATA
-		ctrl.getData = function() {
-			return $scope.users ? $filter('filter')($scope.users, $scope.searchName) || [] : [];
+		ctrl.getSearchResults = function() {
+			$scope.loadingResults = true;
+			if ($scope.usersCache) {
+				$scope.users = $filter('filter')($scope.usersCache, $scope.searchName) || [];
+				$scope.loadingResults = false;
+			} else {
+				DirectoryService.getUsers($scope.searchName)
+					.then(function(users) {
+						$scope.users = users || [];
+						$scope.loadingResults = false;
+						// Proactively load the whole list in the background as soon
+						// as user makes their first query; early searches will be
+						// handled by the `getSearchResults()` return, which provides a
+						// quicker (albeit uncacheable) response and then immediately
+						// kicks off a new request for the cache.
+						return DirectoryService.getUsers()
+					})
+					.then(function(users) {
+						$scope.usersCache = users;
+					})
+					.catch(function(err) {
+						$scope.userError = err;
+						$scope.loadingResults = false;
+					})
+			}
 		};
 
 		// GET PAGES NUMBER
 		ctrl.numberOfPages = function() {
-			return Math.ceil(ctrl.getData().length / $scope.pageSize);
+			return $scope.users && $scope.users.length ?
+				Math.ceil($scope.users.length / $scope.pageSize) :
+				0;
 		};
 
 		ctrl.getPageNumbers = function() {
-			let numberOfPages = Math.ceil(ctrl.getData().length / $scope.pageSize);
-			const pageNumArray = [];
-			while (numberOfPages) {
-				pageNumArray.push(numberOfPages);
-				numberOfPages--;
+			if ($scope.users && $scope.users.length) {
+				let numberOfPages = Math.ceil($scope.users.length / $scope.pageSize);
+				const pageNumArray = [];
+				while (numberOfPages) {
+					pageNumArray.push(numberOfPages);
+					numberOfPages--;
+				}
+				return pageNumArray.reverse();
+			} else {
+				return [1];
 			}
-			return pageNumArray.reverse();
 		};
 
 		// // process the form

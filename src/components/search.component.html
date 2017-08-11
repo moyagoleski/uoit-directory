@@ -28,7 +28,7 @@
       <div class="row">
         <div class="small-12 medium-3 columns">
           <label>First Name:
-          <input type="text" ng-model="searchName.firstname" ng-change="$ctrl.modifyResultResetDropdown()" />
+          <input type="text" ng-model="searchName.firstname" ng-change="$ctrl.modifyResultResetDropdown()" ng-model-options="{ debounce: 400 }" />
           <span class="form-error" style="display:block;" ng-show="userError">
           {{ userError }}
           </span>
@@ -167,7 +167,7 @@
   </div>
 </div>
 <!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->
-<div class="callout" id="search-results" ng-if="searchName.department || searchName.lastname || searchName.firstname">
+<div class="callout" id="search-results" ng-class="{ loading: loadingResults }" ng-if="searchName.department || searchName.lastname || searchName.firstname">
   <div class="search-list">
     <div class="row">
       <div class="xxsmall-12 small-6 columns">

@@ -1,8 +1,7 @@
-export const DirectoryService = function($http) {
+export const DirectoryService = function($http, $httpParamSerializer, $q) {
 	'ngInject';
 
 	const replaceText = item => item.replace(/-|UOIT|/g, "").replace(/&/g, "and");
-
 	const processList = items => items.map(item => {
 		if (item.department) {
 			item.department = replaceText(item.department);
@@ -11,52 +10,61 @@ export const DirectoryService = function($http) {
 		}
 		return item;
 	});
+	const extractData = ({ data = [] } = {}) => processList(data);
+	const handleError = listName => err => {
+		console.error(`Error loading ${listName} data:`, err);
+		throw new Error(listName ? `cannot load ${listName} data` : err.message || 'an unknown error occurred');
+	};
 
-	let users = null;
-	let departments = null;
+	const PROMISE_INDEX = {
+		getUsers: 0,
+		getDepts: 1,
+		getExpert: 2
+	};
+	const cancelPromises = [];
+	const newCancelPromise = index => {
+		const cancelPromise = $q.defer();
+		cancelPromises[index] = cancelPromise;
+		return cancelPromise.promise;
+	}
+	const cancel = index => {
+		if (cancelPromises[index]) {
+			cancelPromises[index].resolve();
+		}
+	}
 
 	return {
-		get(endpoint = '') {
-			return $http.get(`https://api.uoit.ca/v2${endpoint}`) // API
-				.then(({ data }) => {
-					if (data.success) {
-						return data;
-					} else {
-						console.error('Directory error:', data);
-						throw new Error(data.message || 'an unknown error occurred')
-					}
-				});
+		get(endpoint = '', timeout) {
+			return $http.get(`https://api.uoit.ca/v2${endpoint}`, {
+				cache: true,
+				timeout
+			})
+			.then(({ data }) => (data && data.success) ? data : handleError('directory')(data))
+			.catch(err => {
+				if (err.status !== -1) {
+					throw err;
+				}
+			});
 		},
-		getUsers() {
-			return users || this.get('/directory')
-				.then(({ data = [] } = {}) => {
-					users = processList(data);
-					return users;
-				})
-				.catch(err => {
-					console.error('Error loading people:', err);
-					throw new Error('cannot load person list');
-				});
+		getUsers(params = {}) {
+			cancel(PROMISE_INDEX.getUsers);
+			return this.get(`/directory?${$httpParamSerializer(params)}`, newCancelPromise(PROMISE_INDEX.getUsers))
+				.then(extractData)
+				.catch(handleError('person'));
 		},
 		getDepts() {
-			return departments || this.get('/directory/departments')
-				.then(({ data = [] } = {}) => {
-					departments = processList(data);
-					return departments;
-				})
-				.catch(err => {
-					console.error('Error loading departments:', err);
-					throw new Error('cannot load department list');
-				});
+			cancel(PROMISE_INDEX.getDepts);
+			return this.get('/directory/departments', newCancelPromise(PROMISE_INDEX.getDepts))
+				.then(extractData)
+				.catch(handleError('department'));
 		},
 		getExpert(person) {
-			return this.get(`/experts?keyword=${encodeURIComponent(person.firstname)}`)
-				.then(({ data }) => {
-					return data && data.length ? data.find(expert => {
-            const pattern = new RegExp(`(dr)?[\ \.]?${person.lastname.toLowerCase()}[\ \,]?\ ?(ph[\ \.]?\ ?d)?`, 'ig');
-            return pattern.test(expert.lastname);
-          }) : false;
-				});
+			cancel(PROMISE_INDEX.getExpert);
+			return this.get(`/experts?${$httpParamSerializer({ keyword: person.firstname })}`, newCancelPromise(PROMISE_INDEX.getExpert))
+				.then(({ data = [] }) => (data && data.length) ? data.find(expert => {
+					const pattern = new RegExp(`(dr)?[\ \.]?${person.lastname.toLowerCase()}[\ \,]?\ ?(ph[\ \.]?\ ?d)?`, 'ig');
+					return pattern.test(expert.lastname);
+				}) : false);
 		}
 	};
 };

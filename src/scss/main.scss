@@ -38,6 +38,12 @@ $error : pink;
 	padding: 1rem;
 }
 
+#search-results {
+	&.loading {
+		opacity: 0.5;
+	}
+}
+
 .accordion {
 	.accordion-item {
 		margin-bottom: 1rem;

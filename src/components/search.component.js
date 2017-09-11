@@ -100,7 +100,7 @@ export const SearchComponent = {
 			} else {
 				DirectoryService.getUsers($scope.searchName)
 					.then(function(users) {
-						$scope.users = users || [];
+						$scope.users = $filter('filter')(users, $scope.searchName) || [];
 						$scope.loadingResults = false;
 						// Proactively load the whole list in the background as soon
 						// as user makes their first query; early searches will be

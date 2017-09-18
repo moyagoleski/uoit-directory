@@ -16,7 +16,7 @@
   <!-- TAB 1 STARTS  -->
   <div class="tabs-panel is-active" id="tab1-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab1-1-label">
     <div class="row">
-      <div class="small-12 columns">
+      <div class="xxsmall-12 columns">
         <!-- TAB TITLE  -->
         <h2>Search</h2>
         <br/>
@@ -26,28 +26,28 @@
     <!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
     <form>
       <div class="row">
-        <div class="small-12 medium-3 columns">
-          <label>First Name:
+        <div class="xxsmall-12 medium-3 columns">
+          <label>First name:
           <input type="text" ng-model="searchName.firstname" ng-change="$ctrl.modifyResultResetDropdown()" ng-model-options="{ debounce: 400 }" />
           <span class="form-error" style="display:block;" ng-show="userError">
           {{ userError }}
           </span>
           </label>
         </div>
-        <div class="small-12 medium-3 columns">
-          <label>Last Name:
+        <div class="xxsmall-12 medium-3 columns">
+          <label>Last name:
           <input type="text" ng-model="searchName.lastname" ng-change="$ctrl.modifyResultResetDropdown()" />
           <span class="form-error" style="display:block;" ng-show="userError">
           {{ userError }}
           </span>
           </label>
         </div>
-        <div class="small-12 medium-3 columns">
+        <div class="xxsmall-12 medium-3 columns">
           <label for="">
-            Select Department:
+            Select department:
             <!-- SEARCH DEPARTMENT BY INPUT FIELD -->
             <select ng-show="departments" ng-model="searchName.department" ng-options="department for department in departments" ng-change="$ctrl.modifyResultClearInput()">
-              <option value="">Select Department</option>
+              <option value="">Select department</option>
             </select>
             <select ng-hide="departments" disabled>
               <option value="">Loading departments&hellip;</option>
@@ -57,7 +57,7 @@
             </span>
           </label>
         </div>
-        <div class="small-12 medium-3 columns" ng-if="searchName.department || searchName.lastname || searchName.firstname">
+        <div class="xxsmall-12 medium-3 columns" ng-if="searchName.department || searchName.lastname || searchName.firstname">
           <button class="button results-button" ng-click="$ctrl.smoothScroll()">
           <span ng-show="users && users.length">Results below &nbsp;<span class="icon_arrow_down bounce"></span></span>
           <span ng-hide="users.length">Loading results...</span>
@@ -72,7 +72,7 @@
     <div ng-repeat="group in contacts">
       <h3>{{ ::group.category }}</h3>
       <div class="row">
-        <span ng-repeat="contact in group.items" class="small-6 large-6 medium-6 columns contact-card{{ ::(contact.class ? ' contact-faculty ' + contact.class : '') }}">
+        <span ng-repeat="contact in group.items" class="xxsmall-6 large-6 medium-6 columns contact-card{{ ::(contact.class ? ' contact-faculty ' + contact.class : '') }}">
           <p class="contact-name"><strong>{{ ::contact.name }}</strong></p>
           <p class="contact-phone"><a href="tel:{{ ::contact.phone | tel }}" title="Place call to {{ ::contact.phone }}">{{ ::contact.phone }}</a></p>
         </span>
@@ -98,7 +98,7 @@
     <form ng-submit="updateForm.$valid && processForm()" name="updateForm">
 
       <div class="row">
-        <div class="small-12 medium-12 columns text-right">
+        <div class="xxsmall-12 medium-12 columns text-right">
 				  <label>
 					  Send me a copy of the update request
 					  <input type="checkbox" name="sendCopy" ng-model="formData.sendCopy" />
@@ -106,56 +106,56 @@
         </div>
       </div>
       <div class="row">
-        <div class="small-12 medium-12 columns">
-          <label>BANNER ID:<span class="red"> *</span>
+        <div class="xxsmall-12 medium-6 columns">
+          <label>Banner ID:<span class="red"> *</span>
           <input type="text" name="bannerId" ng-model="formData.bannerId" ng-minlength="9" ng-minlength="9" ng-pattern="'[1Ss]{1}00[0-9]{6}'" required />
           </label>
         </div>
       </div>
       <div class="row">
-        <div class="small-12 medium-6 columns">
-          <label>FIRST NAME:<span class="red"> *</span>
+        <div class="xxsmall-12 medium-6 columns">
+          <label>First name:<span class="red"> *</span>
           <input type="text" name="firstName" ng-model="formData.firstName" required />
           </label>
         </div>
-        <div class="small-12 medium-6 columns">
-          <label>LAST NAME:<span class="red"> *</span>
+        <div class="xxsmall-12 medium-6 columns">
+          <label>Last name:<span class="red"> *</span>
           <input type="text" name="lastName" ng-model="formData.lastName" required />
           </label>
         </div>
       </div>
       <div class="row">
-        <div class="small-12 medium-6 columns">
-          <label>DEPARTMENT:<span class="red"> *</span>
+        <div class="xxsmall-12 medium-6 columns">
+          <label>Department:<span class="red"> *</span>
           <input type="text" name="department" ng-model="formData.department" required />
           </label>
         </div>
-        <div class="small-12 medium-6 columns">
-          <label>TITLE:<span class="red"> *</span>
+        <div class="xxsmall-12 medium-6 columns">
+          <label>Title:<span class="red"> *</span>
           <input type="text" name="title" ng-model="formData.title" required />
           </label>
         </div>
       </div>
       <div class="row">
-        <div class="small-12 medium-6 columns">
-          <label>BUILDING:<span class="red"> *</span>
+        <div class="xxsmall-12 medium-6 columns">
+          <label>Building:<span class="red"> *</span>
           <input type="text" name="building" ng-model="formData.building" required />
           </label>
         </div>
-        <div class="small-12 medium-6 columns">
-          <label>OFFICE:<span class="red"> *</span>
+        <div class="xxsmall-12 medium-6 columns">
+          <label>Office:<span class="red"> *</span>
           <input type="text" name="office" ng-model="formData.office" required />
           </label>
         </div>
       </div>
       <div class="row">
-        <div class="small-12 medium-6 columns">
-          <label>EXTENSION:<span class="red"> *</span>
+        <div class="xxsmall-12 medium-6 columns">
+          <label>Extension:<span class="red"> *</span>
           <input type="text" name="extension" ng-model="formData.extension" required ng-pattern="'[0-9]+'" />
           </label>
         </div>
-        <div class="small-12 medium-6 columns">
-          <label>E-MAIL:<span class="red"> *</span>
+        <div class="xxsmall-12 medium-6 columns">
+          <label>Email:<span class="red"> *</span>
           <input type="email" name="email" ng-model="formData.email" required />
           </label>
         </div>
@@ -171,7 +171,7 @@
   <div class="search-list">
     <div class="row">
       <div class="xxsmall-12 small-6 columns">
-        <h3>Directory Search Results</h3>
+        <h3>Directory search results</h3>
       </div>
       <div class="xxsmall-12 small-6 columns" ng-show="users.length">
         <div class="tiny button-group align-right">
@@ -222,7 +222,7 @@
             {{::user.extension}}
           </li>
           <li>
-            <strong>E-mail:</strong>
+            <strong>Email:</strong>
             <a href="mailto:{{::user.email}}">{{::user.email | lowercase}}</a>
           </li>
         </ul>

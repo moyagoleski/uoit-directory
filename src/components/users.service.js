@@ -1,6 +1,10 @@
 export const DirectoryService = function($http, $httpParamSerializer, $q) {
 	'ngInject';
 
+	// const API_URL = 'http://localhost:8080'; // dev
+	const API_URL = 'https://api.uoit.ca'; // prod
+	const API_VERSION = 2;
+
 	const replaceText = item => item.replace(/-|UOIT|/g, "").replace(/&/g, "and");
 	const processList = items => items.map(item => {
 		if (item.department) {
@@ -35,7 +39,7 @@ export const DirectoryService = function($http, $httpParamSerializer, $q) {
 
 	return {
 		get(endpoint = '', timeout) {
-			return $http.get(`https://api.uoit.ca/v2${endpoint}`, {
+			return $http.get(`${API_URL}/v${API_VERSION}/${endpoint}`, {
 				cache: true,
 				timeout
 			})
@@ -48,19 +52,19 @@ export const DirectoryService = function($http, $httpParamSerializer, $q) {
 		},
 		getUsers(params = {}) {
 			cancel(PROMISE_INDEX.getUsers);
-			return this.get(`/directory?${$httpParamSerializer(params)}`, newCancelPromise(PROMISE_INDEX.getUsers))
+			return this.get(`directory?${$httpParamSerializer(params)}`, newCancelPromise(PROMISE_INDEX.getUsers))
 				.then(extractData)
 				.catch(handleError('person'));
 		},
 		getDepts() {
 			cancel(PROMISE_INDEX.getDepts);
-			return this.get('/directory/departments', newCancelPromise(PROMISE_INDEX.getDepts))
+			return this.get('directory/departments', newCancelPromise(PROMISE_INDEX.getDepts))
 				.then(extractData)
 				.catch(handleError('department'));
 		},
 		getExpert(person) {
 			cancel(PROMISE_INDEX.getExpert);
-			return this.get(`/experts?${$httpParamSerializer({ keyword: person.firstname })}`, newCancelPromise(PROMISE_INDEX.getExpert))
+			return this.get(`experts?${$httpParamSerializer({ keyword: person.firstname })}`, newCancelPromise(PROMISE_INDEX.getExpert))
 				.then(({ data = [] }) => (data && data.length) ? data.find(expert => {
 					const pattern = new RegExp(`(dr)?[\ \.]?${person.lastname.toLowerCase()}[\ \,]?\ ?(ph[\ \.]?\ ?d)?`, 'ig');
 					return pattern.test(expert.lastname);

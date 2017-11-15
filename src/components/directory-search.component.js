@@ -102,6 +102,12 @@ export const DirectorySearchComponent = {
 			this.smoothScroll()
 		}
 
+		gotoTab(event) {
+			event.preventDefault();
+			const $tabs = $(event.target.hash);
+			$('#directory-tabs').foundation('selectTab', $tabs);
+		}
+
 		// GET FILTERED DATA
 		getSearchResults() {
 			this.$state.loadingResults = true;

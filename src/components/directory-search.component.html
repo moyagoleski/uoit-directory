@@ -28,17 +28,17 @@
       <div class="row">
         <div class="xxsmall-12 medium-3 columns">
           <label>First name:
-          <input type="text" ng-model="searchName.firstname" ng-change="$ctrl.modifyResultResetDropdown()" ng-model-options="{ debounce: 200 }" />
-          <span class="form-error" style="display:block;" ng-show="userError">
-          {{ userError }}
+          <input type="text" ng-model="$ctrl.$state.searchName.firstname" ng-change="$ctrl.modifyResultResetDropdown()" ng-model-options="{ debounce: 200 }" />
+          <span class="form-error" style="display:block;" ng-show="$ctrl.$state.userError">
+          {{ $ctrl.$state.userError }}
           </span>
           </label>
         </div>
         <div class="xxsmall-12 medium-3 columns">
           <label>Last name:
-          <input type="text" ng-model="searchName.lastname" ng-change="$ctrl.modifyResultResetDropdown()" ng-model-options="{ debounce: 200 }" />
-          <span class="form-error" style="display:block;" ng-show="userError">
-          {{ userError }}
+          <input type="text" ng-model="$ctrl.$state.searchName.lastname" ng-change="$ctrl.modifyResultResetDropdown()" ng-model-options="{ debounce: 200 }" />
+          <span class="form-error" style="display:block;" ng-show="$ctrl.$state.userError">
+          {{ $ctrl.$state.userError }}
           </span>
           </label>
         </div>
@@ -46,31 +46,31 @@
           <label for="">
             Select department:
             <!-- SEARCH DEPARTMENT BY INPUT FIELD -->
-            <select ng-show="departments" ng-model="searchName.department" ng-options="department for department in departments" ng-change="$ctrl.modifyResultClearInput()">
+            <select ng-show="$ctrl.$state.departments" ng-model="$ctrl.$state.searchName.department" ng-options="department for department in $ctrl.$state.departments" ng-change="$ctrl.modifyResultClearInput()">
               <option value="">Select department</option>
             </select>
-            <select ng-hide="departments" disabled>
+            <select ng-hide="$ctrl.$state.departments" disabled>
               <option value="">Loading departments&hellip;</option>
             </select>
-            <span class="form-error" style="display:block;" ng-show="departmentError">
-            {{ departmentError }}
+            <span class="form-error" style="display:block;" ng-show="$ctrl.$state.departmentError">
+            {{ $ctrl.$state.departmentError }}
             </span>
           </label>
         </div>
-        <div class="xxsmall-12 medium-3 columns" ng-if="searchName.department || searchName.lastname || searchName.firstname">
+        <div class="xxsmall-12 medium-3 columns" ng-if="$ctrl.$state.searchName.department || $ctrl.$state.searchName.lastname || $ctrl.$state.searchName.firstname">
           <button class="button results-button" ng-click="$ctrl.smoothScroll()">
-          <span ng-show="users && users.length">Results below &nbsp;<span class="icon_arrow_down bounce"></span></span>
-          <span ng-hide="users.length">Loading results...</span>
+          <span ng-show="$ctrl.$state.users && $ctrl.$state.users.length">Results below &nbsp;<span class="icon_arrow_down bounce"></span></span>
+          <span ng-hide="$ctrl.$state.users.length">Loading results&hellip;</span>
           </button>
         </div>
       </div>
     </form>
-    <p class="lead update-directory-msg"><strong>Notice an incorrect entry?</strong> <a href="#tab1-3" title="Submit an entry update request">Let us know</a> the correct information!</p>
+    <p class="lead update-directory-msg"><strong>Notice an incorrect entry?</strong> <a href="#tab1-3" title="Submit an entry update request" target="_self" ng-click="$ctrl.gotoTab($event)">Let us know</a> the correct information!</p>
   </div>
   <!-- TAB 1 END  -->
   <!-- TAB 2 STARTS -->
   <div class="tabs-panel" id="tab1-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab1-2-label">
-    <div ng-repeat="group in contacts">
+    <div ng-repeat="group in $ctrl.$state.contacts">
       <h3>{{ ::group.category }}</h3>
       <div class="row">
         <span ng-repeat="contact in group.items" class="xxsmall-6 large-6 medium-6 columns contact-card{{ ::(contact.class ? ' contact-faculty ' + contact.class : '') }}">
@@ -89,111 +89,111 @@
     <p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form below.</p>
     <p>Alternatively, you may contact <a href="mailto:directory@uoit.ca" title="Contact directory@uoit.ca">directory@uoit.ca</a> directly if you have further questions or concerns.</p>
     <!-- SHOW ERROR/SUCCESS MESSAGES -->
-    <div ng-show="formStatus.success || formStatus.error" class="callout" ng-class="{ success: formStatus.success, alert: formStatus.error }" data-closable>
-      {{ formStatus.success || formStatus.error }}
+    <div ng-show="$ctrl.$state.formStatus.success || $ctrl.$state.formStatus.error" class="callout" ng-class="{ success: $ctrl.$state.formStatus.success, alert: $ctrl.$state.formStatus.error }" data-closable>
+      {{ $ctrl.$state.formStatus.success || $ctrl.$state.formStatus.error }}
       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
       <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <!-- FORM -->
-    <form ng-submit="updateForm.$valid && $ctrl.processForm()" name="updateForm">
+    <form ng-submit="$ctrl.updateForm.$valid && $ctrl.processForm()" name="$ctrl.updateForm">
 
       <div class="row">
         <div class="xxsmall-12 medium-12 columns text-right">
 				  <label>
 					  Send me a copy of the update request
-					  <input type="checkbox" name="sendCopy" ng-model="formData.sendCopy" />
+					  <input type="checkbox" name="sendCopy" ng-model="$ctrl.$state.formData.sendCopy" />
 					</label>
         </div>
       </div>
       <div class="row">
         <div class="xxsmall-12 medium-6 columns">
           <label>Banner ID:<span class="red"> *</span>
-          <input type="text" name="bannerId" ng-model="formData.bannerId" ng-minlength="9" ng-minlength="9" ng-pattern="'[1Ss]{1}00[0-9]{6}'" required />
+          <input type="text" name="bannerId" ng-model="$ctrl.$state.formData.bannerId" ng-minlength="9" ng-minlength="9" ng-pattern="'[1Ss]{1}00[0-9]{6}'" required />
           </label>
         </div>
       </div>
       <div class="row">
         <div class="xxsmall-12 medium-6 columns">
           <label>First name:<span class="red"> *</span>
-          <input type="text" name="firstName" ng-model="formData.firstName" required />
+          <input type="text" name="firstName" ng-model="$ctrl.$state.formData.firstName" required />
           </label>
         </div>
         <div class="xxsmall-12 medium-6 columns">
           <label>Last name:<span class="red"> *</span>
-          <input type="text" name="lastName" ng-model="formData.lastName" required />
+          <input type="text" name="lastName" ng-model="$ctrl.$state.formData.lastName" required />
           </label>
         </div>
       </div>
       <div class="row">
         <div class="xxsmall-12 medium-6 columns">
           <label>Department:<span class="red"> *</span>
-          <input type="text" name="department" ng-model="formData.department" required />
+          <input type="text" name="department" ng-model="$ctrl.$state.formData.department" required />
           </label>
         </div>
         <div class="xxsmall-12 medium-6 columns">
           <label>Title:<span class="red"> *</span>
-          <input type="text" name="title" ng-model="formData.title" required />
+          <input type="text" name="title" ng-model="$ctrl.$state.formData.title" required />
           </label>
         </div>
       </div>
       <div class="row">
         <div class="xxsmall-12 medium-6 columns">
           <label>Building:<span class="red"> *</span>
-          <input type="text" name="building" ng-model="formData.building" required />
+          <input type="text" name="building" ng-model="$ctrl.$state.formData.building" required />
           </label>
         </div>
         <div class="xxsmall-12 medium-6 columns">
           <label>Office:<span class="red"> *</span>
-          <input type="text" name="office" ng-model="formData.office" required />
+          <input type="text" name="office" ng-model="$ctrl.$state.formData.office" required />
           </label>
         </div>
       </div>
       <div class="row">
         <div class="xxsmall-12 medium-6 columns">
           <label>Extension:<span class="red"> *</span>
-          <input type="text" name="extension" ng-model="formData.extension" required ng-pattern="'[0-9]+'" />
+          <input type="text" name="extension" ng-model="$ctrl.$state.formData.extension" required ng-pattern="'[0-9]+'" />
           </label>
         </div>
         <div class="xxsmall-12 medium-6 columns">
           <label>Email:<span class="red"> *</span>
-          <input type="email" name="email" ng-model="formData.email" required />
+          <input type="email" name="email" ng-model="$ctrl.$state.formData.email" required />
           </label>
         </div>
       </div>
       <fieldset class="large-6 columns">
-        <button class="button" type="submit" value="Submit" role="button" ng-disabled="updateForm.$invalid">Submit</button>
+        <button class="button" type="submit" value="Submit" role="button" ng-disabled="$ctrl.updateForm.$invalid">Submit</button>
       </fieldset>
     </form>
   </div>
 </div>
 <!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->
-<div class="callout" id="search-results" ng-class="{ loading: loadingResults }" ng-if="searchName.department || searchName.lastname || searchName.firstname">
+<div class="callout" id="search-results" ng-class="{ loading: loadingResults }" ng-if="$ctrl.$state.searchName.department || $ctrl.$state.searchName.lastname || $ctrl.$state.searchName.firstname">
   <div class="search-list">
     <div class="row">
       <div class="xxsmall-12 small-6 columns">
         <h3>Directory search results</h3>
       </div>
-      <div class="xxsmall-12 small-6 columns" ng-show="users.length">
+      <div class="xxsmall-12 small-6 columns" ng-show="$ctrl.$state.users.length">
         <div class="tiny button-group align-right">
           <div class="flex-container align-middle">
             <label id="sort_by">Sort by: &nbsp;</label>
           </div>
-          <button id="sort_firstname" class="button" ng-click="$ctrl.sortBy('firstname')" ng-class="{hollow: order !== 'firstname'}" aria-labelledby="sort_by sort_firstname">First name</button>
-          <button id="sort_lastname" class="button" ng-click="$ctrl.sortBy('lastname')" ng-class="{hollow: order !== 'lastname'}" aria-labelledby="sort_by sort_lastname">Last name</button>
-          <button id="sort_department" class="button" ng-click="$ctrl.sortBy('department')" ng-class="{hollow: order !== 'department'}" aria-labelledby="sort_by sort_department">Department</button>
+          <button id="sort_firstname" class="button" ng-click="$ctrl.sortBy('firstname')" ng-class="{hollow: $ctrl.$state.order !== 'firstname'}" aria-labelledby="sort_by sort_firstname">First name</button>
+          <button id="sort_lastname" class="button" ng-click="$ctrl.sortBy('lastname')" ng-class="{hollow: $ctrl.$state.order !== 'lastname'}" aria-labelledby="sort_by sort_lastname">Last name</button>
+          <button id="sort_department" class="button" ng-click="$ctrl.sortBy('department')" ng-class="{hollow: $ctrl.$state.order !== 'department'}" aria-labelledby="sort_by sort_department">Department</button>
         </div>
       </div>
       <div class="xxsmall-12 columns">
-        <p class="lead" ng-hide="(currentPage + 1) > $ctrl.numberOfPages()">To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
-        <p class="lead" ng-show="(currentPage + 1)> $ctrl.numberOfPages()">Sorry, no directory search results to display.</p>
+        <p class="lead" ng-hide="($ctrl.$state.currentPage + 1) > $ctrl.numberOfPages()">To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
+        <p class="lead" ng-show="($ctrl.$state.currentPage + 1)> $ctrl.numberOfPages()">Sorry, no directory search results to display.</p>
       </div>
     </div>
   </div>
   <!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
   <ul class="accordion" data-accordion data-allow-all-closed="true">
     <!-- SEARCH DEPARTMENT BY INPUT FIELD -->
-    <li class="accordion-item" ng-class="{ 'accordion-item-open': user.show }" data-accordion-item ng-repeat="user in users | filter: searchName |  orderBy: order | startFrom:currentPage*pageSize | limitTo:pageSize">
+    <li class="accordion-item" ng-class="{ 'accordion-item-open': user.show }" data-accordion-item ng-repeat="user in $ctrl.$state.users | filter: $ctrl.$state.searchName | orderBy: $ctrl.$state.order | startFrom: $ctrl.$state.currentPage * $ctrl.$state.pageSize | limitTo: $ctrl.$state.pageSize">
       <!-- SEARCH DEPARTMENT BY DROPDOWN -->
       <a class="accordion-title" ng-click="user.show = !user.show; user.show && $ctrl.getUser(user)">
         {{::user.firstname}} {{::user.lastname}}
@@ -257,28 +257,28 @@
   </ul>
   <!-- PAGINATION - FUNCTIONAL -->
   <div class="text-center pagination-container">
-    <ul class="pagination" role="navigation" aria-label="Pagination" ng-hide="(currentPage + 1) > $ctrl.numberOfPages()">
+    <ul class="pagination" role="navigation" aria-label="Pagination" ng-hide="($ctrl.$state.currentPage + 1) > $ctrl.numberOfPages()">
       <li class="pagination-previous">
-        <a role="button" ng-class="{ disabled: (currentPage == 0) }" ng-click="!(currentPage == 0) && $ctrl.changePageAndScroll(-1)">
+        <a role="button" ng-class="{ disabled: ($ctrl.$state.currentPage === 0) }" ng-click="!($ctrl.$state.currentPage === 0) && $ctrl.changePageAndScroll(-1)">
         <span class="icon_arrow_left"></span>
         Previous <span class="show-for-sr">page</span>
         </a>
       </li>
       <li ng-repeat="page in $ctrl.getPageNumbers()">
-        <a aria-label="Page {{ page }}" ng-click="$ctrl.gotoPageAndScroll(page)" ng-class="{ current: (currentPage + 1) === page }">
-        <span ng-show="(currentPage + 1) === page" class="show-for-sr">currently viewing</span>
+        <a aria-label="Page {{ page }}" ng-click="$ctrl.gotoPageAndScroll(page)" ng-class="{ current: ($ctrl.$state.currentPage + 1) === page }">
+        <span ng-show="($ctrl.$state.currentPage + 1) === page" class="show-for-sr">currently viewing</span>
         <span class="show-for-sr">page</span>{{ page }}
         </a>
       </li>
       <li class="pagination-next">
-        <a role="button" ng-class="{ disabled: ((currentPage + 1) >= $ctrl.numberOfPages()) }" ng-click="!((currentPage + 1) >= $ctrl.numberOfPages()) && $ctrl.changePageAndScroll(1)">
+        <a role="button" ng-class="{ disabled: (($ctrl.$state.currentPage + 1) >= $ctrl.numberOfPages()) }" ng-click="!(($ctrl.$state.currentPage + 1) >= $ctrl.numberOfPages()) && $ctrl.changePageAndScroll(1)">
         Next <span class="show-for-sr">page</span>
         <span class="icon_arrow_right"></span>
         </a>
       </li>
     </ul>
     <span class="label tertiary">
-    {{currentPage+1}} out of {{$ctrl.numberOfPages()}}
+    {{ $ctrl.$state.currentPage + 1 }} out of {{ $ctrl.numberOfPages() }}
     </span>
   </div>
 </div>

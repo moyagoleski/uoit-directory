@@ -220,7 +220,7 @@
           </li>
           <li>
             <strong>Extension:</strong>
-            {{::user.extension}}
+            <a href="tel:{{ ::('905.721.8668 ext.' + user.extension) | telLink }}" title="Place call to {{ ::user.firstname }} {{ ::user.lastname }}">{{::user.extension}}</a>
           </li>
           <li>
             <strong>Email:</strong>

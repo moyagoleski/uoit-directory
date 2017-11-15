@@ -49,19 +49,18 @@ export const DirectorySearchComponent = {
 
 			// Load departments on init
 			this.DirectoryService.getDepts()
-				.then(depts => {
-					this.$state.departments = depts;
-				})
-				.catch(err => {
-					this.$state.departmentError = err;
-				});
+				.then(depts => this.$state.departments = depts)
+				.catch(err => this.$state.departmentError = err);
 		}
 
 		getUser(person) {
 			person.expert = {};
-			this.DirectoryService.getExpert(person).then(expert => {
-				person.expert = expert || false;
-			});
+			this.DirectoryService.getExpert(person)
+				.then(expert => person.expert = expert || false)
+				.catch(err => {
+					console.error(err);
+					person.expert = false;
+				});
 		}
 
 		removeSearchResult() {

@@ -1,18 +1,18 @@
 import angular from 'angular';
 
-import { ContactsConstant } from './components/contacts.constant';
-import { DirectoryService } from './components/users.service';
-import { SearchComponent } from './components/search.component';
+import { DirectoryService } from './components/directory.service';
+import { DirectorySearchComponent } from './components/directory-search.component';
 import { StartFromFilter } from './components/start-from.filter';
-import { PhoneFilter } from './components/phone.filter';
+import { TelLinkFilter } from './components/tel-link.filter';
 import { TemplateRun } from './components/templates.run'
+import { DIRECTORY_CONTACTS } from './components/directory-contacts';
 
 angular.module('uoitDirectory', [])
-	.constant('Contacts', ContactsConstant)
+	.constant('DIRECTORY_CONTACTS', DIRECTORY_CONTACTS)
 	.service('DirectoryService', DirectoryService)
-	.component('directorySearch', SearchComponent)
+	.component('directorySearch', DirectorySearchComponent)
 	.filter('startFrom', StartFromFilter)
-	.filter('tel', PhoneFilter)
+	.filter('telLink', TelLinkFilter)
 	.run(TemplateRun);
 
 angular.bootstrap(document.body, ['uoitDirectory'], {

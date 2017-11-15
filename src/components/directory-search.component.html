@@ -28,7 +28,7 @@
       <div class="row">
         <div class="xxsmall-12 medium-3 columns">
           <label>First name:
-          <input type="text" ng-model="searchName.firstname" ng-change="$ctrl.modifyResultResetDropdown()" ng-model-options="{ debounce: 400 }" />
+          <input type="text" ng-model="searchName.firstname" ng-change="$ctrl.modifyResultResetDropdown()" ng-model-options="{ debounce: 200 }" />
           <span class="form-error" style="display:block;" ng-show="userError">
           {{ userError }}
           </span>
@@ -36,7 +36,7 @@
         </div>
         <div class="xxsmall-12 medium-3 columns">
           <label>Last name:
-          <input type="text" ng-model="searchName.lastname" ng-change="$ctrl.modifyResultResetDropdown()" />
+          <input type="text" ng-model="searchName.lastname" ng-change="$ctrl.modifyResultResetDropdown()" ng-model-options="{ debounce: 200 }" />
           <span class="form-error" style="display:block;" ng-show="userError">
           {{ userError }}
           </span>
@@ -75,7 +75,7 @@
       <div class="row">
         <span ng-repeat="contact in group.items" class="xxsmall-6 large-6 medium-6 columns contact-card{{ ::(contact.class ? ' contact-faculty ' + contact.class : '') }}">
           <p class="contact-name"><strong>{{ ::contact.name }}</strong></p>
-          <p class="contact-phone"><a href="tel:{{ ::contact.phone | tel }}" title="Place call to {{ ::contact.phone }}">{{ ::contact.phone }}</a></p>
+          <p class="contact-phone"><a href="tel:{{ ::contact.phone | telLink }}" title="Place call to {{ ::contact.phone }}">{{ ::contact.phone }}</a></p>
         </span>
       </div>
     </div>

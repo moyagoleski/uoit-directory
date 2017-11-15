@@ -1,12 +1,20 @@
-export const SearchComponent = {
-  templateUrl: 'search.component.html',
-  controller: function($scope, $filter, $http, $element, $httpParamSerializerJQLike, DirectoryService, Contacts) {
+export const DirectorySearchComponent = {
+  templateUrl: 'directory-search.component.html',
+  controller: function(
+		$scope,
+		$filter,
+		$http,
+		$element,
+		$httpParamSerializerJQLike,
+		DirectoryService,
+		DIRECTORY_CONTACTS
+	) {
 		'ngInject';
 		var ctrl = this; // ASSIGN `this` TO A VARIABLE FOR USE INSIDE FUNCTIONS
 
 		ctrl.$onInit = function() {
 
-			$scope.contacts = Contacts;
+			$scope.contacts = DIRECTORY_CONTACTS;
 			$scope.departments = null;
 			$scope.users = null;
 			$scope.usersCache = null;

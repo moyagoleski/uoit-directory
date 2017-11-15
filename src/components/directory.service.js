@@ -1,8 +1,9 @@
-export const DirectoryService = function($http, $httpParamSerializer, $q) {
+export const DirectoryService = function DirectoryService($http, $httpParamSerializer, $q) {
 	'ngInject';
 
 	// const API_URL = 'http://localhost:8080'; // dev
-	const API_URL = 'https://api.uoit.ca'; // prod
+	// const API_URL = 'https://api.uoit.ca'; // prod
+	const API_URL = 'https://uoit-api.herokuapp.com'; // cloud
 	const API_VERSION = 2;
 
 	const replaceText = item => item.replace(/-|UOIT|/g, "").replace(/&/g, "and");

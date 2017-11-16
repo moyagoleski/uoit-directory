@@ -12,7 +12,7 @@
 </ul>
 <!-- tabs title end -->
 <!-- tabs content start -->
-<div class="tabs-content" data-tabs-content="{{ ::$ctrl.ID.DIRECTORY_TABS }}" id="tab1-content">
+<div class="tabs-content" data-tabs-content="{{ ::$ctrl.ID.DIRECTORY_TABS }}" id="{{ ::$ctrl.ID.DIRECTORY_TABS_CONTENT }}">
   <!-- TAB 1 STARTS  -->
   <div class="tabs-panel is-active" id="tab1-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab1-1-label">
     <div class="row">
@@ -58,7 +58,7 @@
           </label>
         </div>
         <div class="xxsmall-12 medium-3 columns" ng-if="$ctrl.$state.searchName.department || $ctrl.$state.searchName.lastname || $ctrl.$state.searchName.firstname">
-          <button class="button results-button" ng-click="$ctrl.smoothScroll()">
+          <button class="button results-button" ng-click="$ctrl.smoothScrollTo($ctrl.ID.SEARCH_RESULTS)">
           <span ng-show="$ctrl.$state.users && $ctrl.$state.users.length">Results below &nbsp;<span class="icon_arrow_down bounce"></span></span>
           <span ng-hide="$ctrl.$state.users.length">Loading results&hellip;</span>
           </button>
@@ -227,6 +227,7 @@
             <a href="mailto:{{::user.email}}">{{::user.email | lowercase}}</a>
           </li>
         </ul>
+        <p class="text-right"><small><a href="#tab1-3" title="Submit an entry update request" target="_self" ng-click="$ctrl.gotoFormAndPopulate($event, user)">Notice something wrong?</a></small></p>
         <div ng-if="user.expert">
           <hr/>
           <small ng-hide="user.expert.username">

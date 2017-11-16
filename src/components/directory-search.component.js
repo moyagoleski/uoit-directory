@@ -44,7 +44,8 @@ export const DirectorySearchComponent = {
 
 			this.ID = {
 				SEARCH_RESULTS: 'search-results',
-				DIRECTORY_TABS: 'directory-tabs'
+				DIRECTORY_TABS: 'directory-tabs',
+				DIRECTORY_TABS_CONTENT: 'directory-tabs-content'
 			};
 
 			// Load departments on init
@@ -91,25 +92,31 @@ export const DirectorySearchComponent = {
 			this.$state.order = propertyName;
 		}
 
-		smoothScroll() {
-			const scrollTop = this.$element.find(`#${this.ID.SEARCH_RESULTS}`).offset().top;
+		smoothScrollTo(id) {
+			const scrollTop = this.$element.find(`#${id}`).offset().top;
 			$('html, body').animate({ scrollTop }, 'slow');
 		}
 
 		changePageAndScroll(plusOrMinus) {
 			this.$state.currentPage = this.$state.currentPage + plusOrMinus;
-			this.smoothScroll()
+			this.smoothScroll(this.ID.SEARCH_RESULTS)
 		}
 
 		gotoPageAndScroll(page) {
 			this.$state.currentPage = page - 1;
-			this.smoothScroll()
+			this.smoothScroll(this.ID.SEARCH_RESULTS)
 		}
 
 		gotoTab(event) {
 			event.preventDefault();
 			const $tabs = $(event.target.hash);
 			$(`#${this.ID.DIRECTORY_TABS}`).foundation('selectTab', $tabs);
+		}
+
+		gotoFormAndPopulate(event, data) {
+			this.gotoTab(event);
+			this.$state.formData = data;
+			this.smoothScrollTo(this.ID.DIRECTORY_TABS_CONTENT);
 		}
 
 		// GET FILTERED DATA

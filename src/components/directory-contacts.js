@@ -1,4 +1,4 @@
-export const ContactsConstant = [{
+export const DIRECTORY_CONTACTS = [{
 	category: 'Campus services',
 	items: [{
 		name: 'Bookstore',

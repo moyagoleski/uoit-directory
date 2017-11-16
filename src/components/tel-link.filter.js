@@ -1,4 +1,4 @@
-export const PhoneFilter = () => {
+export const TelLinkFilter = () => {
   return tel => {
     const maxLength = 10;
     const cityCodeLength = 3;

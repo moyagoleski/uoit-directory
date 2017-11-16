@@ -196,15 +196,15 @@
     <li class="accordion-item" ng-class="{ 'accordion-item-open': user.show }" data-accordion-item ng-repeat="user in $ctrl.$state.users | filter: $ctrl.$state.searchName | orderBy: $ctrl.$state.order | startFrom: $ctrl.$state.currentPage * $ctrl.$state.pageSize | limitTo: $ctrl.$state.pageSize">
       <!-- SEARCH DEPARTMENT BY DROPDOWN -->
       <a class="accordion-title" ng-click="user.show = !user.show; user.show && $ctrl.getUser(user)">
-        {{::user.firstname}} {{::user.lastname}}
+        {{ ::user.firstname }} {{ ::user.lastname }}
         <ul class="accordion-title-desc">
           <li>
             <strong>Department:</strong>
-            {{::user.department}}
+            {{ ::user.department }}
           </li>
           <li>
             <strong>Title:</strong>
-            {{::user.position}}
+            {{ ::user.position }}
           </li>
         </ul>
       </a>
@@ -212,7 +212,7 @@
         <ul class="search-list-info">
           <li>
             <strong>Building:</strong>
-            {{::user.building}}
+            {{ ::user.building }}
           </li>
           <li>
             <strong>Office:</strong>
@@ -224,7 +224,7 @@
           </li>
           <li>
             <strong>Email:</strong>
-            <a href="mailto:{{::user.email}}">{{::user.email | lowercase}}</a>
+            <a href="mailto:{{ ::user.email }}">{{ ::user.email | lowercase }}</a>
           </li>
         </ul>
         <p class="text-right"><small><a href="#tab1-3" title="Submit an entry update request" target="_self" ng-click="$ctrl.gotoFormAndPopulate($event, user)">Notice something wrong?</a></small></p>
@@ -243,11 +243,11 @@
               <div class="row align-middle">
                 <div class="column">
                   <h4>{{ user.expert.firstname }} {{ user.expert.lastname }} <small class="subheader">on UOIT Expert Centre</small></h4>
-                  <p class="expert-profile-topics"><a ng-repeat="topic in user.expert.topics" ng-href="https://uoit.ca/expertcentre?q={{topic.name}}" class="label tertiary">{{ topic.name }}</a></p>
+                  <p class="expert-profile-topics"><a ng-repeat="topic in user.expert.topics" ng-href="https://uoit.ca/expertcentre?q={{ topic.name }}" class="label tertiary">{{ topic.name }}</a></p>
                   <p>{{ user.expert.tagline }}</p>
                 </div>
                 <div class="column shrink">
-                  <a ng-href="https://uoit.ca/expertcentre/expert/{{user.expert.username}}" class="button hollow">View full profile</a>
+                  <a ng-href="https://uoit.ca/expertcentre/expert/{{ user.expert.username }}" class="button hollow">View full profile</a>
                 </div>
               </div>
             </div>

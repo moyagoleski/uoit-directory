@@ -37,39 +37,39 @@ $mail->Body  = "<p>Hello,
 <table>
 <tbody>
 <tr>
-<td><strong>Banner ID:</strong><td>
+<td><strong>Banner ID:</strong></td>
 <td>$bannerId</td>
 </tr>
 <tr>
-<td><strong>First Name:</strong><td>
+<td><strong>First Name:</strong></td>
 <td>$firstName</td>
 </tr>
 <tr>
-<td><strong>Last Name:</strong><td>
+<td><strong>Last Name:</strong></td>
 <td>$lastName</td>
 </tr>
 <tr>
-<td><strong>Department:</strong><td>
+<td><strong>Department:</strong></td>
 <td>$department</td>
 </tr>
 <tr>
-<td><strong>Title:</strong><td>
+<td><strong>Title:</strong></td>
 <td>$title</td>
 </tr>
 <tr>
-<td><strong>Building:</strong><td>
+<td><strong>Building:</strong></td>
 <td>$building</td>
 </tr>
 <tr>
-<td><strong>Office:</strong><td>
+<td><strong>Office:</strong></td>
 <td>$office</td>
 </tr>
 <tr>
-<td><strong>Extension:</strong><td>
+<td><strong>Extension:</strong></td>
 <td>$extension</td>
 </tr>
 <tr>
-<td><strong>E-mail:</strong><td>
+<td><strong>E-mail:</strong></td>
 <td>$email</td>
 </tr>
 </tbody>

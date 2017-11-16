@@ -229,8 +229,7 @@ export const DirectorySearchComponent = {
 		}
 
 		/**
-		 * Get a count of available pages to paginate through.
-		 * @return {number} Count of pages available
+		 * Assign a count of available pages for paginating to the state.
 		 */
 		updateNumberOfPages() {
 			this.$state.numberOfPages = this.$state.users && this.$state.users.length
@@ -239,8 +238,7 @@ export const DirectorySearchComponent = {
 		}
 
 		/**
-		 * Get an list of page numbers available to paginate through.
-		 * @return {number[]} Array of page numbers available
+		 * Update the state's list of page numbers available to paginate through.
 		 */
 		updatePageNumbers() {
 			if (this.$state.numberOfPages > 0) {
@@ -256,6 +254,9 @@ export const DirectorySearchComponent = {
 			}
 		}
 
+		/**
+		 * Calls both pagination-building methods in order (helper).
+		 */
 		updatePagination() {
 			this.updateNumberOfPages();
 			this.updatePageNumbers();

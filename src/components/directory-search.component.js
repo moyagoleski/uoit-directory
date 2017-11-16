@@ -25,7 +25,12 @@ export const DirectorySearchComponent = {
 				departments: null,
 				users: null,
 				usersCache: null,
-				searchName: {},
+
+				searchQuery: {
+					firstname: null,
+					lastname: null,
+					department: null
+				},
 
 				departmentError: null,
 				userError: null,
@@ -76,7 +81,7 @@ export const DirectorySearchComponent = {
 		}
 
 		removeSearchResult() {
-			this.$state.searchName = {};
+			this.$state.searchQuery = {};
 		}
 
 		// MODIFY SEARCH RESULT
@@ -84,7 +89,7 @@ export const DirectorySearchComponent = {
 		// CLEAR DROPDOWN LIST
 		modifyResultResetDropdown() {
 			this.$state.currentPage = 0;
-			this.$state.searchName.department = '';
+			this.$state.searchQuery.department = '';
 			this.getSearchResults();
 		}
 
@@ -92,8 +97,8 @@ export const DirectorySearchComponent = {
 		// CLEAR INPUT FIELD
 		modifyResultClearInput() {
 			this.$state.currentPage = 0;
-			this.$state.searchName.firstname = '';
-			this.$state.searchName.lastname = '';
+			this.$state.searchQuery.firstname = '';
+			this.$state.searchQuery.lastname = '';
 			this.getSearchResults();
 		}
 
@@ -134,12 +139,12 @@ export const DirectorySearchComponent = {
 		getSearchResults() {
 			this.$state.loadingResults = true;
 			if (this.$state.usersCache) {
-				this.$state.users = this.$filter('filter')(this.$state.usersCache, this.$state.searchName) || [];
+				this.$state.users = this.$filter('filter')(this.$state.usersCache, this.$state.searchQuery) || [];
 				this.$state.loadingResults = false;
 			} else {
-				this.DirectoryService.getUsers(this.$state.searchName)
+				this.DirectoryService.getUsers(this.$state.searchQuery)
 					.then(users => {
-						this.$state.users = this.$filter('filter')(users, this.$state.searchName) || [];
+						this.$state.users = this.$filter('filter')(users, this.$state.searchQuery) || [];
 						this.$state.loadingResults = false;
 						// Proactively load the whole list in the background as soon
 						// as user makes their first query; early searches will be

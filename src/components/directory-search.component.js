@@ -1,6 +1,9 @@
 export const DirectorySearchComponent = {
   templateUrl: 'directory-search.component.html',
 	controller: class DirectorySearch {
+		/**
+		 * Inject and bind dependencies.
+		 */
 		constructor (
 			$filter,
 			$http,
@@ -18,26 +21,30 @@ export const DirectorySearchComponent = {
 			this.DIRECTORY_CONTACTS = DIRECTORY_CONTACTS;
 		}
 		
+		/**
+		 * Initialize component.
+		 */
 		$onInit() {
+			/**
+			 * A component-local store to encapsulate application state.
+			 */
 			this.$state = {
+				// common contacts tab data
 				contacts: this.DIRECTORY_CONTACTS,
 
+				// directory API data
 				departments: null,
 				users: null,
 				usersCache: null,
 
+				// user's current search query 
 				searchQuery: {
 					firstname: null,
 					lastname: null,
 					department: null
 				},
 
-				departmentError: null,
-				userError: null,
-				formStatus: {
-					success: null,
-					error: null
-				},
+				// data and status of contact update form
 				formData: {
 					sendCopy: null,
 					bannerId: null,
@@ -50,26 +57,43 @@ export const DirectorySearchComponent = {
 					extension: null,
 					email: null
 				},
+				formStatus: {
+					success: null,
+					error: null
+				},
+				departmentError: null,
+				userError: null,
 
+				// pagination and sorting
 				currentPage: 0,
 				pageSize: 7,
 				order: 'lastname',
 
+				// whether results are currently loading
 				loadingResults: false
 			};
 
+			/**
+			 * A map of DOM element IDs as string constants.
+			 */
 			this.ID = {
 				SEARCH_RESULTS: 'search-results',
 				DIRECTORY_TABS: 'directory-tabs',
 				DIRECTORY_TABS_CONTENT: 'directory-tabs-content'
 			};
 
-			// Load departments on init
+			// Load all departments on app initialization
 			this.DirectoryService.getDepts()
 				.then(depts => this.$state.departments = depts)
 				.catch(err => this.$state.departmentError = err);
 		}
 
+		/**
+		 * Checks a directory entry against the experts list and
+		 * populates expert data on entry if found.
+		 * 
+		 * @param {object} person Full directory entry object
+		 */
 		getUser(person) {
 			person.expert = {};
 			this.DirectoryService.getExpert(person)
@@ -80,21 +104,29 @@ export const DirectorySearchComponent = {
 				});
 		}
 
+		/**
+		 * Clears the search query fields.
+		 */
 		removeSearchResult() {
 			this.$state.searchQuery = {};
 		}
 
-		// MODIFY SEARCH RESULT
-		// RESET CURRENT PAGE
-		// CLEAR DROPDOWN LIST
+		/**
+		 * Sets the current page back to the first and clears the
+		 * department query before getting new results, i.e. after
+		 * the user types a new query.
+		 */
 		modifyResultResetDropdown() {
 			this.$state.currentPage = 0;
 			this.$state.searchQuery.department = '';
 			this.getSearchResults();
 		}
 
-		// RESET CURRENT PAGE
-		// CLEAR INPUT FIELD
+		/**
+		 * Sets the current page back to the first and clears the
+		 * name query before getting new results, i.e. after
+		 * the user selects a new department.
+		 */
 		modifyResultClearInput() {
 			this.$state.currentPage = 0;
 			this.$state.searchQuery.firstname = '';
@@ -102,40 +134,73 @@ export const DirectorySearchComponent = {
 			this.getSearchResults();
 		}
 
-		// PASS ORDERBY PARAMETER
-		// AND CHANGE ACTIVE FILTER BUTTON
+		/**
+		 * Sets the sort order of search results to a given property.
+		 * 
+		 * @param {string} propertyName Name of prop to sort by
+		 */
 		sortBy(propertyName) {
 			this.$state.order = propertyName;
 		}
 
+		/**
+		 * Smoothly scrolls the page to the top of a given element by ID.
+		 * 
+		 * @param {string} id The ID of the element to scroll to
+		 */
 		smoothScrollTo(id) {
 			const scrollTop = this.$element.find(`#${id}`).offset().top;
 			$('html, body').animate({ scrollTop }, 'slow');
 		}
 
+		/**
+		 * Changes the current page and re-scrolls the results into view.
+		 * 
+		 * @param {number} plusOrMinus Number of pages to change (pos. or neg.)
+		 */
 		changePageAndScroll(plusOrMinus) {
 			this.$state.currentPage = this.$state.currentPage + plusOrMinus;
 			this.smoothScroll(this.ID.SEARCH_RESULTS)
 		}
 
+		/**
+		 * Sets the current page and re-scrolls the results into view.
+		 * 
+		 * @param {number} page The page to skip to
+		 */
 		gotoPageAndScroll(page) {
 			this.$state.currentPage = page - 1;
 			this.smoothScroll(this.ID.SEARCH_RESULTS)
 		}
 
+		/**
+		 * Sets the active tab by the `#hash` of a clicked link.
+		 * 
+		 * @param {Event} event DOM event that call originated from
+		 */
 		gotoTab(event) {
 			event.preventDefault();
 			const $tabs = $(event.target.hash);
 			$(`#${this.ID.DIRECTORY_TABS}`).foundation('selectTab', $tabs);
 		}
 
+		/**
+		 * Sets the active tab to the "update contact" tab, pre-fills
+		 * the form with a directory entry's data, and smooth scrolls to it.
+		 * 
+		 * @param {Event} event DOM event that call originated from
+		 * @param {object} data Entry data to populate form with
+		 */
 		gotoFormAndPopulate(event, data) {
 			this.gotoTab(event);
 			this.$state.formData = data;
 			this.smoothScrollTo(this.ID.DIRECTORY_TABS_CONTENT);
 		}
 
-		// GET FILTERED DATA
+		/**
+		 * Performs a search against the directory. Keeps an internal cache
+		 * of results, and uses client filtering if results already cached.
+		 */
 		getSearchResults() {
 			this.$state.loadingResults = true;
 			if (this.$state.usersCache) {
@@ -163,13 +228,20 @@ export const DirectorySearchComponent = {
 			}
 		}
 
-		// GET NUMBER OF PAGES
+		/**
+		 * Get a count of available pages to paginate through.
+		 * @return {number} Count of pages available
+		 */
 		numberOfPages() {
 			return this.$state.users && this.$state.users.length ?
 				Math.ceil(this.$state.users.length / this.$state.pageSize) :
 				0;
 		}
 
+		/**
+		 * Get an list of page numbers available to paginate through.
+		 * @return {number[]} Array of page numbers available
+		 */
 		getPageNumbers() {
 			if (this.$state.users && this.$state.users.length) {
 				let numberOfPages = Math.ceil(this.$state.users.length / this.$state.pageSize);
@@ -184,6 +256,9 @@ export const DirectorySearchComponent = {
 			}
 		}
 
+		/**
+		 * Send a filled-out update request form to the mailer script.
+		 */
 		processForm() {
 			// pass in data as strings
 			const data = this.$httpParamSerializerJQLike(this.$state.formData);

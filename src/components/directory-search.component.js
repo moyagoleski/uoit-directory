@@ -33,7 +33,18 @@ export const DirectorySearchComponent = {
 					success: null,
 					error: null
 				},
-				formData: {},
+				formData: {
+					sendCopy: null,
+					bannerId: null,
+					firstname: null,
+					lastname: null,
+					department: null,
+					position: null,
+					building: null,
+					office: null,
+					extension: null,
+					email: null
+				},
 
 				currentPage: 0,
 				pageSize: 7,

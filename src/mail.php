@@ -9,10 +9,10 @@ $mail = new PHPMailer;
 // INPUT FIELDS FROM UPDATE FORM
 $sendCopy		= $_POST['sendCopy'];
 $bannerId   = $_POST['bannerId'];   // required
-$firstName  = $_POST['firstName'];  // required
-$lastName   = $_POST['lastName'];   // required
+$firstName  = $_POST['firstname'];  // required
+$lastName   = $_POST['lastname'];   // required
 $department = $_POST['department']; // required
-$title      = $_POST['title'];      // required
+$title      = $_POST['position'];      // required
 $building   = $_POST['building'];   // required
 $office     = $_POST['office'];     // required
 $extension  = $_POST['extension'];  // required

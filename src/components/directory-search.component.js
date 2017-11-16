@@ -61,8 +61,10 @@ export const DirectorySearchComponent = {
 				userError: null,
 
 				// pagination and sorting
+				numberOfPages: 0,
 				currentPage: 0,
 				pageSize: 7,
+				pageNumbers: [1],
 				order: 'lastname',
 
 				// whether results are currently loading
@@ -202,11 +204,13 @@ export const DirectorySearchComponent = {
 			if (this.$state.usersCache) {
 				this.$state.users = this.$filter('filter')(this.$state.usersCache, this.$state.searchQuery) || [];
 				this.$state.loadingResults = false;
+				this.updatePagination();
 			} else {
 				this.DirectoryService.getUsers(this.$state.searchQuery)
 					.then(users => {
 						this.$state.users = this.$filter('filter')(users, this.$state.searchQuery) || [];
 						this.$state.loadingResults = false;
+						this.updatePagination();
 						// Proactively load the whole list in the background as soon
 						// as user makes their first query; early searches will be
 						// handled by the `getSearchResults()` return, which provides a
@@ -228,28 +232,33 @@ export const DirectorySearchComponent = {
 		 * Get a count of available pages to paginate through.
 		 * @return {number} Count of pages available
 		 */
-		numberOfPages() {
-			return this.$state.users && this.$state.users.length ?
-				Math.ceil(this.$state.users.length / this.$state.pageSize) :
-				0;
+		updateNumberOfPages() {
+			this.$state.numberOfPages = this.$state.users && this.$state.users.length
+				? Math.ceil(this.$state.users.length / this.$state.pageSize)
+				: 0;
 		}
 
 		/**
 		 * Get an list of page numbers available to paginate through.
 		 * @return {number[]} Array of page numbers available
 		 */
-		getPageNumbers() {
-			if (this.$state.users && this.$state.users.length) {
-				let numberOfPages = Math.ceil(this.$state.users.length / this.$state.pageSize);
+		updatePageNumbers() {
+			if (this.$state.numberOfPages > 0) {
+				let numberOfPages = this.$state.numberOfPages;
 				const pageNumArray = [];
 				while (numberOfPages) {
 					pageNumArray.push(numberOfPages);
 					numberOfPages--;
 				}
-				return pageNumArray.reverse();
+				this.$state.pageNumbers = pageNumArray.reverse();
 			} else {
-				return [1];
+				this.$state.pageNumbers = [1];
 			}
+		}
+
+		updatePagination() {
+			this.updateNumberOfPages();
+			this.updatePageNumbers();
 		}
 
 		/**

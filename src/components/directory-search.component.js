@@ -38,11 +38,7 @@ export const DirectorySearchComponent = {
 				usersCache: null,
 
 				// user's current search query 
-				searchQuery: {
-					firstname: null,
-					lastname: null,
-					department: null
-				},
+				searchQuery: {},
 
 				// data and status of contact update form
 				formData: {

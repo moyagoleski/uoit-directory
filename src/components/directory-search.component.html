@@ -65,7 +65,7 @@
         </div>
       </div>
     </form>
-    <p class="lead update-directory-msg"><strong>Notice an incorrect entry?</strong> <a href="#tab1-3" title="Submit an entry update request" target="_self" ng-click="$ctrl.gotoTab($event)">Let us know</a> the correct information!</p>
+    <p class="lead update-directory-msg"><strong>Notice an incorrect entry?</strong> <a href="#tab1-3" title="Submit an entry update request" target="_self" ng-click="$ctrl.gotoFormAndPopulate($event, {})">Let us know</a> the correct information!</p>
   </div>
   <!-- TAB 1 END  -->
   <!-- TAB 2 STARTS -->
@@ -216,7 +216,7 @@
           </li>
           <li>
             <strong>Office:</strong>
-            {{::user.office}}
+            {{ ::user.office && user.office.length ? user.office : 'n/a' }}
           </li>
           <li>
             <strong>Extension:</strong>

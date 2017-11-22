@@ -1,6 +1,6 @@
-export const DirectorySearchComponent = {
-  templateUrl: 'directory-search.component.html',
-	controller: class DirectorySearch {
+export const SearchComponent = {
+  templateUrl: 'search.component.html',
+	controller: class Search {
 		/**
 		 * Inject and bind dependencies.
 		 */
@@ -9,16 +9,16 @@ export const DirectorySearchComponent = {
 			$http,
 			$element,
 			$httpParamSerializerJQLike,
-			DirectoryService,
-			DIRECTORY_CONTACTS
+			SearchService,
+			CONTACTS_LIST
 		) {
 			'ngInject';
 			this.$filter = $filter;
 			this.$http = $http;
 			this.$element = $element;
 			this.$httpParamSerializerJQLike = $httpParamSerializerJQLike;
-			this.DirectoryService = DirectoryService;
-			this.DIRECTORY_CONTACTS = DIRECTORY_CONTACTS;
+			this.SearchService = SearchService;
+			this.CONTACTS_LIST = CONTACTS_LIST;
 		}
 		
 		/**
@@ -30,7 +30,7 @@ export const DirectorySearchComponent = {
 			 */
 			this.$state = {
 				// common contacts tab data
-				contacts: this.DIRECTORY_CONTACTS,
+				contacts: this.CONTACTS_LIST,
 
 				// directory API data
 				departments: null,
@@ -79,7 +79,7 @@ export const DirectorySearchComponent = {
 			};
 
 			// Load all departments on app initialization
-			this.DirectoryService.getDepts()
+			this.SearchService.getDepts()
 				.then(depts => this.$state.departments = depts)
 				.catch(err => this.$state.departmentError = err);
 		}
@@ -92,7 +92,7 @@ export const DirectorySearchComponent = {
 		 */
 		getUser(person) {
 			person.expert = {};
-			this.DirectoryService.getExpert(person)
+			this.SearchService.getExpert(person)
 				.then(expert => person.expert = expert || false)
 				.catch(err => {
 					console.error(err);
@@ -203,7 +203,7 @@ export const DirectorySearchComponent = {
 				this.$state.users = this.$filter('filter')(this.$state.usersCache, this.$state.searchQuery) || [];
 				this.$state.loadingResults = false;
 			} else {
-				this.DirectoryService.getUsers(this.$state.searchQuery)
+				this.SearchService.getUsers(this.$state.searchQuery)
 					.then(users => {
 						this.$state.users = this.$filter('filter')(users, this.$state.searchQuery) || [];
 						this.$state.loadingResults = false;
@@ -212,7 +212,7 @@ export const DirectorySearchComponent = {
 						// handled by the `getSearchResults()` return, which provides a
 						// quicker (albeit uncacheable) response and then immediately
 						// kicks off a new request for the cache.
-						return this.DirectoryService.getUsers()
+						return this.SearchService.getUsers()
 					})
 					.then(users => {
 						this.$state.usersCache = users;

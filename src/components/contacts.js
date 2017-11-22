@@ -1,4 +1,4 @@
-export const DIRECTORY_CONTACTS = [{
+export const CONTACTS_LIST = [{
 	category: 'Campus services',
 	items: [{
 		name: 'Bookstore',

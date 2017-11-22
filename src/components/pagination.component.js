@@ -1,5 +1,5 @@
-export const DirectoryPaginationComponent = {
-  templateUrl: 'directory-pagination.component.html',
+export const PaginationComponent = {
+  templateUrl: 'pagination.component.html',
   bindings: {
     items: '<',
     currentPage: '<',
@@ -8,7 +8,7 @@ export const DirectoryPaginationComponent = {
     onPrev: '&',
     onGoto: '&'
   },
-  controller: class DirectoryPagination {
+  controller: class Pagination {
     constructor() {
       this.$state = {
         numberOfPages: 0,

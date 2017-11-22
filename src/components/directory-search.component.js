@@ -158,7 +158,7 @@ export const DirectorySearchComponent = {
 		 */
 		changePageAndScroll(plusOrMinus) {
 			this.$state.currentPage = this.$state.currentPage + plusOrMinus;
-			this.smoothScroll(this.ID.SEARCH_RESULTS)
+			this.smoothScrollTo(this.ID.SEARCH_RESULTS)
 		}
 
 		/**
@@ -168,7 +168,7 @@ export const DirectorySearchComponent = {
 		 */
 		gotoPageAndScroll(page) {
 			this.$state.currentPage = page - 1;
-			this.smoothScroll(this.ID.SEARCH_RESULTS)
+			this.smoothScrollTo(this.ID.SEARCH_RESULTS)
 		}
 
 		/**

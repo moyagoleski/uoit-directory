@@ -257,29 +257,12 @@
     </li>
   </ul>
   <!-- PAGINATION - FUNCTIONAL -->
-  <div class="text-center pagination-container">
-    <ul class="pagination" role="navigation" aria-label="Pagination" ng-hide="($ctrl.$state.currentPage + 1) > $ctrl.$state.numberOfPages">
-      <li class="pagination-previous">
-        <a role="button" ng-class="{ disabled: ($ctrl.$state.currentPage === 0) }" ng-click="!($ctrl.$state.currentPage === 0) && $ctrl.changePageAndScroll(-1)">
-        <span class="icon_arrow_left"></span>
-        Previous <span class="show-for-sr">page</span>
-        </a>
-      </li>
-      <li ng-repeat="page in $ctrl.$state.pageNumbers">
-        <a aria-label="Page {{ page }}" ng-click="$ctrl.gotoPageAndScroll(page)" ng-class="{ current: ($ctrl.$state.currentPage + 1) === page }">
-        <span ng-show="($ctrl.$state.currentPage + 1) === page" class="show-for-sr">currently viewing</span>
-        <span class="show-for-sr">page</span>{{ page }}
-        </a>
-      </li>
-      <li class="pagination-next">
-        <a role="button" ng-class="{ disabled: (($ctrl.$state.currentPage + 1) >= $ctrl.$state.numberOfPages) }" ng-click="!(($ctrl.$state.currentPage + 1) >= $ctrl.$state.numberOfPages) && $ctrl.changePageAndScroll(1)">
-        Next <span class="show-for-sr">page</span>
-        <span class="icon_arrow_right"></span>
-        </a>
-      </li>
-    </ul>
-    <span class="label tertiary">
-    {{ $ctrl.$state.currentPage + 1 }} out of {{ $ctrl.$state.numberOfPages }}
-    </span>
-  </div>
+  <directory-pagination
+    current-page="$ctrl.$state.currentPage"
+    page-size="$ctrl.$state.pageSize"
+    items="$ctrl.$state.users"
+    on-prev="$ctrl.changePageAndScroll(-1)"
+    on-next="$ctrl.changePageAndScroll(1)"
+    on-goto="$ctrl.gotoPageAndScroll($event)">
+  </directory-pagination>
 </div>

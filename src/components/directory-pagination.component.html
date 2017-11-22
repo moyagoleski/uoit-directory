@@ -1,0 +1,27 @@
+<div class="text-center pagination-container">
+  <ul class="pagination" role="navigation" aria-label="Pagination" ng-hide="($ctrl.currentPage + 1) > $ctrl.$state.numberOfPages">
+    <li class="pagination-previous">
+      <a role="button" ng-class="{ disabled: ($ctrl.currentPage === 0) }" ng-click="!($ctrl.currentPage === 0) && $ctrl.onPrev()">
+        <span class="icon_arrow_left"></span>
+        Previous
+        <span class="show-for-sr">page</span>
+      </a>
+    </li>
+    <li ng-repeat="page in $ctrl.$state.pageNumbers">
+      <a aria-label="Page {{ page }}" ng-click="$ctrl.onGoto({ $event: page})" ng-class="{ current: ($ctrl.currentPage + 1) === page }">
+        <span ng-show="($ctrl.currentPage + 1) === page" class="show-for-sr">currently viewing</span>
+        <span class="show-for-sr">page</span>{{ page }}
+      </a>
+    </li>
+    <li class="pagination-next">
+      <a role="button" ng-class="{ disabled: (($ctrl.currentPage + 1) >= $ctrl.$state.numberOfPages) }" ng-click="!(($ctrl.currentPage + 1) >= $ctrl.$state.numberOfPages) && $ctrl.onNext()">
+        Next
+        <span class="show-for-sr">page</span>
+        <span class="icon_arrow_right"></span>
+      </a>
+    </li>
+  </ul>
+  <span class="label tertiary">
+    {{ $ctrl.currentPage + 1 }} out of {{ $ctrl.$state.numberOfPages }}
+  </span>
+</div>

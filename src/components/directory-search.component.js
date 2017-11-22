@@ -61,10 +61,8 @@ export const DirectorySearchComponent = {
 				userError: null,
 
 				// pagination and sorting
-				numberOfPages: 0,
 				currentPage: 0,
 				pageSize: 7,
-				pageNumbers: [1],
 				order: 'lastname',
 
 				// whether results are currently loading
@@ -204,13 +202,11 @@ export const DirectorySearchComponent = {
 			if (this.$state.usersCache) {
 				this.$state.users = this.$filter('filter')(this.$state.usersCache, this.$state.searchQuery) || [];
 				this.$state.loadingResults = false;
-				this.updatePagination();
 			} else {
 				this.DirectoryService.getUsers(this.$state.searchQuery)
 					.then(users => {
 						this.$state.users = this.$filter('filter')(users, this.$state.searchQuery) || [];
 						this.$state.loadingResults = false;
-						this.updatePagination();
 						// Proactively load the whole list in the background as soon
 						// as user makes their first query; early searches will be
 						// handled by the `getSearchResults()` return, which provides a
@@ -226,40 +222,6 @@ export const DirectorySearchComponent = {
 						this.$state.loadingResults = false;
 					})
 			}
-		}
-
-		/**
-		 * Assign a count of available pages for paginating to the state.
-		 */
-		updateNumberOfPages() {
-			this.$state.numberOfPages = this.$state.users && this.$state.users.length
-				? Math.ceil(this.$state.users.length / this.$state.pageSize)
-				: 0;
-		}
-
-		/**
-		 * Update the state's list of page numbers available to paginate through.
-		 */
-		updatePageNumbers() {
-			if (this.$state.numberOfPages > 0) {
-				let numberOfPages = this.$state.numberOfPages;
-				const pageNumArray = [];
-				while (numberOfPages) {
-					pageNumArray.push(numberOfPages);
-					numberOfPages--;
-				}
-				this.$state.pageNumbers = pageNumArray.reverse();
-			} else {
-				this.$state.pageNumbers = [1];
-			}
-		}
-
-		/**
-		 * Calls both pagination-building methods in order (helper).
-		 */
-		updatePagination() {
-			this.updateNumberOfPages();
-			this.updatePageNumbers();
 		}
 
 		/**

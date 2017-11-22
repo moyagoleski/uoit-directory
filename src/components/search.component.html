@@ -88,83 +88,12 @@
     <br/>
     <p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form below.</p>
     <p>Alternatively, you may contact <a href="mailto:directory@uoit.ca" title="Contact directory@uoit.ca">directory@uoit.ca</a> directly if you have further questions or concerns.</p>
-    <!-- SHOW ERROR/SUCCESS MESSAGES -->
-    <div ng-show="$ctrl.$state.formStatus.success || $ctrl.$state.formStatus.error" class="callout" ng-class="{ success: $ctrl.$state.formStatus.success, alert: $ctrl.$state.formStatus.error }" data-closable>
-      {{ $ctrl.$state.formStatus.success || $ctrl.$state.formStatus.error }}
-      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-      <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <!-- FORM -->
-    <form ng-submit="$ctrl.updateForm.$valid && $ctrl.processForm()" name="$ctrl.updateForm">
-
-      <div class="row">
-        <div class="xxsmall-12 medium-12 columns text-right">
-				  <label>
-					  Send me a copy of the update request
-					  <input type="checkbox" name="sendCopy" ng-model="$ctrl.$state.formData.sendCopy" />
-					</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="xxsmall-12 medium-6 columns">
-          <label>Banner ID:<span class="red"> *</span>
-          <input type="text" name="bannerId" ng-model="$ctrl.$state.formData.bannerId" ng-minlength="9" ng-minlength="9" ng-pattern="'[1Ss]{1}00[0-9]{6}'" required />
-          </label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="xxsmall-12 medium-6 columns">
-          <label>First name:<span class="red"> *</span>
-          <input type="text" name="firstname" ng-model="$ctrl.$state.formData.firstname" required />
-          </label>
-        </div>
-        <div class="xxsmall-12 medium-6 columns">
-          <label>Last name:<span class="red"> *</span>
-          <input type="text" name="lastname" ng-model="$ctrl.$state.formData.lastname" required />
-          </label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="xxsmall-12 medium-6 columns">
-          <label>Department:<span class="red"> *</span>
-          <input type="text" name="department" ng-model="$ctrl.$state.formData.department" required />
-          </label>
-        </div>
-        <div class="xxsmall-12 medium-6 columns">
-          <label>Title:<span class="red"> *</span>
-          <input type="text" name="position" ng-model="$ctrl.$state.formData.position" required />
-          </label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="xxsmall-12 medium-6 columns">
-          <label>Building:<span class="red"> *</span>
-          <input type="text" name="building" ng-model="$ctrl.$state.formData.building" required />
-          </label>
-        </div>
-        <div class="xxsmall-12 medium-6 columns">
-          <label>Office:<span class="red"> *</span>
-          <input type="text" name="office" ng-model="$ctrl.$state.formData.office" required />
-          </label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="xxsmall-12 medium-6 columns">
-          <label>Extension:<span class="red"> *</span>
-          <input type="text" name="extension" ng-model="$ctrl.$state.formData.extension" required ng-pattern="'[0-9]+'" />
-          </label>
-        </div>
-        <div class="xxsmall-12 medium-6 columns">
-          <label>Email:<span class="red"> *</span>
-          <input type="email" name="email" ng-model="$ctrl.$state.formData.email" required />
-          </label>
-        </div>
-      </div>
-      <fieldset class="large-6 columns">
-        <button class="button" type="submit" value="Submit" role="button" ng-disabled="$ctrl.updateForm.$invalid">Submit</button>
-      </fieldset>
-    </form>
+    <!-- UPDATE FORM -->
+    <directory-update-form
+      form-data="$ctrl.$state.formData"
+      form-status="$ctrl.$state.formStatus"
+      on-submit="$ctrl.onUpdateFormSubmit($event)">
+    </directory-update-form>
   </div>
 </div>
 <!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->
@@ -256,7 +185,7 @@
       </div>
     </li>
   </ul>
-  <!-- PAGINATION - FUNCTIONAL -->
+  <!-- PAGINATION -->
   <directory-pagination
     current-page="$ctrl.$state.currentPage"
     page-size="$ctrl.$state.pageSize"

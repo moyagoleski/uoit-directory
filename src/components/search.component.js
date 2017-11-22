@@ -227,9 +227,9 @@ export const SearchComponent = {
 		/**
 		 * Send a filled-out update request form to the mailer script.
 		 */
-		processForm() {
+		onUpdateFormSubmit({ formData, form }) {
 			// pass in data as strings
-			const data = this.$httpParamSerializerJQLike(this.$state.formData);
+			const data = this.$httpParamSerializerJQLike(formData);
 			// set the headers so angular passing info as form data (not request payload)
 			const headers = {'Content-Type': 'application/x-www-form-urlencoded'};
 			// send http POST request
@@ -244,7 +244,7 @@ export const SearchComponent = {
 						console.info(response);
 						this.$state.formStatus.error = false;
 						this.$state.formStatus.success = "Your update request was submitted successfully!";
-						this.updateForm.$setUntouched();
+						form.$setUntouched();
 						this.$state.formData = {};
 					} else {
 						console.error(response);

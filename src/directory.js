@@ -3,6 +3,7 @@ import angular from 'angular';
 import { SearchService } from './components/search.service';
 import { SearchComponent } from './components/search.component';
 import { PaginationComponent } from './components/pagination.component';
+import { UpdateFormComponent } from './components/update-form.component';
 import { StartFromFilter } from './components/start-from.filter';
 import { TelLinkFilter } from './components/tel-link.filter';
 import { TemplateRun } from './components/templates.run'
@@ -13,6 +14,7 @@ angular.module('uoitDirectory', [])
 	.service('SearchService', SearchService)
 	.component('directorySearch', SearchComponent)
 	.component('directoryPagination', PaginationComponent)
+	.component('directoryUpdateForm', UpdateFormComponent)
 	.filter('startFrom', StartFromFilter)
 	.filter('telLink', TelLinkFilter)
 	.run(TemplateRun);

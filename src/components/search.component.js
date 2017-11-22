@@ -228,11 +228,8 @@ export const SearchComponent = {
 		 * Send a filled-out update request form to the mailer script.
 		 */
 		onUpdateFormSubmit({ formData, form }) {
-			// pass in data as strings
 			const data = this.$httpParamSerializerJQLike(formData);
-			// set the headers so angular passing info as form data (not request payload)
 			const headers = {'Content-Type': 'application/x-www-form-urlencoded'};
-			// send http POST request
 			this.$http({
 				method: 'POST',
 				url: 'mail.php',

@@ -41,16 +41,9 @@ export const PaginationComponent = {
       }
     }
 
-		/**
-		 * Calls both pagination-building methods in order (helper).
-		 */
-    updatePagination() {
+    $onChanges() {
       this.updateNumberOfPages();
       this.updatePageNumbers();
-    }
-
-    $onChanges() {
-      this.updatePagination();
     }
   }
   // end controller

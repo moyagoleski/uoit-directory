@@ -240,23 +240,28 @@ export const SearchComponent = {
 				data
 			})
 				.then(response => {
-					if (response.data.success) {
+					if (response.data && response.data.success) {
 						console.info(response);
 						this.$state.formStatus.error = false;
 						this.$state.formStatus.success = "Your update request was submitted successfully!";
 						form.$setUntouched();
 						this.$state.formData = {};
 					} else {
-						console.error(response);
-						throw new Error(response.data.message || 'An unknown error has occurred. Please try again!');
+						const error = response.data && response.data.message
+							? response.data.message
+							: 'Please refresh the page and try again!';
+						throw new Error(error);
 					}
 				})
-				.catch(response => {
-					console.error(response);
+				.catch(error => {
+					console.info(error);
+					const errorMessage = error.status
+						? `${error.status} (${error.statusText})`
+						: error.message || error;
 					this.$state.formStatus.success = false;
-					const message = response.data.message || 'Please try again!';
-					this.$state.formStatus.error = `There was an error submitting your update request. ${message}`;
-				});
+					this.$state.formStatus.error = `There was an error submitting your update request. ${errorMessage}`;
+				})
+				.finally(() => this.smoothScrollTo(this.ID.DIRECTORY_TABS_CONTENT));
 		}
 	}
 	// end controller

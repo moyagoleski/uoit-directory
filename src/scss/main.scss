@@ -33,6 +33,17 @@ $error : pink;
 	}
 }
 
+.button-group.sort-controls {
+	align-items: center;
+}
+
+.page-size-controls {
+	font-size: 0.88rem;
+	height: 1.875rem;
+	width: auto;
+	margin-bottom: 0;
+}
+
 /* search list*/
 .search-list {
 	padding: 1rem;

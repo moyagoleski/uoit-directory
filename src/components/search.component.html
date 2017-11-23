@@ -101,31 +101,30 @@
 <div class="callout" id="{{ ::$ctrl.ID.SEARCH_RESULTS }}" ng-class="{ loading: $ctrl.$state.loadingResults }" ng-if="$ctrl.$state.searchQuery.department || $ctrl.$state.searchQuery.lastname || $ctrl.$state.searchQuery.firstname">
   <div class="search-list">
     <div class="row">
-      <div class="xxsmall-12 small-4 medium-5 columns">
+      <div class="xxsmall-12 columns">
         <h3>Directory search results</h3>
       </div>
-      <div class="xxsmall-12 xsmall-8 small-6 medium-5 columns" ng-show="$ctrl.$state.users.length">
+      <div class="xxsmall-12 columns">
+        <p class="lead" ng-hide="!$ctrl.$state.users.length">To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
+        <p class="lead" ng-show="!$ctrl.$state.users.length">Sorry, no directory search results to display.</p>
+      </div>
+      <div class="xxsmall-12 columns flex-container align-middle align-right controls-container" ng-show="$ctrl.$state.users.length">
         <!-- SORT CONTROLS -->
         <directory-sort-controls
           options="$ctrl.$state.sortOptions"
           selected="$ctrl.$state.sortOrder"
           on-changed="$ctrl.sortBy($event)">
         </directory-sort-controls>
-      </div>
-      <div class="xxsmall-12 xsmall-4 small-2 columns" ng-show="$ctrl.$state.users.length">
-        <div class="flex-container align-right align-middle">
-          <label id="results_per_page">No. &nbsp;</label>
-          <select class="page-size-controls" ng-model="$ctrl.$state.pageSize" aria-labelledby="results_per_page">
+        <!-- NUMBER OF RESULTS PER PAGE -->
+        <div class="page-size-controls flex-container align-middle align-right">
+          <label id="results_per_page">Page size: &nbsp;</label>
+          <select ng-model="$ctrl.$state.pageSize" aria-labelledby="results_per_page">
             <option value="10">10</option>
             <option value="15">15</option>
             <option value="25">25</option>
             <option ng-value="$ctrl.$state.users.length">View all</option>
           </select>
         </div>
-      </div>
-      <div class="xxsmall-12 columns">
-        <p class="lead" ng-hide="!$ctrl.$state.users.length">To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
-        <p class="lead" ng-show="!$ctrl.$state.users.length">Sorry, no directory search results to display.</p>
       </div>
     </div>
   </div>

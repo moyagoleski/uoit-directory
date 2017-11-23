@@ -5,6 +5,9 @@ export const SORT_OPTIONS = [{
   id: 'lastname',
   label: 'Last name'
 }, {
+  id: 'position',
+  label: 'Position'
+}, {
   id: 'department',
   label: 'Department'
 }];

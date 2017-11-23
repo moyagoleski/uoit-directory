@@ -1,5 +1,5 @@
-<div class="text-center pagination-container">
-  <ul class="pagination" role="navigation" aria-label="Pagination" ng-hide="($ctrl.currentPage + 1) > $ctrl.$state.numberOfPages">
+<div class="text-center pagination-container" ng-show="$ctrl.numberOfItems">
+  <ul class="pagination" role="navigation" aria-label="Pagination">
     <li class="pagination-previous">
       <a role="button" ng-class="{ disabled: ($ctrl.currentPage === 0) }" ng-click="!($ctrl.currentPage === 0) && $ctrl.onPrev()">
         <span class="icon_arrow_left"></span>

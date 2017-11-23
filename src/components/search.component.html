@@ -58,9 +58,10 @@
           </label>
         </div>
         <div class="xxsmall-12 medium-3 columns" ng-if="$ctrl.$state.searchQuery.department || $ctrl.$state.searchQuery.lastname || $ctrl.$state.searchQuery.firstname">
-          <button class="button results-button" ng-click="$ctrl.smoothScrollTo($ctrl.ID.SEARCH_RESULTS)">
-          <span ng-show="$ctrl.$state.users && $ctrl.$state.users.length">Results below &nbsp;<span class="icon_arrow_down bounce"></span></span>
-          <span ng-hide="$ctrl.$state.users.length">Loading results&hellip;</span>
+          <button class="button results-button" ng-click="$ctrl.smoothScrollTo($ctrl.ID.SEARCH_RESULTS)" ng-disabled="$ctrl.$state.loadingResults || !$ctrl.$state.users.length">
+            <span ng-show="!$ctrl.$state.loadingResults && $ctrl.$state.users.length">Results below &nbsp;<span class="icon_arrow_down bounce"></span></span>
+            <span ng-show="$ctrl.$state.loadingResults">Loading results&hellip;</span>
+            <span ng-show="!$ctrl.$state.loadingResults && !$ctrl.$state.users.length">No results found!</span>
           </button>
         </div>
       </div>
@@ -114,8 +115,8 @@
         </div>
       </div>
       <div class="xxsmall-12 columns">
-        <p class="lead" ng-hide="($ctrl.$state.currentPage + 1) > $ctrl.$state.numberOfPages">To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
-        <p class="lead" ng-show="($ctrl.$state.currentPage + 1)> $ctrl.$state.numberOfPages">Sorry, no directory search results to display.</p>
+        <p class="lead" ng-hide="!$ctrl.$state.users.length">To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
+        <p class="lead" ng-show="!$ctrl.$state.users.length">Sorry, no directory search results to display.</p>
       </div>
     </div>
   </div>
@@ -189,7 +190,7 @@
   <directory-pagination
     current-page="$ctrl.$state.currentPage"
     page-size="$ctrl.$state.pageSize"
-    items="$ctrl.$state.users"
+    number-of-items="$ctrl.$state.users.length"
     on-prev="$ctrl.changePageAndScroll(-1)"
     on-next="$ctrl.changePageAndScroll(1)"
     on-goto="$ctrl.gotoPageAndScroll($event)">

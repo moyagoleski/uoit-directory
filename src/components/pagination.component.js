@@ -1,7 +1,7 @@
 export const PaginationComponent = {
   templateUrl: 'pagination.component.html',
   bindings: {
-    items: '<',
+    numberOfItems: '<',
     currentPage: '<',
     pageSize: '<',
     onNext: '&',
@@ -19,8 +19,8 @@ export const PaginationComponent = {
 		 * Assign a count of available pages for paginating to the state.
 		 */
     updateNumberOfPages() {
-      this.$state.numberOfPages = this.items && this.items.length
-        ? Math.ceil(this.items.length / this.pageSize)
+      this.$state.numberOfPages = this.numberOfItems
+        ? Math.ceil(this.numberOfItems / this.pageSize)
         : 0;
     }
 

@@ -10,6 +10,7 @@ export const SearchComponent = {
 			$element,
 			$httpParamSerializerJQLike,
 			SearchService,
+			SORT_OPTIONS,
 			CONTACTS_LIST
 		) {
 			'ngInject';
@@ -18,6 +19,7 @@ export const SearchComponent = {
 			this.$element = $element;
 			this.$httpParamSerializerJQLike = $httpParamSerializerJQLike;
 			this.SearchService = SearchService;
+			this.SORT_OPTIONS = SORT_OPTIONS;
 			this.CONTACTS_LIST = CONTACTS_LIST;
 		}
 		
@@ -60,10 +62,13 @@ export const SearchComponent = {
 				departmentError: null,
 				userError: null,
 
-				// pagination and sorting
+				// pagination
 				currentPage: 0,
 				pageSize: 7,
-				order: 'lastname',
+
+				//sorting
+				sortOptions: this.SORT_OPTIONS,
+				sortOrder: 'lastname',
 
 				// whether results are currently loading
 				loadingResults: false
@@ -133,10 +138,10 @@ export const SearchComponent = {
 		/**
 		 * Sets the sort order of search results to a given property.
 		 * 
-		 * @param {string} propertyName Name of prop to sort by
+		 * @param {string} sort Name of property to sort by
 		 */
-		sortBy(propertyName) {
-			this.$state.order = propertyName;
+		sortBy(sort) {
+			this.$state.sortOrder = sort;
 		}
 
 		/**

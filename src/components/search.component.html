@@ -105,14 +105,12 @@
         <h3>Directory search results</h3>
       </div>
       <div class="xxsmall-12 small-6 columns" ng-show="$ctrl.$state.users.length">
-        <div class="tiny button-group align-right">
-          <div class="flex-container align-middle">
-            <label id="sort_by">Sort by: &nbsp;</label>
-          </div>
-          <button id="sort_firstname" class="button" ng-click="$ctrl.sortBy('firstname')" ng-class="{hollow: $ctrl.$state.order !== 'firstname'}" aria-labelledby="sort_by sort_firstname">First name</button>
-          <button id="sort_lastname" class="button" ng-click="$ctrl.sortBy('lastname')" ng-class="{hollow: $ctrl.$state.order !== 'lastname'}" aria-labelledby="sort_by sort_lastname">Last name</button>
-          <button id="sort_department" class="button" ng-click="$ctrl.sortBy('department')" ng-class="{hollow: $ctrl.$state.order !== 'department'}" aria-labelledby="sort_by sort_department">Department</button>
-        </div>
+        <!-- SORT CONTROLS -->
+        <directory-sort-controls
+          options="$ctrl.$state.sortOptions"
+          selected="$ctrl.$state.sortOrder"
+          on-changed="$ctrl.sortBy($event)">
+        </directory-sort-controls>
       </div>
       <div class="xxsmall-12 columns">
         <p class="lead" ng-hide="!$ctrl.$state.users.length">To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
@@ -123,7 +121,7 @@
   <!-- FILTER / REPEAT / DISPLAY BASED ON WHAT THE USER TYPES -->
   <ul class="accordion" data-accordion data-allow-all-closed="true">
     <!-- SEARCH DEPARTMENT BY INPUT FIELD -->
-    <li class="accordion-item" ng-class="{ 'accordion-item-open': user.show }" data-accordion-item ng-repeat="user in $ctrl.$state.users | filter: $ctrl.$state.searchQuery | orderBy: $ctrl.$state.order | startFrom: $ctrl.$state.currentPage * $ctrl.$state.pageSize | limitTo: $ctrl.$state.pageSize">
+    <li class="accordion-item" ng-class="{ 'accordion-item-open': user.show }" data-accordion-item ng-repeat="user in $ctrl.$state.users | filter: $ctrl.$state.searchQuery | orderBy: $ctrl.$state.sortOrder | startFrom: $ctrl.$state.currentPage * $ctrl.$state.pageSize | limitTo: $ctrl.$state.pageSize">
       <!-- SEARCH DEPARTMENT BY DROPDOWN -->
       <a class="accordion-title" ng-click="user.show = !user.show; user.show && $ctrl.getUser(user)">
         {{ ::user.firstname }} {{ ::user.lastname }}

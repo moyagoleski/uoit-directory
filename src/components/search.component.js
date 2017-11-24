@@ -192,9 +192,10 @@ export const SearchComponent = {
 		 * @param {Event} event DOM event that call originated from
 		 * @param {object} data Entry data to populate form with
 		 */
-		gotoFormAndPopulate(event, data) {
-			this.gotoTab(event);
-			this.$state.formData = data;
+		gotoFormAndPopulate(result) {
+			console.log(result)
+			this.gotoTab(result.originalEvent);
+			this.$state.formData = result.data;
 			this.smoothScrollTo(this.ID.DIRECTORY_TABS_CONTENT);
 		}
 

@@ -2,6 +2,7 @@ import angular from 'angular';
 
 import { SearchService } from './components/search.service';
 import { SearchComponent } from './components/search.component';
+import { SearchResultComponent } from './components/search-result.component';
 import { PaginationComponent } from './components/pagination.component';
 import { SortControlsComponent } from './components/sort-controls.component';
 import { UpdateFormComponent } from './components/update-form.component';
@@ -16,6 +17,7 @@ angular.module('uoitDirectory', [])
 	.constant('CONTACTS_LIST', CONTACTS_LIST)
 	.service('SearchService', SearchService)
 	.component('directorySearch', SearchComponent)
+	.component('directorySearchResult', SearchResultComponent)
 	.component('directoryPagination', PaginationComponent)
 	.component('directorySortControls', SortControlsComponent)
 	.component('directoryUpdateForm', UpdateFormComponent)

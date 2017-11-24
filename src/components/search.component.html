@@ -1,12 +1,12 @@
 <!-- tabs title start -->
 <ul class="tabs" data-tabs="" data-deep-link="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="600" id="{{ ::$ctrl.ID.DIRECTORY_TABS }}" role="tablist">
-  <li class="tabs-title is-active" role="presentation" id="searchTab" ng-click="$ctrl.removeSearchResult()">
+  <li class="tabs-title is-active" role="presentation" id="searchTab" ng-click="$ctrl.clearSearchQuery()">
     <a href="#tab1-1" role="tab" aria-controls="tab1-1" aria-selected="true" id="tab1-1-label">Directory search</a>
   </li>
-  <li class="tabs-title" role="presentation" id="contactsTab" ng-click="$ctrl.removeSearchResult()">
+  <li class="tabs-title" role="presentation" id="contactsTab" ng-click="$ctrl.clearSearchQuery()">
     <a href="#tab1-2" role="tab" aria-controls="tab1-2" aria-selected="false" id="tab1-2-label">Common contacts</a>
   </li>
-  <li class="tabs-title" role="presentation" id="updateTab" ng-click="$ctrl.removeSearchResult()">
+  <li class="tabs-title" role="presentation" id="updateTab" ng-click="$ctrl.clearSearchQuery()">
     <a href="#tab1-3" role="tab" aria-controls="tab1-3" aria-selected="false" id="tab1-3-label">Update your entry</a>
   </li>
 </ul>
@@ -24,49 +24,17 @@
       </div>
     </div>
     <!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
-    <form>
-      <div class="row">
-        <div class="xxsmall-12 medium-3 columns">
-          <label>First name:
-          <input type="text" ng-model="$ctrl.$state.searchQuery.firstname" ng-change="$ctrl.modifyResultResetDropdown()" ng-model-options="{ debounce: 200 }" />
-          <span class="form-error" style="display:block;" ng-show="$ctrl.$state.userError">
-          {{ $ctrl.$state.userError }}
-          </span>
-          </label>
-        </div>
-        <div class="xxsmall-12 medium-3 columns">
-          <label>Last name:
-          <input type="text" ng-model="$ctrl.$state.searchQuery.lastname" ng-change="$ctrl.modifyResultResetDropdown()" ng-model-options="{ debounce: 200 }" />
-          <span class="form-error" style="display:block;" ng-show="$ctrl.$state.userError">
-          {{ $ctrl.$state.userError }}
-          </span>
-          </label>
-        </div>
-        <div class="xxsmall-12 medium-3 columns">
-          <label for="">
-            Select department:
-            <!-- SEARCH DEPARTMENT BY INPUT FIELD -->
-            <select ng-show="$ctrl.$state.departments" ng-model="$ctrl.$state.searchQuery.department" ng-options="department for department in $ctrl.$state.departments" ng-change="$ctrl.modifyResultClearInput()">
-              <option value="">Select department</option>
-            </select>
-            <select ng-hide="$ctrl.$state.departments" disabled>
-              <option value="">Loading departments&hellip;</option>
-            </select>
-            <span class="form-error" style="display:block;" ng-show="$ctrl.$state.departmentError">
-            {{ $ctrl.$state.departmentError }}
-            </span>
-          </label>
-        </div>
-        <div class="xxsmall-12 medium-3 columns" ng-if="$ctrl.$state.searchQuery.department || $ctrl.$state.searchQuery.lastname || $ctrl.$state.searchQuery.firstname">
-          <button class="button results-button" ng-click="$ctrl.smoothScrollTo($ctrl.ID.SEARCH_RESULTS)" ng-disabled="$ctrl.$state.loadingResults || !$ctrl.$state.users.length">
-            <span ng-show="!$ctrl.$state.loadingResults && $ctrl.$state.users.length">Results below &nbsp;<span class="icon_arrow_down bounce"></span></span>
-            <span ng-show="$ctrl.$state.loadingResults">Loading results&hellip;</span>
-            <span ng-show="!$ctrl.$state.loadingResults && !$ctrl.$state.users.length">No results found!</span>
-          </button>
-        </div>
-      </div>
-    </form>
-    <p class="lead update-directory-msg"><strong>Notice an incorrect entry?</strong> <a href="#tab1-3" title="Submit an entry update request" target="_self" ng-click="$ctrl.gotoFormAndPopulate($event, {})">Let us know</a> the correct information!</p>
+    <directory-search-form
+      search-query="$ctrl.$state.searchQuery"
+      departments="$ctrl.$state.departments"
+      loading-results="$ctrl.$state.loadingResults"
+      has-results="$ctrl.$state.users.length"
+      on-change="$ctrl.getSearchResults($event)"
+      on-submit="$ctrl.smoothScrollTo($ctrl.ID.SEARCH_RESULTS)">
+    </directory-search-form>
+    <p class="lead update-directory-msg">
+      <strong>Notice an incorrect entry?</strong> <a href="#tab1-3" title="Submit an entry update request" target="_self" ng-click="$ctrl.gotoFormAndPopulate($event, {})">Let us know</a> the correct information!
+    </p>
   </div>
   <!-- TAB 1 END  -->
   <!-- TAB 2 STARTS -->

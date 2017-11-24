@@ -39,9 +39,6 @@ export const SearchComponent = {
 				users: null,
 				usersCache: null,
 
-				// user's current search query 
-				searchQuery: {},
-
 				// data and status of contact update form
 				formData: {
 					sendCopy: null,
@@ -59,8 +56,6 @@ export const SearchComponent = {
 					success: null,
 					error: null
 				},
-				departmentError: null,
-				userError: null,
 
 				// pagination
 				currentPage: 0,
@@ -108,31 +103,8 @@ export const SearchComponent = {
 		/**
 		 * Clears the search query fields.
 		 */
-		removeSearchResult() {
+		clearSearchQuery() {
 			this.$state.searchQuery = {};
-		}
-
-		/**
-		 * Sets the current page back to the first and clears the
-		 * department query before getting new results, i.e. after
-		 * the user types a new query.
-		 */
-		modifyResultResetDropdown() {
-			this.$state.currentPage = 0;
-			this.$state.searchQuery.department = '';
-			this.getSearchResults();
-		}
-
-		/**
-		 * Sets the current page back to the first and clears the
-		 * name query before getting new results, i.e. after
-		 * the user selects a new department.
-		 */
-		modifyResultClearInput() {
-			this.$state.currentPage = 0;
-			this.$state.searchQuery.firstname = '';
-			this.$state.searchQuery.lastname = '';
-			this.getSearchResults();
 		}
 
 		/**
@@ -193,7 +165,6 @@ export const SearchComponent = {
 		 * @param {object} data Entry data to populate form with
 		 */
 		gotoFormAndPopulate(result) {
-			console.log(result)
 			this.gotoTab(result.originalEvent);
 			this.$state.formData = result.data;
 			this.smoothScrollTo(this.ID.DIRECTORY_TABS_CONTENT);
@@ -203,8 +174,14 @@ export const SearchComponent = {
 		 * Performs a search against the directory. Keeps an internal cache
 		 * of results, and uses client filtering if results already cached.
 		 */
-		getSearchResults() {
+		getSearchResults(searchQuery) {
+			this.$state.currentPage = 0;
 			this.$state.loadingResults = true;
+			this.$state.searchQuery = Object.keys(searchQuery)
+				.reduce((final, key) => {
+					if (searchQuery[key]) final[key] = searchQuery[key];
+					return final;
+				}, {});
 			if (this.$state.usersCache) {
 				this.$state.users = this.$filter('filter')(this.$state.usersCache, this.$state.searchQuery) || [];
 				this.$state.loadingResults = false;

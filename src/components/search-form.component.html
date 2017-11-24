@@ -26,7 +26,7 @@
           ng-model="$ctrl.searchQuery.department"
           ng-options="department for department in $ctrl.departments"
           ng-change="$ctrl.onChange({ $event: $ctrl.searchQuery })">
-          <option value="">Select department</option>
+          <option value="">-- select department --</option>
         </select>
         <select ng-hide="$ctrl.departments" disabled>
           <option value="">Loading departments&hellip;</option>

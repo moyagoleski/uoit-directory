@@ -14,7 +14,10 @@ gulp.task('template', function() {
 			templateHeader: `export const TemplateRun = ['$templateCache', function($templateCache) {`,
 			templateFooter: '}];'
 		}))
-		.pipe(gulp.dest('src/components'));
+		.pipe(gulp.dest('src/components'))
+		.pipe($.notify({
+			message: 'Task "template" complete'
+		}));
 });
 
 gulp.task('js', ['template'], function() {
@@ -42,7 +45,7 @@ function rebundle(bundler) {
 		.pipe($.sourcemaps.write('./'))
 		.pipe(gulp.dest('dist'))
 		.pipe($.notify({
-			message: 'Scripts task complete'
+			message: 'Task "js" complete'
 		}));
 }
 function bundle(watch) {
@@ -53,7 +56,7 @@ function bundle(watch) {
 	}));
 	if (watch) {
 		bundler.on('update', function() {
-			console.log('-> bundling...');
+			gutil.log(`${gutil.colors.cyan('browserify')}:`, 'Rebundling...');
 			return rebundle(bundler);
 		});
 	}
@@ -79,7 +82,7 @@ gulp.task('scss', function() {
 		.pipe(gulp.dest('dist'))
 		.pipe($.sourcemaps.write())
 		.pipe($.notify({
-			message: 'Styles task complete'
+			message: 'Task "scss" complete'
 		}));
 });
 
@@ -87,13 +90,13 @@ gulp.task('html', function() {
 	return gulp.src('src/{index.html,mail.php}')
 		.pipe(gulp.dest('example'))
 		.pipe($.notify({
-			message: 'html task complete'
+			message: 'Task "html" complete'
 		}));
 });
 
 gulp.task('watch', function() {
 	gulp.watch('src/**/*.{php,html}', ['html']);
-	gulp.watch('src/components/**/*.html', ['template', 'js']);
+	gulp.watch('src/components/**/*.html', ['js']);
 	gulp.watch('src/scss/**/*.scss', ['scss']);
 	return bundle(true);
 });
@@ -109,5 +112,5 @@ gulp.task('run', ['clean'], function() {
 gulp.task('build', ['clean', 'html', 'scss', 'js']);
 
 gulp.task('default', ['run'], function() {
-	return gutil.log('Gulp is running!');
+	return gutil.log(`${gutil.colors.cyan('gulp')}:`, 'Watching for changes!');
 });

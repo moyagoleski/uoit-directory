@@ -119,9 +119,10 @@
         <div class="page-size-controls flex-container align-middle align-right">
           <label id="results_per_page">Page size: &nbsp;</label>
           <select ng-model="$ctrl.$state.pageSize" aria-labelledby="results_per_page">
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="25">25</option>
+            <option ng-value="10">10</option>
+            <option ng-value="15">15</option>
+            <option ng-value="25">25</option>
+            <option ng-value="25">50</option>
             <option ng-value="$ctrl.$state.users.length">View all</option>
           </select>
         </div>

@@ -64,7 +64,7 @@ export const SearchComponent = {
 
 				// pagination
 				currentPage: 0,
-				pageSize: 7,
+				pageSize: 10,
 
 				//sorting
 				sortOptions: this.SORT_OPTIONS,

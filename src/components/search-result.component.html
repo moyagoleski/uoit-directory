@@ -47,10 +47,10 @@
   </p>
   <div ng-if="$ctrl.result.expert">
     <hr/>
-    <small ng-hide="$ctrl.result.expert.resultname">
+    <small ng-hide="$ctrl.result.expert.username">
       <em class="subheader">Checking for Expert profile...</em>
     </small>
-    <div class="expert-profile media-object" ng-show="$ctrl.result.expert.resultname">
+    <div class="expert-profile media-object" ng-show="$ctrl.result.expert.username">
       <div class="media-object-section">
         <div class="thumbnail">
           <img ng-src="{{ $ctrl.result.expert.url }}" alt="Photo of {{ $ctrl.result.expert.firstname }} {{ $ctrl.result.expert.lastname }}">

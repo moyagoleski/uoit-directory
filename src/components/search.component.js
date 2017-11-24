@@ -95,7 +95,7 @@ export const SearchComponent = {
 		 * 
 		 * @param {object} person Full directory entry object
 		 */
-		getUser(person) {
+		getExpert(person) {
 			person.expert = {};
 			this.SearchService.getExpert(person)
 				.then(expert => person.expert = expert || false)

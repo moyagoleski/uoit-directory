@@ -3,7 +3,7 @@
     <label id="sort_by">Sort: &nbsp;</label>
   </div>
   <button
-    ng-repeat="option in $ctrl.options"
+    ng-repeat="option in ::$ctrl.options"
     id="sort_{{ ::option.id }}"
     class="button"
     ng-click="$ctrl.onChanged({ $event: option.id })"

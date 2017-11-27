@@ -8,9 +8,9 @@
       </a>
     </li>
     <li ng-repeat="page in $ctrl.$state.pageNumbers">
-      <a aria-label="Page {{ page }}" ng-click="$ctrl.onGoto({ $event: page})" ng-class="{ current: ($ctrl.currentPage + 1) === page }">
+      <a aria-label="Page {{ ::page }}" ng-click="$ctrl.onGoto({ $event: page})" ng-class="{ current: ($ctrl.currentPage + 1) === page }">
         <span ng-show="($ctrl.currentPage + 1) === page" class="show-for-sr">currently viewing</span>
-        <span class="show-for-sr">page</span>{{ page }}
+        <span class="show-for-sr">page</span>{{ ::page }}
       </a>
     </li>
     <li class="pagination-next">

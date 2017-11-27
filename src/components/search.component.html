@@ -39,7 +39,7 @@
   <!-- TAB 1 END  -->
   <!-- TAB 2 STARTS -->
   <div class="tabs-panel" id="tab_common-contacts" role="tabpanel" aria-hidden="true" aria-labelledby="tab_label_common-contacts">
-    <div ng-repeat="group in $ctrl.$state.contacts">
+    <div ng-repeat="group in ::$ctrl.$state.contacts">
       <h3>{{ ::group.category }}</h3>
       <div class="row">
         <span ng-repeat="contact in group.items" class="xxsmall-6 large-6 medium-6 columns contact-card{{ ::(contact.class ? ' contact-faculty ' + contact.class : '') }}">

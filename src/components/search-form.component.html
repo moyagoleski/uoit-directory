@@ -22,9 +22,9 @@
       <label>
         Select department:
         <select
-          ng-show="$ctrl.departments"
+          ng-if="$ctrl.departments"
           ng-model="$ctrl.searchQuery.department"
-          ng-options="department for department in $ctrl.departments"
+          ng-options="department for department in ::$ctrl.departments"
           ng-change="$ctrl.onChange({ $event: $ctrl.searchQuery })">
           <option value="">-- select department --</option>
         </select>

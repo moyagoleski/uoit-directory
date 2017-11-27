@@ -1,6 +1,6 @@
 {
   "name": "uoit-directory",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Application code for UOIT's online faculty and staff directory search",
   "main": "dist/uoit-directory.min.js",
   "scripts": {

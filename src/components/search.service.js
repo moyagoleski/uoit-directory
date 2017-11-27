@@ -1,4 +1,4 @@
-export const DirectoryService = function DirectoryService($http, $httpParamSerializer, $q) {
+export const SearchService = function SearchService($http, $httpParamSerializer, $q) {
 	'ngInject';
 
 	// const API_URL = 'http://localhost:8080'; // dev

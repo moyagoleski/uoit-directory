@@ -1,6 +1,6 @@
-export const DirectorySearchComponent = {
-  templateUrl: 'directory-search.component.html',
-	controller: class DirectorySearch {
+export const SearchComponent = {
+  templateUrl: 'search.component.html',
+	controller: class Search {
 		/**
 		 * Inject and bind dependencies.
 		 */
@@ -9,16 +9,18 @@ export const DirectorySearchComponent = {
 			$http,
 			$element,
 			$httpParamSerializerJQLike,
-			DirectoryService,
-			DIRECTORY_CONTACTS
+			SearchService,
+			SORT_OPTIONS,
+			CONTACTS_LIST
 		) {
 			'ngInject';
 			this.$filter = $filter;
 			this.$http = $http;
 			this.$element = $element;
 			this.$httpParamSerializerJQLike = $httpParamSerializerJQLike;
-			this.DirectoryService = DirectoryService;
-			this.DIRECTORY_CONTACTS = DIRECTORY_CONTACTS;
+			this.SearchService = SearchService;
+			this.SORT_OPTIONS = SORT_OPTIONS;
+			this.CONTACTS_LIST = CONTACTS_LIST;
 		}
 		
 		/**
@@ -30,15 +32,12 @@ export const DirectorySearchComponent = {
 			 */
 			this.$state = {
 				// common contacts tab data
-				contacts: this.DIRECTORY_CONTACTS,
+				contacts: this.CONTACTS_LIST,
 
 				// directory API data
 				departments: null,
 				users: null,
 				usersCache: null,
-
-				// user's current search query 
-				searchQuery: {},
 
 				// data and status of contact update form
 				formData: {
@@ -57,15 +56,14 @@ export const DirectorySearchComponent = {
 					success: null,
 					error: null
 				},
-				departmentError: null,
-				userError: null,
 
-				// pagination and sorting
-				numberOfPages: 0,
+				// pagination
 				currentPage: 0,
-				pageSize: 7,
-				pageNumbers: [1],
-				order: 'lastname',
+				pageSize: 10,
+
+				//sorting
+				sortOptions: this.SORT_OPTIONS,
+				sortOrder: 'lastname',
 
 				// whether results are currently loading
 				loadingResults: false
@@ -81,7 +79,7 @@ export const DirectorySearchComponent = {
 			};
 
 			// Load all departments on app initialization
-			this.DirectoryService.getDepts()
+			this.SearchService.getDepts()
 				.then(depts => this.$state.departments = depts)
 				.catch(err => this.$state.departmentError = err);
 		}
@@ -92,9 +90,9 @@ export const DirectorySearchComponent = {
 		 * 
 		 * @param {object} person Full directory entry object
 		 */
-		getUser(person) {
+		getExpert(person) {
 			person.expert = {};
-			this.DirectoryService.getExpert(person)
+			this.SearchService.getExpert(person)
 				.then(expert => person.expert = expert || false)
 				.catch(err => {
 					console.error(err);
@@ -105,40 +103,17 @@ export const DirectorySearchComponent = {
 		/**
 		 * Clears the search query fields.
 		 */
-		removeSearchResult() {
+		clearSearchQuery() {
 			this.$state.searchQuery = {};
-		}
-
-		/**
-		 * Sets the current page back to the first and clears the
-		 * department query before getting new results, i.e. after
-		 * the user types a new query.
-		 */
-		modifyResultResetDropdown() {
-			this.$state.currentPage = 0;
-			this.$state.searchQuery.department = '';
-			this.getSearchResults();
-		}
-
-		/**
-		 * Sets the current page back to the first and clears the
-		 * name query before getting new results, i.e. after
-		 * the user selects a new department.
-		 */
-		modifyResultClearInput() {
-			this.$state.currentPage = 0;
-			this.$state.searchQuery.firstname = '';
-			this.$state.searchQuery.lastname = '';
-			this.getSearchResults();
 		}
 
 		/**
 		 * Sets the sort order of search results to a given property.
 		 * 
-		 * @param {string} propertyName Name of prop to sort by
+		 * @param {string} sort Name of property to sort by
 		 */
-		sortBy(propertyName) {
-			this.$state.order = propertyName;
+		sortBy(sort) {
+			this.$state.sortOrder = sort;
 		}
 
 		/**
@@ -158,7 +133,7 @@ export const DirectorySearchComponent = {
 		 */
 		changePageAndScroll(plusOrMinus) {
 			this.$state.currentPage = this.$state.currentPage + plusOrMinus;
-			this.smoothScroll(this.ID.SEARCH_RESULTS)
+			this.smoothScrollTo(this.ID.SEARCH_RESULTS)
 		}
 
 		/**
@@ -168,7 +143,7 @@ export const DirectorySearchComponent = {
 		 */
 		gotoPageAndScroll(page) {
 			this.$state.currentPage = page - 1;
-			this.smoothScroll(this.ID.SEARCH_RESULTS)
+			this.smoothScrollTo(this.ID.SEARCH_RESULTS)
 		}
 
 		/**
@@ -189,9 +164,9 @@ export const DirectorySearchComponent = {
 		 * @param {Event} event DOM event that call originated from
 		 * @param {object} data Entry data to populate form with
 		 */
-		gotoFormAndPopulate(event, data) {
-			this.gotoTab(event);
-			this.$state.formData = data;
+		gotoFormAndPopulate(result) {
+			this.gotoTab(result.originalEvent);
+			this.$state.formData = result.data;
 			this.smoothScrollTo(this.ID.DIRECTORY_TABS_CONTENT);
 		}
 
@@ -199,24 +174,28 @@ export const DirectorySearchComponent = {
 		 * Performs a search against the directory. Keeps an internal cache
 		 * of results, and uses client filtering if results already cached.
 		 */
-		getSearchResults() {
+		getSearchResults(searchQuery) {
+			this.$state.currentPage = 0;
 			this.$state.loadingResults = true;
+			this.$state.searchQuery = Object.keys(searchQuery)
+				.reduce((final, key) => {
+					if (searchQuery[key]) final[key] = searchQuery[key];
+					return final;
+				}, {});
 			if (this.$state.usersCache) {
 				this.$state.users = this.$filter('filter')(this.$state.usersCache, this.$state.searchQuery) || [];
 				this.$state.loadingResults = false;
-				this.updatePagination();
 			} else {
-				this.DirectoryService.getUsers(this.$state.searchQuery)
+				this.SearchService.getUsers(this.$state.searchQuery)
 					.then(users => {
 						this.$state.users = this.$filter('filter')(users, this.$state.searchQuery) || [];
 						this.$state.loadingResults = false;
-						this.updatePagination();
 						// Proactively load the whole list in the background as soon
 						// as user makes their first query; early searches will be
 						// handled by the `getSearchResults()` return, which provides a
 						// quicker (albeit uncacheable) response and then immediately
 						// kicks off a new request for the cache.
-						return this.DirectoryService.getUsers()
+						return this.SearchService.getUsers()
 					})
 					.then(users => {
 						this.$state.usersCache = users;
@@ -229,48 +208,11 @@ export const DirectorySearchComponent = {
 		}
 
 		/**
-		 * Assign a count of available pages for paginating to the state.
-		 */
-		updateNumberOfPages() {
-			this.$state.numberOfPages = this.$state.users && this.$state.users.length
-				? Math.ceil(this.$state.users.length / this.$state.pageSize)
-				: 0;
-		}
-
-		/**
-		 * Update the state's list of page numbers available to paginate through.
-		 */
-		updatePageNumbers() {
-			if (this.$state.numberOfPages > 0) {
-				let numberOfPages = this.$state.numberOfPages;
-				const pageNumArray = [];
-				while (numberOfPages) {
-					pageNumArray.push(numberOfPages);
-					numberOfPages--;
-				}
-				this.$state.pageNumbers = pageNumArray.reverse();
-			} else {
-				this.$state.pageNumbers = [1];
-			}
-		}
-
-		/**
-		 * Calls both pagination-building methods in order (helper).
-		 */
-		updatePagination() {
-			this.updateNumberOfPages();
-			this.updatePageNumbers();
-		}
-
-		/**
 		 * Send a filled-out update request form to the mailer script.
 		 */
-		processForm() {
-			// pass in data as strings
-			const data = this.$httpParamSerializerJQLike(this.$state.formData);
-			// set the headers so angular passing info as form data (not request payload)
+		onUpdateFormSubmit({ formData, form }) {
+			const data = this.$httpParamSerializerJQLike(formData);
 			const headers = {'Content-Type': 'application/x-www-form-urlencoded'};
-			// send http POST request
 			this.$http({
 				method: 'POST',
 				url: 'mail.php',
@@ -278,23 +220,28 @@ export const DirectorySearchComponent = {
 				data
 			})
 				.then(response => {
-					if (response.data.success) {
+					if (response.data && response.data.success) {
 						console.info(response);
 						this.$state.formStatus.error = false;
 						this.$state.formStatus.success = "Your update request was submitted successfully!";
-						this.updateForm.$setUntouched();
+						form.$setUntouched();
 						this.$state.formData = {};
 					} else {
-						console.error(response);
-						throw new Error(response.data.message || 'An unknown error has occurred. Please try again!');
+						const error = response.data && response.data.message
+							? response.data.message
+							: 'Please refresh the page and try again!';
+						throw new Error(error);
 					}
 				})
-				.catch(response => {
-					console.error(response);
+				.catch(error => {
+					console.info(error);
+					const errorMessage = error.status
+						? `${error.status} (${error.statusText})`
+						: error.message || error;
 					this.$state.formStatus.success = false;
-					const message = response.data.message || 'Please try again!';
-					this.$state.formStatus.error = `There was an error submitting your update request. ${message}`;
-				});
+					this.$state.formStatus.error = `There was an error submitting your update request. ${errorMessage}`;
+				})
+				.finally(() => this.smoothScrollTo(this.ID.DIRECTORY_TABS_CONTENT));
 		}
 	}
 	// end controller

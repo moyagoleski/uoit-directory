@@ -1,0 +1,49 @@
+<form>
+  <div class="row">
+    <div class="xxsmall-12 medium-3 columns">
+      <label>First name:
+        <input type="text" ng-model="$ctrl.searchQuery.firstname" ng-change="$ctrl.onChange({ $event: $ctrl.searchQuery })" ng-model-options="{ debounce: 200 }"
+        />
+        <span class="form-error" style="display:block;" ng-show="$ctrl.$state.userError">
+          {{ $ctrl.$state.userError }}
+        </span>
+      </label>
+    </div>
+    <div class="xxsmall-12 medium-3 columns">
+      <label>Last name:
+        <input type="text" ng-model="$ctrl.searchQuery.lastname" ng-change="$ctrl.onChange({ $event: $ctrl.searchQuery })" ng-model-options="{ debounce: 200 }"
+        />
+        <span class="form-error" style="display:block;" ng-show="$ctrl.$state.userError">
+          {{ $ctrl.$state.userError }}
+        </span>
+      </label>
+    </div>
+    <div class="xxsmall-12 medium-3 columns">
+      <label>
+        Select department:
+        <select
+          ng-if="$ctrl.departments"
+          ng-model="$ctrl.searchQuery.department"
+          ng-options="department for department in ::$ctrl.departments"
+          ng-change="$ctrl.onChange({ $event: $ctrl.searchQuery })">
+          <option value="">-- select department --</option>
+        </select>
+        <select ng-hide="$ctrl.departments" disabled>
+          <option value="">Loading departments&hellip;</option>
+        </select>
+        <span class="form-error" style="display:block;" ng-show="$ctrl.$state.departmentError">
+          {{ $ctrl.$state.departmentError }}
+        </span>
+      </label>
+    </div>
+    <div class="xxsmall-12 medium-3 columns" ng-if="$ctrl.searchQuery.department || $ctrl.searchQuery.lastname || $ctrl.searchQuery.firstname">
+      <button class="button results-button" ng-click="$ctrl.onSubmit({ $event: $ctrl.searchQuery })" ng-disabled="$ctrl.loadingResults || !$ctrl.hasResults">
+        <span ng-show="!$ctrl.loadingResults && $ctrl.hasResults">Results below &nbsp;
+          <span class="icon_arrow_down bounce"></span>
+        </span>
+        <span ng-show="$ctrl.loadingResults">Loading results&hellip;</span>
+        <span ng-show="!$ctrl.loadingResults && !$ctrl.hasResults">No results found!</span>
+      </button>
+    </div>
+  </div>
+</form>

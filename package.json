@@ -36,6 +36,7 @@
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.8",
     "jshint": "^2.9.4",
+    "node-sass": "^4.10.0",
     "sass-lint": "^1.10.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",

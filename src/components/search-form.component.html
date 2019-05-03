@@ -21,9 +21,7 @@
     <div class="xxsmall-12 medium-3 columns">
       <label>
         Select department:
-        <select
-          ng-if="$ctrl.departments"
-          ng-model="$ctrl.searchQuery.department"
+        <select ng-if="$ctrl.departments" ng-model="$ctrl.searchQuery.department"
           ng-options="department for department in ::$ctrl.departments"
           ng-change="$ctrl.onChange({ $event: $ctrl.searchQuery })">
           <option value="">-- select department --</option>
@@ -36,8 +34,10 @@
         </span>
       </label>
     </div>
-    <div class="xxsmall-12 medium-3 columns" ng-if="$ctrl.searchQuery.department || $ctrl.searchQuery.lastname || $ctrl.searchQuery.firstname">
-      <button class="button results-button" ng-click="$ctrl.onSubmit({ $event: $ctrl.searchQuery })" ng-disabled="$ctrl.loadingResults || !$ctrl.hasResults">
+    <div class="xxsmall-12 medium-3 columns"
+      ng-if="$ctrl.searchQuery.department || $ctrl.searchQuery.lastname || $ctrl.searchQuery.firstname">
+      <button class="button results-button" ng-click="$ctrl.onSubmit({ $event: $ctrl.searchQuery })"
+        ng-disabled="$ctrl.loadingResults || !$ctrl.hasResults">
         <span ng-show="!$ctrl.loadingResults && $ctrl.hasResults">Results below &nbsp;
           <span class="icon_arrow_down bounce"></span>
         </span>

@@ -1,15 +1,13 @@
 <!-- SHOW ERROR/SUCCESS MESSAGES -->
-<div ng-show="$ctrl.formStatus.success || $ctrl.formStatus.error" class="callout" ng-class="{ success: $ctrl.formStatus.success, alert: $ctrl.formStatus.error }"
-  data-closable>
+<div ng-show="$ctrl.formStatus.success || $ctrl.formStatus.error" class="callout"
+  ng-class="{ success: $ctrl.formStatus.success, alert: $ctrl.formStatus.error }" data-closable>
   {{ $ctrl.formStatus.success || $ctrl.formStatus.error }}
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <!-- FORM -->
-<form
-  name="$ctrl.form"
-  ng-submit="$ctrl.form.$valid && $ctrl.onSubmit({
+<form name="$ctrl.form" ng-submit="$ctrl.form.$valid && $ctrl.onSubmit({
     $event: {
       formData: $ctrl.formData,
       form: $ctrl.form
@@ -27,8 +25,8 @@
     <div class="xxsmall-12 medium-6 columns">
       <label>Banner ID:
         <span class="red"> *</span>
-        <input type="text" name="bannerId" ng-model="$ctrl.formData.bannerId" ng-minlength="9" ng-minlength="9" ng-pattern="'[1Ss]{1}00[0-9]{6}'"
-          required />
+        <input type="text" name="bannerId" ng-model="$ctrl.formData.bannerId" ng-minlength="9" ng-minlength="9"
+          ng-pattern="'[1Ss]{1}00[0-9]{6}'" required />
       </label>
     </div>
   </div>

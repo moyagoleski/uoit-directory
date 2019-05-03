@@ -1,26 +1,33 @@
 <!-- tabs title start -->
-<ul class="tabs" data-tabs="" data-deep-link="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="600" id="{{ ::$ctrl.ID.DIRECTORY_TABS }}" role="tablist">
+<ul class="tabs" data-tabs="" data-deep-link="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="600"
+  id="{{ ::$ctrl.ID.DIRECTORY_TABS }}" role="tablist">
   <li class="tabs-title is-active" role="presentation" id="searchTab" ng-click="$ctrl.clearSearchQuery()">
-    <a href="#tab_directory-search" role="tab" aria-controls="tab_directory-search" aria-selected="true" id="tab_label_directory-search">Directory search</a>
+    <a href="#tab_directory-search" role="tab" aria-controls="tab_directory-search" aria-selected="true"
+      id="tab_label_directory-search">Directory search</a>
   </li>
   <li class="tabs-title" role="presentation" id="contactsTab" ng-click="$ctrl.clearSearchQuery()">
-    <a href="#tab_common-contacts" role="tab" aria-controls="tab_common-contacts" aria-selected="false" id="tab_label_common-contacts">Common contacts</a>
+    <a href="#tab_common-contacts" role="tab" aria-controls="tab_common-contacts" aria-selected="false"
+      id="tab_label_common-contacts">Common contacts</a>
   </li>
   <li class="tabs-title" role="presentation" id="updateTab" ng-click="$ctrl.clearSearchQuery()">
-    <a href="#tab_update-entry" role="tab" aria-controls="tab_update-entry" aria-selected="false" id="tab_label_update-entry">Update your entry</a>
+    <a href="#tab_update-entry" role="tab" aria-controls="tab_update-entry" aria-selected="false"
+      id="tab_label_update-entry">Update your entry</a>
   </li>
 </ul>
 <!-- tabs title end -->
 <!-- tabs content start -->
-<div class="tabs-content" data-tabs-content="{{ ::$ctrl.ID.DIRECTORY_TABS }}" id="{{ ::$ctrl.ID.DIRECTORY_TABS_CONTENT }}">
+<div class="tabs-content" data-tabs-content="{{ ::$ctrl.ID.DIRECTORY_TABS }}"
+  id="{{ ::$ctrl.ID.DIRECTORY_TABS_CONTENT }}">
   <!-- TAB 1 STARTS  -->
-  <div class="tabs-panel is-active" id="tab_directory-search" role="tabpanel" aria-hidden="false" aria-labelledby="tab_label_directory-search">
+  <div class="tabs-panel is-active" id="tab_directory-search" role="tabpanel" aria-hidden="false"
+    aria-labelledby="tab_label_directory-search">
     <div class="row">
       <div class="xxsmall-12 columns">
         <!-- TAB TITLE  -->
         <h2>Search</h2>
-        <br/>
-        <p>Enter a first name, a last name, or a department to find a Faculty or Staff member. Partial names can also be used.</p>
+        <br />
+        <p>Enter a first name, a last name, or a department to find a Faculty or Staff member. Partial names can also be
+          used.</p>
       </div>
     </div>
     <!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
@@ -33,54 +40,60 @@
       on-submit="$ctrl.smoothScrollTo($ctrl.ID.SEARCH_RESULTS)">
     </directory-search-form>
     <p class="lead update-directory-msg">
-      <strong>Notice an incorrect entry?</strong> <a href="#tab_update-entry" title="Submit an entry update request" target="_self" ng-click="$ctrl.gotoFormAndPopulate($event, {})">Let us know</a> the correct information!
+      <strong>Notice an incorrect entry?</strong> <a href="#tab_update-entry" title="Submit an entry update request"
+        target="_self" ng-click="$ctrl.gotoFormAndPopulate($event, {})">Let us know</a> the correct information!
     </p>
   </div>
   <!-- TAB 1 END  -->
   <!-- TAB 2 STARTS -->
-  <div class="tabs-panel" id="tab_common-contacts" role="tabpanel" aria-hidden="true" aria-labelledby="tab_label_common-contacts">
+  <div class="tabs-panel" id="tab_common-contacts" role="tabpanel" aria-hidden="true"
+    aria-labelledby="tab_label_common-contacts">
     <div ng-repeat="group in ::$ctrl.$state.contacts">
       <h3>{{ ::group.category }}</h3>
       <div class="row">
-        <span ng-repeat="contact in group.items" class="xxsmall-6 large-6 medium-6 columns contact-card{{ ::(contact.class ? ' contact-faculty ' + contact.class : '') }}">
+        <span ng-repeat="contact in group.items"
+          class="xxsmall-6 large-6 medium-6 columns contact-card{{ ::(contact.class ? ' contact-faculty ' + contact.class : '') }}">
           <p class="contact-name"><strong>{{ ::contact.name }}</strong></p>
-          <p class="contact-phone"><a href="tel:{{ ::contact.phone | telLink }}" title="Place call to {{ ::contact.phone }}">{{ ::contact.phone }}</a></p>
+          <p class="contact-phone"><a href="tel:{{ ::contact.phone | telLink }}"
+              title="Place call to {{ ::contact.phone }}">{{ ::contact.phone }}</a></p>
         </span>
       </div>
     </div>
   </div>
   <!-- TAB 2 END  -->
   <!-- TAB 3 STARTS  -->
-  <div class="tabs-panel" id="tab_update-entry" role="tabpanel" aria-hidden="true" aria-labelledby="tab_label_update-entry">
+  <div class="tabs-panel" id="tab_update-entry" role="tabpanel" aria-hidden="true"
+    aria-labelledby="tab_label_update-entry">
     <!-- TAB TITLE  -->
     <h2>Update Information</h2>
-    <br/>
-    <p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form below.</p>
-    <p>Alternatively, you may contact <a href="mailto:directory@uoit.ca" title="Contact directory@uoit.ca">directory@uoit.ca</a> directly if you have further questions or concerns.</p>
+    <br />
+    <p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form
+      below.</p>
+    <p>Alternatively, you may contact <a href="mailto:directory@uoit.ca"
+        title="Contact directory@uoit.ca">directory@uoit.ca</a> directly if you have further questions or concerns.</p>
     <!-- UPDATE FORM -->
-    <directory-update-form
-      form-data="$ctrl.$state.formData"
-      form-status="$ctrl.$state.formStatus"
+    <directory-update-form form-data="$ctrl.$state.formData" form-status="$ctrl.$state.formStatus"
       on-submit="$ctrl.onUpdateFormSubmit($event)">
     </directory-update-form>
   </div>
 </div>
 <!-- DISPLAY ANGULAR SEARCH RESULT IN CALLOUT/SERPERATE TAB  -->
-<div class="callout" id="{{ ::$ctrl.ID.SEARCH_RESULTS }}" ng-class="{ loading: $ctrl.$state.loadingResults }" ng-if="$ctrl.$state.searchQuery.department || $ctrl.$state.searchQuery.lastname || $ctrl.$state.searchQuery.firstname">
+<div class="callout" id="{{ ::$ctrl.ID.SEARCH_RESULTS }}" ng-class="{ loading: $ctrl.$state.loadingResults }"
+  ng-if="$ctrl.$state.searchQuery.department || $ctrl.$state.searchQuery.lastname || $ctrl.$state.searchQuery.firstname">
   <div class="search-list">
     <div class="row">
       <div class="xxsmall-12 columns">
         <h3>Directory search results</h3>
       </div>
       <div class="xxsmall-12 columns">
-        <p class="lead" ng-hide="!$ctrl.$state.users.length">To reach a Faculty or Staff member dial the main switchboard at 905.721.8668 and ask for the extension listed.</p>
+        <p class="lead" ng-hide="!$ctrl.$state.users.length">To reach a Faculty or Staff member dial the main
+          switchboard at 905.721.8668 and ask for the extension listed.</p>
         <p class="lead" ng-show="!$ctrl.$state.users.length">Sorry, no directory search results to display.</p>
       </div>
-      <div class="xxsmall-12 columns flex-container align-middle align-right controls-container" ng-show="$ctrl.$state.users.length">
+      <div class="xxsmall-12 columns flex-container align-middle align-right controls-container"
+        ng-show="$ctrl.$state.users.length">
         <!-- SORT CONTROLS -->
-        <directory-sort-controls
-          options="$ctrl.$state.sortOptions"
-          selected="$ctrl.$state.sortOrder"
+        <directory-sort-controls options="$ctrl.$state.sortOptions" selected="$ctrl.$state.sortOrder"
           on-changed="$ctrl.sortBy($event)">
         </directory-sort-controls>
         <!-- NUMBER OF RESULTS PER PAGE -->
@@ -100,22 +113,17 @@
   <!-- SEARCH RESULTS LIST -->
   <ul class="accordion" data-accordion data-allow-all-closed="true">
     <!-- SEARCH RESULTS -->
-    <li class="accordion-item" ng-class="{ 'accordion-item-open': user.show }" data-accordion-item ng-repeat="user in $ctrl.$state.users | filter: $ctrl.$state.searchQuery | orderBy: $ctrl.$state.sortOrder | startFrom: $ctrl.$state.currentPage * $ctrl.$state.pageSize | limitTo: $ctrl.$state.pageSize">
+    <li class="accordion-item" ng-class="{ 'accordion-item-open': user.show }" data-accordion-item
+      ng-repeat="user in $ctrl.$state.users | filter: $ctrl.$state.searchQuery | orderBy: $ctrl.$state.sortOrder | startFrom: $ctrl.$state.currentPage * $ctrl.$state.pageSize | limitTo: $ctrl.$state.pageSize">
       <!-- SEARCH RESULT -->
-      <directory-search-result
-        result="user"
-        on-expand="user.show = !user.show; user.show && $ctrl.getExpert($event)"
+      <directory-search-result result="user" on-expand="user.show = !user.show; user.show && $ctrl.getExpert($event)"
         on-update-request="$ctrl.gotoFormAndPopulate($event)">
       </directory-search-result>
     </li>
   </ul>
   <!-- PAGINATION -->
-  <directory-pagination
-    current-page="$ctrl.$state.currentPage"
-    page-size="$ctrl.$state.pageSize"
-    number-of-items="$ctrl.$state.users.length"
-    on-prev="$ctrl.changePageAndScroll(-1)"
-    on-next="$ctrl.changePageAndScroll(1)"
-    on-goto="$ctrl.gotoPageAndScroll($event)">
+  <directory-pagination current-page="$ctrl.$state.currentPage" page-size="$ctrl.$state.pageSize"
+    number-of-items="$ctrl.$state.users.length" on-prev="$ctrl.changePageAndScroll(-1)"
+    on-next="$ctrl.changePageAndScroll(1)" on-goto="$ctrl.gotoPageAndScroll($event)">
   </directory-pagination>
 </div>

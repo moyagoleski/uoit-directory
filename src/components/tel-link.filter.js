@@ -21,8 +21,8 @@ export const TelLinkFilter = () => {
       }
     }
     if (tel.search('ext.') !== -1) {
-    	const ext = tel.split('ext.')[1].trim();
-    	value = `${value},${ext}`;
+      const ext = tel.split('ext.')[1].trim();
+      value = `${value},${ext}`;
     }
     return value;
   }

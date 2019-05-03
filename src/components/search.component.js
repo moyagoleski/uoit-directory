@@ -79,6 +79,7 @@ export const SearchComponent = {
        * A map of DOM element IDs as string constants.
        */
       this.ID = {
+        SEARCH_FORM: 'search-form',
         SEARCH_RESULTS: 'search-results',
         DIRECTORY_TABS: 'directory-tabs',
         DIRECTORY_TABS_CONTENT: 'directory-tabs-content'
@@ -198,6 +199,9 @@ export const SearchComponent = {
           .then(users => {
             this.$state.users = this.$filter('filter')(users, this.$state.searchQuery) || [];
             this.$state.loadingResults = false;
+            if (this.$state.initialQuery.firstname || this.$state.initialQuery.lastname) {
+              this.smoothScrollTo(this.ID.SEARCH_FORM);
+            }
             // Proactively load the whole list in the background as soon
             // as user makes their first query; early searches will be
             // handled by the `getSearchResults()` return, which provides a

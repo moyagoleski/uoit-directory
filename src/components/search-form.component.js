@@ -2,6 +2,7 @@ export const SearchFormComponent = {
   templateUrl: 'search-form.component.html',
   bindings: {
     searchQuery: '<',
+    initialQuery: '<',
     departments: '<',
     loadingResults: '<',
     hasResults: '<',
@@ -15,6 +16,14 @@ export const SearchFormComponent = {
         departmentError: null,
         userError: null,
       };
+    }
+
+    $onInit() {
+      if (this.initialQuery) {
+        this.onChange({
+          $event: this.initialQuery
+        })
+      }
     }
   }
 };

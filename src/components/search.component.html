@@ -31,12 +31,9 @@
       </div>
     </div>
     <!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
-    <directory-search-form
-      search-query="$ctrl.$state.searchQuery"
-      departments="$ctrl.$state.departments"
-      loading-results="$ctrl.$state.loadingResults"
-      has-results="$ctrl.$state.users.length"
-      on-change="$ctrl.getSearchResults($event)"
+    <directory-search-form search-query="$ctrl.$state.searchQuery" initial-query="$ctrl.$state.initialQuery"
+      departments="$ctrl.$state.departments" loading-results="$ctrl.$state.loadingResults"
+      has-results="$ctrl.$state.users.length" on-change="$ctrl.getSearchResults($event)"
       on-submit="$ctrl.smoothScrollTo($ctrl.ID.SEARCH_RESULTS)">
     </directory-search-form>
     <p class="lead update-directory-msg">

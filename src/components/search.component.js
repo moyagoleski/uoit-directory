@@ -70,6 +70,9 @@ export const SearchComponent = {
         // whether results are currently loading
         loadingResults: false,
 
+        // queries
+        searchQuery: null,
+        initialQuery: this.$location.search()
       };
 
       /**

@@ -2,8 +2,8 @@
   <div class="row">
     <div class="xxsmall-12 medium-3 columns">
       <label>First name:
-        <input type="text" ng-model="$ctrl.searchQuery.firstname" ng-change="$ctrl.onChange({ $event: $ctrl.searchQuery })" ng-model-options="{ debounce: 200 }"
-        />
+        <input type="text" ng-model="$ctrl.searchQuery.firstname" ng-value="$ctrl.initialQuery.firstname"
+          ng-change="$ctrl.onChange({ $event: $ctrl.searchQuery })" ng-model-options="{ debounce: 200 }" />
         <span class="form-error" style="display:block;" ng-show="$ctrl.$state.userError">
           {{ $ctrl.$state.userError }}
         </span>
@@ -11,8 +11,8 @@
     </div>
     <div class="xxsmall-12 medium-3 columns">
       <label>Last name:
-        <input type="text" ng-model="$ctrl.searchQuery.lastname" ng-change="$ctrl.onChange({ $event: $ctrl.searchQuery })" ng-model-options="{ debounce: 200 }"
-        />
+        <input type="text" ng-model="$ctrl.searchQuery.lastname" ng-value="$ctrl.initialQuery.lastname"
+          ng-change="$ctrl.onChange({ $event: $ctrl.searchQuery })" ng-model-options="{ debounce: 200 }" />
         <span class="form-error" style="display:block;" ng-show="$ctrl.$state.userError">
           {{ $ctrl.$state.userError }}
         </span>

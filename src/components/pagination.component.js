@@ -15,18 +15,18 @@ export const PaginationComponent = {
         pageNumbers: [1]
       };
     }
-		/**
-		 * Assign a count of available pages for paginating to the state.
-		 */
+    /**
+     * Assign a count of available pages for paginating to the state.
+     */
     updateNumberOfPages() {
-      this.$state.numberOfPages = this.numberOfItems
-        ? Math.ceil(this.numberOfItems / this.pageSize)
-        : 0;
+      this.$state.numberOfPages = this.numberOfItems ?
+        Math.ceil(this.numberOfItems / this.pageSize) :
+        0;
     }
 
-		/**
-		 * Update the state's list of page numbers available to paginate through.
-		 */
+    /**
+     * Update the state's list of page numbers available to paginate through.
+     */
     updatePageNumbers() {
       if (this.$state.numberOfPages > 0) {
         let numberOfPages = this.$state.numberOfPages;

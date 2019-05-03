@@ -23,7 +23,8 @@
     </li>
     <li>
       <strong>Extension:</strong>
-      <a href="tel:{{ ::('905.721.8668 ext.' + $ctrl.result.extension) | telLink }}" title="Place call to {{ ::$ctrl.result.firstname }} {{ ::$ctrl.result.lastname }}">{{::$ctrl.result.extension}}</a>
+      <a href="tel:{{ ::('905.721.8668 ext.' + $ctrl.result.extension) | telLink }}"
+        title="Place call to {{ ::$ctrl.result.firstname }} {{ ::$ctrl.result.lastname }}">{{::$ctrl.result.extension}}</a>
     </li>
     <li>
       <strong>Email:</strong>
@@ -32,10 +33,7 @@
   </ul>
   <p class="text-right">
     <small>
-      <a href="#tab_update-entry"
-        title="Submit an entry update request"
-        target="_self"
-        ng-click="$ctrl.onUpdateRequest({
+      <a href="#tab_update-entry" title="Submit an entry update request" target="_self" ng-click="$ctrl.onUpdateRequest({
           $event: {
             data: $ctrl.result,
             originalEvent: $event
@@ -46,14 +44,15 @@
     </small>
   </p>
   <div ng-if="$ctrl.result.expert">
-    <hr/>
+    <hr />
     <small ng-hide="$ctrl.result.expert.username">
       <em class="subheader">Checking for Expert profile...</em>
     </small>
     <div class="expert-profile media-object" ng-show="$ctrl.result.expert.username">
       <div class="media-object-section">
         <div class="thumbnail">
-          <img ng-src="{{ ::$ctrl.result.expert.url }}" alt="Photo of {{ ::$ctrl.result.expert.firstname }} {{ ::$ctrl.result.expert.lastname }}">
+          <img ng-src="{{ ::$ctrl.result.expert.url }}"
+            alt="Photo of {{ ::$ctrl.result.expert.firstname }} {{ ::$ctrl.result.expert.lastname }}">
         </div>
       </div>
       <div class="media-object-section main-section">
@@ -63,12 +62,15 @@
               <small class="subheader">on UOIT Expert Centre</small>
             </h4>
             <p class="expert-profile-topics">
-              <a ng-repeat="topic in ::$ctrl.result.expert.topics" ng-href="https://uoit.ca/expertcentre?q={{ ::topic.name }}" class="label tertiary">{{ ::topic.name }}</a>
+              <a ng-repeat="topic in ::$ctrl.result.expert.topics"
+                ng-href="https://uoit.ca/expertcentre?q={{ ::topic.name }}"
+                class="label tertiary">{{ ::topic.name }}</a>
             </p>
             <p>{{ ::$ctrl.result.expert.tagline }}</p>
           </div>
           <div class="column shrink">
-            <a ng-href="https://uoit.ca/expertcentre/expert/{{ ::$ctrl.result.expert.username }}" class="button hollow">View full profile</a>
+            <a ng-href="https://uoit.ca/expertcentre/expert/{{ ::$ctrl.result.expert.username }}"
+              class="button hollow">View full profile</a>
           </div>
         </div>
       </div>

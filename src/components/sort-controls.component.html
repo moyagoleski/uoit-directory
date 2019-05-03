@@ -2,13 +2,9 @@
   <div class="flex-container align-middle">
     <label id="sort_by">Sort: &nbsp;</label>
   </div>
-  <button
-    ng-repeat="option in ::$ctrl.options"
-    id="sort_{{ ::option.id }}"
-    class="button"
-    ng-click="$ctrl.onChanged({ $event: option.id })"
-    ng-class="{ hollow: $ctrl.selected !== option.id }"
+  <button ng-repeat="option in ::$ctrl.options" id="sort_{{ ::option.id }}" class="button"
+    ng-click="$ctrl.onChanged({ $event: option.id })" ng-class="{ hollow: $ctrl.selected !== option.id }"
     aria-labelledby="sort_by sort_{{ ::option.id }}">
-     {{ ::option.label }}
+    {{ ::option.label }}
   </button>
 </div>

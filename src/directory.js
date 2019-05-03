@@ -52,6 +52,7 @@ angular.module('uoitDirectory', [])
   .component('directoryUpdateForm', UpdateFormComponent)
   .filter('startFrom', StartFromFilter)
   .filter('telLink', TelLinkFilter)
+  .config(LocationConfig)
   .run(TemplateRun);
 
 angular.bootstrap(document.body, ['uoitDirectory'], {

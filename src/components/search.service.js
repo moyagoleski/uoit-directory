@@ -4,7 +4,8 @@ export const SearchService = function SearchService($http, $httpParamSerializer,
   // const API_URL = 'http://localhost:8080'; // dev
   const API_URL = 'https://api.uoit.ca'; // prod
   // const API_URL = 'https://uoit-api.herokuapp.com'; // cloud
-  const API_VERSION = 2;
+  const API_V2 = 2;
+  const API_V3 = 3;
 
   const replaceText = item => item.replace(/-|UOIT|/g, "").replace(/&/g, "and");
   const processList = items => items.map(item => {
@@ -23,28 +24,10 @@ export const SearchService = function SearchService($http, $httpParamSerializer,
     throw new Error(listName ? `cannot load ${listName} data` : err.message || 'an unknown error occurred');
   };
 
-  const PROMISE_INDEX = {
-    getUsers: 0,
-    getDepts: 1,
-    getExpert: 2
-  };
-  const cancelPromises = [];
-  const newCancelPromise = index => {
-    const cancelPromise = $q.defer();
-    cancelPromises[index] = cancelPromise;
-    return cancelPromise.promise;
-  }
-  const cancel = index => {
-    if (cancelPromises[index]) {
-      cancelPromises[index].resolve();
-    }
-  }
-
   return {
-    get(endpoint = '', timeout) {
-      return $http.get(`${API_URL}/v${API_VERSION}/${endpoint}`, {
-          cache: true,
-          timeout
+    get(endpoint = '', version = API_V2) {
+      return $http.get(`${API_URL}/v${version}/${endpoint}`, {
+          cache: true
         })
         .then(({
           data
@@ -55,27 +38,31 @@ export const SearchService = function SearchService($http, $httpParamSerializer,
           }
         });
     },
+
     getUsers(params = {}) {
-      cancel(PROMISE_INDEX.getUsers);
-      return this.get(`directory?${$httpParamSerializer(params)}`, newCancelPromise(PROMISE_INDEX.getUsers))
+      return this.get(`directory?${$httpParamSerializer(params)}`)
         .then(extractData)
         .catch(handleError('person'));
     },
     getDepts() {
-      cancel(PROMISE_INDEX.getDepts);
-      return this.get('directory/departments', newCancelPromise(PROMISE_INDEX.getDepts))
+      return this.get('directory/departments')
         .then(extractData)
         .catch(handleError('department'));
     },
     getExpert(person) {
-      cancel(PROMISE_INDEX.getExpert);
-      return this.get(`experts?${$httpParamSerializer({ keyword: person.firstname })}`, newCancelPromise(PROMISE_INDEX.getExpert))
+      const {
+        firstname,
+        lastname
+      } = person;
+      const params = $httpParamSerializer({
+        firstname,
+        lastname
+      });
+      return this.get(`experts?${params}`, API_V3)
         .then(({
-          data = []
-        }) => (data && data.length) ? data.find(expert => {
-          const pattern = new RegExp(`(dr)?[\ \.]?${person.lastname.toLowerCase()}[\ \,]?\ ?(ph[\ \.]?\ ?d)?`, 'ig');
-          return pattern.test(expert.lastname);
-        }) : false);
+          success = false,
+          data = null
+        } = {}) => (success && data && data.length) ? data[0] : false);
     }
   };
 };

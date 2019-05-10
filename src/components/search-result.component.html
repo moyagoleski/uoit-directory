@@ -43,34 +43,36 @@
       </a>
     </small>
   </p>
-  <div ng-if="$ctrl.result.expert">
-    <hr />
-    <small ng-hide="$ctrl.result.expert.username">
+  <div ng-if="$ctrl.result.expert" class="expert-profile-container">
+    <!-- <hr /> -->
+    <small ng-hide="$ctrl.result.expert.id">
       <em class="subheader">Checking for Expert profile...</em>
     </small>
-    <div class="expert-profile media-object" ng-show="$ctrl.result.expert.username">
+    <div class="expert-profile media-object" ng-show="$ctrl.result.expert.id">
       <div class="media-object-section">
-        <div class="thumbnail">
-          <img ng-src="{{ ::$ctrl.result.expert.url }}"
+        <div class="thumbnail" ng-if="::$ctrl.result.expert.image">
+          <img ng-src="{{ ::$ctrl.result.expert.image }}"
             alt="Photo of {{ ::$ctrl.result.expert.firstname }} {{ ::$ctrl.result.expert.lastname }}">
         </div>
       </div>
       <div class="media-object-section main-section">
         <div class="row align-middle">
           <div class="column">
-            <h4>{{ ::$ctrl.result.expert.firstname }} {{ ::$ctrl.result.expert.lastname }}
-              <small class="subheader">on UOIT Expert Centre</small>
+            <h4 class="expert-profile-header">{{ ::$ctrl.result.expert.firstname }} {{ ::$ctrl.result.expert.lastname }}
+              <small class="subheader">on Ontario Tech Expert Centre</small>
             </h4>
+            <p>{{ ::$ctrl.result.expert.summary }}</p>
+            <h5>Research fields</h5>
             <p class="expert-profile-topics">
-              <a ng-repeat="topic in ::$ctrl.result.expert.topics"
-                ng-href="https://uoit.ca/expertcentre?q={{ ::topic.name }}"
-                class="label tertiary">{{ ::topic.name }}</a>
+              <span ng-repeat="field in ::$ctrl.result.expert.fields">
+                <a ng-href="https://experts.uoit.ca/field/{{ ::field }}" class="button tiny lightgrey">{{ ::field }}</a>
+              </span>
             </p>
-            <p>{{ ::$ctrl.result.expert.tagline }}</p>
           </div>
           <div class="column shrink">
-            <a ng-href="https://uoit.ca/expertcentre/expert/{{ ::$ctrl.result.expert.username }}"
-              class="button hollow">View full profile</a>
+            <a ng-href="https://experts.uoit.ca/{{ ::$ctrl.result.expert.link }}"
+              class="button accent icon_chevron_right">View full
+              profile</a>
           </div>
         </div>
       </div>

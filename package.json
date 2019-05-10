@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "angular": "^1.6.4",
+    "angular-sanitize": "^1.6.4",
     "foundation-sites": "^6.3.1"
   }
 }

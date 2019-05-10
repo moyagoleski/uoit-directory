@@ -1,4 +1,5 @@
 import angular from 'angular';
+import 'angular-sanitize';
 
 import {
   SearchService
@@ -40,7 +41,7 @@ import {
   CONTACTS_LIST
 } from './components/contacts';
 
-angular.module('uoitDirectory', [])
+angular.module('uoitDirectory', ['ngSanitize'])
   .constant('SORT_OPTIONS', SORT_OPTIONS)
   .constant('CONTACTS_LIST', CONTACTS_LIST)
   .service('SearchService', SearchService)

@@ -61,7 +61,7 @@
             <h4 class="expert-profile-header">{{ ::$ctrl.result.expert.firstname }} {{ ::$ctrl.result.expert.lastname }}
               <small class="subheader">on Ontario Tech Expert Centre</small>
             </h4>
-            <p>{{ ::$ctrl.result.expert.summary }}</p>
+            <p ng-if="::$ctrl.result.expert.summary" ng-bind-html="::$ctrl.result.expert.summary"></p>
             <h5>Research fields</h5>
             <p class="expert-profile-topics">
               <span ng-repeat="field in ::$ctrl.result.expert.fields">

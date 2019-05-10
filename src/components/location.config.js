@@ -1,3 +1,4 @@
-export const LocationConfig = ['$locationProvider', function ($locationProvider) {
+export const LocationConfig = function ($locationProvider) {
+  'ngInject';
   $locationProvider.html5Mode(true);
-}]
+}

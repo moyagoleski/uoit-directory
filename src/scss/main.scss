@@ -1,6 +1,7 @@
 $font: 'Franklin Gothic';
 $light-blue: #0077CA;
 $dark-blue: #003C71;
+$secondary-orange: #e75d2a;
 $text-color-white: #fff;
 $text-color-black: #151515;
 $accordion-item-background-hover: #0077CA;
@@ -279,18 +280,31 @@ input.ng-invalid.ng-touched {
 }
 
 .expert-profile {
-	max-height: 300px;
+  max-height: 300px;
+  
 	.thumbnail img {
 		max-width: 120px;
-	}
+  }
+  
 	&-topics {
-		a.label {
-			cursor: pointer;
-		}
-		.label:not(:last-of-type) {
-			margin-right: 0.25rem;
-		}
-	}
+		.button {
+      &::before {
+        font-size: 0.625rem !important;
+      }
+    }
+  }
+  
+  &-header {
+    font-size: 2rem;
+
+    .subheader {
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1rem;
+      display: block;
+      color: $secondary-orange;
+    }
+  }
 
 	@media screen and (max-width: 39.9375em) {
 		.thumbnail img {

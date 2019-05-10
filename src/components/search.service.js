@@ -4,7 +4,8 @@ export const SearchService = function SearchService($http, $httpParamSerializer,
   // const API_URL = 'http://localhost:8080'; // dev
   const API_URL = 'https://api.uoit.ca'; // prod
   // const API_URL = 'https://uoit-api.herokuapp.com'; // cloud
-  const API_VERSION = 2;
+  const API_V2 = 2;
+  const API_V3 = 3;
 
   const replaceText = item => item.replace(/-|UOIT|/g, "").replace(/&/g, "and");
   const processList = items => items.map(item => {
@@ -41,9 +42,9 @@ export const SearchService = function SearchService($http, $httpParamSerializer,
   }
 
   return {
-    get(endpoint = '', timeout) {
-      return $http.get(`${API_URL}/v${API_VERSION}/${endpoint}`, {
-          cache: true,
+    get(endpoint = '', version = API_V2) {
+      return $http.get(`${API_URL}/v${version}/${endpoint}`, {
+          cache: true
           timeout
         })
         .then(({

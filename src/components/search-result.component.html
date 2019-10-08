@@ -28,7 +28,7 @@
     </li>
     <li>
       <strong>Email:</strong>
-      <a href="mailto:{{ ::$ctrl.result.email }}">{{ ::$ctrl.result.email | lowercase }}</a>
+      <a href="mailto:{{ ::$ctrl.result.email.replace('uoit.ca','ontariotechu.ca') }}">{{ ::$ctrl.result.email.replace('@uoit.ca','@ontariotechu.ca') | lowercase }}</a>
     </li>
   </ul>
   <p class="text-right">

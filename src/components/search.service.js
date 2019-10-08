@@ -2,7 +2,7 @@ export const SearchService = function SearchService($http, $httpParamSerializer,
   'ngInject';
 
   // const API_URL = 'http://localhost:8080'; // dev
-  const API_URL = 'https://api.uoit.ca'; // prod
+  const API_URL = 'https://api.ontariotechu.ca'; // prod
   // const API_URL = 'https://uoit-api.herokuapp.com'; // cloud
   const API_V2 = 2;
   const API_V3 = 3;

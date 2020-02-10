@@ -50,7 +50,7 @@ export const CONTACTS_LIST = [{
 		phone: '905.721.8668 ext. 8000'
 	}, {
 		name: 'Office of Student Life',
-		phone: '905.721.8668 ext. 5317'
+		phone: '905.721.8668 ext. 2129'
 	}, {
 		name: 'Pharmacy',
 		phone: '905.728.6724'
@@ -67,13 +67,13 @@ export const CONTACTS_LIST = [{
 		name: 'Student Awards and Financial Aid (SAFA)',
 		phone: '905.721.3143'
 	}, {
-		name: 'Student Experience Centre',
+		name: 'Student Engagement and Equity',
 		phone: '905.721.8668 ext. 3837'
 	}, {
 		name: 'Student Learning Centre',
 		phone: '905.721.8668 ext. 6578'
 	}, {
-		name: 'Student Life Line',
+		name: 'Student Mental Health Services',
 		phone: '905.721.3392'
 	}, {
 		name: 'Women’s Centre',

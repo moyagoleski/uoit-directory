@@ -1,4 +1,4 @@
-# UOIT Directory
+# Ontario Tech Directory
 
 This repository contains the application source code for the University's faculty and staff directory search; built with AngularJS and Foundation 6 using Gulp.
 

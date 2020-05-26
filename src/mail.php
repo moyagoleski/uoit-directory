@@ -27,12 +27,12 @@ $mail->Port = 587;   																	// TCP port to connect to
 
 $mail->setFrom($email);
 if ($sendCopy) $mail->addAddress($email);             // Copy sender if requested
-$mail->addAddress('directory@uoit.ca');
+$mail->addAddress('directory@ontariotechu.ca');
 $mail->isHTML(true);                                  // Set email format to HTML
 
-$mail->Subject = 'Update Information in the UOIT Directory.';
+$mail->Subject = 'Update Information in the Ontario Tech Directory.';
 $mail->Body  = "<p>Hello,
-<br/>I would like to update my contact information in the <a href=\"https://uoit.ca/directory\">UOIT Directory</a>.</p>
+<br/>I would like to update my contact information in the <a href=\"https://ontariotechu.ca/directory\">Ontario Directory</a>.</p>
 <p>Please use the following information to update my entry:</p>
 <table>
 <tbody>

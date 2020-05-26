@@ -28,7 +28,8 @@
     </li>
     <li>
       <strong>Email:</strong>
-      <a href="mailto:{{ ::$ctrl.result.email }}">{{ ::$ctrl.result.email | lowercase }}</a>
+      <a
+        href="mailto:{{ ::$ctrl.result.email.replace('uoit.ca','ontariotechu.ca') }}">{{ ::$ctrl.result.email.replace('@uoit.ca','@ontariotechu.ca') | lowercase }}</a>
     </li>
   </ul>
   <p class="text-right">
@@ -65,7 +66,8 @@
             <h5>Research fields</h5>
             <p class="expert-profile-topics">
               <span ng-repeat="field in ::$ctrl.result.expert.fields">
-                <a ng-href="https://ontariotechu.ca/experts/field/{{ ::field }}" class="button tiny lightgrey">{{ ::field }}</a>
+                <a ng-href="https://ontariotechu.ca/experts/field/{{ ::field }}"
+                  class="button tiny lightgrey">{{ ::field }}</a>
               </span>
             </p>
           </div>

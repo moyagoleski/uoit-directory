@@ -50,7 +50,7 @@ export const CONTACTS_LIST = [{
 		phone: '905.721.8668 ext. 8000'
 	}, {
 		name: 'Office of Student Life',
-		phone: '905.721.8668 ext. 5317'
+		phone: '905.721.8668 ext. 2129'
 	}, {
 		name: 'Pharmacy',
 		phone: '905.728.6724'
@@ -67,13 +67,13 @@ export const CONTACTS_LIST = [{
 		name: 'Student Awards and Financial Aid (SAFA)',
 		phone: '905.721.3143'
 	}, {
-		name: 'Student Experience Centre',
+		name: 'Student Engagement and Equity',
 		phone: '905.721.8668 ext. 3837'
 	}, {
 		name: 'Student Learning Centre',
 		phone: '905.721.8668 ext. 6578'
 	}, {
-		name: 'Student Life Line',
+		name: 'Student Mental Health Services',
 		phone: '905.721.3392'
 	}, {
 		name: 'Women’s Centre',
@@ -83,36 +83,28 @@ export const CONTACTS_LIST = [{
 	category: 'Academic faculties',
 	items: [{
 		name: 'Faculty of Business and Information Technology',
-		phone: '905.721.8668 ext. 2830',
-		class: 'fbit'
+		phone: '905.721.8668 ext. 2830'
 	}, {
 		name: 'Faculty of Education',
-		phone: '905.721.8668 ext. 3181',
-		class: 'fed'
+		phone: '905.721.8668 ext. 3181'
 	}, {
 		name: 'Faculty of Energy Systems and Nuclear Science',
-		phone: '905.721.8668 ext. 5511',
-		class: 'fesns'
+		phone: '905.721.8668 ext. 5511'
 	}, {
 		name: 'Faculty of Engineering and Applied Science',
-		phone: '905.721.8668 ext. 2988',
-		class: 'feas'
+		phone: '905.721.8668 ext. 2988'
 	}, {
 		name: 'Faculty of Health Sciences',
-		phone: '905.721.8668 ext. 3166',
-		class: 'fhs'
+		phone: '905.721.8668 ext. 3166'
 	}, {
 		name: 'Faculty of Science',
-		phone: '905.721.8668 ext. 3050',
-		class: 'fsci'
+		phone: '905.721.8668 ext. 3050'
 	}, {
 		name: 'Faculty of Social Science and Humanities',
-		phone: '905.721.8668 ext. 3234',
-		class: 'fssh'
+		phone: '905.721.8668 ext. 3234'
 	}, {
-		name: 'Office of Graduate Studies',
-		phone: '905.721.8668 ext. 6209',
-		class: 'grad'
+		name: 'School of Graduate and Postdoctoral Studies',
+		phone: '905.721.8668 ext. 6209'
 	}]
 }, {
 	category: 'Faculty and staff services',

@@ -65,10 +65,7 @@
             <p ng-if="::$ctrl.result.expert.summary" ng-bind-html="::$ctrl.result.expert.summary"></p>
             <h5>Research fields</h5>
             <p class="expert-profile-topics">
-              <span ng-repeat="field in ::$ctrl.result.expert.fields">
-                <a ng-href="https://ontariotechu.ca/experts/field/{{ ::field }}"
-                  class="button tiny lightgrey">{{ ::field }}</a>
-              </span>
+              <span ng-repeat="field in ::$ctrl.result.expert.fields" class="label tiny lightgrey">{{ ::field }}</span>
             </p>
           </div>
           <div class="column shrink">

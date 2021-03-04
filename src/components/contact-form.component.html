@@ -1,0 +1,64 @@
+<!-- SHOW ERROR/SUCCESS MESSAGES -->
+<div ng-show="$ctrl.formStatus.success || $ctrl.formStatus.error" class="callout"
+  ng-class="{ success: $ctrl.formStatus.success, alert: $ctrl.formStatus.error }" data-closable>
+  {{ $ctrl.formStatus.success || $ctrl.formStatus.error }}
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- FORM -->
+<form name="$ctrl.form" ng-submit="$ctrl.form.$valid && $ctrl.onSubmit({
+    $event: {
+      formData: $ctrl.formData,
+      form: $ctrl.form,
+      recipient:$ctrl.formRecipient
+    }
+  })">
+  <div class="row">
+    <div class="xxsmall-12 medium-6 columns">
+      <label>First name:
+        <span class="red"> *</span>
+        <input type="text" name="firstname" ng-model="$ctrl.formData.firstname" required />
+      </label>
+    </div>
+    <div class="xxsmall-12 medium-6 columns">
+      <label>Last name:
+        <span class="red"> *</span>
+        <input type="text" name="lastname" ng-model="$ctrl.formData.lastname" required />
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="xxsmall-12 medium-6 columns">
+      <label>Phone:
+        <span class="red"> *</span>
+        <input type="text" name="phone" ng-model="$ctrl.formData.phone" required ng-pattern="'[0-9]+'" />
+      </label>
+    </div>
+    <div class="xxsmall-12 medium-6 columns">
+      <label>Email:
+        <span class="red"> *</span>
+        <input type="email" name="email" ng-model="$ctrl.formData.email" required />
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="xxsmall-12 medium-12 columns">
+      <label>Subject:
+        <span class="red"> *</span>
+        <input type="text" name="subject" ng-model="$ctrl.formData.subject" required />
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="xxsmall-12 medium-12 columns">
+      <label>Message:
+        <span class="red"> *</span>
+        <textarea type="text" name="message" ng-model="$ctrl.formData.message" cols="30" rows="10" required></textarea>
+      </label>
+    </div>
+  </div>
+  <fieldset class="large-6 columns">
+    <button class="button" type="submit" value="Submit" role="button" ng-disabled="$ctrl.form.$invalid">Submit</button>
+  </fieldset>
+</form>

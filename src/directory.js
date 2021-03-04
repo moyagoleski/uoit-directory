@@ -23,6 +23,9 @@ import {
   UpdateFormComponent
 } from './components/update-form.component';
 import {
+  ContactFormComponent
+} from './components/contact-form.component';
+import {
   StartFromFilter
 } from './components/start-from.filter';
 import {
@@ -51,6 +54,7 @@ angular.module('uoitDirectory', ['ngSanitize'])
   .component('directoryPagination', PaginationComponent)
   .component('directorySortControls', SortControlsComponent)
   .component('directoryUpdateForm', UpdateFormComponent)
+  .component('directoryContactForm', ContactFormComponent)
   .filter('startFrom', StartFromFilter)
   .filter('telLink', TelLinkFilter)
   .config(LocationConfig)

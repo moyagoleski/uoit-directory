@@ -17,6 +17,10 @@ $building   = $_POST['building'];   // required
 $office     = $_POST['office'];     // required
 $extension  = $_POST['extension'];  // required
 $email      = $_POST['email'];      // required
+$phone      = $_POST['phone'];      // required
+$subject      = $_POST['subject'];      // required
+$message      = $_POST['message'];      // required
+$recipient    = $_POST['recipient'];      // required
 
 $mail->Host = 'smtp-mail.outlook.com';                // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentic
@@ -26,57 +30,93 @@ $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, 
 $mail->Port = 587;   																	// TCP port to connect to
 
 $mail->setFrom($email);
-if ($sendCopy) $mail->addAddress($email);             // Copy sender if requested
-$mail->addAddress('directory@ontariotechu.ca');
 $mail->isHTML(true);                                  // Set email format to HTML
 
-$mail->Subject = 'Update Information in the Ontario Tech Directory.';
-$mail->Body  = "<p>Hello,
-<br/>I would like to update my contact information in the <a href=\"https://ontariotechu.ca/directory\">Ontario Directory</a>.</p>
-<p>Please use the following information to update my entry:</p>
-<table>
-<tbody>
-<tr>
-<td><strong>Banner ID:</strong></td>
-<td>$bannerId</td>
-</tr>
-<tr>
-<td><strong>First Name:</strong></td>
-<td>$firstName</td>
-</tr>
-<tr>
-<td><strong>Last Name:</strong></td>
-<td>$lastName</td>
-</tr>
-<tr>
-<td><strong>Department:</strong></td>
-<td>$department</td>
-</tr>
-<tr>
-<td><strong>Title:</strong></td>
-<td>$title</td>
-</tr>
-<tr>
-<td><strong>Building:</strong></td>
-<td>$building</td>
-</tr>
-<tr>
-<td><strong>Office:</strong></td>
-<td>$office</td>
-</tr>
-<tr>
-<td><strong>Extension:</strong></td>
-<td>$extension</td>
-</tr>
-<tr>
-<td><strong>E-mail:</strong></td>
-<td>$email</td>
-</tr>
-</tbody>
-</table>
-<p>Thank you for your assistance,<br/>
-<strong>$firstName $lastName</strong></p>
-";
+// check if the form is sent for message purpose or contact update purpose
+if($recipient) {
+  $mail->addAddress($recipient);
+  $mail->Subject = "Email Message Sent From Directory Site";
+  $mail->Body  = "
+  <table>
+  <tbody>
+  <tr>
+  <td><strong>First Name:</strong></td>
+  <td>$firstName</td>
+  </tr>
+  <tr>
+  <td><strong>Last Name:</strong></td>
+  <td>$lastName</td>
+  </tr>
+  <tr>
+  <td><strong>Phone:</strong></td>
+  <td>$phone</td>
+  </tr>
+  <tr>
+  <td><strong>E-mail:</strong></td>
+  <td>$email</td>
+  </tr>
+  <tr>
+  <td><strong>Subject:</strong></td>
+  <td>$subject</td>
+  </tr>
+  <tr>
+  <td><strong>Message:</strong></td>
+  <td>$message</td>
+  </tr>
+  </tbody>
+  </table>
+  ";
+}else {
+  if ($sendCopy) $mail->addAddress($email);             // Copy sender if requested
+  $mail->addAddress('directory@ontariotechu.ca');
+  $mail->Subject = 'Update Information in the Ontario Tech Directory.';
+  $mail->Body  = "<p>Hello,
+  <br/>I would like to update my contact information in the <a href=\"https://ontariotechu.ca/directory\">Ontario Directory</a>.</p>
+  <p>Please use the following information to update my entry:</p>
+  <table>
+  <tbody>
+  <tr>
+  <td><strong>Banner ID:</strong></td>
+  <td>$bannerId</td>
+  </tr>
+  <tr>
+  <td><strong>First Name:</strong></td>
+  <td>$firstName</td>
+  </tr>
+  <tr>
+  <td><strong>Last Name:</strong></td>
+  <td>$lastName</td>
+  </tr>
+  <tr>
+  <td><strong>Department:</strong></td>
+  <td>$department</td>
+  </tr>
+  <tr>
+  <td><strong>Title:</strong></td>
+  <td>$title</td>
+  </tr>
+  <tr>
+  <td><strong>Building:</strong></td>
+  <td>$building</td>
+  </tr>
+  <tr>
+  <td><strong>Office:</strong></td>
+  <td>$office</td>
+  </tr>
+  <tr>
+  <td><strong>Extension:</strong></td>
+  <td>$extension</td>
+  </tr>
+  <tr>
+  <td><strong>E-mail:</strong></td>
+  <td>$email</td>
+  </tr>
+  </tbody>
+  </table>
+  <p>Thank you for your assistance,<br/>
+  <strong>$firstName $lastName</strong></p>
+  ";
+}
 
 if(!$mail->send()) {
   header('HTTP/1.1 400 Bad Request');

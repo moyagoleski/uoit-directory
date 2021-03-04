@@ -106,7 +106,8 @@ $error : pink;
 
 		.a-content {
 			padding: 1rem 1rem;
-			max-height: calc(2rem + 340px);
+			// max-height: calc(2rem + 340px);
+			max-height: auto;
 			transition: .7s;
 			overflow: hidden;
 
@@ -122,6 +123,10 @@ $error : pink;
 						font-weight: bold;
 					}
 				}
+			}
+
+			.covid-note {
+				color:red;
 			}
 
 			.callout {

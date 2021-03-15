@@ -26,8 +26,10 @@
         <!-- TAB TITLE  -->
         <h2>Search</h2>
         <br />
-        <p>Thank you for your interest in contacting Ontario Tech University. Though many of our services are currently being offered remotely, we are always available to assist you.</p>
-        <p>If you need to reach someone directly, enter their first name, their last name, or a department to find a Faculty or Staff member. Partial names can also be used.</p>
+        <p>Thank you for your interest in contacting Ontario Tech University. Though many of our services are currently
+          being offered remotely, we are always available to assist you.</p>
+        <p>If you need to reach someone directly, enter their first name, their last name, or a department to find a
+          Faculty or Staff member. Partial names can also be used.</p>
       </div>
     </div>
     <!-- INPUT FIELDS FOR FIRST NAME, LAST NAME, AND DEPARTMENT -->
@@ -51,10 +53,12 @@
         <span ng-repeat="contact in group.items"
           class="xxsmall-6 large-6 medium-6 columns contact-card{{ ::(contact.class ? ' contact-faculty ' + contact.class : '') }}">
           <p class="contact-name"><strong>{{ ::contact.name }}</strong></p>
-          <p class="contact-phone" ng-if="contact.phone"><span class="icon_phone"></span> &nbsp;<a href="tel:{{ ::contact.phone | telLink }}"
+          <p class="contact-phone" ng-if="contact.phone"><span class="icon_phone"></span> &nbsp;<a
+              href="tel:{{ ::contact.phone | telLink }}"
               title="Place call to {{ ::contact.phone }}">{{ ::contact.phone }}</a></p>
-          <p class="contact-email" ng-if="contact.email"><span class="icon_mail"></span> &nbsp;<a href="mailto:{{ ::contact.email }}"
-              title="Send email to {{ ::contact.email }}">{{ ::contact.email }}</a></p>
+          <p class="contact-email" ng-if="contact.email"><span class="icon_mail"></span> &nbsp;<a
+              href="mailto:{{ ::contact.email }}" title="Send email to {{ ::contact.email }}">{{ ::contact.email }}</a>
+          </p>
         </span>
       </div>
     </div>
@@ -69,7 +73,8 @@
     <p>If you are a Faculty or Staff member you can have your directory information updated by filling out the form
       below.</p>
     <p>Alternatively, you may contact <a href="mailto:directory@ontariotechu.ca"
-        title="Contact directory@ontariotechu.ca">directory@ontariotechu.ca</a> directly if you have further questions or concerns.</p>
+        title="Contact directory@ontariotechu.ca">directory@ontariotechu.ca</a> directly if you have further questions
+      or concerns.</p>
     <!-- UPDATE FORM -->
     <directory-update-form form-data="$ctrl.$state.formData" form-status="$ctrl.$state.formStatus"
       on-submit="$ctrl.onUpdateFormSubmit($event)">

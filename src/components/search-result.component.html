@@ -34,8 +34,9 @@
       <button class="button" ng-click="$ctrl.showHide()">Contact</button>
     </li>
   </ul>
-    
-  <p class="covid-note">Note: As most staff are working from home due to COVID 19, please use the following contact form as the primary means of communication</p>
+
+  <p class="covid-note">Note: As most staff are working from home due to COVID 19, please use the following contact form
+    as the primary means of communication</p>
   <p class="text-right">
     <small>
       <a href="#tab_update-entry" title="Submit an entry update request" target="_self" ng-click="$ctrl.onUpdateRequest({
@@ -81,12 +82,13 @@
       </div>
     </div>
   </div>
-  <div class="emailContact" ng-show="$ctrl.IsVisible">
+  <div class="emailContact" ng-show="$ctrl.isVisible">
     <h4>Contact {{ ::$ctrl.result.firstname }} {{ ::$ctrl.result.lastname }} by Email</h4>
     <!-- UPDATE FORM -->
-    <directory-contact-form form-data="$ctrl.$state.formData" form-status="$ctrl.$state.formStatus" form-recipient="$ctrl.result.email.replace('uoit.ca','ontariotechu.ca')"
+    <directory-contact-form form-data="$ctrl.$state.formData" form-status="$ctrl.$state.formStatus"
+      form-recipient="$ctrl.result.email.replace('uoit.ca','ontariotechu.ca')"
       on-submit="$ctrl.onContactFormSubmit($event)">
     </directory-contact-form>
   </div>
-  
+
 </div>

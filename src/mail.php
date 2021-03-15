@@ -7,7 +7,7 @@ require 'PHPMailer/PHPMailerAutoload.php';
 $mail = new PHPMailer;
 
 // INPUT FIELDS FROM UPDATE FORM
-$sendCopy		= $_POST['sendCopy'];
+$sendCopy    = $_POST['sendCopy'];
 $bannerId   = $_POST['bannerId'];   // required
 $firstName  = $_POST['firstname'];  // required
 $lastName   = $_POST['lastname'];   // required
@@ -27,13 +27,13 @@ $mail->SMTPAuth = true;                               // Enable SMTP authentic
 $mail->Username = '';                                 // SMTP username
 $mail->Password = '';                                 // SMTP password
 $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 587;   																	// TCP port to connect to
+$mail->Port = 587;                                     // TCP port to connect to
 
 $mail->setFrom($email);
 $mail->isHTML(true);                                  // Set email format to HTML
 
 // check if the form is sent for message purpose or contact update purpose
-if($recipient) {
+if ($recipient) {
   $mail->addAddress($recipient);
   $mail->Subject = "Email Message Sent From Directory Site";
   $mail->Body  = "
@@ -66,7 +66,7 @@ if($recipient) {
   </tbody>
   </table>
   ";
-}else {
+} else {
   if ($sendCopy) $mail->addAddress($email);             // Copy sender if requested
   $mail->addAddress('directory@ontariotechu.ca');
   $mail->Subject = 'Update Information in the Ontario Tech Directory.';
@@ -118,13 +118,12 @@ if($recipient) {
   ";
 }
 
-if(!$mail->send()) {
+if (!$mail->send()) {
   header('HTTP/1.1 400 Bad Request');
   header('Content-Type: application/json; charset=UTF-8');
   die(json_encode(array('success' => false, 'message' => $mail->ErrorInfo)));
 } else {
-	$result = array('success' => true, 'message' => "Message sent successfully!");
+  $result = array('success' => true, 'message' => "Message sent successfully!");
   header('Content-Type: application/json');
   print json_encode($result);
 }
-?>

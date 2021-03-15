@@ -9,19 +9,21 @@ $lightgrey : #F6F7F7;
 $error : pink;
 
 .activeFilterBtn {
-		background-color: $dark-blue;
+	background-color: $dark-blue;
 }
 
 .tabs {
 	.tabs-title {
 		text-align: center;
-		> a {
+
+		>a {
 			padding: 10px;
 		}
+
 		@media screen and (min-width:75em) {
 			/* responsive tabs title width */
-				width: 33%;
-				margin-right: 0.5%;
+			width: 33%;
+			margin-right: 0.5%;
 
 			&:last-child {
 				margin-right: 0;
@@ -45,6 +47,7 @@ $error : pink;
 
 .page-size-controls {
 	margin-left: 1rem;
+
 	select {
 		font-size: 0.88rem;
 		height: 1.875rem;
@@ -67,7 +70,7 @@ $error : pink;
 .accordion {
 	.accordion-item {
 		margin-bottom: 1rem;
-		
+
 		&:last-of-type {
 			margin-bottom: 0;
 		}
@@ -126,7 +129,7 @@ $error : pink;
 			}
 
 			.covid-note {
-				color:red;
+				color: red;
 			}
 
 			.callout {
@@ -134,19 +137,22 @@ $error : pink;
 			}
 		}
 
-		&.accordion-item-open	.accordion-title:before {
-	    transform: translateY(-50%) rotate(0deg);
+		&.accordion-item-open .accordion-title:before {
+			transform: translateY(-50%) rotate(0deg);
 		}
 
 		&:not(.accordion-item-open) .a-content {
-	    max-height: 0;
+			max-height: 0;
 			padding: 0 1rem;
 		}
 	}
 }
 
 // margin for department / title
-.page-content ul.accordion li ul:not(.tabs), .page-content ul.accordion li ol, .page_content_news ul.accordion li ul:not(.tabs), .page_content_news ul.accordion li ol {
+.page-content ul.accordion li ul:not(.tabs),
+.page-content ul.accordion li ol,
+.page_content_news ul.accordion li ul:not(.tabs),
+.page_content_news ul.accordion li ol {
 	margin-top: 8px;
 	margin-bottom: 0px;
 }
@@ -163,13 +169,14 @@ $error : pink;
 		border-width: 2px;
 		border-style: solid;
 
-		&:not(.contact-faculty) {			
+		&:not(.contact-faculty) {
 			border-color: $light-blue;
 			color: $light-blue;
 		}
 
 		&.contact-faculty {
 			border-color: inherit;
+
 			.contact-name,
 			.contact-phone,
 			.contact-phone a {
@@ -185,6 +192,7 @@ $error : pink;
 
 .pagination {
 	margin-top: 3rem;
+
 	&-container {
 
 		a.current:hover {
@@ -197,6 +205,7 @@ $error : pink;
 	&-next a:not(.disabled) {
 		background-color: $dark-blue;
 		color: $text-color-white;
+
 		&:hover {
 			background-color: darken($dark-blue, 8%);
 		}
@@ -211,12 +220,14 @@ $error : pink;
 }
 
 @media screen and (max-width: 43em) {
+
 	/* set min-height in case accordion title overflow */
 	.accordion {
 		.accordion-title {
 			min-height: 4rem;
 		}
 	}
+
 	/* display vertical */
 	.accordion-title-desc {
 		li {
@@ -226,8 +237,9 @@ $error : pink;
 			font-weight: normal;
 		}
 	}
+
 	/*  clear left and right margin for mobile page */
-	.searchResults{
+	.searchResults {
 		display: block;
 		min-width: 100%;
 		margin: 0.5rem 0;
@@ -260,61 +272,69 @@ $error : pink;
 }
 
 .bounce {
-  -moz-animation: bounce 2s infinite;
-  -webkit-animation: bounce 2s infinite;
-  animation: bounce 2s infinite;
+	-moz-animation: bounce 2s infinite;
+	-webkit-animation: bounce 2s infinite;
+	animation: bounce 2s infinite;
 }
 
 @keyframes bounce {
-  0%, 50%, 80%, 100% {
-    transform: translateY(0) scale(1.2);
-  }
-  20% {
-    transform: translateY(-10px) scale(1.2);
+
+	0%,
+	50%,
+	80%,
+	100% {
+		transform: translateY(0) scale(1.2);
 	}
-  40% {
-    transform: translateY(10px) scaleY(0.85) scaleX(1.55);
-  }
-  60% {
-    transform: translateY(7px) scaleY(0.95) scaleX(1.45);
-  }
+
+	20% {
+		transform: translateY(-10px) scale(1.2);
+	}
+
+	40% {
+		transform: translateY(10px) scaleY(0.85) scaleX(1.55);
+	}
+
+	60% {
+		transform: translateY(7px) scaleY(0.95) scaleX(1.45);
+	}
 }
 
 input.ng-invalid.ng-touched {
-  background-color: $error;
+	background-color: $error;
 }
 
 .expert-profile {
-  max-height: 300px;
-  
+	max-height: 300px;
+
 	.thumbnail img {
 		max-width: 120px;
-  }
-  
+	}
+
 	&-topics {
 		.button {
-      &::before {
-        font-size: 0.625rem !important;
-      }
-    }
-  }
-  
-  &-header {
-    font-size: 2rem;
+			&::before {
+				font-size: 0.625rem !important;
+			}
+		}
+	}
 
-    .subheader {
-      font-size: 1rem;
-      font-weight: 900;
-      line-height: 1rem;
-      display: block;
-      color: $secondary-orange;
-    }
-  }
+	&-header {
+		font-size: 2rem;
+
+		.subheader {
+			font-size: 1rem;
+			font-weight: 900;
+			line-height: 1rem;
+			display: block;
+			color: $secondary-orange;
+		}
+	}
 
 	@media screen and (max-width: 39.9375em) {
 		.thumbnail img {
 			max-width: 80px;
 		}
+
 		&-topics {
 			display: none;
 		}

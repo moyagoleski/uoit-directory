@@ -7,9 +7,9 @@ export const SearchResultComponent = {
   },
   controller: class SearchResult {
 
-    constructor($sce,$http,$httpParamSerializerJQLike) {
+    constructor($sce, $http, $httpParamSerializerJQLike) {
       'ngInject';
-      this.IsVisible = false;
+      this.isVisible = false;
       this.$http = $http;
       this.$httpParamSerializerJQLike = $httpParamSerializerJQLike;
       this.$state = {
@@ -71,7 +71,7 @@ export const SearchResultComponent = {
      * hide and show the contact form with the click of button.
      */
     showHide() {
-      this.IsVisible = this.IsVisible ? false : true;
+      this.isVisible = this.isVisible ? false : true;
     }
 
     /**

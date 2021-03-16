@@ -71,7 +71,7 @@ export const SearchResultComponent = {
      * hide and show the contact form with the click of button.
      */
     showHide() {
-      this.isVisible = this.isVisible ? false : true;
+      this.isVisible = !this.isVisible;
     }
 
     /**

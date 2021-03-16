@@ -32,13 +32,18 @@ $mail->Port = 587;                                     // TCP port to connect to
 $mail->setFrom($email);
 $mail->isHTML(true);                                  // Set email format to HTML
 
-// check if the form is sent for message purpose or contact update purpose
-if ($recipient) {
-  $mail->addAddress($recipient);
-  $mail->Subject = "Email Message Sent From Directory Site";
-  $mail->Body  = "
-  <table>
-  <tbody>
+if ($sendCopy) $mail->addAddress($email);             // Copy sender if requested
+$mail->addAddress($sendToAddress);
+$mail->Subject = $emailSubject;
+$mail->Body  = $emailBody;
+$emailBody = "$emailMessage<table><tbody>$tbody</tbody></table>$signOff";
+
+$sendToAddress = $recipient ? $recipient : "directory@ontariotechu.ca";
+$emailSubject = $recipient ? "Email Message Sent From Directory Site" : "Update Information in the Ontario Tech Directory";
+$emailMessage = $recipient ? "" : "<p>Hello, <br/>I would like to update my contact information in the <a href=\"https://ontariotechu.ca/directory\">Ontario Directory</a>.</p><p>Please use the following information to update my entry:</p>";
+$signOff = $recipient ? "" : "<p>Thank you for your assistance,<br/><strong>$firstName $lastName</strong></p>";
+$tbody = $recipient ?
+  "
   <tr>
   <td><strong>First Name:</strong></td>
   <td>$firstName</td>
@@ -62,19 +67,9 @@ if ($recipient) {
   <tr>
   <td><strong>Message:</strong></td>
   <td>$message</td>
-  </tr>
-  </tbody>
-  </table>
-  ";
-} else {
-  if ($sendCopy) $mail->addAddress($email);             // Copy sender if requested
-  $mail->addAddress('directory@ontariotechu.ca');
-  $mail->Subject = 'Update Information in the Ontario Tech Directory.';
-  $mail->Body  = "<p>Hello,
-  <br/>I would like to update my contact information in the <a href=\"https://ontariotechu.ca/directory\">Ontario Directory</a>.</p>
-  <p>Please use the following information to update my entry:</p>
-  <table>
-  <tbody>
+  </tr>"
+  :
+  "
   <tr>
   <td><strong>Banner ID:</strong></td>
   <td>$bannerId</td>
@@ -110,13 +105,7 @@ if ($recipient) {
   <tr>
   <td><strong>E-mail:</strong></td>
   <td>$email</td>
-  </tr>
-  </tbody>
-  </table>
-  <p>Thank you for your assistance,<br/>
-  <strong>$firstName $lastName</strong></p>
-  ";
-}
+  </tr>";
 
 if (!$mail->send()) {
   header('HTTP/1.1 400 Bad Request');

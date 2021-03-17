@@ -27,70 +27,11 @@ $sendToAddress = $recipient ? $recipient : "directory@ontariotechu.ca";
 $emailSubject = $recipient ? "Email Message Sent From Directory Site" : "Update Information in the Ontario Tech Directory";
 $emailMessage = $recipient ? "" : "<p>Hello, <br/>I would like to update my contact information in the <a href=\"https://ontariotechu.ca/directory\">Ontario Directory</a>.</p><p>Please use the following information to update my entry:</p>";
 $signOff = $recipient ? "" : "<p>Thank you for your assistance,<br/><strong>$firstName $lastName</strong></p>";
-$tbody = $recipient ?
-  "
-    <tr>
-    <td><strong>First Name:</strong></td>
-    <td>$firstName</td>
-    </tr>
-    <tr>
-    <td><strong>Last Name:</strong></td>
-    <td>$lastName</td>
-    </tr>
-    <tr>
-    <td><strong>Phone:</strong></td>
-    <td>$phone</td>
-    </tr>
-    <tr>
-    <td><strong>E-mail:</strong></td>
-    <td>$email</td>
-    </tr>
-    <tr>
-    <td><strong>Subject:</strong></td>
-    <td>$subject</td>
-    </tr>
-    <tr>
-    <td><strong>Message:</strong></td>
-    <td>$message</td>
-    </tr>"
-  :
-  "
-    <tr>
-    <td><strong>Banner ID:</strong></td>
-    <td>$bannerId</td>
-    </tr>
-    <tr>
-    <td><strong>First Name:</strong></td>
-    <td>$firstName</td>
-    </tr>
-    <tr>
-    <td><strong>Last Name:</strong></td>
-    <td>$lastName</td>
-    </tr>
-    <tr>
-    <td><strong>Department:</strong></td>
-    <td>$department</td>
-    </tr>
-    <tr>
-    <td><strong>Title:</strong></td>
-    <td>$title</td>
-    </tr>
-    <tr>
-    <td><strong>Building:</strong></td>
-    <td>$building</td>
-    </tr>
-    <tr>
-    <td><strong>Office:</strong></td>
-    <td>$office</td>
-    </tr>
-    <tr>
-    <td><strong>Extension:</strong></td>
-    <td>$extension</td>
-    </tr>
-    <tr>
-    <td><strong>E-mail:</strong></td>
-    <td>$email</td>
-    </tr>";
+
+//creating a loop throught $_POST variables and output them in email body 
+foreach ($_POST as $key => $value) {
+  $tbody .= $value ? "<tr><td><strong>$key:</strong></td><td>$value</td></tr>" : "";
+}
 
 $mail->Host = 'smtp-mail.outlook.com';                // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentic

@@ -12,7 +12,7 @@ $bannerId   = $_POST['bannerId'];   // required
 $firstName  = $_POST['firstname'];  // required
 $lastName   = $_POST['lastname'];   // required
 $department = $_POST['department']; // required
-$title      = $_POST['position'];      // required
+$position      = $_POST['position'];      // required
 $building   = $_POST['building'];   // required
 $office     = $_POST['office'];     // required
 $extension  = $_POST['extension'];  // required
@@ -28,7 +28,28 @@ $emailSubject = $recipient ? "Email Message Sent From Directory Site" : "Update 
 $emailMessage = $recipient ? "" : "<p>Hello, <br/>I would like to update my contact information in the <a href=\"https://ontariotechu.ca/directory\">Ontario Directory</a>.</p><p>Please use the following information to update my entry:</p>";
 $signOff = $recipient ? "" : "<p>Thank you for your assistance,<br/><strong>$firstName $lastName</strong></p>";
 
-//creating a loop throught $_POST variables and output them in email body 
+//DEFINE SANITIZATION FILTERS
+$sanitize_filterss = array(
+  "email" => FILTER_SANITIZE_EMAIL,
+  "bannerId" => FILTER_SANITIZE_NUMBER_INT,
+  "extension" => FILTER_SANITIZE_NUMBER_INT,
+  "phone" => FILTER_SANITIZE_NUMBER_INT,
+  "office" => FILTER_SANITIZE_STRING,
+  "firstName" => FILTER_SANITIZE_STRING,
+  "lastName" => FILTER_SANITIZE_STRING,
+  "department" => FILTER_SANITIZE_STRING,
+  "position" => FILTER_SANITIZE_STRING,
+  "building" => FILTER_SANITIZE_STRING,
+  "subject" => FILTER_SANITIZE_STRING,
+  "message" => FILTER_SANITIZE_STRING
+);
+
+//SANITIZE EACH INPUT FIELDS
+foreach ($_POST as $key => $value) {
+  $value = filter_var($value, $sanitize_filters[$key]);
+}
+
+// SENT OUT THE EMAIL
 foreach ($_POST as $key => $value) {
   $tbody .= $value ? "<tr><td><strong>$key:</strong></td><td>$value</td></tr>" : "";
 }

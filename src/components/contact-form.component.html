@@ -32,18 +32,10 @@
     <div class="xxsmall-12 medium-6 columns">
       <label>Phone:
         <span class="red"> *</span>
-        <input type="text" name="phone" ng-model="$ctrl.formData.phone" required
-          ng-pattern="/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/" />
+        <input type="text" name="phone" ng-model="$ctrl.formData.phone" required ng-pattern="'[0-9]+'" />
       </label>
     </div>
     <div class="xxsmall-12 medium-6 columns">
-      <label>Extension:
-        <input type="text" name="extension" ng-model="$ctrl.formData.extension" ng-pattern="/^x?[0-9]+$/" />
-      </label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="xxsmall-12 medium-12 columns">
       <label>Email:
         <span class="red"> *</span>
         <input type="email" name="email" ng-model="$ctrl.formData.email" required />

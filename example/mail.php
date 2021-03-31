@@ -55,11 +55,11 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $errorMessages .= "Invalid email format. ";
 }
 
-if (isset($phone) && !preg_match('/^[0-9]{10}+$/', $phone)) {
+if (isset($phone) && !preg_match('/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/', $phone)) {
   $errorMessages .= "Invalid phone format. ";
 }
 
-if (isset($extension) && !preg_match('/^[0-9]{4}+$/', $extension)) {
+if (isset($extension) && !preg_match('/^x?[0-9]+$/', $extension)) {
   $errorMessages .= "Invalid extension format. ";
 }
 
@@ -77,8 +77,8 @@ if (!empty($errorMessages)) {
 } else {
   $mail->Host = 'smtp-mail.outlook.com';                // Specify main and backup SMTP servers
   $mail->SMTPAuth = true;                               // Enable SMTP authentic
-  $mail->Username = '';                                 // SMTP username
-  $mail->Password = '';                                 // SMTP password
+  $mail->Username = 'chelseaxi2018@gmail.com';                                 // SMTP username
+  $mail->Password = 'gaoer17mxq';                                 // SMTP password
   $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
   $mail->Port = 587;                                     // TCP port to connect to
 

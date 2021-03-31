@@ -76,7 +76,7 @@
     <div class="xxsmall-12 medium-6 columns">
       <label>Extension:
         <span class="red"> *</span>
-        <input type="text" name="extension" ng-model="$ctrl.formData.extension" required ng-pattern="'[0-9]+'" />
+        <input type="text" name="extension" ng-model="$ctrl.formData.extension" required ng-pattern="/^x?[0-9]+$/" />
       </label>
     </div>
     <div class="xxsmall-12 medium-6 columns">

@@ -31,12 +31,12 @@
       <a
         href="mailto:{{ ::$ctrl.result.email.replace('uoit.ca','ontariotechu.ca') }}">{{ ::$ctrl.result.email.replace('@uoit.ca','@ontariotechu.ca') | lowercase }}</a>
       -->
-      <button class="button" ng-click="$ctrl.showHide()">Contact</button>
+      <button class="button" ng-click="$ctrl.showHide()">Send a message</button>
     </li>
   </ul>
 
-  <p class="covid-note">Note: As most staff are working from home due to COVID 19, please use the following contact form
-    as the primary means of communication</p>
+  <p class="covid-note">Note: Sending a message is the preferred method of contact, as most faculty and staff are
+    working remote at this time.</p>
   <p class="text-right">
     <small>
       <a href="#tab_update-entry" title="Submit an entry update request" target="_self" ng-click="$ctrl.onUpdateRequest({
